@@ -1,9 +1,0 @@
-
-        [ckan.plugins]
-	# Add plugins here, eg
-	# myplugin=ckanext.myextension:PluginClass
-	datalocale_datasetform=ckanext.datalocale.forms:DatalocaleDatasetForm
-
-	[paste.paster_command]
-	datalocale = ckanext.datalocale.commands:DatalocaleCommand
-	
