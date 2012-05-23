@@ -294,7 +294,23 @@ class DatalocaleDatasetForm(SingletonPlugin):
 				stream = stream
 		except NotFound:
 			stream = stream
-
+	if routes.get('controller') == 'group'\
+            and routes.get('action') == 'read':	
+		parents = c.group.get_groups('organization')
+		html = ''
+		if parents:
+			parent = parents[0]
+			html = html + '<li><h3>Parent</h3><ul class="no-break"><li>%s</li></ul></li>' % parent.name
+		children = c.group.get_children_groups('organization')
+		if children:
+			html = html + '<li><h3>Groups fils</h3><ul class="no-break">'
+		for child in children :
+			html = html + '<li>%s</li>' % child['title']
+		if children:
+			html = html + '</ul></li>'
+		stream = stream | Transformer(
+                        "//div[@id='sidebar']//ul[@class='widget-list']"
+                    ).append(HTML(html))
         return stream
 
     '''the IAction extension returns a dictionary of core actions it wants to override.'''
