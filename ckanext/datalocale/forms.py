@@ -1,20 +1,19 @@
 import os
 import pylons
+from pylons import config
 import logging
 import ckan.authz as authz
 import ckan.logic as logic
-from ckan.logic.converters import convert_to_extras,\
-    convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from ckan.logic import get_action, NotFound
-from ckan.logic import NotAuthorized
+from ckan.logic import get_action, NotFound, NotAuthorized, check_access
 from ckan.lib import base
 from ckan.lib.base import c, model, abort, request
 from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer, IGenshiStreamFilter, IActions
 from ckan.plugins import implements, SingletonPlugin
-from ckan.logic import check_access
-from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty
 import ckan.lib.plugins
 import ckan.plugins
+from ckan.logic.schema import package_form_schema, default_resource_schema
+from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty, ignore
+from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
 from validators import datalocale_convert_from_tags, datalocale_convert_to_tags
 
 log = logging.getLogger(__name__)
@@ -22,6 +21,9 @@ log = logging.getLogger(__name__)
 VOCAB_FREQUENCES = u'dct:accrualPeriodicity'
 VOCAB_THEMES = u'dcat:themeTaxonomy'
 VOCAB_THEMES_CONCEPT = u'dcat:theme'
+VOCAB_DATAQUALITY = u'dcat:dataQuality'
+VOCAB_GRANULARITY = u'dcat:granularity'
+VOCAB_REFERENCES = u'dcterms:references'
 
 def my_vocabulary_show(context, data_dict):
     context['for_view'] = True
@@ -106,19 +108,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def history_template(self):
         return 'package/history.html'
 
-    def is_fallback(self):
-        return True
-
     def package_types(self):
         return ["dataset"]
 
+    def is_fallback(self):
+        return True
+
     def setup_template_variables(self, context, data_dict, package_type=None):
-        from pylons import config
 	''' Translation '''
         ckan_lang = pylons.request.environ['CKAN_LANG']
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
 
-        data_dict.update({'available_only':True})
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
         c.licences = [('', '')] + base.model.Package.get_license_options()
         c.is_sysadmin = authz.Authorizer().is_sysadmin(c.user)
@@ -136,8 +136,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		)
 	except NotFound:
 		c.themeTaxonomy_available = []
-
-    	
+    	try:
+		data = {'vocabulary_id': VOCAB_DATAQUALITY}
+		c.dataQuality_available = get_action('tag_list')(context, data)
+	except NotFound:
+		c.dataQuality_available = []
+    	try:
+		data = {'vocabulary_id': VOCAB_GRANULARITY}
+		c.granularity_available = get_action('tag_list')(context, data)
+	except NotFound:
+		c.granularity_available = []
+	
         ''' Find extras that are not part of our schema '''
         c.additional_extras = []
         schema_keys = self.form_to_db_schema().keys()
@@ -165,42 +174,40 @@ class DatalocaleDatasetForm(SingletonPlugin):
         Returns the schema for mapping package data from a form to a format
         suitable for the database.
         """
-	from ckan.logic.schema import package_form_schema, default_package_schema
-	from ckan.lib.navl.validators import ignore_missing
-	from ckan.logic.converters import convert_to_tags, convert_to_extras
-	
     	schema = package_form_schema()
     	schema.update({
         	'frequences_available': [ignore_missing, convert_to_tags(VOCAB_FREQUENCES)],
 		'themeTaxonomy_available': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
 		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy_available')],
+		'dataQuality_available': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
+		'granularity_available': [ignore_missing, convert_to_tags(VOCAB_GRANULARITY)],
 		'dct:creator': [unicode, convert_to_extras, ignore_missing],
 		'dct:publisher': [unicode, convert_to_extras, ignore_missing],
 		'dct:contributor': [unicode, convert_to_extras, ignore_missing],
 		'dct:temporal': [unicode, convert_to_extras, ignore_missing],
 		'maj': [unicode, convert_to_extras, ignore_missing],
+		'dcterms:references': [unicode, convert_to_extras, ignore_missing],
     	})
         schema['groups'].update({
             'capacity': [ignore_missing, unicode]
         })
         return schema
 
-    def db_to_form_schema(self):
+
+    def db_to_form_schema_options(self, options):
+        schema = self.db_to_form_schema()
+
+        if options.get('api'):
+		log.info(options.get('context').get('package'))
+
+        return schema
+
+    def db_to_form_schema(self, package_type=None):
         """
         Returns the schema for mapping package data from the database into a
         format suitable for the form (optional)
         """
-	from ckan.logic.converters import convert_from_tags, convert_from_extras, free_tags_only
-    	from ckan.lib.navl.validators import ignore_missing, keep_extras
-	from ckan.logic.schema import package_form_schema, default_package_schema, default_resource_schema
 	schema = package_form_schema()
- 	schema['resources'].update({
-            'created': [ignore_missing],
-            'position': [not_empty],
-            'last_modified': [ignore_missing],
-            'cache_last_updated': [ignore_missing],
-            'webstore_last_updated': [ignore_missing]
-        })
         schema['groups'].update({
 	    'id': [ignore_missing],
             'name': [ignore_missing, unicode],
@@ -208,30 +215,43 @@ class DatalocaleDatasetForm(SingletonPlugin):
             'capacity': [ignore_missing, unicode]
         })
     	schema.update({
-		'tags': {
-	    		'__extras': [keep_extras, free_tags_only]
-		},
+		'id' : [ignore_missing],
+		'tags': {'__extras': [keep_extras, free_tags_only]},
 		'frequences_available': [convert_from_tags(VOCAB_FREQUENCES), ignore_missing],
 		'themeTaxonomy_available': [convert_from_tags(VOCAB_THEMES), ignore_missing],
 		'theme_available': [datalocale_convert_from_tags('themeTaxonomy_available'), ignore_missing],
+		'dataQuality_available': [convert_from_tags(VOCAB_DATAQUALITY), ignore_missing],
+		'granularity_available': [convert_from_tags(VOCAB_GRANULARITY), ignore_missing],
 		'dct:creator': [convert_from_extras, ignore_missing],
 		'dct:publisher': [convert_from_extras, ignore_missing],
 		'dct:contributor': [convert_from_extras, ignore_missing],
 		'dct:temporal': [convert_from_extras, ignore_missing],
 		'maj': [convert_from_extras, ignore_missing],
 		'isopen' : [ignore_missing],
-		'resources': [ignore_missing],
+		'dcterms:references': [convert_from_extras, ignore_missing],
     	})
+	schema['resources'].update({
+            'created': [ignore_missing],
+            'position': [not_empty],
+            'last_modified': [ignore_missing],
+            'cache_last_updated': [ignore_missing],
+            'webstore_last_updated': [ignore_missing]
+        })	
         return schema
 
-    def check_data_dict(self, data_dict, schema=None):
+    def check_data_dict(self, data_dict):
         '''Check if the return data is correct, mostly for checking out
 	if spammers are submitting only part of the form'''
-
-        # Resources might not exist yet (eg. Add Dataset)
+	from ckan.lib.navl.dictization_functions import DataError, unflatten, validate
         surplus_keys_schema = ['__extras', '__junk', 'state', 'groups',
-                               'extras_validation', 'save', 'return_to',
-                               'resources', 'type']
+                               'extras_validation', 'save', 'preview',
+                               'return_to', 'type', 'resources']
+ 	schema_keys = package_form_schema().keys()
+        keys_in_schema = set(schema_keys) - set(surplus_keys_schema)
+
+        if keys_in_schema - set(data_dict.keys()):
+            log.info('incorrect form fields posted')
+            raise DataError(data_dict)
 
     def filter(self, stream):
         ''' Add vocab tags to the bottom of the sidebar.'''
@@ -274,8 +294,10 @@ class DatalocaleDatasetForm(SingletonPlugin):
 				stream = stream
 		except NotFound:
 			stream = stream
+
         return stream
 
     '''the IAction extension returns a dictionary of core actions it wants to override.'''
     def get_actions(self):
         return {'my_vocabulary_show': my_vocabulary_show}
+

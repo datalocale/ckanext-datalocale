@@ -113,6 +113,7 @@
     </div>
   </div>
 
+
   <div class="control-group homepage-field">
     <label class="control-label" for="url">Home Page</label>
     <div class="controls">
@@ -220,7 +221,45 @@ if organization:
       <p>Plage temporelle couverte par le jeu de données (dct:temporal)</p>
     </div>
   </div>
-
+<div class="control-group tags-field">
+    <label class="control-label">Qualité</label>
+    <div class="controls">
+	<select id="dataQuality_available" class="chzn-select"
+        	name="dataQuality_available">
+	  <option value="">(None)</option>
+	  <py:for each="tag in c.dataQuality_available">
+	    <py:choose test="">
+	    <option py:when="tag in data.get('dataQuality_available', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+	    </py:choose>
+	  </py:for>
+	</select>
+    </div>
+</div>
+<div class="control-group tags-field">
+    <label class="control-label">Granularité</label>
+    <div class="controls">
+	<select id="granularity_available" class="chzn-select"
+        	name="granularity_available">
+	  <option value="">(None)</option>
+	  <py:for each="tag in c.granularity_available">
+	    <py:choose test="">
+	    <option py:when="tag in data.get('granularity_available', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+	    </py:choose>
+	  </py:for>
+	</select>
+    </div>
+</div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dcterms:references">Référence liée (ou documentation)</label>
+    <div class="controls">
+      <input id="dcterms:references" name="dcterms:references" type="text" value="${data.get('dcterms:references', '')}" />
+      <p>Permet d'indiquer la localisation d'une ressource disponible sur le réseau Internet et de spécifier un titre qui s'affichera comme une ressource actionnable. (dcterms:references)</p>
+    </div>
+  </div>
   <div class="control-group tags-field">
     <label class="control-label">Tags</label>
     <div class="controls">
