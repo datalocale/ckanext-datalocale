@@ -13,8 +13,9 @@ import ckan.lib.plugins
 import ckan.plugins
 from ckan.logic.schema import package_form_schema, default_resource_schema
 from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty, ignore
-from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from validators import datalocale_convert_from_tags, datalocale_convert_to_tags
+from ckan.logic.converters import convert_to_extras,\
+    convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
+from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, duplicate_extras_key, rename
 
 log = logging.getLogger(__name__)
 
@@ -216,6 +217,12 @@ class DatalocaleDatasetForm(SingletonPlugin):
         })
     	schema.update({
 		'id' : [ignore_missing],
+		'revision_id' : [ignore_missing],
+		'metadata_created' : [ignore_missing],
+		'metadata_modified' : [ignore_missing],
+		'state' : [ignore_missing],
+		'notes': [ignore_missing, unicode],
+		'type': [unicode],
 		'tags': {'__extras': [keep_extras, free_tags_only]},
 		'frequences_available': [convert_from_tags(VOCAB_FREQUENCES), ignore_missing],
 		'themeTaxonomy_available': [convert_from_tags(VOCAB_THEMES), ignore_missing],
@@ -245,10 +252,10 @@ class DatalocaleDatasetForm(SingletonPlugin):
 	from ckan.lib.navl.dictization_functions import DataError, unflatten, validate
         surplus_keys_schema = ['__extras', '__junk', 'state', 'groups',
                                'extras_validation', 'save', 'preview',
-                               'return_to', 'type', 'resources']
+                               'return_to', 'resources']
  	schema_keys = package_form_schema().keys()
         keys_in_schema = set(schema_keys) - set(surplus_keys_schema)
-
+	
         if keys_in_schema - set(data_dict.keys()):
             log.info('incorrect form fields posted')
             raise DataError(data_dict)
@@ -294,6 +301,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 				stream = stream
 		except NotFound:
 			stream = stream
+
 	if routes.get('controller') == 'group'\
             and routes.get('action') == 'read':	
 		parents = c.group.get_groups('organization')
