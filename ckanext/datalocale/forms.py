@@ -15,7 +15,7 @@ from ckan.logic.schema import package_form_schema, default_resource_schema
 from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty, ignore
 from ckan.logic.converters import convert_to_extras,\
     convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, duplicate_extras_key, rename
+from validators import datalocale_convert_from_tags, datalocale_convert_to_tags
 
 log = logging.getLogger(__name__)
 
@@ -25,10 +25,6 @@ VOCAB_THEMES_CONCEPT = u'dcat:theme'
 VOCAB_DATAQUALITY = u'dcat:dataQuality'
 VOCAB_GRANULARITY = u'dcat:granularity'
 VOCAB_REFERENCES = u'dcterms:references'
-
-def my_vocabulary_show(context, data_dict):
-    context['for_view'] = True
-    return logic.action.get.vocabulary_show(context, data_dict)
 
 def _tags_and_translations(context, vocab, lang, lang_fallback):
     try:
@@ -177,11 +173,11 @@ class DatalocaleDatasetForm(SingletonPlugin):
         """
     	schema = package_form_schema()
     	schema.update({
-        	'frequences_available': [ignore_missing, convert_to_tags(VOCAB_FREQUENCES)],
-		'themeTaxonomy_available': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
-		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy_available')],
-		'dataQuality_available': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
-		'granularity_available': [ignore_missing, convert_to_tags(VOCAB_GRANULARITY)],
+        	'frequencies': [ignore_missing, convert_to_tags(VOCAB_FREQUENCES)],
+		'themeTaxonomy': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
+		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy')],
+		'dataQuality': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
+		'granularity': [ignore_missing, convert_to_tags(VOCAB_GRANULARITY)],
 		'dct:creator': [unicode, convert_to_extras, ignore_missing],
 		'dct:publisher': [unicode, convert_to_extras, ignore_missing],
 		'dct:contributor': [unicode, convert_to_extras, ignore_missing],
@@ -197,7 +193,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def db_to_form_schema_options(self, options):
         schema = self.db_to_form_schema()
-
         if options.get('api'):
 		log.info(options.get('context').get('package'))
 
@@ -224,11 +219,11 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'notes': [ignore_missing, unicode],
 		'type': [unicode],
 		'tags': {'__extras': [keep_extras, free_tags_only]},
-		'frequences_available': [convert_from_tags(VOCAB_FREQUENCES), ignore_missing],
-		'themeTaxonomy_available': [convert_from_tags(VOCAB_THEMES), ignore_missing],
-		'theme_available': [datalocale_convert_from_tags('themeTaxonomy_available'), ignore_missing],
-		'dataQuality_available': [convert_from_tags(VOCAB_DATAQUALITY), ignore_missing],
-		'granularity_available': [convert_from_tags(VOCAB_GRANULARITY), ignore_missing],
+		'frequencies': [convert_from_tags(VOCAB_FREQUENCES), ignore_missing],
+		'themeTaxonomy': [convert_from_tags(VOCAB_THEMES), ignore_missing],
+		'theme_available': [datalocale_convert_from_tags('themeTaxonomy'), ignore_missing],
+		'dataQuality': [convert_from_tags(VOCAB_DATAQUALITY), ignore_missing],
+		'granularity': [convert_from_tags(VOCAB_GRANULARITY), ignore_missing],
 		'dct:creator': [convert_from_extras, ignore_missing],
 		'dct:publisher': [convert_from_extras, ignore_missing],
 		'dct:contributor': [convert_from_extras, ignore_missing],
@@ -249,16 +244,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def check_data_dict(self, data_dict):
         '''Check if the return data is correct, mostly for checking out
 	if spammers are submitting only part of the form'''
-	from ckan.lib.navl.dictization_functions import DataError, unflatten, validate
-        surplus_keys_schema = ['__extras', '__junk', 'state', 'groups',
-                               'extras_validation', 'save', 'preview',
-                               'return_to', 'resources']
- 	schema_keys = package_form_schema().keys()
-        keys_in_schema = set(schema_keys) - set(surplus_keys_schema)
-	
-        if keys_in_schema - set(data_dict.keys()):
-            log.info('incorrect form fields posted')
-            raise DataError(data_dict)
+	return
 
     def filter(self, stream):
         ''' Add vocab tags to the bottom of the sidebar.'''
@@ -268,7 +254,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         routes = request.environ.get('pylons.routes_dict')
         if routes.get('controller') == 'package' \
             and routes.get('action') == 'read':
-                for vocab in ('themeTaxonomy_available', 'theme_available', 'frequences_available', ):
+                for vocab in ('themeTaxonomy', 'theme_available', 'frequencies', ):
                     try:
                         vocab_tags = c.pkg_dict.get(vocab, [])
                     except NotFound:
@@ -278,9 +264,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
                         continue
 
                     html = '<li class="sidebar-section">'
-                    if vocab == 'frequences_available':
+                    if vocab == 'frequencies':
                         html = html + '<h3>Fr&eacute;quence</h3>'
-                    elif vocab == 'themeTaxonomy_available':
+                    elif vocab == 'themeTaxonomy':
                         html = html + '<h3>Th&egrave;mes</h3>'
                     html = html + '<ul class="tags clearfix">'
                     for tag in vocab_tags:
@@ -311,7 +297,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 			html = html + '<li><h3>Parent</h3><ul class="no-break"><li>%s</li></ul></li>' % parent.name
 		children = c.group.get_children_groups('organization')
 		if children:
-			html = html + '<li><h3>Groups fils</h3><ul class="no-break">'
+			html = html + '<li><h3>Groupes fils</h3><ul class="no-break">'
 		for child in children :
 			html = html + '<li>%s</li>' % child['title']
 		if children:
@@ -323,5 +309,18 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     '''the IAction extension returns a dictionary of core actions it wants to override.'''
     def get_actions(self):
-        return {'my_vocabulary_show': my_vocabulary_show}
+        return {'datalocale_vocabulary_show': datalocale_vocabulary_show,
+		'package_show_rest' : datalocale_package_show_rest,
+		'datalocale_group_show' : datalocale_group_show}
+
+def datalocale_vocabulary_show(context, data_dict):
+    context['for_view'] = True
+    return logic.action.get.vocabulary_show(context, data_dict)
+
+def datalocale_package_show_rest(context, data_dict):
+    return logic.get_action('package_show')(context, data_dict)
+
+def datalocale_group_show(context, data_dict): 
+    groups = logic.get_action('group_show')(context, data_dict)
+    return groups
 

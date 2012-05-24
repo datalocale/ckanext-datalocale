@@ -12,12 +12,12 @@
 <script language="javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
 	$(function() {
-		$("#themeTaxonomy_available option:selected").each(function () {
+		$("#themeTaxonomy option:selected").each(function () {
 					getThemeTag($(this).attr('value'));
 			});
 
-		$("#themeTaxonomy_available").change(function(){
-			$("#themeTaxonomy_available option:selected").each(function () {
+		$("#themeTaxonomy").change(function(){
+			$("#themeTaxonomy option:selected").each(function () {
 					getThemeTag($(this).attr('value'));
 			});
 		});
@@ -29,7 +29,7 @@
 		if(id!="") {
 			jQuery.ajax({
 				type: 'POST',
-				url: '${c.api_url}/fr/api/3/action/my_vocabulary_show',
+				url: '${c.api_url}/fr/api/3/action/datalocale_vocabulary_show',
 				contentType : 'application/json;charset=utf-8',
 				dataType: 'json',
 				data: '{"id": "'+id+'"}',
@@ -176,14 +176,14 @@ if organization:
 </div>
 
 <div class="control-group tags-field">
-    <label class="control-label">Fréquence</label>
+    <label class="control-label" for="frequencies">Fréquence</label>
     <div class="controls">
-	<select id="frequences_available" class="chzn-select"
-        	name="frequences_available">
+	<select id="frequencies" class="chzn-select"
+        	name="frequencies">
 	  <option value="">(None)</option>
 	  <py:for each="tag in c.frequences_available">
 	    <py:choose test="">
-	    <option py:when="tag in data.get('frequences_available', [])"
+	    <option py:when="tag in data.get('frequencies', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
 	    </py:choose>
@@ -192,14 +192,14 @@ if organization:
     </div>
 </div>
 <div class="control-group tags-field">
-    <label class="control-label">Thème (Catégorie)</label>
+    <label class="control-label" for="themeTaxonomy">Thème (Catégorie)</label>
     <div class="controls">
-	<select id="themeTaxonomy_available"
-        	name="themeTaxonomy_available">
+	<select id="themeTaxonomy"
+        	name="themeTaxonomy">
 	  <option value="">(None)</option>
 	  <py:for each="tag, translation in c.themeTaxonomy_available">
 	    <py:choose test="">
-	    <option py:when="tag in data.get('themeTaxonomy_available', [])"
+	    <option py:when="tag in data.get('themeTaxonomy', [])"
 		    selected="selected" value="${tag}">${translation}</option>
 	    <option py:otherwise="" value="${tag}">${translation}</option>
 	    </py:choose>
@@ -209,7 +209,7 @@ if organization:
 </div>
 
 <div class="control-group tags-field">
-    <label class="control-label">Thème (Concepts)</label>
+    <label class="control-label" for="theme_available">Thème (Concepts)</label>
     <div class="controls" id="theme">
     </div>
 </div>
@@ -222,14 +222,14 @@ if organization:
     </div>
   </div>
 <div class="control-group tags-field">
-    <label class="control-label">Qualité</label>
+    <label class="control-label" for="dataQuality">Qualité</label>
     <div class="controls">
-	<select id="dataQuality_available" class="chzn-select"
-        	name="dataQuality_available">
+	<select id="dataQuality" class="chzn-select"
+        	name="dataQuality">
 	  <option value="">(None)</option>
 	  <py:for each="tag in c.dataQuality_available">
 	    <py:choose test="">
-	    <option py:when="tag in data.get('dataQuality_available', [])"
+	    <option py:when="tag in data.get('dataQuality', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
 	    </py:choose>
@@ -238,14 +238,14 @@ if organization:
     </div>
 </div>
 <div class="control-group tags-field">
-    <label class="control-label">Granularité</label>
+    <label class="control-label" for="granularity">Granularité</label>
     <div class="controls">
-	<select id="granularity_available" class="chzn-select"
-        	name="granularity_available">
+	<select id="granularity" class="chzn-select"
+        	name="granularity">
 	  <option value="">(None)</option>
 	  <py:for each="tag in c.granularity_available">
 	    <py:choose test="">
-	    <option py:when="tag in data.get('granularity_available', [])"
+	    <option py:when="tag in data.get('granularity', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
 	    </py:choose>
@@ -261,7 +261,7 @@ if organization:
     </div>
   </div>
   <div class="control-group tags-field">
-    <label class="control-label">Tags</label>
+    <label class="control-label" for="tag_string">Tags</label>
     <div class="controls">
       <input class="long autocomplete-tag" id="tag_string" name="tag_string" size="60" type="text"
                value="${data.get('tag_string') or ', '.join([tag['name'] for tag in data.get('tags', []) if not tag.get('vocabulary_id')])}" />
