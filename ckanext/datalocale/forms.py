@@ -182,6 +182,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dct:publisher': [unicode, convert_to_extras, ignore_missing],
 		'dct:contributor': [unicode, convert_to_extras, ignore_missing],
 		'dct:temporal': [unicode, convert_to_extras, ignore_missing],
+		'dc:source': [unicode, convert_to_extras, ignore_missing],
 		'maj': [unicode, convert_to_extras, ignore_missing],
 		'dcterms:references': [unicode, convert_to_extras, ignore_missing],
     	})
@@ -228,6 +229,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dct:publisher': [convert_from_extras, ignore_missing],
 		'dct:contributor': [convert_from_extras, ignore_missing],
 		'dct:temporal': [convert_from_extras, ignore_missing],
+		'dc:source': [convert_from_extras, ignore_missing],
 		'maj': [convert_from_extras, ignore_missing],
 		'isopen' : [ignore_missing],
 		'dcterms:references': [convert_from_extras, ignore_missing],
@@ -311,7 +313,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def get_actions(self):
         return {'datalocale_vocabulary_show': datalocale_vocabulary_show,
 		'package_show_rest' : datalocale_package_show_rest,
-		'datalocale_group_show' : datalocale_group_show}
+		'datalocale_group_show' : datalocale_group_show,
+		'group_show_rest' : datalocale_group_show}
 
 def datalocale_vocabulary_show(context, data_dict):
     context['for_view'] = True
@@ -322,5 +325,12 @@ def datalocale_package_show_rest(context, data_dict):
 
 def datalocale_group_show(context, data_dict): 
     groups = logic.get_action('group_show')(context, data_dict)
+    group = base.model.Group.get(data_dict['id'])
+    children = group.get_children_groups('organization')
+    parent = group.get_groups('organization')
+    if parent and parent[0] : 
+	    groups['parent'] = [ { "id": parent[0].id, "name": parent[0].name, "title": parent[0].title, "description": parent[0].description, 
+		"type": parent[0].type, "image_url": parent[0].image_url, "approval_status": parent[0].approval_status, 
+		"state": parent[0].state, "revision_id": parent[0].revision_id}]
     return groups
 

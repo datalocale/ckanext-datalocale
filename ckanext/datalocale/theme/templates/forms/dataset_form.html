@@ -144,75 +144,71 @@
     </div>
   </div>
 
-<div class="control-group groups-field">
-<label class="control-label">Organisation</label>
-<div class="controls">
+  <div class="control-group groups-field">
+    <label class="control-label" for="groups">Organisation</label>
+    <div class="controls">
 <?python
 organization = data.get('groups', {})
 if organization:
     organization = organization[0]
 ?>
-        <py:if test="c.groups_available and ((not 'name' in organization) or c.is_sysadmin or c.auth_for_change_state)">
-          <select id="groups__0__id" name="groups__0__id" class="chzn-select">
-            <option value="">(None)</option>
+      <py:if test="c.groups_available and ((not 'name' in organization) or c.is_sysadmin or c.auth_for_change_state)">
+        <select id="groups__0__id" name="groups__0__id" class="chzn-select">
+          <option value="">(None)</option>
             <py:for each="group in c.groups_available">
             <option value="${group['id']}" py:attrs="{'selected':'selected'} if organization and organization.get('id','') == group['id'] else {}">${group['title']}</option>
             </py:for>
-          </select>
+        </select>
 
-          <label for='cap_public'>
-          <input id='cap_public' type='radio' name='groups__0__capacity' value='public' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') in ['public', ''] else {}"/>
-          Public</label>
+        <label for='cap_public'>
+        <input id='cap_public' type='radio' name='groups__0__capacity' value='public' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') in ['public', ''] else {}"/>Public</label>
 
-          <label for='cap_private'>
-          <input id='cap_private' type='radio' name='groups__0__capacity' value='private' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') == 'private' else {}"/>
-          Private</label>
-         </py:if>
-        <py:if test="not (c.is_sysadmin or c.auth_for_change_state)">
-            <span>${organization.get('title', '')}</span>
-         </py:if>
-        <em py:if="not c.groups_available">Cannot add any organizations.</em>
+        <label for='cap_private'>
+        <input id='cap_private' type='radio' name='groups__0__capacity' value='private' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') == 'private' else {}"/>Privé</label>
+      </py:if>
+      <py:if test="not (c.is_sysadmin or c.auth_for_change_state)">
+        <span>${organization.get('title', '')}</span>
+      </py:if>
+      <em py:if="not c.groups_available">Cannot add any organizations.</em>
     </div>
-</div>
+  </div>
 
-<div class="control-group tags-field">
+  <div class="control-group tags-field">
     <label class="control-label" for="frequencies">Fréquence</label>
     <div class="controls">
-	<select id="frequencies" class="chzn-select"
-        	name="frequencies">
-	  <option value="">(None)</option>
-	  <py:for each="tag in c.frequences_available">
-	    <py:choose test="">
+      <select id="frequencies" class="chzn-select" name="frequencies">
+        <option value="">(None)</option>
+        <py:for each="tag in c.frequences_available">
+          <py:choose test="">
 	    <option py:when="tag in data.get('frequencies', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
-	    </py:choose>
-	  </py:for>
-	</select>
+          </py:choose>
+        </py:for>
+      </select>
     </div>
-</div>
-<div class="control-group tags-field">
+  </div>
+  <div class="control-group tags-field">
     <label class="control-label" for="themeTaxonomy">Thème (Catégorie)</label>
     <div class="controls">
-	<select id="themeTaxonomy"
-        	name="themeTaxonomy">
-	  <option value="">(None)</option>
-	  <py:for each="tag, translation in c.themeTaxonomy_available">
-	    <py:choose test="">
-	    <option py:when="tag in data.get('themeTaxonomy', [])"
+      <select id="themeTaxonomy" name="themeTaxonomy">
+        <option value="">(None)</option>
+        <py:for each="tag, translation in c.themeTaxonomy_available">
+          <py:choose test="">
+            <option py:when="tag in data.get('themeTaxonomy', [])"
 		    selected="selected" value="${tag}">${translation}</option>
 	    <option py:otherwise="" value="${tag}">${translation}</option>
-	    </py:choose>
-	  </py:for>
-	</select>
+          </py:choose>
+        </py:for>
+      </select>
     </div>
-</div>
+  </div>
 
-<div class="control-group tags-field">
+  <div class="control-group tags-field">
     <label class="control-label" for="theme_available">Thème (Concepts)</label>
     <div class="controls" id="theme">
     </div>
-</div>
+  </div>
 
   <div class="control-group tags-field">
     <label class="control-label" for="dct:temporal">Couverture temporelle</label>
@@ -221,43 +217,48 @@ if organization:
       <p>Plage temporelle couverte par le jeu de données (dct:temporal)</p>
     </div>
   </div>
-<div class="control-group tags-field">
+  <div class="control-group tags-field">
     <label class="control-label" for="dataQuality">Qualité</label>
     <div class="controls">
-	<select id="dataQuality" class="chzn-select"
-        	name="dataQuality">
-	  <option value="">(None)</option>
-	  <py:for each="tag in c.dataQuality_available">
-	    <py:choose test="">
+      <select id="dataQuality" class="chzn-select" name="dataQuality">
+        <option value="">(None)</option>
+        <py:for each="tag in c.dataQuality_available">
+          <py:choose test="">
 	    <option py:when="tag in data.get('dataQuality', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
-	    </py:choose>
-	  </py:for>
-	</select>
+          </py:choose>
+        </py:for>
+      </select>
     </div>
-</div>
-<div class="control-group tags-field">
+  </div>
+  <div class="control-group tags-field">
     <label class="control-label" for="granularity">Granularité</label>
     <div class="controls">
-	<select id="granularity" class="chzn-select"
-        	name="granularity">
-	  <option value="">(None)</option>
-	  <py:for each="tag in c.granularity_available">
-	    <py:choose test="">
-	    <option py:when="tag in data.get('granularity', [])"
+      <select id="granularity" class="chzn-select" name="granularity">
+        <option value="">(None)</option>
+        <py:for each="tag in c.granularity_available">
+          <py:choose test="">
+            <option py:when="tag in data.get('granularity', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
-	    </py:choose>
-	  </py:for>
-	</select>
+          </py:choose>
+        </py:for>
+      </select>
     </div>
-</div>
+  </div>
   <div class="control-group tags-field">
     <label class="control-label" for="dcterms:references">Référence liée (ou documentation)</label>
     <div class="controls">
       <input id="dcterms:references" name="dcterms:references" type="text" value="${data.get('dcterms:references', '')}" />
       <p>Permet d'indiquer la localisation d'une ressource disponible sur le réseau Internet et de spécifier un titre qui s'affichera comme une ressource actionnable. (dcterms:references)</p>
+    </div>
+  </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dc:source">Source</label>
+    <div class="controls">
+      <input id="dc:source" name="dc:source" type="text" value="${data.get('dc:source', '')}" />
+      <p>Permet de renseigner d'où vient la donnée (quelle application ou quelle table dans quelle base de données). (dc:source)</p>
     </div>
   </div>
   <div class="control-group tags-field">
@@ -355,21 +356,20 @@ if organization:
       <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
     </div>
   </div>
+
 <?python
 publisher = data.get('dct:publisher', {})
 ?>
   <div class="control-group">
     <label class="control-label field_opt" for="dct:publisher">Diffuseur</label>
     <div class="controls">
-	<select id="dct:publisher" class="chzn-select"
-        	name="dct:publisher">
-	  <option selected="selected" value="">(None)</option>
-	  <py:for each="tag in c.publishers_available">
-	    <option py:attrs="{'selected':'selected'} if publisher == tag['id'] else {}" 
-		value="${tag['id']}">${tag['title']}</option>
-	  </py:for>
-	</select>
-	<p>Entité qui diffuse le jeu de données (dct:publisher)</p>
+      <select id="dct:publisher" class="chzn-select" name="dct:publisher">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.publishers_available">
+          <option py:attrs="{'selected':'selected'} if publisher == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+        </py:for>
+      </select>
+      <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
     </div>
   </div>
 
@@ -379,6 +379,7 @@ if not contributor:
 	contributor = c.contributor.name
 
 ?>
+
   <div class="control-group">
     <label class="control-label field_opt" for="dct:contributor">Gestionnaire</label>
     <div class="controls">
