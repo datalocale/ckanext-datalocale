@@ -18,7 +18,7 @@ setup(
 	packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
 	namespace_packages=['ckanext', 'ckanext.datalocale'],
 	include_package_data=True,
-	package_data = {'': ['*.xml', '*.html']},
+	package_data = {'': ['*.xml', '*.html', '*.json']},
 	zip_safe=False,
 	install_requires=[
 		# -*- Extra requirements: -*-
