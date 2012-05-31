@@ -322,12 +322,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'package_show_rest' : datalocale_package_show_rest,
 		'datalocale_package_show' : datalocale_package_show,
 		'datalocale_group_show' : datalocale_group_show,
-		'group_show_rest' : datalocale_group_show
+		'group_show_rest' : datalocale_group_show,
+		'datalocale_tag_list' : datalocale_tag_list,
 	}
 
 def datalocale_vocabulary_show(context, data_dict):
     context['for_view'] = True
     return logic.action.get.vocabulary_show(context, data_dict)
+
+def datalocale_tag_list(context, data_dict):
+    context['for_view'] = True
+    return logic.action.get.tag_list(context, data_dict)
 
 def datalocale_package_show(context, data_dict):
     ckan_lang = pylons.request.environ['CKAN_LANG']
