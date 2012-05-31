@@ -29,6 +29,7 @@ setup(
 	# Add plugins here, eg
 	# myplugin=ckanext.myextension:PluginClass
 	datalocale_datasetform=ckanext.datalocale.forms:DatalocaleDatasetForm
+	datalocale_serviceform=ckanext.datalocale.service_forms:DatalocaleServiceForm
 
 	[paste.paster_command]
 	datalocale = ckanext.datalocale.commands:DatalocaleCommand

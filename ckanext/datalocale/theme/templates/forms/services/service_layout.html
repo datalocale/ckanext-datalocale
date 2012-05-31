@@ -1,0 +1,49 @@
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://genshi.edgewall.org/i18n"
+  xmlns:py="http://genshi.edgewall.org/"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  py:strip=""
+  >
+
+  <py:match path="minornavigation">
+    <ul py:if="c.group" class="nav nav-pills">
+      <li py:attrs="{'class':'active'} if c.action=='read' else {}">${h.subnav_named_route(c, h.icon('group') + _('View'), 'service_read',controller='group', action='read', id=c.group.name)}</li>
+      <li py:attrs="{'class':'active'} if c.action=='history' else {}">${h.subnav_named_route(c, h.icon('page_white_stack') + _('History'), 'service_action', controller='group', action='history', id=c.group.name)}</li>
+      <li class="divider" py:if="h.check_access('group_update',{'id':c.group.id})">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+      <li class="dropdown" py:attrs="{'class':'active dropdown'} if c.action=='resource_read' else {'class':'dropdown'}" py:if="h.check_access('group_update',{'id':c.group.id})">
+	        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+          ${h.icon('add') + _('Add Dataset')} <b class="caret"></b></a>
+        <div class="dropdown-appears">
+          <ul class="dropdown-menu">
+            <li><a href="${h.url_for(controller='package', action='new')}?groups__0__id=${c.group.id}">New Dataset...</a></li>
+            <li><a href="${h.url_for(controller='service', action='edit', id=c.group.name)}#datasets">Existing Dataset...</a></li>
+          </ul>
+        </div>
+
+      </li>
+      <li py:attrs="{'class':'active'} if c.action=='edit' else {}" py:if="h.check_access('group_update',{'id':c.group.id})">
+        <!-- TODO: We need to be able to change the URL below based on the type of the group -->
+        ${h.subnav_named_route( c,h.icon('group_edit') + _('Edit'), 'service_action', action='edit', id=c.group.name )}
+      </li>
+      <li py:attrs="{'class':'active'} if c.action=='authz' else {}" py:if="h.check_access('group_edit_permissions',{'id':c.group.id})">
+        ${h.subnav_named_route(c, h.icon('lock') + _('Authorization'), 'service_action', controller='group', action='authz', id=c.group.name)}
+      </li>
+
+      <!-- li class="action">
+${h.subnav_link(c, h.icon('atom_feed') + _('Subscribe'),
+controller='group', action='history', id=c.group.name, format='atom', days=7)}
+</li-->
+    </ul>
+    <ul py:if="not c.group" class="tabbed">
+      <li py:attrs="{'class':'current-tab'} if c.action=='index' else {}">
+        ${h.subnav_named_route(c, h.icon('group') + _('List Services'), "service_index", action="index" )}
+      </li>
+      <li py:attrs="{'class':'current-tab'} if c.action=='new' else {}"> <span class="ckan-logged-in" style="display: none;">${ h.subnav_named_route(c, h.icon('group_add') + _('Add a Service'), "service_new" , action='new')}</span>
+        <span class="ckan-logged-out">${h.subnav_link(c, h.icon('group_add') + _('Login to Add a Service'), controller='group', action='new')}</span>
+      </li>
+    </ul>
+  </py:match>
+
+  <xi:include href="../layout.html" />
+</html>
