@@ -19,7 +19,7 @@
 
     <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
     <dct:title>${c.pkg_dict['title']}</dct:title>
-    <py:for each="rsc_dict in c.pkg_dict['resources']">
+    <py:for each="rsc_dict in c.pkg_dict.get('resources',[])">
         <dcat:distribution>
             <dcat:Distribution>
                 <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>

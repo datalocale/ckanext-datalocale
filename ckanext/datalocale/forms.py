@@ -113,13 +113,13 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def setup_template_variables(self, context, data_dict, package_type=None):
 	''' Translation '''
-        ckan_lang = pylons.request.environ['CKAN_LANG']
-        ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
-
+	ckan_lang = pylons.request.environ['CKAN_LANG']
+	ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
         c.licences = [('', '')] + base.model.Package.get_license_options()
         c.is_sysadmin = authz.Authorizer().is_sysadmin(c.user)
 	c.publishers_available = c.groups_available
+	c.creators_available = c.userobj and c.userobj.get_groups('service') or []
 	c.contributor = c.userobj
         try:
 		data = {'vocabulary_id': VOCAB_FREQUENCES}
@@ -194,9 +194,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def db_to_form_schema_options(self, options):
         schema = self.db_to_form_schema()
-        if options.get('api'):
-		log.info(options.get('context').get('package'))
-
         return schema
 
     def db_to_form_schema(self, package_type=None):
@@ -287,6 +284,16 @@ class DatalocaleDatasetForm(SingletonPlugin):
 				    ).replace(HTML(html_bis))
 			else :
 				stream = stream
+			'''Get id in the table and convert it to readable name'''	
+			creator = base.model.Group.get(c.pkg_dict.get('dct:creator'))
+			if creator : 
+				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % creator.title
+				stream = stream | Transformer(
+				        "//tr[@id='dct:creator']//td[@class='dataset-details']"
+				    ).replace(HTML(html_bis))
+			else :
+				stream = stream
+
 		except NotFound:
 			stream = stream
 
@@ -313,15 +320,27 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def get_actions(self):
         return {'datalocale_vocabulary_show': datalocale_vocabulary_show,
 		'package_show_rest' : datalocale_package_show_rest,
+		'datalocale_package_show' : datalocale_package_show,
 		'datalocale_group_show' : datalocale_group_show,
-		'group_show_rest' : datalocale_group_show}
+		'group_show_rest' : datalocale_group_show
+	}
 
 def datalocale_vocabulary_show(context, data_dict):
     context['for_view'] = True
     return logic.action.get.vocabulary_show(context, data_dict)
 
+def datalocale_package_show(context, data_dict):
+    ckan_lang = pylons.request.environ['CKAN_LANG']
+    ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+    packages = logic.get_action('package_show')(context, data_dict)
+    theme_available = packages.get('theme_available')
+    themeTaxonomy = packages.get('themeTaxonomy')
+    packages['themeTaxonomy'] = _translate(theme_available , ckan_lang, ckan_lang_fallback);
+    packages['theme_available'] = _translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
+    return packages;
+
 def datalocale_package_show_rest(context, data_dict):
-    return logic.get_action('package_show')(context, data_dict)
+    return datalocale_package_show(context, data_dict)
 
 def datalocale_group_show(context, data_dict): 
     groups = logic.get_action('group_show')(context, data_dict)

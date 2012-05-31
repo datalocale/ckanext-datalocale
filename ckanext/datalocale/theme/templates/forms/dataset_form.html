@@ -42,15 +42,22 @@
 		}
 	}
 	
+
 	function successfulQuery(data) {
 		var theme_selected = "${data.get('theme_available', [])}"
 		html = '<div class="controls" id="theme" name="theme"><select class="chzn-select" id="theme_available" name="theme_available">'
 		if(data!=null) {
-			for (tag in data['result']['tags']) {
-				if(theme_selected == data.result.tags[tag]['name'])  {
-					html += '<option selected="selected" value="'+data.result.tags[tag]['name']+'">'+data.result.tags[tag]['display_name']+'</option>'}
+			tags = data['result']['tags'];
+			tags.sort(function (a, b) {
+			    a = a.display_name,
+			    b = b.display_name;
+			    return a.localeCompare(b);
+			});
+			for (tag in tags) {
+				if(theme_selected == tags[tag]['name'])  {
+					html += '<option selected="selected" value="'+ tags[tag]['name']+'">'+ tags[tag]['display_name']+'</option>'}
 				else {
-					html += '<option value="'+data.result.tags[tag]['name']+'">'+data.result.tags[tag]['display_name']+'</option>'}
+					html += '<option value="'+ tags[tag]['name']+'">'+ tags[tag]['display_name']+'</option>'}
 			}
 		}
 		else {
@@ -58,7 +65,7 @@
 		}
 		html += "</select></div>"
 		$("#theme").replaceWith(html);
-    }
+    	}
 
 	function unsuccessfulQuery(data) {
 	}
@@ -348,11 +355,18 @@ if organization:
       <p>The name of the main contact, for enquiries about this particular dataset, using the e-mail address in the following field.</p>
     </div>
   </div>
-
+<?python
+creator = data.get('dct:creator', {})
+?>
   <div class="control-group">
     <label class="control-label field_opt" for="dct:creator">Propriétaire</label>
     <div class="controls">
-      <input id="dct:creator" name="dct:creator" type="text" value="${data.get('dct:creator', '')}" />
+      <select id="dct:creator" class="chzn-select" name="dct:creator">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.creators_available">
+          <option py:attrs="{'selected':'selected'} if creator == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+        </py:for>
+      </select>
       <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
     </div>
   </div>
