@@ -1,17 +1,20 @@
-<div class="tabbable tabs-left service-edit-tabs">
-  <ul class="nav nav-tabs">
+<div class="tabbable tabs-left service-edit-tabs" xmlns:i18n="http://genshi.edgewall.org/i18n"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+  <ul class="nav nav-tabs" py:if="c.action !='new'">
     <li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>
     <li><a data-toggle="tab" href="#further-information">Utilisateurs</a></li>
     <li><a data-toggle="tab" href="#datasets">Datasets</a></li>
     <li><a data-toggle="tab" href="#extras">Extras</a></li>
   </ul>
+
 <form id="service-edit" action="" method="post"
     class="form-horizontal tab-content ${'has-errors' if errors else ''}"
     xmlns:i18n="http://genshi.edgewall.org/i18n"
     xmlns:py="http://genshi.edgewall.org/"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 <xi:include href="../../_util.html" />
-<div class="error-explanation" py:if="error_summary">
+<div class="alert alert-error error-explanation" py:if="error_summary">
 <h2>Errors in form</h2>
 <p>The form contains invalid entries:</p>
 <ul>
@@ -80,7 +83,7 @@
   </py:if>
 </fieldset>
 
-<fieldset class="tab-pane" id='extras'>
+<fieldset class="tab-pane" id='extras' py:if="c.action !='new'">
     <py:with vars="extras = data.get('extras', [])">
     <py:for each="num, extra in enumerate(data.get('extras', []))">
     <div class="control-group">
@@ -113,7 +116,7 @@
     </py:with>
 </fieldset>
 
-<fieldset class="tab-pane" id='further-information'>
+<fieldset class="tab-pane" id='further-information' py:if="c.action !='new'">
 <div class="control-group" py:if="c.is_superuser_or_groupadmin">
 <h3>Ajouter un utilisateur</h3>
 <input class="autocomplete-user" id="users__${len(data.get('users', [])) + 1}__name" name="users__${len(data.get('users', []))}__name" type="text"  />
@@ -133,7 +136,7 @@
 </fieldset>
 
 
-<fieldset class="tab-pane" id="datasets">
+<fieldset class="tab-pane" id="datasets" py:if="c.action !='new'">
 <h3>Add datasets</h3>
 <div class="control-group" py:if="c.is_superuser_or_groupadmin">
   <label class="field_opt" for="packages__${len(data.get('packages', []))}__name">Dataset</label>

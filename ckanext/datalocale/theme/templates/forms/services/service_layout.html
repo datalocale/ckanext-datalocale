@@ -35,13 +35,12 @@ ${h.subnav_link(c, h.icon('atom_feed') + _('Subscribe'),
 controller='group', action='history', id=c.group.name, format='atom', days=7)}
 </li-->
     </ul>
-    <ul py:if="not c.group" class="tabbed">
-      <li py:attrs="{'class':'current-tab'} if c.action=='index' else {}">
+    <ul py:if="not c.group" class="nav nav-pills">
+      <li py:attrs="{'class':'active'} if c.action=='index' else {}">
         ${h.subnav_named_route(c, h.icon('group') + _('List Services'), "service_index", action="index" )}
       </li>
-      <li py:attrs="{'class':'current-tab'} if c.action=='new' else {}"> <span class="ckan-logged-in" style="display: none;">${ h.subnav_named_route(c, h.icon('group_add') + _('Add a Service'), "service_new" , action='new')}</span>
-        <span class="ckan-logged-out">${h.subnav_link(c, h.icon('group_add') + _('Login to Add a Service'), controller='group', action='new')}</span>
-      </li>
+      <li py:attrs="{'class':'active ckan-logged-in'} if c.action=='new' else {}" style="display: none;">${h.subnav_named_route(c, h.icon('group_add') + _('Add a Service'), "service_new" , action='new')}</li>
+      <li py:attrs="{'class':'active ckan-logged-out'} if c.action=='new' else {}">${h.subnav_link(c, h.icon('group_add') + _('Login to Add a Service'), controller='group', action='new')}</li>
     </ul>
   </py:match>
 
