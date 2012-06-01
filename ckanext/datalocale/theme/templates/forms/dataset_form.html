@@ -29,7 +29,7 @@
 		if(id!="") {
 			jQuery.ajax({
 				type: 'POST',
-				url: '${c.api_url}/fr/api/3/action/datalocale_vocabulary_show',
+				url: '${c.api_url}/fr/api/3/action/datalocale_vocabulary_list',
 				contentType : 'application/json;charset=utf-8',
 				dataType: 'json',
 				data: '{"id": "'+id+'"}',
@@ -47,17 +47,17 @@
 		var theme_selected = "${data.get('theme_available', [])}"
 		html = '<div class="controls" id="theme" name="theme"><select class="chzn-select" id="theme_available" name="theme_available">'
 		if(data!=null) {
-			tags = data['result']['tags'];
+			tags = data['result'];
 			tags.sort(function (a, b) {
-			    a = a.display_name,
-			    b = b.display_name;
+			    a = a[1],
+			    b = b[1];
 			    return a.localeCompare(b);
 			});
 			for (tag in tags) {
-				if(theme_selected == tags[tag]['name'])  {
-					html += '<option selected="selected" value="'+ tags[tag]['name']+'">'+ tags[tag]['display_name']+'</option>'}
+				if(theme_selected == tags[tag][0])  {
+					html += '<option selected="selected" value="'+ tags[tag][0]+'">'+ tags[tag][1]+'</option>'}
 				else {
-					html += '<option value="'+ tags[tag]['name']+'">'+ tags[tag]['display_name']+'</option>'}
+					html += '<option value="'+ tags[tag][0]+'">'+ tags[tag][1]+'</option>'}
 			}
 		}
 		else {

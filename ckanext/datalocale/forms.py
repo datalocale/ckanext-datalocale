@@ -67,13 +67,13 @@ class DatalocaleDatasetForm(SingletonPlugin):
         type_name matches one of the values in package_types then this
         class will be used.
       - ``IGenshiStreamFilter`` hook into Pylons template rendering. 
-      - ``IActions`` Allow adding of actions to the logic layer (API).
+
 
     """
     implements(IDatasetForm, inherit=True)
     implements(IConfigurer, inherit=True)
     implements(IGenshiStreamFilter, inherit=True)
-    implements(IActions, inherit=True)
+
 
     def update_config(self, config):
         """
@@ -316,45 +316,5 @@ class DatalocaleDatasetForm(SingletonPlugin):
                     ).append(HTML(html))
         return stream
 
-    '''the IAction extension returns a dictionary of core actions it wants to override.'''
-    def get_actions(self):
-        return {'datalocale_vocabulary_show': datalocale_vocabulary_show,
-		'package_show_rest' : datalocale_package_show_rest,
-		'datalocale_package_show' : datalocale_package_show,
-		'datalocale_group_show' : datalocale_group_show,
-		'group_show_rest' : datalocale_group_show,
-		'datalocale_tag_list' : datalocale_tag_list,
-	}
-
-def datalocale_vocabulary_show(context, data_dict):
-    context['for_view'] = True
-    return logic.action.get.vocabulary_show(context, data_dict)
-
-def datalocale_tag_list(context, data_dict):
-    context['for_view'] = True
-    return logic.action.get.tag_list(context, data_dict)
-
-def datalocale_package_show(context, data_dict):
-    ckan_lang = pylons.request.environ['CKAN_LANG']
-    ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
-    packages = logic.get_action('package_show')(context, data_dict)
-    theme_available = packages.get('theme_available')
-    themeTaxonomy = packages.get('themeTaxonomy')
-    packages['themeTaxonomy'] = _translate(theme_available , ckan_lang, ckan_lang_fallback);
-    packages['theme_available'] = _translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
-    return packages;
-
-def datalocale_package_show_rest(context, data_dict):
-    return datalocale_package_show(context, data_dict)
-
-def datalocale_group_show(context, data_dict): 
-    groups = logic.get_action('group_show')(context, data_dict)
-    group = base.model.Group.get(data_dict['id'])
-    children = group.get_children_groups('organization')
-    parent = group.get_groups('organization')
-    if parent and parent[0] : 
-	    groups['parent'] = [ { "id": parent[0].id, "name": parent[0].name, "title": parent[0].title, "description": parent[0].description, 
-		"type": parent[0].type, "image_url": parent[0].image_url, "approval_status": parent[0].approval_status, 
-		"state": parent[0].state, "revision_id": parent[0].revision_id}]
-    return groups
+   
 
