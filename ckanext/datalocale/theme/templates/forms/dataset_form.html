@@ -390,7 +390,8 @@ publisher = data.get('dct:publisher', {})
 <?python
 contributor = data.get('dct:contributor', {})
 if not contributor:
-	contributor = c.contributor.name
+	if c.contributor:
+		contributor = c.contributor.name
 
 ?>
 
