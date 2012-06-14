@@ -67,6 +67,21 @@
         </py:for>
       </ul>
     </li>
+    <li class="sidebar-section">
+      <h3>Other access</h3>
+            <p>
+               The information on this page (the dataset metadata) is also
+                available in these formats:
+            </p>
+            <ul>
+              <li>
+                <a href="${c.api_url}/api/2/rest/package/${c.pkg.title}">JSON</a> (via the <a href="/api/2?id=None">CKAN API</a>)
+              </li>
+              <li>
+                <a rel="rdfs:seeAlso" href="/dataset/${c.pkg.title}.rdf">RDF-XML</a>
+              </li>
+            </ul>
+    </li>
 
     <!-- <py:if test="not(c.pkg.isopen() and c.pkg.resources)"> -->
     <!-- <h3 i18n:msg="">This dataset is Not Open</h3> -->

@@ -12,10 +12,10 @@ from ckan.plugins import implements, SingletonPlugin
 import ckan.lib.plugins
 import ckan.plugins
 from ckan.logic.schema import package_form_schema, default_resource_schema
-from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty, ignore
+from ckan.lib.navl.validators import ignore_missing, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras,\
     convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from validators import datalocale_convert_from_tags, datalocale_convert_to_tags
+from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, convert_to_groups, convert_from_groups, convert_from_groups_extra
 
 log = logging.getLogger(__name__)
 
@@ -178,8 +178,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy')],
 		'dataQuality': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
 		'granularity': [ignore_missing, convert_to_tags(VOCAB_GRANULARITY)],
-		'dct:creator': [unicode, convert_to_extras, ignore_missing],
-		'dct:publisher': [unicode, convert_to_extras, ignore_missing],
+		'dct:creator': [convert_to_groups('name', 1)],
+		'capacity': [ignore_missing, unicode, default(u'private'), convert_to_groups('capacity', 1),  convert_to_groups('capacity', 0)],
+		'dct:publisher': [convert_to_groups('name', 0)],
 		'dct:contributor': [unicode, convert_to_extras, ignore_missing],
 		'dct:temporal': [unicode, convert_to_extras, ignore_missing],
 		'dc:source': [unicode, convert_to_extras, ignore_missing],
@@ -222,14 +223,18 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'theme_available': [datalocale_convert_from_tags('themeTaxonomy'), ignore_missing],
 		'dataQuality': [convert_from_tags(VOCAB_DATAQUALITY), ignore_missing],
 		'granularity': [convert_from_tags(VOCAB_GRANULARITY), ignore_missing],
-		'dct:creator': [convert_from_extras, ignore_missing],
-		'dct:publisher': [convert_from_extras, ignore_missing],
+		'dct:creator': [convert_from_groups('name', 1)],
+		'dct:creator': [convert_from_groups('name', 1)],
+		'dct:publisher': [convert_from_groups('name', 0)],
+		'capacity': [convert_from_groups('capacity', 0), convert_from_groups('capacity', 1)],
 		'dct:contributor': [convert_from_extras, ignore_missing],
 		'dct:temporal': [convert_from_extras, ignore_missing],
 		'dc:source': [convert_from_extras, ignore_missing],
 		'maj': [convert_from_extras, ignore_missing],
 		'isopen' : [ignore_missing],
 		'dcterms:references': [convert_from_extras, ignore_missing],
+		'published_by': [convert_from_groups_extra('id', 0), ignore_missing],
+		'created_by': [convert_from_groups_extra('id', 1), ignore_missing],
     	})
 	schema['resources'].update({
             'created': [ignore_missing],
@@ -253,7 +258,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         routes = request.environ.get('pylons.routes_dict')
         if routes.get('controller') == 'package' \
             and routes.get('action') == 'read':
-                for vocab in ('themeTaxonomy', 'theme_available', 'frequencies', ):
+                for vocab in ('themeTaxonomy', 'theme_available' ):
                     try:
                         vocab_tags = c.pkg_dict.get(vocab, [])
                     except NotFound:
@@ -263,9 +268,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                         continue
 
                     html = '<li class="sidebar-section">'
-                    if vocab == 'frequencies':
-                        html = html + '<h3>Fr&eacute;quence</h3>'
-                    elif vocab == 'themeTaxonomy':
+                    if vocab == 'themeTaxonomy':
                         html = html + '<h3>Th&egrave;mes</h3>'
                     html = html + '<ul class="tags clearfix">'
                     for tag in vocab_tags:
@@ -275,21 +278,23 @@ class DatalocaleDatasetForm(SingletonPlugin):
                         "//div[@id='sidebar']//ul[@class='widget-list']"
                     ).append(HTML(html))
 		try:
-			'''Get id in the table and convert it to readable name'''	
-			publisher = base.model.Group.get(c.pkg_dict.get('dct:publisher'))
+		    '''Get id in the table and convert it to readable name'''
+		    if c.pkg_dict.get('groups') and c.pkg_dict.get('groups')[0]:	
+			publisher = c.pkg_dict.get('groups')[0]
 			if publisher : 
-				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % publisher.title
+				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % publisher.get('title', '')
 				stream = stream | Transformer(
-				        "//tr[@id='dct:publisher']//td[@class='dataset-details']"
+				        "//tr[@id='published_by']//td[@class='dataset-details']"
 				    ).replace(HTML(html_bis))
 			else :
 				stream = stream
-			'''Get id in the table and convert it to readable name'''	
-			creator = base.model.Group.get(c.pkg_dict.get('dct:creator'))
+		    '''Get id in the table and convert it to readable name'''	
+		    if c.pkg_dict.get('groups') and c.pkg_dict.get('groups')[1]:
+			creator = c.pkg_dict.get('groups')[1]
 			if creator : 
-				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % creator.title
+				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % creator.get('title', '')
 				stream = stream | Transformer(
-				        "//tr[@id='dct:creator']//td[@class='dataset-details']"
+				        "//tr[@id='created_by']//td[@class='dataset-details']"
 				    ).replace(HTML(html_bis))
 			else :
 				stream = stream

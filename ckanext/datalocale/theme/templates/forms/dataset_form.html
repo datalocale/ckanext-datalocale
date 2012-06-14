@@ -151,35 +151,6 @@
     </div>
   </div>
 
-  <div class="control-group groups-field">
-    <label class="control-label" for="groups">Organisation</label>
-    <div class="controls">
-<?python
-organization = data.get('groups', {})
-if organization:
-    organization = organization[0]
-?>
-      <py:if test="c.groups_available and ((not 'name' in organization) or c.is_sysadmin or c.auth_for_change_state)">
-        <select id="groups__0__id" name="groups__0__id" class="chzn-select">
-          <option value="">(None)</option>
-            <py:for each="group in c.groups_available">
-            <option value="${group['id']}" py:attrs="{'selected':'selected'} if organization and organization.get('id','') == group['id'] else {}">${group['title']}</option>
-            </py:for>
-        </select>
-
-        <label for='cap_public'>
-        <input id='cap_public' type='radio' name='groups__0__capacity' value='public' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') in ['public', ''] else {}"/>Public</label>
-
-        <label for='cap_private'>
-        <input id='cap_private' type='radio' name='groups__0__capacity' value='private' py:attrs="{'checked':'checked'} if organization and organization.get('capacity','') == 'private' else {}"/>Privé</label>
-      </py:if>
-      <py:if test="not (c.is_sysadmin or c.auth_for_change_state)">
-        <span>${organization.get('title', '')}</span>
-      </py:if>
-      <em py:if="not c.groups_available">Cannot add any organizations.</em>
-    </div>
-  </div>
-
   <div class="control-group tags-field">
     <label class="control-label" for="frequencies">Fréquence</label>
     <div class="controls">
@@ -364,7 +335,7 @@ creator = data.get('dct:creator', {})
       <select id="dct:creator" class="chzn-select" name="dct:creator">
         <option selected="selected" value="">(None)</option>
         <py:for each="tag in c.creators_available">
-          <option py:attrs="{'selected':'selected'} if creator == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+          <option py:attrs="{'selected':'selected'} if creator == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
         </py:for>
       </select>
       <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
@@ -380,18 +351,31 @@ publisher = data.get('dct:publisher', {})
       <select id="dct:publisher" class="chzn-select" name="dct:publisher">
         <option selected="selected" value="">(None)</option>
         <py:for each="tag in c.publishers_available">
-          <option py:attrs="{'selected':'selected'} if publisher == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+          <option py:attrs="{'selected':'selected'} if publisher == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
         </py:for>
       </select>
       <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
     </div>
   </div>
 
+  <div class="control-group">
+    <label class="control-label field_opt" for="capacity">Visibilité</label>
+    <div class="controls">
+       <div>
+         <label for='capacity_public'><input id='capacity_public' type='radio' name='capacity' value='public' py:attrs="{'checked':'checked'} if data.get('capacity') == 'public' else {}"/>
+         Publique</label>
+       </div>
+       <div>
+         <label for='capacity_private'><input id='capacity_private' type='radio' name='capacity' value='private' py:attrs="{'checked':'checked'} if data.get('capacity', 'private') == 'private' else {}"/>
+         Privé</label>
+       </div>
+    </div>
+</div>
 <?python
 contributor = data.get('dct:contributor', {})
 if not contributor:
 	if c.contributor:
-		contributor = c.contributor.name
+		contributor = c.contributor.fullname
 
 ?>
 

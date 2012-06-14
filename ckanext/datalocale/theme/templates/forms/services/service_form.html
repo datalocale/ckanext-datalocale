@@ -4,8 +4,8 @@
   <ul class="nav nav-tabs" py:if="c.action !='new'">
     <li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>
     <li><a data-toggle="tab" href="#further-information">Utilisateurs</a></li>
-    <li><a data-toggle="tab" href="#datasets">Datasets</a></li>
     <li><a data-toggle="tab" href="#extras">Extras</a></li>
+    <li><a data-toggle="tab" href="#foaf">FOAF</a></li>
   </ul>
 
 <form id="service-edit" action="" method="post"
@@ -41,7 +41,7 @@
     <label class="control-label" for="name">Url</label>
     <div class="controls">
       <div class="input-prepend">
-        <span class="add-on">${h.url(controller='package', action='search')+'/'}</span>
+        <span class="add-on">${h.url(controller='group', action='search')+'/'}</span>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
       </div>
       <p class="js-url-is-valid">&nbsp;</p>
@@ -116,20 +116,28 @@
     </py:with>
 </fieldset>
 
+
+<?python
+    import ckan.model as model
+    users = []
+    if c.group:
+        users.extend( { "name": user.name,
+                            "capacity": "admin" }
+                            for user in c.group.members_of_type( model.User, "admin"  ).all() )
+        users.extend( { "name": user.name,
+                            "capacity": "editor" }
+                            for user in c.group.members_of_type( model.User, 'editor' ).all() )
+?>
 <fieldset class="tab-pane" id='further-information' py:if="c.action !='new'">
 <div class="control-group" py:if="c.is_superuser_or_groupadmin">
-<h3>Ajouter un utilisateur</h3>
-<input class="autocomplete-user" id="users__${len(data.get('users', [])) + 1}__name" name="users__${len(data.get('users', []))}__name" type="text"  />
-<input type="hidden" name="add-user-capacity" value="editor"></input>
+<h3>Gérer les utilisateurs</h3>
+<a py:if="c.group" href="${h.url_for(controller='ckanext.organizations.controllers:OrganizationController', action='users', id=c.group.name)}">Gérer les utilisateurs</a>
 </div>
 <h3>Utilisateurs existants</h3>
   <table class="table table-bordered table-striped table-condensed" py:if="data.get('users')">  
-    <tr><td>Actif</td><td>Nom</td><td>Type</td><td>Modifier</td></tr>
+    <tr><td>Nom</td><td>Type</td></tr>
     <py:for each="num, user in enumerate(data.get('users'))">
-	<tr><td> <span py:if="c.is_superuser_or_groupadmin"><input checked="checked" id="users__${num}__name" name="users__${num}__name" type="checkbox" value="${user['name']}"/></span></td><td><label for="users__${num}__name">${user['name']} </label></td><td>${user['capacity']}</td><td><span py:if="c.is_superuser_or_groupadmin">
-			  <input type="radio" name="users__${num}__capacity" value="admin"  py:attrs="{'checked': 'checked' if user['capacity'] == 'admin' else None}"> Admin</input>
-			  <input type="radio" name="users__${num}__capacity" value="editor" py:attrs="{'checked': 'checked' if user['capacity'] in ['editor','member'] else None}"> Editor</input>
-		  </span></td></tr>
+	<tr><td><label for="users__${num}__name">${user['name']} </label></td><td>${user['capacity']}</td></tr>
     </py:for>
   </table>
   <p py:if="not data.get('users')">There are no users currently in this service.</p>
@@ -154,6 +162,16 @@
   </table>
   <p py:if="not data.get('packages')">There are no datasets currently in this service.</p>
 
+</fieldset>
+
+<fieldset class="tab-pane" id='foaf' py:if="c.action !='new'">
+  <div class="control-group tags-field">
+    <label class="control-label" for="foaf:name">Nom</label>
+    <div class="controls">
+      <input id="foaf:name" name="foaf:name" type="text" value="${data.get('foaf:name', '')}" />
+      <p>Nom (foaf:name)</p>
+    </div>
+  </div>
 </fieldset>
 
 <div class="form-actions">

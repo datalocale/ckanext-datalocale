@@ -2,6 +2,18 @@ import ckan.logic as logic
 import ckan.lib.navl.dictization_functions as df
 import ckan.logic.validators as val
 import ckan.model as model
+import re
+
+import logging
+log = logging.getLogger(__name__)
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+name_match = re.compile('[a-zA-Z0-9_\-]*$')
+
 
 def datalocale_convert_from_tags(vocab):
     def callable(key, data, errors, context):
@@ -56,3 +68,52 @@ def datalocale_convert_to_tags(vocab):
             data[('tags', num + n, 'name')] = tag
             data[('tags', num + n, 'vocabulary_id')] = v.id
     return callable
+
+def convert_to_groups(field, num):
+	''' 
+	Add data[key] as the first group name in data
+	'''
+	def convert(key, data, errors, context):
+		data[('groups', num, field)] = data[key]
+	return convert
+
+def convert_from_groups(field, num):
+	'''
+	Set data[key] to the first group name in data (if any exist).
+	'''
+	def convert(key, data, errors, context):
+		data[key] = data.get(('groups', num, field), None)
+	return convert
+
+def convert_from_groups_extra(field, num):
+	'''
+	Set data[key] to the first group name in data (if any exist).
+	'''
+	def convert(key, data, errors, context):
+	    value = data.get(('groups', num, field), None)
+	    extra_number = 0
+	    for k in data.keys():
+		if k[0] == 'extras':
+		    extra_number = max(extra_number, k[1] + 1)
+            data[('extras', extra_number, 'key')] = key[0]
+            if not context.get('extras_as_string'):
+		data[('extras', extra_number, 'value')] = json.dumps(value)
+	    else:
+		data[('extras', extra_number, 'value')] = value
+	return convert
+
+def publisher_exists(publisher_name, context):
+    '''
+    Raises Invalid if the given publisher_name does not exist in the model given
+    in the context, otherwise returns the given publisher_name.
+
+    '''
+    try:
+        logic.get_action('group_show')(context, {'id': publisher_name})
+    except logic.NotFound:
+        raise df.Invalid('%s: %s' % (_('Publisher not found'), publisher_name))
+    return publisher_name
+
+
+
+

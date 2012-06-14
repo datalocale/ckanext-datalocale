@@ -89,6 +89,21 @@
           <td class="dataset-details">${c.pkg.state}</td>
         </tr>
 
+        <tr py:if="c.pkg_dict.get('frequencies', [])">
+          <td class="dataset-label">Fréquences</td>
+          <td class="dataset-details">${c.pkg_dict.get('frequencies', [])}</td>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('dataQuality', [])">
+          <td class="dataset-label">Qualité des données</td>
+          <td class="dataset-details">${c.pkg_dict.get('dataQuality', [])}</td>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('granularity', [])">
+          <td class="dataset-label">Granularité des données</td>
+          <td class="dataset-details">${c.pkg_dict.get('granularity', [])}</td>
+        </tr>
+
        <!--<tr py:if="c.pkg_dict.get('dct:publisher')">
           <td class="dataset-label">Publisher</td>
           <td class="dataset-details">${c.new_groups.title}</td>

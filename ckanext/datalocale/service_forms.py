@@ -40,7 +40,7 @@ class DatalocaleServiceForm(SingletonPlugin):
     implements(IGroupForm, inherit=True)
     implements(IConfigurer, inherit=True)
     implements(IGenshiStreamFilter, inherit=True)
-    '''implements(IRoutes)'''
+    implements(IRoutes)
 
     def update_config(self, config):
         """
@@ -57,20 +57,13 @@ class DatalocaleServiceForm(SingletonPlugin):
         # Override /group/* as the default groups urls
         #config['ckan.default.group_type'] = 'service'
 
-    '''def before_map(self, map):
-        controller = 'ckanext.datalocale.service_forms:DatalocaleServiceForm'
+    def before_map(self, map):
+        controller = 'ckanext.organizations.controllers:OrganizationController'
         map.connect('/service/users/{id}', controller=controller, action='users')
-        map.connect('/service/apply/{id}', controller=controller, action='apply')
-        map.connect('/service/apply', controller=controller, action='apply')
-        map.connect('/service/edit/{id}', controller='service', action='edit')
-        map.connect('/service/new', controller='service', action='new')
-        map.connect('/service/{id}', controller='service', action='read')
-        map.connect('/service', controller='service', action='index')
-        map.redirect('/services', '/service')
         return map
 
     def after_map(self, map):
-        return map'''
+        return map
 
     def new_template(self):
         """
@@ -137,14 +130,22 @@ class DatalocaleServiceForm(SingletonPlugin):
         Returns the schema for mapping group data from a form to a format
         suitable for the database.
         """
-        return group_form_schema()
+	schema = group_form_schema()
+	schema.update({
+		'foaf:name': [unicode, convert_to_extras, ignore_missing],
+    	})
+        return schema
 
     def db_to_form_schema(self):
         """
         Returns the schema for mapping group data from the database into a
         format suitable for the form (optional)
         """
-        return {}
+	schema = group_form_schema()
+	schema.update({
+		'foaf:name': [convert_from_extras, ignore_missing],
+    	})
+	return schema
 
     def check_data_dict(self, data_dict):
         """
@@ -194,9 +195,14 @@ class DatalocaleServiceForm(SingletonPlugin):
 		route = h.subnav_named_route(c, h.icon('group_add') + _('Ajouter un service'), "service_new", action='new')
 		route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _('Se connecter pour ajouter un service'), "service_new", action='new')
 		html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
-		log.fatal(html)
 		stream = stream | Transformer(
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
+        if routes.get('controller') == 'group' \
+            and routes.get('action') == 'edit':
+		html = ''
+		stream = stream | Transformer(
+                        "//div[@id='minornavigation']//li[@class='dropdown ']"
+                    ).remove()
         return stream
 
