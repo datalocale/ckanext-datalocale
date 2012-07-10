@@ -7,69 +7,19 @@
   xmlns:py="http://genshi.edgewall.org/"
   xmlns:xi="http://www.w3.org/2001/XInclude" >
 
-<xi:include href="../_util.html" />
+<xi:include href="../../_util.html" />
 
 <script language="javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-	$(function() {
-		$("#themeTaxonomy option:selected").each(function () {
-					getThemeTag($(this).attr('value'));
-			});
-
-		$("#themeTaxonomy").change(function(){
-			$("#themeTaxonomy option:selected").each(function () {
-					getThemeTag($(this).attr('value'));
-			});
-		});
-	});
-	
-	function getThemeTag(id) {
-		html = '<div class="controls" id="theme" name="theme">Actualisation en cours</div>'
-		$("#theme").replaceWith(html);
-		if(id!="") {
-			jQuery.ajax({
-				type: 'POST',
-				url: '${c.api_url}/fr/api/3/action/datalocale_vocabulary_list',
-				contentType : 'application/json;charset=utf-8',
-				dataType: 'json',
-				data: '{"id": "'+id+'"}',
-				success: successfulQuery,
-				error: unsuccessfulQuery,
-			});
-		}
-		else {
-			successfulQuery(null)
-		}
-	}
-	
-
-	function successfulQuery(data) {
-		var theme_selected = "${data.get('theme_available', [])}"
-		html = '<div class="controls" id="theme" name="theme"><select class="chzn-select" id="theme_available" name="theme_available">'
-		if(data!=null) {
-			tags = data['result'];
-			tags.sort(function (a, b) {
-			    a = a[1],
-			    b = b[1];
-			    return a.localeCompare(b);
-			});
-			for (tag in tags) {
-				if(theme_selected == tags[tag][0])  {
-					html += '<option selected="selected" value="'+ tags[tag][0]+'">'+ tags[tag][1]+'</option>'}
-				else {
-					html += '<option value="'+ tags[tag][0]+'">'+ tags[tag][1]+'</option>'}
-			}
-		}
-		else {
-			html += '<option value="">(Aucun)</option>'
-		}
-		html += "</select></div>"
-		$("#theme").replaceWith(html);
-    	}
-
-	function unsuccessfulQuery(data) {
-	}
-    </script>	
+<script type="text/javascript">
+  var selected_spatial_uri = "${data.get('spatial-uri', [])}";
+  var selected_spatial_text = "${data.get('spatial-text', [])}";
+  var selected_theme = "${data.get('theme_available', [])}";
+  var api_url = "${c.api_url}";
+  var temporal_coverage_from = "${data.get('temporal_coverage-from', [])}";
+  var temporal_coverage_to = "${data.get('temporal_coverage-to', [])}";
+</script>
+<script language="javascript" src="/scripts/datalocale.js"></script>	
+<script language="javascript" src="/scripts/jquery.ui.datepicker.js"></script>	
 <div class="alert alert-error error-explanation" py:if="error_summary">
 <h2>Errors in form</h2>
 <p>The form contains invalid entries:</p>
@@ -143,7 +93,6 @@
     </div>
   </div>
 
-
   <div class="control-group description-field">
     <label class="control-label" for="notes">Description</label>
     <div class="controls">
@@ -151,21 +100,55 @@
     </div>
   </div>
 
-  <div class="control-group tags-field">
-    <label class="control-label" for="frequencies">Fréquence</label>
+<?python
+creator = data.get('dct:creator', {})
+?>
+  <div class="control-group">
+    <label class="control-label" for="dct:creator">Propriétaire</label>
     <div class="controls">
-      <select id="frequencies" class="chzn-select" name="frequencies">
-        <option value="">(None)</option>
-        <py:for each="tag in c.frequences_available">
-          <py:choose test="">
-	    <option py:when="tag in data.get('frequencies', [])"
-		    selected="selected" value="${tag}">${tag}</option>
-	    <option py:otherwise="" value="${tag}">${tag}</option>
-          </py:choose>
+      <select id="dct:creator" class="chzn-select" name="dct:creator">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.creators_available">
+          <option py:attrs="{'selected':'selected'} if creator == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
         </py:for>
       </select>
+      <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
     </div>
   </div>
+
+<?python
+publisher = data.get('dct:publisher', {})
+?>
+  <div class="control-group">
+    <label class="control-label" for="dct:publisher">Diffuseur</label>
+    <div class="controls">
+      <select id="dct:publisher" class="chzn-select" name="dct:publisher">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.publishers_available">
+          <option py:attrs="{'selected':'selected'} if publisher == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
+        </py:for>
+      </select>
+      <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="capacity">Visibilité</label>
+    <div class="controls">
+       <div>
+         <label for='capacity_public'><input id='capacity_public' type='radio' name='capacity' value='public' py:attrs="{'checked':'checked'} if data.get('capacity') == 'public' else {}"/>
+         Publique</label>
+       </div>
+       <div>
+         <label for='capacity_private'><input id='capacity_private' type='radio' name='capacity' value='private' py:attrs="{'checked':'checked'} if data.get('capacity', 'private') == 'private' else {}"/>
+         Privé</label>
+       </div>
+    </div>
+</div>
+
+</fieldset>
+
+<fieldset class="tab-pane" id="further-information">
   <div class="control-group tags-field">
     <label class="control-label" for="themeTaxonomy">Thème (Catégorie)</label>
     <div class="controls">
@@ -189,13 +172,6 @@
   </div>
 
   <div class="control-group tags-field">
-    <label class="control-label" for="dct:temporal">Couverture temporelle</label>
-    <div class="controls">
-      <input id="dct:temporal" name="dct:temporal" type="text" value="${data.get('dct:temporal', '')}" />
-      <p>Plage temporelle couverte par le jeu de données (dct:temporal)</p>
-    </div>
-  </div>
-  <div class="control-group tags-field">
     <label class="control-label" for="dataQuality">Qualité</label>
     <div class="controls">
       <select id="dataQuality" class="chzn-select" name="dataQuality">
@@ -210,14 +186,15 @@
       </select>
     </div>
   </div>
+
   <div class="control-group tags-field">
-    <label class="control-label" for="granularity">Granularité</label>
+    <label class="control-label" for="frequency">Fréquence de mise à jour</label>
     <div class="controls">
-      <select id="granularity" class="chzn-select" name="granularity">
+      <select id="dct:accrualPeriodicity" class="chzn-select" name="dct:accrualPeriodicity">
         <option value="">(None)</option>
-        <py:for each="tag in c.granularity_available">
+        <py:for each="tag in c.frequency_available">
           <py:choose test="">
-            <option py:when="tag in data.get('granularity', [])"
+	    <option py:when="tag in data.get('dct:accrualPeriodicity', [])"
 		    selected="selected" value="${tag}">${tag}</option>
 	    <option py:otherwise="" value="${tag}">${tag}</option>
           </py:choose>
@@ -225,6 +202,97 @@
       </select>
     </div>
   </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dct:temporal">Couverture temporelle</label>
+    <div class="controls">
+      <select id="frequency" class="chzn-select" name="dct:temporal">
+        <option value="">(None)</option>
+        <py:for each="tag in c.temporal_granularity_available">
+          <py:choose test="">
+	    <option py:when="tag in data.get('dct:temporal', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+          </py:choose>
+        </py:for>
+      </select>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="dct:temporal">Couverture temporelle </label>
+    <div class="controls">
+      <input id="temporal_coverage-from" name="temporal_coverage-from" type="text" value="${data.get('temporal_coverage-from', '')}" class="medium-width"  />
+      <input id="temporal_coverage-to" name="temporal_coverage-to" type="text" value="${data.get('temporal_coverage-from-to', '')}" class="medium-width" />
+      <p>Exemple : Du 23/01/2012 au 23/12/2012)</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="geographic_granularity">Couverture géographique</label>
+    <div class="controls">
+      <select id="geographic_granularity" class="chzn-select" name="geographic_granularity">
+        <option value="">(None)</option>
+        <py:for each="tag in c.geographic_granularity_available">
+          <py:choose test="">
+            <option py:when="tag in data.get('geographic_granularity', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+          </py:choose>
+        </py:for>
+      </select>
+    </div>
+  </div>
+
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial_type">Spatial : Type</label>
+    <div class="controls">
+      <select id="spatial_type" name="spatial_type">
+        <option value="">(None)</option>
+        <option value="Departements">Départements</option>
+        <option value="Cantons">Cantons</option>
+        <option value="Communes">Communes</option>
+      </select>
+    <p>Sélectionnez un type d'élément</p>
+    </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial_label">Choisissez une valeur</label>
+    <div class="controls" id="spatial_label">
+      <select id="spatial_Departements" name="spatial_Departements" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Cantons" name="spatial_Cantons" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Communes" name="spatial_Communes" style="display:none">
+        <option value="">(None)</option>
+      </select>
+    <p>Sélectionnez un élément pour calculer automatiquement la zone géographique</p>
+    </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial">Spatial :</label>
+    <div class="controls" id="extent">
+      <input id="spatial" name="spatial" type="text" value="${data.get('spatial', '')}" />
+      <a id="generate-extent" class="btn" href="">Recalculer l'extent</a>
+      </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial">Spatial (Nom et URI) :</label>
+      <div class="controls" id="extent">
+      <input id="spatial-text" name="spatial-text" type="text" value="${data.get('spatial-text', '')}" />
+      <input id="spatial-uri" name="spatial-uri" type="text" value="${data.get('spatial-uri', '')}" />
+      <p>Coordonnées géographiques automatiquement générées</p>
+    </div>
+  </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dcat:granularity">Granularité</label>
+    <div class="controls">
+      <input id="dcat:granularity" name="dcat:granularity" type="text" value="${data.get('dcat:granularity', '')}" />
+      <p>Describes the level of granularity of data in a dataset. The granularity can be in time, place etc</p>
+    </div>
+  </div>
+
   <div class="control-group tags-field">
     <label class="control-label" for="dcterms:references">Référence liée (ou documentation)</label>
     <div class="controls">
@@ -318,7 +386,7 @@
   </div>
 </fieldset>
 
-<fieldset class="tab-pane fade" id='further-information'>
+<fieldset class="tab-pane fade" id='contact-information'>
   <div class="control-group">
     <label class="control-label field_opt" for="author">Auteur</label>
     <div class="controls">
@@ -326,71 +394,30 @@
       <p>The name of the main contact, for enquiries about this particular dataset, using the e-mail address in the following field.</p>
     </div>
   </div>
-<?python
-creator = data.get('dct:creator', {})
-?>
-  <div class="control-group">
-    <label class="control-label field_opt" for="dct:creator">Propriétaire</label>
-    <div class="controls">
-      <select id="dct:creator" class="chzn-select" name="dct:creator">
-        <option selected="selected" value="">(None)</option>
-        <py:for each="tag in c.creators_available">
-          <option py:attrs="{'selected':'selected'} if creator == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
-        </py:for>
-      </select>
-      <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
-    </div>
-  </div>
-
-<?python
-publisher = data.get('dct:publisher', {})
-?>
-  <div class="control-group">
-    <label class="control-label field_opt" for="dct:publisher">Diffuseur</label>
-    <div class="controls">
-      <select id="dct:publisher" class="chzn-select" name="dct:publisher">
-        <option selected="selected" value="">(None)</option>
-        <py:for each="tag in c.publishers_available">
-          <option py:attrs="{'selected':'selected'} if publisher == tag['name'] else {}" value="${tag['name']}">${tag['title']}</option>
-        </py:for>
-      </select>
-      <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label field_opt" for="capacity">Visibilité</label>
-    <div class="controls">
-       <div>
-         <label for='capacity_public'><input id='capacity_public' type='radio' name='capacity' value='public' py:attrs="{'checked':'checked'} if data.get('capacity') == 'public' else {}"/>
-         Publique</label>
-       </div>
-       <div>
-         <label for='capacity_private'><input id='capacity_private' type='radio' name='capacity' value='private' py:attrs="{'checked':'checked'} if data.get('capacity', 'private') == 'private' else {}"/>
-         Privé</label>
-       </div>
-    </div>
-</div>
-<?python
-contributor = data.get('dct:contributor', {})
-if not contributor:
-	if c.contributor:
-		contributor = c.contributor.fullname
-
-?>
-
-  <div class="control-group">
-    <label class="control-label field_opt" for="dct:contributor">Gestionnaire</label>
-    <div class="controls">
-      <input id="dct:contributor" name="dct:contributor" type="text" value="${contributor}" />
-      <p>Entité ou personne qui gère le jeu de données (dct:contributor)</p>
-    </div>
-  </div>
 
   <div class="control-group">
     <label class="control-label field_opt" for="author_email">Author email</label>
     <div class="controls">
       <input id="author_email" name="author_email" type="text" value="${data.get('author_email', '')}" />
+    </div>
+  </div>
+<?python
+contributor = data.get('dct:contributor', {})
+contributor_id = data.get('ckan_author', {})
+if not contributor_id:
+  if c.contributor:
+    contributor_id = c.contributor.id
+if not contributor:
+  if c.contributor:
+    contributor = c.contributor.fullname
+		
+
+?>
+  <div class="control-group">
+    <label class="control-label field_opt" for="dct:contributor">Gestionnaire</label>
+    <div class="controls">
+      <input id="dct:contributor" name="dct:contributor" type="text" value="${contributor}" />
+      <p>Entité ou personne qui gère le jeu de données (dct:contributor)</p>
     </div>
   </div>
 
@@ -406,6 +433,13 @@ if not contributor:
     <label class="control-label field_opt" for="maintainer_email">Maintainer email</label>
     <div class="controls">
       <input id="maintainer_email" name="maintainer_email" type="text" value="${data.get('maintainer_email', '')}" />
+    </div>
+  </div>
+
+  <div class="control-group" style="display:none;">
+    <label class="control-label field_opt" for="ckan_author">Créateur du jeu de données</label>
+    <div class="controls">
+      <input id="ckan_author" name="ckan_author" type="text" value="${contributor_id}" class="uneditable-input" />
     </div>
   </div>
 

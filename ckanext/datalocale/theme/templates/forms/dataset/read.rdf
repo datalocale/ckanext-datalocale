@@ -11,31 +11,38 @@
   <dcat:Dataset rdf:about="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}">
     <owl:sameAs rdf:resource="urn:uuid:${c.pkg_dict['id']}"/>
     <dct:description>${c.pkg_dict['notes']}</dct:description>
-    <!--<py:for each="tag_dict in c.pkg_dict['tags']">
+    <py:for each="tag_dict in c.pkg_dict['tags']">
         <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
-    </py:for>-->
+    </py:for>
     <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}"/>
     <rdfs:label>${c.pkg_dict['name']}</rdfs:label>
 
     <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
     <dct:title>${c.pkg_dict['title']}</dct:title>
-    <py:for each="rsc_dict in c.pkg_dict.get('resources',[])">
+    <py:for each="rsc_dict in c.pkg_dict.get('resources', [])">
         <dcat:distribution>
             <dcat:Distribution>
                 <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>
+                    <dct:format py:if="rsc_dict.get('format')">
+                        <dct:IMT>
+                            <rdf:value>rsc_dict.get('format')</rdf:value>
+                            <rdfs:label>rsc_dict.get('format')</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title py:if="rsc_dict.get('name')">${rsc_dict.get('name')}</dct:title>
             </dcat:Distribution>
         </dcat:distribution>
     </py:for>
-    <dct:creator py:if="c.pkg_dict.get('author', None)">
+    <dct:creator  py:if="c.pkg_dict.get('author', None)">
       <rdf:Description>
         <foaf:name>${ c.pkg_dict['author'] }</foaf:name>
-        <foaf:mbox py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['author_email']}"/>
+        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['author_email']}"/>
       </rdf:Description>
     </dct:creator>
     <dct:contributor py:if="c.pkg_dict.get('maintainer', None)">
       <rdf:Description>
         <foaf:name>${ c.pkg_dict['maintainer'] }</foaf:name>
-        <foaf:mbox py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
+        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
       </rdf:Description>
     </dct:contributor>
 
@@ -48,14 +55,5 @@
           </rdf:Description>
         </dct:relation>
     </py:for>
-
-    <dcat:themeTaxonomy py:if="c.pkg_dict.get('themeTaxonomy_available', None)">
-	<rdf:value>${c.pkg_dict['themeTaxonomy_available']}</rdf:value>
-    </dcat:themeTaxonomy>
-    <dcat:theme py:if="c.pkg_dict.get('theme_available', None)">
-	<rdf:value>${c.pkg_dict['theme_available']}</rdf:value>
-    </dcat:theme>
   </dcat:Dataset>
-
-
 </rdf:RDF>

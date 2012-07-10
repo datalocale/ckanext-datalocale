@@ -102,18 +102,27 @@ def convert_from_groups_extra(field, num):
 		data[('extras', extra_number, 'value')] = value
 	return convert
 
-def publisher_exists(publisher_name, context):
-    '''
-    Raises Invalid if the given publisher_name does not exist in the model given
-    in the context, otherwise returns the given publisher_name.
+def email_validator(value, context):
+    from ckan.lib.navl.dictization_functions import Invalid
+    from pylons.i18n import _
+    if len(value) > 7:
+    	if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", value ) != None:
+	    return value
+    raise Invalid(_('Invalid email'))
+    return value
 
-    '''
+def date_to_form(value, context):
+    from ckan.lib.field_types import DateType, DateConvertError
     try:
-        logic.get_action('group_show')(context, {'id': publisher_name})
-    except logic.NotFound:
-        raise df.Invalid('%s: %s' % (_('Publisher not found'), publisher_name))
-    return publisher_name
+        value = DateType.db_to_form(value)
+    except DateConvertError, e:
+        raise Invalid(str(e))
+    return value
 
-
-
-
+def date_to_db(value, context):
+    from ckan.lib.field_types import DateType, DateConvertError
+    try:
+        value = DateType.form_to_db(value)
+    except DateConvertError, e:
+        raise Invalid(str(e))
+    return value

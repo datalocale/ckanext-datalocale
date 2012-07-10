@@ -30,6 +30,7 @@ class DatalocaleAPI(SingletonPlugin):
 		'datalocale_group_show' : datalocale_group_show,
 		'group_show_rest' : datalocale_group_show,
 		'datalocale_tag_list' : datalocale_tag_list,
+		'user_create' : datalocale_user_create,
 	}
 
 """
@@ -79,8 +80,8 @@ def datalocale_package_show(context, data_dict):
     ckan_lang = pylons.request.environ['CKAN_LANG']
     ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
     packages = logic.get_action('package_show')(context, data_dict)
-    theme_available = packages.get('theme_available')
-    themeTaxonomy = packages.get('themeTaxonomy')
+    theme_available = packages.get('theme_available', [])
+    themeTaxonomy = packages.get('themeTaxonomy', [])
     packages['themeTaxonomy'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback);
     packages['theme_available'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
     return packages;
@@ -99,3 +100,12 @@ def datalocale_group_show(context, data_dict):
 		"state": parent[0].state, "revision_id": parent[0].revision_id}]
     return groups
 
+def datalocale_user_create(context, data_dict):
+    from ckan.lib.navl.validators import not_empty
+    from validators import email_validator
+    schema = context.get('schema')
+    schema.update({
+        'email': [not_empty, unicode, email_validator],
+    })
+    context['schema'] = schema
+    logic.action.create.user_create(context, data_dict)

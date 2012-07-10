@@ -16,26 +16,33 @@ from xml.dom.minidom import parseString, parse
 import logging
 log = logging.getLogger()
 
-VOCAB_FREQUENCES = u'dct:accrualPeriodicity'
+VOCAB_FREQUENCY = u'dct:accrualPeriodicity'
 VOCAB_THEMES = u'dcat:themeTaxonomy'
 VOCAB_THEMES_CONCEPT = u'dcat:theme'
 VOCAB_DATAQUALITY = u'dcat:dataQuality'
-VOCAB_GRANULARITY = u'dcat:granularity'
+VOCAB_GEOGRAPHIC_GRANULARITY = u'geographic_granularity'
+VOCAB_TEMPORAL_GRANULARITY = u'dct:temporal'
+tags_frequency = [u'jamais', u'irrégulier', u'annuelle', u'semestrielle' , u'trimestrielle', u'mensuelle', u'quotidienne', u'autre - merci de préciser']
+tags_geographic_granularity = [u'régional', u'départemental', u'etablissement public', u'commune', u'association', u'autre - merci de préciser']
+tags_temporal_granularity = [u'année',u'trimestre',u'mois',u'semaine',u'jour',u'heure',u'point',u'autre - merci de préciser']
+tags_dataQuality = [u'exhaustive', u'à améliorer', u'à enrichir', u'référence', u'échantillon']
 
 class DatalocaleCommand(cli.CkanCommand):
     '''
     Commands:
 
         paster datalocale create-theme-vocab -c <config>
-        paster datalocale create-frequence-vocab -c <config>
-	paster datalocale create-dataQuality-vocab -c <config>
-        paster datalocale create-granularity-vocab -c <config>
+        paster datalocale create-frequency-vocab -c <config>
+        paster datalocale create-dataQuality-vocab -c <config>
+        paster datalocale create-geographic-granularity-vocab -c <config>
+        paster datalocale create-temporal-vocab -c <config>
         paster datalocale delete-theme-vocab -c <config>
-        paster datalocale delete-frequence-vocab -c <config>
-	paster datalocale delete-dataQuality-vocab -c <config>
-        paster datalocale delete-granularity-vocab -c <config>
+        paster datalocale delete-frequency-vocab -c <config>
+        paster datalocale delete-dataQuality-vocab -c <config>
+        paster datalocale delete-geographic-granularity-vocab -c <config>
+        paster datalocale delete-temporal-vocab -c <config>
 
-
+    Example:
 	paster datalocale create-theme-vocab --config=/home/atos/pyenv/src/ckan/development.ini
 
     Where:
@@ -58,20 +65,24 @@ class DatalocaleCommand(cli.CkanCommand):
 		
         if cmd == 'create-theme-vocab':
             self.create_theme_vocab()
-	elif cmd == 'create-frequence-vocab':
-	    self.create_frequence_vocab()
+	elif cmd == 'create-frequency-vocab':
+	    self.create_frequency_vocab()
 	elif cmd == 'create-dataQuality-vocab':
 	    self.create_dataQuality_vocab()
-	elif cmd == 'create-granularity-vocab':
-	    self.create_granularity_vocab()
+	elif cmd == 'create-geographic-granularity-vocab':
+	    self.create_geographic_granularity_vocab()
+	elif cmd == 'create-temporal-vocab':
+	    self.create_temporal_vocab()
 	elif cmd == 'delete-theme-vocab':
 	    self.delete_theme_vocab()
-	elif cmd == 'delete-frequence-vocab':
-	    self.delete_frequence_vocab()
+	elif cmd == 'delete-frequency-vocab':
+	    self.delete_frequency_vocab()
 	elif cmd == 'delete-dataQuality-vocab':
 	    self.delete_dataQuality_vocab()
-	elif cmd == 'delete-granularity-vocab':
-	    self.delete_granularity_vocab()
+	elif cmd == 'delete-geographic-granularity-vocab':
+	    self.delete_geographic_granularity_vocab()
+	elif cmd == 'delete-temporal-vocab':
+	    self.delete_temporal_vocab()
         else:
             log.error('Command "%s" not recognized' % (cmd,))
 			
@@ -92,29 +103,34 @@ class DatalocaleCommand(cli.CkanCommand):
     def delete_theme_vocab(self):
 	self._delete_special_vocab(VOCAB_THEMES)
 
-    def create_frequence_vocab(self):
-        tags = [u'journalier', u'hebdomadaire', u'mensuel', u'trimestriel' , u'semestriel', u'annuel']
-        self.create_vocab_from_tags(VOCAB_FREQUENCES, tags)
+    def create_frequency_vocab(self):
+        self.create_vocab_from_tags(VOCAB_FREQUENCY, tags_frequency)
 	log.info('Vocabulary created')
 
-    def delete_frequence_vocab(self):
-	self._delete_vocab(VOCAB_FREQUENCES)
+    def delete_frequency_vocab(self):
+	self._delete_vocab(VOCAB_FREQUENCY)
 
     def create_dataQuality_vocab(self):
-        tags = [u'bonne', u'mauvaise']
-        self.create_vocab_from_tags(VOCAB_DATAQUALITY, tags)
+        self.create_vocab_from_tags(VOCAB_DATAQUALITY, tags_dataQuality)
 	log.info('Vocabulary created')
 
     def delete_dataQuality_vocab(self):
 	self._delete_vocab(VOCAB_DATAQUALITY)
 
-    def create_granularity_vocab(self):
-        tags = [u'France', u'Département', u'longitude-latitude']
-        self.create_vocab_from_tags(VOCAB_GRANULARITY, tags)
+    def create_geographic_granularity_vocab(self):
+        self.create_vocab_from_tags(VOCAB_GEOGRAPHIC_GRANULARITY, tags_geographic_granularity)
 	log.info('Vocabulary created')
 
-    def delete_granularity_vocab(self):
-	self._delete_vocab(VOCAB_GRANULARITY)
+    def delete_geographic_granularity_vocab(self):
+	self._delete_vocab(VOCAB_GEOGRAPHIC_GRANULARITY)
+
+    def create_temporal_vocab(self):
+        self.create_vocab_from_tags(VOCAB_TEMPORAL_GRANULARITY, tags_temporal_granularity)
+        log.info('Vocabulary created')
+
+    def delete_temporal_vocab(self):
+        self._delete_vocab(VOCAB_TEMPORAL_GRANULARITY)
+        log.info('Vocabulary deleted')
 
     def create_vocab_from_tags(self, vocab_name, tags):
         context = {'model': model, 'session': model.Session,
