@@ -9,7 +9,7 @@ import ckan
 import ckan.model as model
 import ckan.logic as logic
 import ckan.lib.cli as cli
-import requests
+#import requests
 import forms
 from xml.dom.minidom import parseString, parse
 

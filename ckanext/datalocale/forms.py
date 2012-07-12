@@ -231,8 +231,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dct:contributor': [convert_from_extras, ignore_missing],
 		'ckan_author': [convert_from_extras, ignore_missing],
 		'dct:temporal': [convert_from_tags(VOCAB_TEMPORAL_GRANULARITY), ignore_missing],
-		'temporal_coverage-from': [convert_from_extras],
-		'temporal_coverage-to': [convert_from_extras],
+		'temporal_coverage-from': [convert_from_extras, ignore_missing],
+		'temporal_coverage-to': [convert_from_extras, ignore_missing],
 		'dc:source': [convert_from_extras, ignore_missing],
 		'maj': [convert_from_extras, ignore_missing],
 		'isopen' : [ignore_missing],
@@ -308,7 +308,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 			else :
 				stream = stream
 		    except IndexError:
-			log.fatal("No Group")
+			log.debug("No group found")
 
 		except NotFound:
 			stream = stream
