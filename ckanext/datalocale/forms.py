@@ -215,6 +215,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'revision_id' : [ignore_missing],
 		'metadata_created' : [ignore_missing],
 		'metadata_modified' : [ignore_missing],
+		'revision_timestamp' : [ignore_missing],
 		'state' : [ignore_missing],
 		'notes': [ignore_missing, unicode],
 		'type': [unicode],
@@ -308,7 +309,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 			else :
 				stream = stream
 		    except IndexError:
-			log.debug("No group found")
+			pass
 
 		except NotFound:
 			stream = stream

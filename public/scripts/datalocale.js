@@ -84,9 +84,9 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
     for (key in json_data) 
     {
        if(key == type_id)
-         $("#spatial_"+key).attr("style","") 
+         $("#spatial_"+key).show()
        else
-         $("#spatial_"+key).attr("style","display:none") 
+         $("#spatial_"+key).hide()
     }
     if(type_id == "Communes")
        $("#spatial_Departements").attr("style","") 

@@ -31,6 +31,9 @@ class DatalocaleAPI(SingletonPlugin):
 		'group_show_rest' : datalocale_group_show,
 		'datalocale_tag_list' : datalocale_tag_list,
 		'user_create' : datalocale_user_create,
+		'datalocale_package_list' : datalocale_package_list,
+		'datalocale_show_roles' : datalocale_show_roles,
+		'datalocale_role_user' : datalocale_role_user,
 	}
 
 """
@@ -109,3 +112,44 @@ def datalocale_user_create(context, data_dict):
     })
     context['schema'] = schema
     logic.action.create.user_create(context, data_dict)
+
+
+
+_check_access = logic.check_access
+def datalocale_package_list(context, data_dict):
+    '''Return a list of the names of the site's datasets (packages). :rtype: list of strings
+    '''
+    model = context["model"]
+    api = context.get("api_version", 1)
+    ref_package_by = 'id' if api == 2 else 'name'
+
+    _check_access('package_list', context, data_dict)
+
+    query = model.Session.query(model.Package)
+    query = query.filter(model.Package.state=='active')
+    packages = query.all()
+    packages_to_import = []
+    for p in packages:
+	if p.is_private == False:
+		packages_to_import.append(p)
+    return [getattr(p, ref_package_by) for p in packages_to_import]
+
+def datalocale_show_roles(context, data_dict):
+        import ckan.model as model
+	p = base.model.Package.get(data_dict['id'])
+        q = model.Session.query(model.PackageRole)
+        q = q.filter_by(package=p)
+	q.all()
+	return [({"package_id":role.package_id,"user_id":role.user_id,"role":role.role}) for role in q]
+
+def datalocale_role_user(context,data_dict):
+	import ckan.model as model
+	u = base.model.User.get(data_dict['id'])
+	q = model.Session.query(model.UserObjectRole)
+	q = q.filter_by(user_id=u.id)
+	q = q.filter_by(context="System")
+	q.all()
+	if q.count() == 0:
+	   return [({"user_id":u.id,"role":"None","context":"System"})]
+	else: 
+	   return [({"user_id":role.user_id,"role":role.role,"context":role.context}) for role in q]
