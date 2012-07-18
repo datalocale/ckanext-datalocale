@@ -4,7 +4,9 @@
   py:strip=""
   >
   <xi:include href="../../_util.html" />
-
+<?python
+extras = dict(c.pkg_extras)
+?>
   <div id="dataset" class="dataset">
     <!-- Overview Section -->
     <div id="dataset-overview">
@@ -20,7 +22,6 @@
           <button class="less btn" style="display: none;"><img src="/images/chevron-up.png"/></button>
         </div>
       </div>
-
       <!-- Resources -->
       <div id="dataset-resources" class="resources subsection">
         <h3>Resources
@@ -60,7 +61,7 @@
       </thead>
       <tbody>
         <tr py:if="c.pkg.url">
-          <td class="dataset-label">Source</td>
+          <td class="dataset-label">Page d'accueil</td>
           <td class="dataset-details" property="foaf:homepage">${c.pkg_url_link}</td>
         </tr>
 
@@ -72,6 +73,16 @@
         <tr py:if="c.pkg_maintainer_link">
           <td class="dataset-label">Maintainer</td>
           <td class="dataset-details" property="dc:contributor">${c.pkg_maintainer_link}</td>
+        </tr>
+
+        <tr py:if="extras.get('created_by', [])" id="created_by">
+          <td class="dataset-label">Créateur</td>
+          <td class="dataset-details" property="dct:creator">${extras.get('created_by', [])}</td>
+        </tr>
+
+        <tr py:if="extras.get('published_by', [])" id="published_by">
+          <td class="dataset-label">Diffuseur</td>
+          <td class="dataset-details" property="dct:publisher">${extras.get('published_by', [])}</td>
         </tr>
 
         <tr py:if="c.pkg.version">
@@ -89,25 +100,43 @@
           <td class="dataset-details">${c.pkg.state}</td>
         </tr>
 
-        <tr py:if="c.pkg_dict.get('frequencies', [])">
-          <td class="dataset-label">Fréquences</td>
-          <td class="dataset-details">${c.pkg_dict.get('frequencies', [])}</td>
-        </tr>
-
         <tr py:if="c.pkg_dict.get('dataQuality', [])">
           <td class="dataset-label">Qualité des données</td>
           <td class="dataset-details">${c.pkg_dict.get('dataQuality', [])}</td>
         </tr>
 
-        <tr py:if="c.pkg_dict.get('granularity', [])">
-          <td class="dataset-label">Granularité des données</td>
-          <td class="dataset-details">${c.pkg_dict.get('granularity', [])}</td>
+        <tr py:if="c.pkg_dict.get('dct:accrualPeriodicity', [])">
+          <td class="dataset-label">Fréquence de mise à jour</td>
+          <td class="dataset-details">${c.pkg_dict.get('dct:accrualPeriodicity', [])}</td>
         </tr>
 
-       <!--<tr py:if="c.pkg_dict.get('dct:publisher')">
-          <td class="dataset-label">Publisher</td>
-          <td class="dataset-details">${c.new_groups.title}</td>
-        </tr>-->
+        <tr py:if="c.pkg_dict.get('temporal_coverage-from', [])">
+          <td class="dataset-label">Couverture temporelle</td>
+          <td class="dataset-details">Du ${c.pkg_dict.get('temporal_coverage-from', [])} au ${c.pkg_dict.get('temporal_coverage-to', [])}</td>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('geographic_granularity', [])">
+          <td class="dataset-label">Couverture géographique</td>
+          <py:choose test="c.pkg_dict.get('geographic_granularity', [])">
+	    <td py:when="u'autre - merci de préciser'" class="dataset-details">${extras.get('geographic_granularity', [])}</td>
+	    <td py:otherwise="" class="dataset-details">${c.pkg_dict.get('geographic_granularity', [])}</td>
+          </py:choose>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('spatial', [])">
+          <td class="dataset-label">Informations géographiques</td>
+          <td class="dataset-details"><a href="${c.pkg_dict.get('spatial-uri', [])}">${c.pkg_dict.get('spatial-text', 'Non renseigné')}</a></td>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('dcat:granularity', [])">
+          <td class="dataset-label">Granularité des données</td>
+          <td class="dataset-details">${c.pkg_dict.get('dcat:granularity', [])}</td>
+        </tr>
+
+        <tr py:if="c.pkg_dict.get('dcterms:references', [])">
+          <td class="dataset-label">Référence liée</td>
+          <td class="dataset-details"><a href="${c.pkg_dict.get('dcterms:references', [])}">${c.pkg_dict.get('dcterms:references', [])}</a></td>
+        </tr>
 
         <tr py:if="c.harvest_catalogue_name">
           <td class="dataset-label">Harvest Source</td>
@@ -116,10 +145,12 @@
             <a href="${c.harvest_catalogue_url}">${c.harvest_catalogue_name}</a>
           </td>
         </tr>
-
+<?python 
+extras_keys = {'dc:source': 'Source', 'dcat:granularity':'Granularité', 'dct:contributor':'Contributeur', 'maj':'Mise à jour'}
+?>
         <tr py:for="i, (key, value) in enumerate(c.pkg_extras)"
-          rel="dc:relation" resource="_:extra${i}" id="${_(key)}">
-          <td class="dataset-label" property="rdfs:label">${_(key)}</td>
+          rel="dc:relation" resource="_:extra${i}" id="${_(key)}" py:if="key not in ('ckan_author', 'dct:accrualPeriodicity', 'dcterms:references', 'geographic_granularity', 'temporal_coverage-from', 'temporal_coverage-to', 'spatial', 'spatial-text', 'spatial-uri', 'created_by', 'published_by')">
+          <td class="dataset-label" property="rdfs:label">${extras_keys.get(_(key),_(key)) }</td>
           <td class="dataset-details" property="rdf:value">${value}</td>
         </tr>
       </tbody>

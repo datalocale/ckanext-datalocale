@@ -143,6 +143,7 @@ publisher = data.get('dct:publisher', {})
          <label for='capacity_private'><input id='capacity_private' type='radio' name='capacity' value='private' py:attrs="{'checked':'checked'} if data.get('capacity', 'private') == 'private' else {}"/>
          Privé</label>
        </div>
+       <p>Visibilité du jeu de donnée. Si le jeu de donnée est privé, il ne sera pas visible par les visiteurs du site.</p>
     </div>
 </div>
 
@@ -163,6 +164,7 @@ publisher = data.get('dct:publisher', {})
         </py:for>
       </select>
     </div>
+    <p>Thème du jeu de donnée</p>
   </div>
 
   <div class="control-group tags-field">
@@ -185,6 +187,7 @@ publisher = data.get('dct:publisher', {})
         </py:for>
       </select>
     </div>
+    <p>Permet de qualifier le niveau de confiance et de qualité de la donnée mise à disposition. Cette donnée est enrichie par le module "Quality Assurance" automatiquement.</p>
   </div>
 
   <div class="control-group tags-field">
@@ -200,31 +203,22 @@ publisher = data.get('dct:publisher', {})
           </py:choose>
         </py:for>
       </select>
+      <label class="inline" for="dct:accrualPeriodicity-other">Autre : 
+        <input class="medium-width" id="dct:accrualPeriodicity-other" 
+        name="dct:accrualPeriodicity-other" type="text" value="${data.get('dct:accrualPeriodicity-other', '')}"/>
+      </label>
     </div>
-  </div>
-  <div class="control-group tags-field">
-    <label class="control-label" for="dct:temporal">Couverture temporelle</label>
-    <div class="controls">
-      <select id="frequency" class="chzn-select" name="dct:temporal">
-        <option value="">(None)</option>
-        <py:for each="tag in c.temporal_granularity_available">
-          <py:choose test="">
-	    <option py:when="tag in data.get('dct:temporal', [])"
-		    selected="selected" value="${tag}">${tag}</option>
-	    <option py:otherwise="" value="${tag}">${tag}</option>
-          </py:choose>
-        </py:for>
-      </select>
-    </div>
+    <p>Fréquence prévisionnelle de mise à jour du jeu de données.</p>
   </div>
 
   <div class="control-group tags-field">
-    <label class="control-label" for="dct:temporal">Couverture temporelle </label>
+    <label class="control-label" for="temporal_coverage">Couverture temporelle </label>
     <div class="controls">
       <input id="temporal_coverage-from" name="temporal_coverage-from" type="text" value="${data.get('temporal_coverage-from', '')}" class="medium-width"  />
       <input id="temporal_coverage-to" name="temporal_coverage-to" type="text" value="${data.get('temporal_coverage-from-to', '')}" class="medium-width" />
       <p>Exemple : Du 23/01/2012 au 23/12/2012)</p>
     </div>
+    <p>Plage temporelle couverte par le jeu de données</p>
   </div>
 
   <div class="control-group tags-field">
@@ -240,7 +234,12 @@ publisher = data.get('dct:publisher', {})
           </py:choose>
         </py:for>
       </select>
+      <label class="inline" for="geographic_granularity-other">Autre : 
+        <input class="medium-width" id="geographic_granularity-other" 
+        name="geographic_granularity-other" type="text" value="${data.get('geographic_granularity-other', '')}"/>
+      </label>
     </div>
+    <p>Territoire géographique couvert par le jeu de données</p>
   </div>
 
   <div class="control-group spatial-field">
@@ -282,14 +281,14 @@ publisher = data.get('dct:publisher', {})
       <div class="controls" id="extent">
       <input id="spatial-text" name="spatial-text" type="text" value="${data.get('spatial-text', '')}" />
       <input id="spatial-uri" name="spatial-uri" type="text" value="${data.get('spatial-uri', '')}" />
-      <p>Coordonnées géographiques automatiquement générées</p>
+      <p>Coordonnées géographiques automatiquement générées qui permettent de geo-indexé les jeux de données. Une carte est automatiquement ajoutée à la fiche du jeu de données</p>
     </div>
   </div>
   <div class="control-group tags-field">
     <label class="control-label" for="dcat:granularity">Granularité</label>
     <div class="controls">
       <input id="dcat:granularity" name="dcat:granularity" type="text" value="${data.get('dcat:granularity', '')}" />
-      <p>Describes the level of granularity of data in a dataset. The granularity can be in time, place etc</p>
+      <p>Décrit le niveau de granularité des données. Peut être exprimé en temps, lieu, et place, etc. </p>
     </div>
   </div>
 
@@ -318,7 +317,16 @@ publisher = data.get('dct:publisher', {})
     </div>
   </div>
 
- <div class="control-group tags-field">
+  <div class="control-group">
+    <label class="control-label field_opt" for="version">Version</label>
+    <div class="controls">
+      <input id="version" maxlength="100" name="version" type="text" value="${data.get('version', '')}" />
+      <p>A number representing the version (if applicable)</p>
+      <p>e.g. 1.2.0</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
     <label class="control-label" for="maj">Objet des mise à jours</label>
     <div class="controls">
       ${markdown_editor('maj', data.get('maj'), 'notes', _('Historique des raisons des mises à jour'))}
@@ -443,19 +451,10 @@ if not contributor:
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label field_opt" for="version">Version</label>
-    <div class="controls">
-      <input id="version" maxlength="100" name="version" type="text" value="${data.get('version', '')}" />
-      <p>A number representing the version (if applicable)</p>
-      <p>e.g. 1.2.0</p>
-    </div>
-  </div>
 </fieldset>
 
 <fieldset class="tab-pane fade" id='extras'>
   <p>Ajout des champs personnalisés au package tel que "location:fr" qui peuvent aider les utilisateurs à le retrouver dans le moteur de recherche. Ces données apparaissent également dans la section <strong>Information additionnelle</strong> dans le package.</p>
-  <!--<py:with vars="extras = data.get('extras', [])">-->
   <py:with vars="extras= c.additional_extras">
     <py:for each="num, extra in enumerate(extras)">
       <div class="control-group">

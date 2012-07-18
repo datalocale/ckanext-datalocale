@@ -14,7 +14,9 @@ import ckan.plugins
 import ckan.logic.schema as default_schema
 from ckan.lib.navl.validators import ignore_missing, ignore_empty, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, convert_to_groups, convert_from_groups, convert_from_groups_extra, date_to_form, date_to_db
+from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, \
+convert_to_groups, convert_from_groups, convert_from_groups_extra, date_to_form, date_to_db, \
+extract_other, use_other
 
 log = logging.getLogger(__name__)
 
@@ -138,14 +140,14 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		c.themeTaxonomy_available = []
 	
         ''' Find extras that are not part of our schema '''
+        # find extras that are not part of our schema
         c.additional_extras = []
         schema_keys = self.form_to_db_schema().keys()
-        if c.pkg_json:
-            extras = json.loads(c.pkg_json).get('extras', [])
+        if c.pkg_dict:
+            extras = c.pkg_dict.get('extras', [])
             for extra in extras:
                 if not extra['key'] in schema_keys:
                     c.additional_extras.append(extra)
-       
 	'''This is messy as auths take domain object not data_dict'''
 	context_pkg = context.get('package', None)
         pkg = context_pkg or c.pkg
@@ -166,27 +168,30 @@ class DatalocaleDatasetForm(SingletonPlugin):
         """
     	schema = default_schema.package_form_schema()
     	schema.update({
-        	'dct:accrualPeriodicity': [ignore_missing, convert_to_tags(VOCAB_FREQUENCY)],
+		'ckan_author': [unicode, ignore_missing, convert_to_extras],
+		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
+		'dct:publisher': [convert_to_groups('name', 0)],
+        	'dct:creator': [convert_to_groups('name', 1)],
+		'created_by': [],
+		'published_by': [],
+		'capacity': [default(u'private'), convert_to_groups('capacity', 0),  convert_to_groups('capacity', 1)],
 		'themeTaxonomy': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
 		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy')],
 		'dataQuality': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
-		'geographic_granularity': [ignore_missing, convert_to_tags(VOCAB_GEOGRAPHIC_GRANULARITY)],
-		'dcat:granularity': [ignore_missing, unicode, convert_to_extras],
-		'dct:creator': [convert_to_groups('name', 1)],
-		'capacity': [ignore_missing, unicode, default(u'private'), convert_to_groups('capacity', 1),  convert_to_groups('capacity', 0)],
-		'dct:publisher': [convert_to_groups('name', 0)],
-		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
-		'ckan_author': [unicode, ignore_missing, convert_to_extras],
-		'dct:temporal': [unicode, ignore_missing, ignore_empty, convert_to_tags(VOCAB_TEMPORAL_GRANULARITY)],
+		'dct:accrualPeriodicity': [use_other, ignore_missing, convert_to_extras],
+		'dct:accrualPeriodicity-other': [],
 		'temporal_coverage-from': [ignore_missing, ignore_empty, date_to_db, convert_to_extras],
 		'temporal_coverage-to': [ignore_missing, ignore_empty, date_to_db, convert_to_extras],
-		'dc:source': [ignore_missing, ignore_empty, unicode, convert_to_extras],
-		'maj': [unicode, ignore_missing, ignore_empty, convert_to_extras],
-		'dcterms:references': [unicode, ignore_missing, ignore_empty, convert_to_extras],
-		'resources': default_schema.default_resource_schema(),
+		'geographic_granularity': [use_other, ignore_missing, convert_to_extras],
+		'geographic_granularity-other': [],
 		'spatial': [ignore_empty, convert_to_extras],
 		'spatial-text': [ignore_empty, unicode,  convert_to_extras],
 		'spatial-uri': [ignore_empty, unicode, convert_to_extras],
+		'dcat:granularity': [ignore_missing, unicode, convert_to_extras],
+		'dcterms:references': [unicode, ignore_missing, ignore_empty, convert_to_extras],
+		'dc:source': [ignore_missing, ignore_empty, unicode, convert_to_extras],
+		'maj': [unicode, ignore_missing, ignore_empty, convert_to_extras],
+		'resources': default_schema.default_resource_schema(),
     	})
         schema['groups'].update({
             'capacity': [ignore_missing, unicode]
@@ -203,6 +208,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         Returns the schema for mapping package data from the database into a
         format suitable for the form (optional)
         """
+	import commands
 	schema = default_schema.package_form_schema()
         schema['groups'].update({
 	    'id': [ignore_missing],
@@ -216,34 +222,33 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'metadata_created' : [ignore_missing],
 		'metadata_modified' : [ignore_missing],
 		'revision_timestamp' : [ignore_missing],
+		'isopen' : [ignore_missing],
 		'state' : [ignore_missing],
 		'notes': [ignore_missing, unicode],
 		'type': [unicode],
 		'tags': {'__extras': [keep_extras, free_tags_only]},
-		'dct:accrualPeriodicity': [convert_from_tags(VOCAB_FREQUENCY), ignore_missing],
+		'ckan_author': [convert_from_extras, ignore_missing],
+		'published_by': [convert_from_groups_extra('id', 0), ignore_missing],
+		'created_by': [convert_from_groups_extra('id', 1), ignore_missing],
+		'dct:publisher': [convert_from_groups('name', 0)],
+		'dct:creator': [convert_from_groups('name', 1)],
+		'capacity': [convert_from_groups('capacity', 0), convert_from_groups('capacity', 1)],
+		'dct:contributor': [convert_from_extras, ignore_missing],
 		'themeTaxonomy': [convert_from_tags(VOCAB_THEMES), ignore_missing],
 		'theme_available': [datalocale_convert_from_tags('themeTaxonomy'), ignore_missing],
 		'dataQuality': [convert_from_tags(VOCAB_DATAQUALITY), ignore_missing],
-		'geographic_granularity': [convert_from_tags(VOCAB_GEOGRAPHIC_GRANULARITY), ignore_missing],
-		'dcat:granularity': [convert_from_extras, ignore_missing],
-		'dct:creator': [convert_from_groups('name', 1)],
-		'dct:publisher': [convert_from_groups('name', 0)],
-		'capacity': [convert_from_groups('capacity', 0), convert_from_groups('capacity', 1)],
-		'dct:contributor': [convert_from_extras, ignore_missing],
-		'ckan_author': [convert_from_extras, ignore_missing],
-		'dct:temporal': [convert_from_tags(VOCAB_TEMPORAL_GRANULARITY), ignore_missing],
+		'dct:accrualPeriodicity': [convert_from_extras, ignore_missing, extract_other(commands.tags_frequency)],
 		'temporal_coverage-from': [convert_from_extras, ignore_missing],
 		'temporal_coverage-to': [convert_from_extras, ignore_missing],
-		'dc:source': [convert_from_extras, ignore_missing],
-		'maj': [convert_from_extras, ignore_missing],
-		'isopen' : [ignore_missing],
-		'dcterms:references': [convert_from_extras, ignore_missing],
-		'published_by': [convert_from_groups_extra('id', 0), ignore_missing],
-		'created_by': [convert_from_groups_extra('id', 1), ignore_missing],
-		'resources': default_schema.default_resource_schema(),
+		'geographic_granularity': [convert_from_extras, ignore_missing, extract_other(commands.tags_geographic_granularity)],
 		'spatial': [convert_from_extras, ignore_missing],
 		'spatial-text': [convert_from_extras, ignore_missing],
 		'spatial-uri': [convert_from_extras, ignore_missing],
+		'dcat:granularity': [convert_from_extras, ignore_missing],
+		'dcterms:references': [convert_from_extras, ignore_missing],
+		'dc:source': [convert_from_extras, ignore_missing],
+		'maj': [convert_from_extras, ignore_missing],
+		'resources': default_schema.default_resource_schema(),
     	})
 	schema['resources'].update({
             'created': [ignore_missing],
@@ -330,6 +335,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
 			html = html + '</ul></li>'
 		stream = stream | Transformer(
                         "//div[@id='sidebar']//ul[@class='widget-list']"
+                    ).append(HTML(html))
+	if routes.get('controller') == 'user'\
+            and routes.get('action') == 'read':	
+		user = base.model.User.get(c.id)
+		groups = user.get_groups()
+		html = "<dt>Groupes</dt><dd>"
+		for group in groups :
+		   html += "<a href='/organization/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
+		html += "</dd>"
+		stream = stream | Transformer(
+                        "//div[@id='content']//dl[@class='vcard']"
                     ).append(HTML(html))
         return stream
 

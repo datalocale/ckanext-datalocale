@@ -1,3 +1,4 @@
+# -*-coding:utf-8 -*
 import ckan.logic as logic
 import ckan.lib.navl.dictization_functions as df
 import ckan.logic.validators as val
@@ -126,3 +127,30 @@ def date_to_db(value, context):
     except DateConvertError, e:
         raise Invalid(str(e))
     return value
+
+def use_other(key, data, errors, context):
+    other_key = key[-1] + '-other'
+    other_value = data.get((other_key,), '').strip()
+    if other_value:
+        data[key] = other_value
+
+def extract_other(option_list):
+
+    def other(key, data, errors, context):
+	from ckan.lib.navl.dictization_functions import missing
+        value = data[key]
+	if value : 
+	   if type(value) is list:
+	 	value = value[0]
+	   else:
+		value = value	
+        if value in option_list:
+            return
+        elif value is missing:
+            data[key] = ''
+            return
+        else:
+            data[key] = u'autre - merci de préciser'
+            other_key = key[-1] + '-other'
+            data[(other_key,)] = value
+    return other

@@ -10,7 +10,7 @@ from ckan.lib.base import c, model
 import ckan.lib.plugins
 import ckan.plugins
 from ckan.plugins import implements, SingletonPlugin
-from ckan.plugins import IActions
+from ckan.plugins import IActions, IRoutes
 import forms
 log = logging.getLogger(__name__)
 
@@ -20,6 +20,16 @@ class DatalocaleAPI(SingletonPlugin):
     """
 
     implements(IActions, inherit=True)
+
+    implements(IRoutes)
+
+    def before_map(self, map):
+	'''Fix a ckanext-organization bug'''
+        map.redirect('/organization/publisher_read', '/organization/organization_read')
+        return map
+
+    def after_map(self, map):
+        return map
 
     '''the IAction extension returns a dictionary of core actions it wants to override.'''
     def get_actions(self):
