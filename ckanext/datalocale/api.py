@@ -139,9 +139,12 @@ def datalocale_package_list(context, data_dict):
     query = query.filter(model.Package.state=='active')
     packages = query.all()
     packages_to_import = []
+    #Check if visitor can read the package
+    authorizer = ckan.authz.Authorizer()
+    action = model.Action.READ 
     for p in packages:
-	if p.is_private == False:
-		packages_to_import.append(p)
+	if p.is_private == False and authorizer.is_authorized(u'visitor', action, p):
+		   packages_to_import.append(p)
     return [getattr(p, ref_package_by) for p in packages_to_import]
 
 def datalocale_show_roles(context, data_dict):
