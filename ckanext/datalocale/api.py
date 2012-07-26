@@ -102,7 +102,6 @@ def datalocale_package_show(context, data_dict):
     additional_extras = []
     schema_keys = forms.DatalocaleDatasetForm.form_to_db_schema(forms.DatalocaleDatasetForm()).keys()
     extras = package.get('extras', [])
-    log.fatal(extras)
     for extra in extras:
       if not extra['key'] in schema_keys:
         additional_extras.append(extra)

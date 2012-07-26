@@ -275,7 +275,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                     try:
                         vocab_tags = c.pkg_dict.get(vocab, [])
                     except NotFound:
-                        vocab_tags = None
+			vocab_tags = None
 			
                     if not vocab_tags:
                         continue
@@ -292,8 +292,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
                     ).append(HTML(html))
 		try:
 		    '''Get id in the table and convert it to readable name'''
-		    publisher = c.pkg_dict.get('dct:publisher')
-		    creator = c.pkg_dict.get('dct:creator')
+		    publisher = c.pkg_dict.get('dct:publisher','')
+		    creator = c.pkg_dict.get('dct:creator','')
 		    if c.pkg_dict.get('groups') :
 			for group in c.pkg_dict.get('groups') : 
 				group_id = group.get('id','')

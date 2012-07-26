@@ -1,6 +1,7 @@
 # -*-coding:utf-8 -*
 import ckan.logic as logic
 import ckan.lib.navl.dictization_functions as df
+from ckan.lib.navl.dictization_functions import Invalid
 import ckan.logic.validators as val
 import ckan.model as model
 import re
@@ -128,8 +129,13 @@ def extract_other(option_list):
 	   else:
 		value = value	
         if value in option_list:
+	    if value ==  u'autre - merci de préciser' :
+		data[key]= ""
             return
         elif value is missing:
+            data[key] = ''
+            return
+        elif value == '':
             data[key] = ''
             return
         else:
