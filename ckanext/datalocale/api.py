@@ -11,7 +11,7 @@ import ckan.lib.plugins
 import ckan.plugins
 from ckan.plugins import implements, SingletonPlugin
 from ckan.plugins import IActions, IRoutes
-import forms
+from ckanext.datalocale import forms
 log = logging.getLogger(__name__)
 
 class DatalocaleAPI(SingletonPlugin):
@@ -92,12 +92,22 @@ def datalocale_tag_list(context, data_dict):
 def datalocale_package_show(context, data_dict):
     ckan_lang = pylons.request.environ['CKAN_LANG']
     ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
-    packages = logic.get_action('package_show')(context, data_dict)
-    theme_available = packages.get('theme_available', [])
-    themeTaxonomy = packages.get('themeTaxonomy', [])
-    packages['themeTaxonomy'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback);
-    packages['theme_available'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
-    return packages;
+    package = logic.get_action('package_show')(context, data_dict)
+    theme_available = package.get('theme_available', [])
+    themeTaxonomy = package.get('themeTaxonomy', [])
+    package['themeTaxonomy'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback);
+    package['theme_available'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
+    ''' Find extras that are not part of our schema '''
+    # find extras that are not part of our schema
+    additional_extras = []
+    schema_keys = forms.DatalocaleDatasetForm.form_to_db_schema(forms.DatalocaleDatasetForm()).keys()
+    extras = package.get('extras', [])
+    log.fatal(extras)
+    for extra in extras:
+      if not extra['key'] in schema_keys:
+        additional_extras.append(extra)
+    package['additional_extras'] = additional_extras
+    return package;
 
 def datalocale_package_show_rest(context, data_dict):
     return datalocale_package_show(context, data_dict)

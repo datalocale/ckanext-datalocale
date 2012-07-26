@@ -71,36 +71,20 @@ def datalocale_convert_to_tags(vocab):
     return callable
 
 def convert_to_groups(field, num):
-	''' 
-	Add data[key] as the first group name in data
-	'''
 	def convert(key, data, errors, context):
 		data[('groups', num, field)] = data[key]
 	return convert
 
 def convert_from_groups(field, num):
-	'''
-	Set data[key] to the first group name in data (if any exist).
-	'''
 	def convert(key, data, errors, context):
 		data[key] = data.get(('groups', num, field), None)
 	return convert
 
-def convert_from_groups_extra(field, num):
-	'''
-	Set data[key] to the first group name in data (if any exist).
-	'''
+def convert_from_groups_visibility(field):
 	def convert(key, data, errors, context):
-	    value = data.get(('groups', num, field), None)
-	    extra_number = 0
-	    for k in data.keys():
-		if k[0] == 'extras':
-		    extra_number = max(extra_number, k[1] + 1)
-            data[('extras', extra_number, 'key')] = key[0]
-            if not context.get('extras_as_string'):
-		data[('extras', extra_number, 'value')] = json.dumps(value)
-	    else:
-		data[('extras', extra_number, 'value')] = value
+		data[key] = data.get(('groups', 0, field), None)
+		if not data[key]: 
+		   data[key] = data.get(('groups', 1, field), None)
 	return convert
 
 def email_validator(value, context):
@@ -135,7 +119,6 @@ def use_other(key, data, errors, context):
         data[key] = other_value
 
 def extract_other(option_list):
-
     def other(key, data, errors, context):
 	from ckan.lib.navl.dictization_functions import missing
         value = data[key]

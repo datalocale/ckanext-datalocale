@@ -15,7 +15,7 @@ import ckan.logic.schema as default_schema
 from ckan.lib.navl.validators import ignore_missing, ignore_empty, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
 from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, \
-convert_to_groups, convert_from_groups, convert_from_groups_extra, date_to_form, date_to_db, \
+convert_to_groups, convert_from_groups, convert_from_groups_visibility, date_to_form, date_to_db, \
 extract_other, use_other
 
 log = logging.getLogger(__name__)
@@ -126,11 +126,14 @@ class DatalocaleDatasetForm(SingletonPlugin):
 	c.publishers_available = c.groups_available
 	c.creators_available = c.userobj and c.userobj.get_groups('service') or []
 	c.contributor = c.userobj
-	'''c.frequency_available = get_action('tag_list')(context, {'vocabulary_id': VOCAB_FREQUENCY})'''
 	c.frequency_available = commands.tags_frequency
 	c.dataQuality_available = commands.tags_dataQuality
 	c.temporal_granularity_available = commands.tags_temporal_granularity
 	c.geographic_granularity_available = commands.tags_geographic_granularity
+	if c.pkg_dict and c.pkg_dict.get('dct:publisher', ''): 
+		c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher')}) 
+	if c.pkg_dict and c.pkg_dict.get('dct:creator', ''): 	
+		c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator')}) 
     	try:
 		data = {'vocabulary_id': VOCAB_THEMES}
 		c.themeTaxonomy_available = _tags_and_translations(
@@ -170,27 +173,25 @@ class DatalocaleDatasetForm(SingletonPlugin):
     	schema.update({
 		'ckan_author': [unicode, ignore_missing, convert_to_extras],
 		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
-		'dct:publisher': [convert_to_groups('name', 0)],
-        	'dct:creator': [convert_to_groups('name', 1)],
-		'created_by': [],
-		'published_by': [],
+		'dct:publisher': [convert_to_groups('id', 0), convert_to_extras],
+        	'dct:creator': [convert_to_groups('id', 1), convert_to_extras],
 		'capacity': [default(u'private'), convert_to_groups('capacity', 0),  convert_to_groups('capacity', 1)],
 		'themeTaxonomy': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
 		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy')],
 		'dataQuality': [ignore_missing, convert_to_tags(VOCAB_DATAQUALITY)],
 		'dct:accrualPeriodicity': [use_other, ignore_missing, convert_to_extras],
 		'dct:accrualPeriodicity-other': [],
-		'temporal_coverage-from': [ignore_missing, ignore_empty, date_to_db, convert_to_extras],
-		'temporal_coverage-to': [ignore_missing, ignore_empty, date_to_db, convert_to_extras],
-		'geographic_granularity': [use_other, ignore_missing, convert_to_extras],
+		'temporal_coverage-from': [ignore_missing, date_to_db, convert_to_extras],
+		'temporal_coverage-to': [ignore_missing, date_to_db, convert_to_extras],
+		'geographic_granularity': [use_other, convert_to_extras],
 		'geographic_granularity-other': [],
 		'spatial': [ignore_empty, convert_to_extras],
 		'spatial-text': [ignore_empty, unicode,  convert_to_extras],
 		'spatial-uri': [ignore_empty, unicode, convert_to_extras],
 		'dcat:granularity': [ignore_missing, unicode, convert_to_extras],
-		'dcterms:references': [unicode, ignore_missing, ignore_empty, convert_to_extras],
-		'dc:source': [ignore_missing, ignore_empty, unicode, convert_to_extras],
-		'maj': [unicode, ignore_missing, ignore_empty, convert_to_extras],
+		'dcterms:references': [ignore_missing, unicode, convert_to_extras],
+		'dc:source': [ignore_missing, unicode, convert_to_extras],
+		'maj': [ignore_missing, unicode, convert_to_extras],
 		'resources': default_schema.default_resource_schema(),
     	})
         schema['groups'].update({
@@ -228,11 +229,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'type': [unicode],
 		'tags': {'__extras': [keep_extras, free_tags_only]},
 		'ckan_author': [convert_from_extras, ignore_missing],
-		'published_by': [convert_from_groups_extra('id', 0), ignore_missing],
-		'created_by': [convert_from_groups_extra('id', 1), ignore_missing],
-		'dct:publisher': [convert_from_groups('name', 0)],
-		'dct:creator': [convert_from_groups('name', 1)],
-		'capacity': [convert_from_groups('capacity', 0), convert_from_groups('capacity', 1)],
+		'dct:publisher': [convert_from_extras],
+		'dct:creator': [convert_from_extras],
+		'capacity': [convert_from_groups_visibility('capacity')],
 		'dct:contributor': [convert_from_extras, ignore_missing],
 		'themeTaxonomy': [convert_from_tags(VOCAB_THEMES), ignore_missing],
 		'theme_available': [datalocale_convert_from_tags('themeTaxonomy'), ignore_missing],
@@ -293,29 +292,21 @@ class DatalocaleDatasetForm(SingletonPlugin):
                     ).append(HTML(html))
 		try:
 		    '''Get id in the table and convert it to readable name'''
-		    if c.pkg_dict.get('groups') and c.pkg_dict.get('groups')[0]:	
-			publisher = c.pkg_dict.get('groups')[0]
-			if publisher : 
-				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % publisher.get('title', '')
-				stream = stream | Transformer(
-				        "//tr[@id='published_by']//td[@class='dataset-details']"
-				    ).replace(HTML(html_bis))
-			else :
-				stream = stream
-		    '''Get id in the table and convert it to readable name'''	
-		    try: 
-		      if c.pkg_dict.get('groups') and c.pkg_dict.get('groups')[1]:
-			creator = c.pkg_dict.get('groups')[1]
-			if creator : 
-				html_bis = '<td class="dataset-details" property="rdf:value">%s</td>' % creator.get('title', '')
-				stream = stream | Transformer(
-				        "//tr[@id='created_by']//td[@class='dataset-details']"
-				    ).replace(HTML(html_bis))
-			else :
-				stream = stream
-		    except IndexError:
-			pass
-
+		    publisher = c.pkg_dict.get('dct:publisher')
+		    creator = c.pkg_dict.get('dct:creator')
+		    if c.pkg_dict.get('groups') :
+			for group in c.pkg_dict.get('groups') : 
+				group_id = group.get('id','')
+				div = ""
+				if group_id == publisher:
+				  div = 'dct:publisher'
+				if group_id == creator: 
+				  div = 'dct:creator'
+				html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/organization/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
+				if div:
+				  stream = stream | Transformer(
+				        "//tr[@id='%s']//td[@class='dataset-details']" % div
+				  ).replace(HTML(html_bis))
 		except NotFound:
 			stream = stream
 

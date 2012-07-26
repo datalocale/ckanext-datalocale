@@ -132,7 +132,7 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
         dataType: 'json',
         data: '{"id": "'+id+'"}',
         success: successfulQuery,
-        error: unsuccessfulQuery,
+        error: unsuccessfulQuery
       });
     }
     else {
