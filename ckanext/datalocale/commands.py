@@ -31,6 +31,9 @@ class DatalocaleCommand(cli.CkanCommand):
     '''
     Commands:
 
+	paster datalocale create-all-vocab -c <config>
+	paster datalocale delete-all-vocab -c <config>
+
         paster datalocale create-theme-vocab -c <config>
         paster datalocale create-frequency-vocab -c <config>
         paster datalocale create-dataQuality-vocab -c <config>
@@ -73,6 +76,8 @@ class DatalocaleCommand(cli.CkanCommand):
 	    self.create_geographic_granularity_vocab()
 	elif cmd == 'create-temporal-vocab':
 	    self.create_temporal_vocab()
+	elif cmd == 'create-all-vocab':
+	    self.create_all_vocab()
 	elif cmd == 'delete-theme-vocab':
 	    self.delete_theme_vocab()
 	elif cmd == 'delete-frequency-vocab':
@@ -83,54 +88,72 @@ class DatalocaleCommand(cli.CkanCommand):
 	    self.delete_geographic_granularity_vocab()
 	elif cmd == 'delete-temporal-vocab':
 	    self.delete_temporal_vocab()
+	elif cmd == 'delete-all-vocab':
+	    self.delete_all_vocab()
         else:
             log.error('Command "%s" not recognized' % (cmd,))
-			
+	
+    def create_all_vocab(self):
+	self.create_theme_vocab()
+	self.create_frequency_vocab()
+	self.create_dataQuality_vocab()
+	self.create_geographic_granularity_vocab()
+	self.create_temporal_vocab()
+
+    def delete_all_vocab(self):
+	self.delete_theme_vocab()
+	self.delete_frequency_vocab()
+	self.delete_dataQuality_vocab()
+	self.delete_geographic_granularity_vocab()
+	self.delete_temporal_vocab()
+	
     def create_theme_vocab(self):
-	log.info('theme_contexte_historique.xml')
+	log.info('Creation in progress...')
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_contexte_historique.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
-	log.info('theme_actions.xml')
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_actions.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
-	log.info('theme_matieres.xml')
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_matieres.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
-	log.info('theme_typologie_documentaire.xml')
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_typologie_documentaire.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
+	log.info('Vocabulary created : theme')
 
     def delete_theme_vocab(self):
 	self._delete_special_vocab(VOCAB_THEMES)
+	log.info('Vocabulary deleted : theme')
 
     def create_frequency_vocab(self):
         self.create_vocab_from_tags(VOCAB_FREQUENCY, tags_frequency)
-	log.info('Vocabulary created')
+	log.info('Vocabulary created : frequency')
 
     def delete_frequency_vocab(self):
 	self._delete_vocab(VOCAB_FREQUENCY)
+	log.info('Vocabulary deleted : frequency')
 
     def create_dataQuality_vocab(self):
         self.create_vocab_from_tags(VOCAB_DATAQUALITY, tags_dataQuality)
-	log.info('Vocabulary created')
+	log.info('Vocabulary created : dataQuality')
 
     def delete_dataQuality_vocab(self):
 	self._delete_vocab(VOCAB_DATAQUALITY)
+	log.info('Vocabulary deleted : dataQuality')
 
     def create_geographic_granularity_vocab(self):
         self.create_vocab_from_tags(VOCAB_GEOGRAPHIC_GRANULARITY, tags_geographic_granularity)
-	log.info('Vocabulary created')
+	log.info('Vocabulary created : geographic granularity')
 
     def delete_geographic_granularity_vocab(self):
 	self._delete_vocab(VOCAB_GEOGRAPHIC_GRANULARITY)
+	log.info('Vocabulary deleted : geographic granularity')
 
     def create_temporal_vocab(self):
         self.create_vocab_from_tags(VOCAB_TEMPORAL_GRANULARITY, tags_temporal_granularity)
-        log.info('Vocabulary created')
+        log.info('Vocabulary created : temporal')
 
     def delete_temporal_vocab(self):
         self._delete_vocab(VOCAB_TEMPORAL_GRANULARITY)
-        log.info('Vocabulary deleted')
+        log.info('Vocabulary deleted : temporal')
 
     def create_vocab_from_tags(self, vocab_name, tags):
         context = {'model': model, 'session': model.Session,
@@ -148,7 +171,7 @@ class DatalocaleCommand(cli.CkanCommand):
 		}
 		try:
 		    logic.get_action('tag_create')(context, tag)
-		    log.fatal('Tag "%s" created' % tag)
+		    log.info('Tag "%s" created' % tag)
 		except logic.ValidationError, ve:
 		    ''' Ignore errors about the tag already belong to the vocab
 		    	if it's a different error, reraise'''
@@ -224,7 +247,7 @@ class DatalocaleCommand(cli.CkanCommand):
 		except logic.ValidationError, ve:
 			if not 'already belongs to vocabulary' in str(ve.error_dict):
 				raise ve
-	    		log.info('Tag "%s" already belongs to vocab "%s"' % (concept_uri, vocab_theme['name']))	
+	    		log.fatal('Tag "%s" already belongs to vocab "%s"' % (concept_uri, vocab_theme['name']))	
 			'''Translation of the THEME CONCEPT tag'''
 	    	translations.append({"term": concept_uri,
 				"term_translation": concept_title,
@@ -253,19 +276,27 @@ class DatalocaleCommand(cli.CkanCommand):
     def _delete_vocab(self, vocab_name):
         log.info('Deleting vocabulary "%s"' % vocab_name)
         context = {'model': model, 'session': model.Session, 'user': self.user_name}
-        vocab = logic.get_action('vocabulary_show')(context, {'id': vocab_name})
-        for tag in vocab.get('tags'):
-            logic.get_action('tag_delete')(context, {'id': tag['id']})
-        logic.get_action('vocabulary_delete')(context, {'id': vocab['id']})
+	try:
+          vocab = logic.get_action('vocabulary_show')(context, {'id': vocab_name})
+          for tag in vocab.get('tags'):
+              logic.get_action('tag_delete')(context, {'id': tag['id']})
+          logic.get_action('vocabulary_delete')(context, {'id': vocab['id']})
+	except ckan.logic.NotFound:
+	   log.fatal('Vocabulary not found %s' % vocab_name)
+	   pass
 
     def _delete_special_vocab(self, vocab_name):
         log.info('Deleting vocabulary "%s"' % vocab_name)
         context = {'model': model, 'session': model.Session, 'user': self.user_name}
-        vocab = logic.get_action('vocabulary_show')(context, {'id': vocab_name})
-        for tag in vocab.get('tags'):
+	try:
+          vocab = logic.get_action('vocabulary_show')(context, {'id': vocab_name})
+          for tag in vocab.get('tags'):
 	    sub_vocab = logic.get_action('vocabulary_show')(context, {'id': tag['name']})
 	    for sub_tag in sub_vocab.get('tags'):
 		logic.get_action('tag_delete')(context, {'id': sub_tag['id']})
 	    logic.get_action('vocabulary_delete')(context, {'id': sub_vocab['id']})
             logic.get_action('tag_delete')(context, {'id': tag['id']})
-        logic.get_action('vocabulary_delete')(context, {'id': vocab['id']})
+          logic.get_action('vocabulary_delete')(context, {'id': vocab['id']})
+	except ckan.logic.NotFound:
+	   log.fatal('Vocabulary not found %s' % vocab_name)
+	   pass
