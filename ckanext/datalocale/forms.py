@@ -130,10 +130,18 @@ class DatalocaleDatasetForm(SingletonPlugin):
 	c.dataQuality_available = commands.tags_dataQuality
 	c.temporal_granularity_available = commands.tags_temporal_granularity
 	c.geographic_granularity_available = commands.tags_geographic_granularity
-	if c.pkg_dict and c.pkg_dict.get('dct:publisher', ''): 
-		c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher')}) 
-	if c.pkg_dict and c.pkg_dict.get('dct:creator', ''): 	
-		c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator')}) 
+	try : 
+	  if c.pkg_dict: 
+	    if c.pkg_dict.get('dct:publisher', ''): 
+		c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher','')}) 
+	except NotFound:
+		c.current_publisher = None
+	try:
+	  if c.pkg_dict :  
+	    if c.pkg_dict.get('dct:creator', ''): 	
+		c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator','')})
+	except NotFound : 
+		c.current_creator = None
     	try:
 		data = {'vocabulary_id': VOCAB_THEMES}
 		c.themeTaxonomy_available = _tags_and_translations(
@@ -141,7 +149,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		)
 	except NotFound:
 		c.themeTaxonomy_available = []
-	
+		pass
         ''' Find extras that are not part of our schema '''
         # find extras that are not part of our schema
         c.additional_extras = []
@@ -169,9 +177,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
         Returns the schema for mapping package data from a form to a format
         suitable for the database.
         """
+	try:
+	  if c.userobj : 
+	    ckan_author_default = c.userobj.id
+	  else : 
+	    ckan_author_default = ""
+	except NotFound:
+	  ckan_author_default = ""
+	  pass
     	schema = default_schema.package_form_schema()
     	schema.update({
-		'ckan_author': [unicode, ignore_missing, convert_to_extras],
+		'ckan_author': [unicode, default(ckan_author_default), not_empty, convert_to_extras],
 		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
 		'dct:publisher': [convert_to_groups('id', 0), convert_to_extras],
         	'dct:creator': [convert_to_groups('id', 1), convert_to_extras],
