@@ -70,6 +70,13 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <label for="name" class="control-label">Image URL:</label>
+    <div class="controls">
+      <input id="image_url" name="image_url" type="text" value="${data.get('image_url', '')}"/> <a href="${c.site_url}/storage/upload" target="_blank" class="btn">Uploader un fichier dans CKAN</a>
+      <p>L'url de l'image de ce dataset</p>
+    </div>
+  </div>
 
   <div class="control-group homepage-field">
     <label class="control-label" for="url">Home Page</label>
@@ -455,7 +462,7 @@ if not contributor:
     </div>
   </div>
 
-  <div class="control-group" style="display:none;">
+  <div class="control-group" style="">
     <label class="control-label field_opt" for="ckan_author">Créateur du jeu de données</label>
     <div class="controls">
       <input id="ckan_author" name="ckan_author" type="text" value="${contributor_id}" class="uneditable-input" />

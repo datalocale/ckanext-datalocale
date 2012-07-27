@@ -60,6 +60,11 @@ extras = dict(c.pkg_extras)
         </tr>
       </thead>
       <tbody>
+        <tr py:if="c.pkg_dict.get('openness_score', '')">
+          <td class="dataset-label">Score</td>
+          <td class="dataset-details" property="foaf:homepage">${c.pkg_dict.get('openness_score_html', '')}</td>
+        </tr>
+
         <tr py:if="c.pkg.url">
           <td class="dataset-label">Page d'accueil</td>
           <td class="dataset-details" property="foaf:homepage">${c.pkg_url_link}</td>
@@ -150,7 +155,7 @@ extras = dict(c.pkg_extras)
         </tr>
 <?python 
 extras_keys = {'dc:source': 'Source', 'dcat:granularity':'Granularité', 'dct:contributor':'Contributeur', 'maj':'Mise à jour', 'dct:temporal' : 'Couverture temporelle'}
-extras_ignore = ['ckan_author', 'dct:accrualPeriodicity', 'dcterms:references', 'geographic_granularity', 'temporal_coverage-from', 'temporal_coverage-to', 'spatial', 'spatial-text', 'spatial-uri', 'dct:creator', 'dct:publisher']
+extras_ignore = ['ckan_author', 'dct:accrualPeriodicity', 'dcterms:references', 'geographic_granularity', 'temporal_coverage-from', 'temporal_coverage-to', 'spatial', 'spatial-text', 'spatial-uri', 'dct:creator', 'dct:publisher', 'image_url']
 ?>
         <tr py:for="i, (key, value) in enumerate(c.pkg_extras)"
           rel="dc:relation" resource="_:extra${i}" id="${_(key)}" py:if="key not in extras_ignore and value">

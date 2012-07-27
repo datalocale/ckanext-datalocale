@@ -22,7 +22,7 @@ from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer, IGenshiStreamFil
 from ckan.plugins import implements, SingletonPlugin
 from ckan.logic import check_access
 
-from ckan.lib.navl.validators import (ignore_missing,
+from ckan.lib.navl.validators import (ignore_empty, ignore_missing,
                                       not_empty,
                                       empty,
                                       ignore,
@@ -132,8 +132,9 @@ class DatalocaleServiceForm(SingletonPlugin):
         """
 	schema = group_form_schema()
 	schema.update({
-		'foaf:name': [unicode, convert_to_extras, ignore_missing],
+		'image_url': [ignore_missing, convert_to_extras],
     	})
+	log.fatal(schema)
         return schema
 
     def db_to_form_schema(self):
@@ -143,7 +144,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         """
 	schema = group_form_schema()
 	schema.update({
-		'foaf:name': [convert_from_extras, ignore_missing],
+		'image_url': [convert_from_extras, ignore_missing],
     	})
 	return schema
 

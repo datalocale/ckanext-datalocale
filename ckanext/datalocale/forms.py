@@ -15,8 +15,8 @@ import ckan.logic.schema as default_schema
 from ckan.lib.navl.validators import ignore_missing, ignore_empty, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
 from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, \
-convert_to_groups, convert_from_groups, convert_from_groups_visibility, date_to_form, date_to_db, \
-extract_other, use_other
+convert_to_groups, convert_from_groups_visibility, date_to_form, date_to_db, \
+extract_other, use_other, get_score
 
 log = logging.getLogger(__name__)
 
@@ -209,6 +209,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dc:source': [ignore_missing, unicode, convert_to_extras],
 		'maj': [ignore_missing, unicode, convert_to_extras],
 		'resources': default_schema.default_resource_schema(),
+		'image_url': [ignore_missing, convert_to_extras],
     	})
         schema['groups'].update({
             'capacity': [ignore_missing, unicode]
@@ -264,6 +265,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dc:source': [convert_from_extras, ignore_missing],
 		'maj': [convert_from_extras, ignore_missing],
 		'resources': default_schema.default_resource_schema(),
+		'openness_score': [get_score('openness_score'), ignore_missing],
+		'image_url': [convert_from_extras, ignore_missing],
     	})
 	schema['resources'].update({
             'created': [ignore_missing],

@@ -1,5 +1,6 @@
 # -*-coding:utf-8 -*
 import ckan.logic as logic
+from logic import NotFound
 import ckan.lib.navl.dictization_functions as df
 from ckan.lib.navl.dictization_functions import Invalid
 import ckan.logic.validators as val
@@ -76,16 +77,26 @@ def convert_to_groups(field, num):
 		data[('groups', num, field)] = data[key]
 	return convert
 
-def convert_from_groups(field, num):
-	def convert(key, data, errors, context):
-		data[key] = data.get(('groups', num, field), None)
-	return convert
-
 def convert_from_groups_visibility(field):
 	def convert(key, data, errors, context):
 		data[key] = data.get(('groups', 0, field), None)
 		if not data[key]: 
 		   data[key] = data.get(('groups', 1, field), None)
+	return convert
+
+def get_score(field):
+	def convert(key, data, errors, context):
+	  try:
+		from ckanext.qa.reports import five_stars
+		from ckanext.qa.html import get_star_html
+		package_id = context['package'].id
+		score_dict = five_stars(package_id)
+		if score_dict : 
+			score = score_dict[0].get(field)
+			data[key] = int(score)
+			data[('openness_score_html',)] = get_star_html(int(score), "")
+	  except NotFound, IndexError:
+		   pass
 	return convert
 
 def email_validator(value, context):

@@ -50,6 +50,15 @@
       <p class="field_error" py:if="errors.get('name', '')">${errors.get('name', '')}</p>
     </div>
   </div>
+
+  <div class="control-group">
+    <label for="image_url" class="control-label">Image URL:</label>
+    <div class="controls">
+      <input id="image_url" name="image_url" type="text" value="${data.get('image_url', '')}"/> <a href="${c.site_url}/storage/upload" target="_blank" class="btn">Uploader un fichier dans CKAN</a>
+      <p>L'url de l'image de ce service</p>
+    </div>
+  </div>
+
   <div class="control-group description-field">
     <label class="control-label" for="notes">Description</label>
     <div class="controls">
