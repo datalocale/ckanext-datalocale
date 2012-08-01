@@ -8,18 +8,18 @@
 
   <py:match path="minornavigation">
     <ul py:if="c.group" class="nav nav-pills">
-      <li py:attrs="{'class':'active'} if c.action=='read' else {}">${h.subnav_named_route(c, h.icon('group') + _('View'), 'service_read',controller='group', action='read', id=c.group.name)}</li>
-      <li py:attrs="{'class':'active'} if c.action=='history' else {}">${h.subnav_named_route(c, h.icon('page_white_stack') + _('History'), 'service_action', controller='group', action='history', id=c.group.name)}</li>
+      <li py:attrs="{'class':'active'} if c.action=='read' else {}">${h.subnav_named_route(c, h.icon('group') + _('View'), 'organization_read',controller='group', action='read', id=c.group.name)}</li>
+      <li py:attrs="{'class':'active'} if c.action=='history' else {}">${h.subnav_named_route(c, h.icon('page_white_stack') + _('History'), 'organization_action', controller='group', action='history', id=c.group.name)}</li>
       <li class="divider" py:if="h.check_access('group_update',{'id':c.group.id})">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
       <li py:attrs="{'class':'active'} if c.action=='edit' else {}" py:if="h.check_access('group_update',{'id':c.group.id})">
         <!-- TODO: We need to be able to change the URL below based on the type of the group -->
-        ${h.subnav_named_route( c,h.icon('group_edit') + _('Edit'), 'service_action', action='edit', id=c.group.name )}
+        ${h.subnav_named_route( c,h.icon('group_edit') + _('Edit'), 'organization_action', action='edit', id=c.group.name )}
       </li>
       <li class="${'active' if c.action=='apply' else ''} ckan-logged-in" py:if="c.userobj and not c.userobj.is_in_group(c.group)">
         <a href="${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='apply')}?parent=${c.group.name}">${h.icon('group_edit') + _('Join')}</a>
       </li>
       <li py:attrs="{'class':'active'} if c.action=='authz' else {}" py:if="h.check_access('group_edit_permissions',{'id':c.group.id})">
-        ${h.subnav_named_route(c, h.icon('lock') + _('Authorization'), 'service_action', controller='group', action='authz', id=c.group.name)}
+        ${h.subnav_named_route(c, h.icon('lock') + _('Authorization'), 'organization_action', controller='group', action='authz', id=c.group.name)}
       </li>
 
       <!-- li class="action">
@@ -29,8 +29,9 @@ controller='group', action='history', id=c.group.name, format='atom', days=7)}
     </ul>
     <ul py:if="not c.group" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + _('List Services'), "service_index", action="index" )}
+        ${h.subnav_named_route(c, h.icon('group') + _('List Organizations'), "organization_index", action="index" )}
       </li>
+
     </ul>
   </py:match>
 

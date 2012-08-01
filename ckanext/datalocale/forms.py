@@ -328,24 +328,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
 				  ).replace(HTML(html_bis))
 		except NotFound:
 			stream = stream
-
-	if routes.get('controller') == 'group'\
-            and routes.get('action') == 'read':	
-		parents = c.group.get_groups('organization')
-		html = ''
-		if parents:
-			parent = parents[0]
-			html = html + '<li><h3>Parent</h3><ul class="no-break"><li>%s</li></ul></li>' % parent.name
-		children = c.group.get_children_groups('organization')
-		if children:
-			html = html + '<li><h3>Groupes fils</h3><ul class="no-break">'
-		for child in children :
-			html = html + '<li>%s</li>' % child['title']
-		if children:
-			html = html + '</ul></li>'
-		stream = stream | Transformer(
-                        "//div[@id='sidebar']//ul[@class='widget-list']"
-                    ).append(HTML(html))
 	if routes.get('controller') == 'user'\
             and routes.get('action') == 'read':	
 		user = base.model.User.get(c.id)

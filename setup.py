@@ -25,11 +25,15 @@ setup(
 	],
 	entry_points=\
 	"""
+        [ckan.controllers]
+	organization_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
+
         [ckan.plugins]
 	# Add plugins here, eg
 	# myplugin=ckanext.myextension:PluginClass
 	datalocale_datasetform=ckanext.datalocale.forms:DatalocaleDatasetForm
 	datalocale_serviceform=ckanext.datalocale.service_forms:DatalocaleServiceForm
+	datalocale_organizationform=ckanext.datalocale.organization_forms:DatalocaleOrganizationForm
 	datalocale_api=ckanext.datalocale.api:DatalocaleAPI
 
 	[paste.paster_command]

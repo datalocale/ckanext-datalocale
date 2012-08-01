@@ -24,8 +24,6 @@ class DatalocaleAPI(SingletonPlugin):
     implements(IRoutes)
 
     def before_map(self, map):
-	'''Fix a ckanext-organization bug'''
-        map.redirect('/organization/publisher_read', '/organization/organization_read')
         return map
 
     def after_map(self, map):
@@ -117,9 +115,10 @@ def datalocale_group_show(context, data_dict):
     children = group.get_children_groups('organization')
     parent = group.get_groups('organization')
     if parent and parent[0] : 
-	    groups['parent'] = [ { "id": parent[0].id, "name": parent[0].name, "title": parent[0].title, "description": parent[0].description, 
+        groups['parent'] = [ { "id": parent[0].id, "name": parent[0].name, "title": parent[0].title, "description": parent[0].description, 
 		"type": parent[0].type, "image_url": parent[0].image_url, "approval_status": parent[0].approval_status, 
 		"state": parent[0].state, "revision_id": parent[0].revision_id}]
+    groups['children'] = children
     return groups
 
 def datalocale_user_create(context, data_dict):

@@ -22,7 +22,7 @@ from ckan.lib.navl.validators import (ignore_empty, ignore_missing,
 
 log = logging.getLogger(__name__)
 
-class DatalocaleServiceForm(SingletonPlugin):
+class DatalocaleOrganizationForm(SingletonPlugin):
     """
     This plugin implements an IGroupForm for form associated with a
     publisher group. ``IConfigurer`` is used to add the local template
@@ -46,11 +46,22 @@ class DatalocaleServiceForm(SingletonPlugin):
                 config.get('extra_template_paths', '')])
 
         # Override /group/* as the default groups urls
-        #config['ckan.default.group_type'] = 'service'
+        config['ckan.default.group_type'] = 'organization'
 
     def before_map(self, map):
         controller = 'ckanext.datalocale.organization_controllers:DatalocaleOrganizationController'
-        map.connect('/service/users/{id}', controller=controller, action='users')
+        map.connect('/organization/users/{id}', controller=controller,
+                    action='users')
+        map.connect('/organization/apply/{id}', controller=controller,
+                    action='apply')
+        map.connect('/organization/apply', controller=controller,
+                    action='apply')
+        map.connect('/organization/edit/{id}', controller='group',
+                    action='edit')
+        map.connect('/organization/new', controller='group', action='new')
+        map.connect('/organization/{id}', controller=controller, action='read')
+        map.connect('/organization',  controller='group', action='index')
+        map.redirect('/organization/publisher_read', '/organization/organization_read')
         return map
 
     def after_map(self, map):
@@ -61,14 +72,14 @@ class DatalocaleServiceForm(SingletonPlugin):
         Returns a string representing the location of the template to be
         rendered for the new page
         """
-        return 'forms/services/service_new.html'
+        return 'forms/organizations/organization_new.html'
 
     def index_template(self):
         """
         Returns a string representing the location of the template to be
         rendered for the index page
         """
-        return 'forms/services/service_index.html'
+        return 'forms/organizations/organization_index.html'
 
 
     def read_template(self):
@@ -76,14 +87,14 @@ class DatalocaleServiceForm(SingletonPlugin):
         Returns a string representing the location of the template to be
         rendered for the read page
         """
-        return 'forms/services/service_read.html'
+        return 'forms/organizations/organization_read.html'
 
     def history_template(self):
         """
         Returns a string representing the location of the template to be
         rendered for the read page
         """
-        return 'forms/services/service_history.html'
+        return 'forms/organizations/organization_history.html'
 
 
     def group_form(self):
@@ -91,7 +102,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         Returns a string representing the location of the template to be
         rendered.  e.g. "forms/group_form.html".
         """
-        return 'forms/services/service_form.html'
+        return 'forms/organizations/organization_form.html'
 
     def group_types(self):
         """
@@ -104,7 +115,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         attempts to register more than one plugin instance to a given group
         type will raise an exception at startup.
         """
-        return ["service"]
+        return ["organization"]
 
     def is_fallback(self):
         """
@@ -123,7 +134,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         """
         schema = default_schema.group_form_schema()
         schema.update({
-        'foaf:name': [ignore_missing, convert_to_extras_groupform],
+		'foaf:name': [ignore_missing, convert_to_extras_groupform],
         'url': [ignore_missing, convert_to_extras_groupform],
         'mail': [ignore_missing, convert_to_extras_groupform],
         'phone': [ignore_missing, convert_to_extras_groupform],
@@ -131,7 +142,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         'locality': [ignore_missing, convert_to_extras_groupform],
         'postal-code': [ignore_missing, convert_to_extras_groupform],
         'country-name': [ignore_missing, convert_to_extras_groupform],
-        })
+    	})
         return schema
 
     def db_to_form_schema(self):
@@ -141,7 +152,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         """
         schema = default_schema.group_form_schema()
         schema.update({
-        'foaf:name': [convert_from_extras_groupform, ignore_missing],
+		'foaf:name': [convert_from_extras_groupform, ignore_missing],
         'url': [convert_from_extras_groupform, ignore_missing],
         'mail': [convert_from_extras_groupform, ignore_missing],
         'phone': [convert_from_extras_groupform, ignore_missing],
@@ -149,7 +160,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         'locality': [convert_from_extras_groupform, ignore_missing],
         'postal-code': [convert_from_extras_groupform, ignore_missing],
         'country-name': [convert_from_extras_groupform, ignore_missing],
-        })
+    	})
         return schema
 
     def check_data_dict(self, data_dict):
@@ -158,7 +169,10 @@ class DatalocaleServiceForm(SingletonPlugin):
 
         raise a DataError if not.
         """
-
+    def db_to_form_schema_options(self, options):
+        schema = self.db_to_form_schema()
+        return schema
+    
     def setup_template_variables(self, context, data_dict):
         """
         Add variables to c just prior to the template being rendered. We should
@@ -168,6 +182,11 @@ class DatalocaleServiceForm(SingletonPlugin):
         c.user_groups = c.userobj.get_groups('service')
         local_ctx = {'model': model, 'session': model.Session,
                    'user': c.user or c.author}
+        if c.group:
+            data_dict = {'id': c.group.id}
+            c.group_dict = logic.get_action('group_show')(context, data_dict)
+        else :
+            c.group_dict = None
 
         try:
             check_access('group_create', local_ctx)
@@ -185,12 +204,14 @@ class DatalocaleServiceForm(SingletonPlugin):
             if grps:
                 c.parent = grps[0]
             c.users = group.members_of_type(model.User)
+            c.children_organization = group.get_children_groups('organization')
+            c.children_services = group.get_children_groups('service')
 
         # find extras that are not part of our schema
         c.additional_extras = []
         schema_keys = self.form_to_db_schema().keys()
-        if c.pkg_dict:
-            extras = c.pkg_dict.get('extras', [])
+        if c.group_dict:
+            extras = c.group_dict.get('extras', [])
             for extra in extras:
                 if not extra['key'] in schema_keys:
                     c.additional_extras.append(extra)
@@ -200,19 +221,19 @@ class DatalocaleServiceForm(SingletonPlugin):
         #Add button to the navbar
         if routes.get('controller') == 'group' \
             and routes.get('action') == 'index':
-            route = h.subnav_named_route(c, h.icon('group_add') + _('Ajouter un service'), "service_new", action='new')
-            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _('Se connecter pour ajouter un service'), "service_new", action='new')
+            route = h.subnav_named_route(c, h.icon('group_add') + _('Ajouter une organisation'), "organization_new", action='new')
+            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _('Se connecter pour ajouter une organisation'), "organization_new", action='new')
             html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
             stream = stream | Transformer(
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
-            if routes.get('controller') == 'group' and routes.get('action') == 'edit':
-                html = ''
+        if routes.get('controller') == 'group' \
+            and routes.get('action') == 'edit':
                 stream = stream | Transformer(
                         "//div[@id='minornavigation']//li[@class='dropdown ']"
                     ).remove()
         #Add group hierarchy in group view sidebar  
-        if routes.get('controller') == 'group' \
+        if routes.get('controller') == 'ckanext.datalocale.organization_controllers:DatalocaleOrganizationController' \
             and routes.get('action') == 'read':
                 children_organizations = c.group.get_children_groups('organization')
                 children_services = c.group.get_children_groups('service')

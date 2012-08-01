@@ -154,3 +154,25 @@ def extract_other(option_list):
             other_key = key[-1] + '-other'
             data[(other_key,)] = value
     return other
+
+def convert_to_extras_groupform(key, data, errors, context):
+    # get current number of extras
+    if data[key]:
+	    extra_number = 0
+	    for k in data.keys():
+		if k[0] == 'extras':
+		    extra_number = max(extra_number, k[1] + 1)
+	    # add a new extra
+	    data[('extras', extra_number, 'key')] = key[0]
+	    if not context.get('extras_as_string'):
+		data[('extras', extra_number, 'value')] = json.dumps(data[key])
+	    else:
+		data[('extras', extra_number, 'value')] = data[key]
+
+def convert_from_extras_groupform(key, data, errors, context):
+    for k in data.keys():
+        if (k[0] == 'extras' and
+            k[-1] == 'key' and
+            data[k] == key[-1]):
+            # add to top level
+            data[key] = data[('extras', k[1], 'value')]

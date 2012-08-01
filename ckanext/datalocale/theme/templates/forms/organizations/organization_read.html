@@ -12,7 +12,7 @@
     from pylons import config
     from ckan import model
 
-    if config.get('ckan.auth.profile', '') == 'service':
+    if config.get('ckan.auth.profile', '') == 'organization':
         group_administrators = c.group.members_of_type(model.User, 'admin')
     else:
         group_administrators = c.group_admins
@@ -98,7 +98,7 @@
     </div>
   </py:match>
 
-  <xi:include href="service_layout.html" />
+  <xi:include href="organization_layout.html" />
 </html>
 
 

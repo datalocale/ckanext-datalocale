@@ -1,14 +1,14 @@
-<div class="tabbable tabs-left service-edit-tabs" xmlns:i18n="http://genshi.edgewall.org/i18n"
+<div class="tabbable tabs-left organization-edit-tabs" xmlns:i18n="http://genshi.edgewall.org/i18n"
     xmlns:py="http://genshi.edgewall.org/"
     xmlns:xi="http://www.w3.org/2001/XInclude">
   <ul class="nav nav-tabs" py:if="c.action !='new'">
     <li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>
     <li><a data-toggle="tab" href="#further-information">Utilisateurs</a></li>
+    <li><a data-toggle="tab" href="#foaf">Informations de contact</a></li>
     <li><a data-toggle="tab" href="#extras">Extras</a></li>
-    <li><a data-toggle="tab" href="#foaf">FOAF</a></li>
   </ul>
 
-<form id="service-edit" action="" method="post"
+<form id="organization-edit" action="" method="post"
     class="form-horizontal tab-content ${'has-errors' if errors else ''}"
     xmlns:i18n="http://genshi.edgewall.org/i18n"
     xmlns:py="http://genshi.edgewall.org/"
@@ -22,12 +22,12 @@
 </ul>
 </div>
 
-<input type="hidden" id="type" name="type" value="service" />
+<input type="hidden" id="type" name="type" value="organization" />
 <input type="hidden" id="approval_status" name="approval_status" value="pending" />
 
 <fieldset class="tab-pane fade active in" id="basic-information">
  <div class="control-group title-field">
-    <label class="control-label" for="title">Nom du service</label>
+    <label class="control-label" for="title">Nom de l'organisation</label>
     <div class="controls">
       <input id="title"
         class="js-title"
@@ -55,18 +55,10 @@
     <label for="image_url" class="control-label">Image URL:</label>
     <div class="controls">
       <input id="image_url" name="image_url" type="text" value="${data.get('image_url', '')}"/> <a href="${c.site_url}/storage/upload" target="_blank" class="btn">Uploader un fichier dans CKAN</a>
-      <p>L'url de l'image de ce service</p>
+      <p>L'url de l'image de cette organisation</p>
     </div>
   </div>
-  <div class="state-field control-group" py:if="c.is_sysadmin or c.auth_for_change_state">
-    <label for="" class="control-label">State</label>
-    <div class="controls">
-      <select id="state" name="state" >
-        <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
-        <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
-      </select>
-    </div>
-  </div>
+
   <div class="control-group description-field">
     <label class="control-label" for="notes">Description</label>
     <div class="controls">
@@ -75,18 +67,18 @@
   </div>
   <py:if test="c.is_superuser_or_groupadmin">
   <div class="control-group groups-field">
-    <label class="control-label" for="groups">Entité parente</label>
+    <label class="control-label" for="groups">Organisation parente</label>
     <div class="controls">
         <select id="parent" name="parent" class="chzn-select" placeholder="Choisir l'organisation parente">
           <option value="">(None)</option>
-            <py:for each="pp in c.possible_parents">
+          <py:for each="pp in c.possible_parents">
             <option py:if="pp.type=='organization'" value="${pp.id}" py:attrs="{'selected': 'selected' if c.parent and pp.id == c.parent.id else None}">${pp.title}</option>
-            </py:for>
-            <py:if test="c.parent">
-          	<py:if test="not filter(lambda obj: obj.name == c.parent.name, c.possible_parents)">
+          </py:for>
+          <py:if test="c.parent">
+          <py:if test="not filter(lambda obj: obj.name == c.parent.name, c.possible_parents)">
 	     	<option selected="selected" value="${c.parent.id}">${c.parent.title}</option>
-	   	  	</py:if>
-	   	  	</py:if>
+	   	  </py:if>
+	   	  </py:if>
         </select>
       <em py:if="not c.possible_parents">Cannot add any organizations.</em>
     </div>
@@ -104,8 +96,7 @@
   </div>
   </py:if>
 </fieldset>
-
-<fieldset class="tab-pane" id="extras" py:if="c.action !='new'">
+<fieldset id="extras"  class="tab-pane"  py:if="c.action !='new'">
   <h3>Extras</h3>
   <dl>
     <py:with vars="extras = c.additional_extras">
@@ -162,32 +153,14 @@
   <table class="table table-bordered table-striped table-condensed" py:if="data.get('users')">  
     <tr><td>Nom</td><td>Type</td></tr>
     <py:for each="num, user in enumerate(data.get('users'))">
-	<tr><td><label for="users__${num}__name">${user['name']} </label></td><td>${user['capacity']}<input type="hidden" name="users__${num}__name" value="${user['name']}"/>
+	<tr><td><label for="users__${num}__name">${user['name']} </label></td><td>${user['capacity']}
+		<input type="hidden" name="users__${num}__name" value="${user['name']}"/>
 		<input type="hidden" name="users__${num}__capacity" value="${user['capacity']}"/></td></tr>
     </py:for>
   </table>
-  <p py:if="not data.get('users')">There are no users currently in this service.</p>
+  <p py:if="not data.get('users')">There are no users currently in this organization.</p>
 </fieldset>
 
-
-<fieldset class="tab-pane" id="datasets" py:if="c.action !='new'">
-  <h3>Add datasets</h3>
-  <div class="control-group" py:if="c.is_superuser_or_groupadmin">
-  <label class="field_opt" for="packages__${len(data.get('packages', []))}__name">Dataset</label>
-  <input class="autocomplete-dataset" id="datasets__${len(data.get('packages', []))}__name" name="packages__${len(data.get('packages', []))}__name" type="text" />
-  </div>
-  <div class="control-group" py:if="c.group">
-    <a href="${h.url_for(controller='package', action='new')}?groups__0__id=${c.group.id}" class="btn btn-primary">Add a new dataset</a>
-  </div>
-  <h3>Datasets</h3>
-  <table class="table table-bordered table-striped table-condensed" py:if="data.get('packages')">  
-    <tr><td>Actif</td><td>Nom</td></tr>
-    <py:for each="num, package in enumerate(data.get('packages'))">
-	<tr><td><input checked="checked" id="datasets__${num}__name" name="packages__${num}__name" type="checkbox" value="${package['name']}"/></td><td><label for="packages__${num}__name">${package['name']}</label></td></tr>
-    </py:for>
-  </table>
-  <p py:if="not data.get('packages')">There are no datasets currently in this service.</p>
-</fieldset>
 
 <fieldset class="tab-pane" id='foaf' py:if="c.action !='new'">
   <div class="control-group">
@@ -227,6 +200,25 @@
       <p>Adresse postale de contact</p>
     </div>
   </div>
+</fieldset>
+
+<fieldset class="tab-pane" id="datasets" py:if="c.action !='new'">
+<h3>Add datasets</h3>
+  <div class="control-group" py:if="c.is_superuser_or_groupadmin">
+  <label class="field_opt" for="packages__${len(data.get('packages', []))}__name">Dataset</label>
+  <input class="autocomplete-dataset" id="datasets__${len(data.get('packages', []))}__name" name="packages__${len(data.get('packages', []))}__name" type="text" />
+  </div>
+  <div class="control-group" py:if="c.group">
+    <a href="${h.url_for(controller='package', action='new')}?groups__0__id=${c.group.id}" class="btn btn-primary">Add a new dataset</a>
+  </div>
+  <h3>Datasets</h3>
+  <table class="table table-bordered table-striped table-condensed" py:if="data.get('packages')">  
+    <tr><td>Actif</td><td>Nom</td></tr>
+    <py:for each="num, package in enumerate(data.get('packages'))">
+	<tr><td><input checked="checked" id="datasets__${num}__name" name="packages__${num}__name" type="checkbox" value="${package['name']}"/></td><td><label for="packages__${num}__name">${package['name']}</label></td></tr>
+    </py:for>
+  </table>
+  <p py:if="not data.get('packages')">There are no datasets currently in this service.</p>
 </fieldset>
 
 <fieldset class="tab-pane" id="groups" py:if="c.action !='new'">
