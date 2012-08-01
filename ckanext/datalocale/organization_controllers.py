@@ -14,7 +14,7 @@ import ckan.logic.action as action
 import ckan.logic.schema as schema
 import ckan.model as model
 import ckan.plugins as plugins
-from plugins import IGroupController, implements
+from ckan.plugins import IGroupController, implements
 from ckan.controllers.group import GroupController
 
 import pylons.config as config

@@ -3,9 +3,11 @@ import ckan.logic as logic
 from logic import NotFound
 import ckan.lib.navl.dictization_functions as df
 from ckan.lib.navl.dictization_functions import Invalid
-import ckan.logic.validators as val
+import ckan.logic.validators
 import ckan.model as model
 import re
+from ckan.lib.navl.dictization_functions import Invalid
+from pylons.i18n import _
 
 import logging
 log = logging.getLogger(__name__)
@@ -20,32 +22,32 @@ name_match = re.compile('[a-zA-Z0-9_\-]*$')
 
 def datalocale_convert_from_tags(vocab):
     def callable(key, data, errors, context):
-	n = data[(vocab,)]
-	if n and n[0]:
-		name = n[0]
-		for k in data.keys():
-		    if k[0] == 'tags':
-		        if data[k].get('display_name') == name:
-				vocabulary_name = data[k].get('name')
-		if vocabulary_name:
-			v = model.Vocabulary.get(vocabulary_name)
-			if not v:
-			    return
-		else:
-			return
-		tags = []
-		for k in data.keys():
-		    if k[0] == 'tags':
-		        if data[k].get('vocabulary_id') == v.id:
-		            name = data[k].get('display_name', data[k]['name'])
-		            tags.append(name)
-		data[key] = tags
+        n = data[(vocab,)]
+        if n and n[0]:
+            name = n[0]
+            for k in data.keys():
+                if k[0] == 'tags':
+                    if data[k].get('display_name') == name:
+                        vocabulary_name = data[k].get('name')
+            if vocabulary_name:
+                v = model.Vocabulary.get(vocabulary_name)
+                if not v:
+                    return
+            else:
+                return
+            tags = []
+            for k in data.keys():
+                if k[0] == 'tags':
+                    if data[k].get('vocabulary_id') == v.id:
+                        name = data[k].get('display_name', data[k]['name'])
+                        tags.append(name)
+            data[key] = tags
     return callable
 
 def datalocale_convert_to_tags(vocab):
     def callable(key, data, errors, context):
-	from ckan.logic.validators import tag_in_vocabulary_validator
-	name = data[(vocab,)]
+        from ckan.logic.validators import tag_in_vocabulary_validator
+        name = data[(vocab,)]
         new_tags = data.get(key)
         if not new_tags:
             return
@@ -57,8 +59,7 @@ def datalocale_convert_to_tags(vocab):
         for k in data.keys():
             if k[0] == 'tags':
                 n = max(n, k[1] + 1)
-
-	
+                
         v = model.Vocabulary.get(name)
         if not v:
             return
@@ -73,38 +74,36 @@ def datalocale_convert_to_tags(vocab):
     return callable
 
 def convert_to_groups(field, num):
-	def convert(key, data, errors, context):
-		data[('groups', num, field)] = data[key]
-	return convert
+    def convert(key, data, errors, context):
+        data[('groups', num, field)] = data[key]
+    return convert
 
 def convert_from_groups_visibility(field):
-	def convert(key, data, errors, context):
-		data[key] = data.get(('groups', 0, field), None)
-		if not data[key]: 
-		   data[key] = data.get(('groups', 1, field), None)
-	return convert
+    def convert(key, data, errors, context):
+        data[key] = data.get(('groups', 0, field), None)
+        if not data[key]: 
+            data[key] = data.get(('groups', 1, field), None)
+    return convert
 
 def get_score(field):
-	def convert(key, data, errors, context):
-	  try:
-		from ckanext.qa.reports import five_stars
-		from ckanext.qa.html import get_star_html
-		package_id = context['package'].id
-		score_dict = five_stars(package_id)
-		if score_dict : 
-			score = score_dict[0].get(field)
-			data[key] = int(score)
-			data[('openness_score_html',)] = get_star_html(int(score), "")
-	  except NotFound, IndexError:
-		   pass
-	return convert
+    def convert(key, data, errors, context):
+        try:
+            from ckanext.qa.reports import five_stars
+            from ckanext.qa.html import get_star_html
+            package_id = context['package'].id
+            score_dict = five_stars(package_id)
+            if score_dict : 
+                score = score_dict[0].get(field)
+                data[key] = int(score)
+                data[('openness_score_html',)] = get_star_html(int(score), "")
+        except NotFound, IndexError:
+            pass
+    return convert
 
 def email_validator(value, context):
-    from ckan.lib.navl.dictization_functions import Invalid
-    from pylons.i18n import _
     if len(value) > 7:
-    	if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", value ) != None:
-	    return value
+        if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", value ) != None:
+            return value
     raise Invalid(_('Invalid email'))
     return value
 
@@ -132,42 +131,42 @@ def use_other(key, data, errors, context):
 
 def extract_other(option_list):
     def other(key, data, errors, context):
-	from ckan.lib.navl.dictization_functions import missing
+        from ckan.lib.navl.dictization_functions import missing
         value = data[key]
-	if value : 
-	   if type(value) is list:
-	 	value = value[0]
-	   else:
-		value = value	
-        if value in option_list:
-	    if value ==  u'autre - merci de préciser' :
-		data[key]= ""
-            return
-        elif value is missing:
-            data[key] = ''
-            return
-        elif value == '':
-            data[key] = ''
-            return
-        else:
-            data[key] = u'autre - merci de préciser'
-            other_key = key[-1] + '-other'
-            data[(other_key,)] = value
+        if value : 
+            if type(value) is list:
+                value = value[0]
+            else:
+                value = value	
+            if value in option_list:
+                if value ==  u'autre - merci de préciser' :
+                    data[key]= ""
+                    return
+                elif value is missing:
+                    data[key] = ''
+                    return
+                elif value == '':
+                    data[key] = ''
+                    return
+            else:
+                data[key] = u'autre - merci de préciser'
+                other_key = key[-1] + '-other'
+                data[(other_key,)] = value
     return other
 
 def convert_to_extras_groupform(key, data, errors, context):
     # get current number of extras
     if data[key]:
-	    extra_number = 0
-	    for k in data.keys():
-		if k[0] == 'extras':
-		    extra_number = max(extra_number, k[1] + 1)
-	    # add a new extra
-	    data[('extras', extra_number, 'key')] = key[0]
-	    if not context.get('extras_as_string'):
-		data[('extras', extra_number, 'value')] = json.dumps(data[key])
-	    else:
-		data[('extras', extra_number, 'value')] = data[key]
+        extra_number = 0
+        for k in data.keys():
+            if k[0] == 'extras':
+                extra_number = max(extra_number, k[1] + 1)
+        # add a new extra
+        data[('extras', extra_number, 'key')] = key[0]
+        if not context.get('extras_as_string'):
+            data[('extras', extra_number, 'value')] = json.dumps(data[key])
+        else:
+            data[('extras', extra_number, 'value')] = data[key]
 
 def convert_from_extras_groupform(key, data, errors, context):
     for k in data.keys():

@@ -15,8 +15,11 @@ import ckan.logic.schema as default_schema
 from ckan.lib.navl.validators import ignore_missing, ignore_empty, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
 from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, \
-convert_to_groups, convert_from_groups_visibility, date_to_form, date_to_db, \
+convert_to_groups, convert_from_groups_visibility, date_to_db, \
 extract_other, use_other, get_score
+from pylons import request
+from genshi.filters import Transformer
+from genshi.input import HTML
 
 log = logging.getLogger(__name__)
 
@@ -30,11 +33,11 @@ VOCAB_REFERENCES = u'dcterms:references'
 
 def _tags_and_translations(context, vocab, lang, lang_fallback):
     try:
-	tags = logic.get_action('tag_list')(context, {'vocabulary_id': vocab})
-	tag_translations = _translate(tags, lang, lang_fallback)
-	return [(t, tag_translations[t]) for t in tags]
+        tags = logic.get_action('tag_list')(context, {'vocabulary_id': vocab})
+        tag_translations = _translate(tags, lang, lang_fallback)
+        return [(t, tag_translations[t]) for t in tags]
     except logic.NotFound:
-	return []
+        return []
 
 def _translate(terms, lang, fallback_lang):
     translations = logic.get_action('term_translation_show')(
@@ -44,19 +47,15 @@ def _translate(terms, lang, fallback_lang):
 
     term_translations = {}
     for translation in translations:
-	term_translations[translation['term']] = translation['term_translation']
+        term_translations[translation['term']] = translation['term_translation']
 
     for term in terms:
-	if not term in term_translations:
-	    translation = logic.get_action('term_translation_show')(
-	        {'model': model},
-	        {'terms': [term], 'lang_codes': [fallback_lang]}
-	    )
-	    if translation:
-	        term_translations[term] = translation[0]['term_translation']
-	    else:
-	        term_translations[term] = term
-
+        if not term in term_translations:
+            translation = logic.get_action('term_translation_show')({'model': model},{'terms': [term], 'lang_codes': [fallback_lang]})
+            if translation:
+                term_translations[term] = translation[0]['term_translation']
+            else:
+                term_translations[term] = term
     return term_translations
 
 class DatalocaleDatasetForm(SingletonPlugin):
@@ -69,8 +68,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
         type_name matches one of the values in package_types then this
         class will be used.
       - ``IGenshiStreamFilter`` hook into Pylons template rendering. 
-
-
     """
     implements(IDatasetForm, inherit=True)
     implements(IConfigurer, inherit=True)
@@ -114,44 +111,39 @@ class DatalocaleDatasetForm(SingletonPlugin):
         return True
 
     def setup_template_variables(self, context, data_dict, package_type=None):
-	''' Translation '''
-	import commands
-	from pylons import request
-	ckan_lang = pylons.request.environ['CKAN_LANG']
-	ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+        ''' Translation '''
+        import commands
+        ckan_lang = pylons.request.environ['CKAN_LANG']
+        ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
         c.licences = [('', '')] + base.model.Package.get_license_options()
         c.is_sysadmin = authz.Authorizer().is_sysadmin(c.user)
-	c.resource_columns = model.Resource.get_columns()
-	c.publishers_available = c.groups_available
-	c.creators_available = c.userobj and c.userobj.get_groups('service') or []
-	c.contributor = c.userobj
-	c.frequency_available = commands.tags_frequency
-	c.dataQuality_available = commands.tags_dataQuality
-	c.temporal_granularity_available = commands.tags_temporal_granularity
-	c.geographic_granularity_available = commands.tags_geographic_granularity
-	try : 
-	  if c.pkg_dict: 
-	    if c.pkg_dict.get('dct:publisher', ''): 
-		c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher','')}) 
-	except NotFound:
-		c.current_publisher = None
-	try:
-	  if c.pkg_dict :  
-	    if c.pkg_dict.get('dct:creator', ''): 	
-		c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator','')})
-	except NotFound : 
-		c.current_creator = None
-    	try:
-		data = {'vocabulary_id': VOCAB_THEMES}
-		c.themeTaxonomy_available = _tags_and_translations(
-		    context, 'dcat:themeTaxonomy', ckan_lang, ckan_lang_fallback
-		)
-	except NotFound:
-		c.themeTaxonomy_available = []
-		pass
+        c.resource_columns = model.Resource.get_columns()
+        c.publishers_available = c.groups_available
+        c.creators_available = c.userobj and c.userobj.get_groups('service') or []
+        c.contributor = c.userobj
+        c.frequency_available = commands.tags_frequency
+        c.dataQuality_available = commands.tags_dataQuality
+        c.temporal_granularity_available = commands.tags_temporal_granularity
+        c.geographic_granularity_available = commands.tags_geographic_granularity
+        try : 
+            if c.pkg_dict: 
+                if c.pkg_dict.get('dct:publisher', ''): 
+                    c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher','')}) 
+        except NotFound:
+            c.current_publisher = None
+        try:
+            if c.pkg_dict :  
+                if c.pkg_dict.get('dct:creator', ''): 	
+                    c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator','')})
+        except NotFound : 
+            c.current_creator = None
+        try:
+            c.themeTaxonomy_available = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
+        except NotFound:
+            c.themeTaxonomy_available = []
+            pass
         ''' Find extras that are not part of our schema '''
-        # find extras that are not part of our schema
         c.additional_extras = []
         schema_keys = self.form_to_db_schema().keys()
         if c.pkg_dict:
@@ -159,8 +151,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
             for extra in extras:
                 if not extra['key'] in schema_keys:
                     c.additional_extras.append(extra)
-	'''This is messy as auths take domain object not data_dict'''
-	context_pkg = context.get('package', None)
+        '''This is messy as auths take domain object not data_dict'''
+        context_pkg = context.get('package', None)
         pkg = context_pkg or c.pkg
         if pkg:
             try:
@@ -170,23 +162,22 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 c.auth_for_change_state = True
             except NotAuthorized:
                 c.auth_for_change_state = False
-	
 
     def form_to_db_schema(self, package_type=None):
         """
         Returns the schema for mapping package data from a form to a format
         suitable for the database.
         """
-	try:
-	  if c.userobj : 
-	    ckan_author_default = c.userobj.id
-	  else : 
-	    ckan_author_default = ""
-	except NotFound:
-	  ckan_author_default = ""
-	  pass
-    	schema = default_schema.package_form_schema()
-    	schema.update({
+        try:
+            if c.userobj : 
+                ckan_author_default = c.userobj.id
+            else : 
+                ckan_author_default = ""
+        except NotFound:
+            ckan_author_default = ""
+            pass
+        schema = default_schema.package_form_schema()
+        schema.update({
 		'ckan_author': [unicode, default(ckan_author_default), not_empty, convert_to_extras],
 		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
 		'dct:publisher': [convert_to_groups('id', 0), convert_to_extras],
@@ -226,15 +217,15 @@ class DatalocaleDatasetForm(SingletonPlugin):
         Returns the schema for mapping package data from the database into a
         format suitable for the form (optional)
         """
-	import commands
-	schema = default_schema.package_form_schema()
+        import commands
+        schema = default_schema.package_form_schema()
         schema['groups'].update({
 	    'id': [ignore_missing],
             'name': [ignore_missing, unicode],
             'title': [ignore_missing],
             'capacity': [ignore_missing, unicode]
         })
-    	schema.update({
+        schema.update({
 		'id' : [ignore_missing],
 		'revision_id' : [ignore_missing],
 		'metadata_created' : [ignore_missing],
@@ -268,7 +259,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'openness_score': [get_score('openness_score'), ignore_missing],
 		'image_url': [convert_from_extras, ignore_missing],
     	})
-	schema['resources'].update({
+        schema['resources'].update({
             'created': [ignore_missing],
             'position': [not_empty],
             'last_modified': [ignore_missing],
@@ -278,67 +269,55 @@ class DatalocaleDatasetForm(SingletonPlugin):
         return schema
 
     def check_data_dict(self, data_dict):
-        '''Check if the return data is correct, mostly for checking out
-	if spammers are submitting only part of the form'''
-	return
+        '''Check if the return data is correct, mostly for checking out if spammers are submitting only part of the form'''
+        return
 
     def filter(self, stream):
         ''' Add vocab tags to the bottom of the sidebar.'''
-        from pylons import request
-        from genshi.filters import Transformer
-        from genshi.input import HTML
         routes = request.environ.get('pylons.routes_dict')
-        if routes.get('controller') == 'package' \
-            and routes.get('action') == 'read':
-                for vocab in ('themeTaxonomy', 'theme_available' ):
-                    try:
-                        vocab_tags = c.pkg_dict.get(vocab, [])
-                    except NotFound:
-			vocab_tags = None
-			
-                    if not vocab_tags:
-                        continue
-
-                    html = '<li class="sidebar-section">'
-                    if vocab == 'themeTaxonomy':
-                        html = html + '<h3>Th&egrave;mes</h3>'
-                    html = html + '<ul class="tags clearfix">'
-                    for tag in vocab_tags:
-                        html = html + '<li>%s</li>' % tag.encode('ascii', 'xmlcharrefreplace')
-                    html = html + "</ul></li>"
-                    stream = stream | Transformer(
-                        "//div[@id='sidebar']//ul[@class='widget-list']"
-                    ).append(HTML(html))
-		try:
-		    '''Get id in the table and convert it to readable name'''
-		    publisher = c.pkg_dict.get('dct:publisher','')
-		    creator = c.pkg_dict.get('dct:creator','')
-		    if c.pkg_dict.get('groups') :
-			for group in c.pkg_dict.get('groups') : 
-				group_id = group.get('id','')
-				div = ""
-				if group_id == publisher:
-				  div = 'dct:publisher'
-				if group_id == creator: 
-				  div = 'dct:creator'
-				html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/organization/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
-				if div:
-				  stream = stream | Transformer(
-				        "//tr[@id='%s']//td[@class='dataset-details']" % div
-				  ).replace(HTML(html_bis))
-		except NotFound:
-			stream = stream
-	if routes.get('controller') == 'user'\
-            and routes.get('action') == 'read':	
-		user = base.model.User.get(c.id)
-		groups = user.get_groups()
-		html = "<dt>Groupes</dt><dd>"
-		for group in groups :
-		   html += "<a href='/organization/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
-		html += "</dd>"
-		stream = stream | Transformer(
-                        "//div[@id='content']//dl[@class='vcard']"
-                    ).append(HTML(html))
+        if routes.get('controller') == 'package' and routes.get('action') == 'read':
+            for vocab in ('themeTaxonomy', 'theme_available' ):
+                try:
+                    vocab_tags = c.pkg_dict.get(vocab, [])
+                except NotFound:
+                    vocab_tags = None
+                if not vocab_tags:
+                    continue
+                html = '<li class="sidebar-section">'
+                if vocab == 'themeTaxonomy':
+                    html = html + '<h3>Th&egrave;mes</h3>'
+                html = html + '<ul class="tags clearfix">'
+                for tag in vocab_tags:
+                    html = html + '<li>%s</li>' % tag.encode('ascii', 'xmlcharrefreplace')
+                html = html + "</ul></li>"
+                stream = stream | Transformer(
+                    "//div[@id='sidebar']//ul[@class='widget-list']"
+                ).append(HTML(html))
+            try:
+                '''Get id in the table and convert it to readable name'''
+                publisher = c.pkg_dict.get('dct:publisher','')
+                creator = c.pkg_dict.get('dct:creator','')
+                if c.pkg_dict.get('groups') :
+                    for group in c.pkg_dict.get('groups') : 
+                        group_id = group.get('id','')
+                        div = ""
+                        if group_id == publisher:
+                            div = 'dct:publisher'
+                        if group_id == creator: 
+                            div = 'dct:creator'
+                        html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/organization/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
+                        if div:
+                            stream = stream | Transformer("//tr[@id='%s']//td[@class='dataset-details']" % div).replace(HTML(html_bis))
+            except NotFound:
+                stream = stream
+        if routes.get('controller') == 'user' and routes.get('action') == 'read':	
+            user = base.model.User.get(c.id)
+            groups = user.get_groups()
+            html = "<dt>Groupes</dt><dd>"
+            for group in groups :
+                html += "<a href='/organization/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
+            html += "</dd>"
+            stream = stream | Transformer("//div[@id='content']//dl[@class='vcard']").append(HTML(html))
         return stream
 
    
