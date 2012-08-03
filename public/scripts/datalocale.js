@@ -162,6 +162,7 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
     }
     html += "</select></div>"
     $("#theme").replaceWith(html);
+    $(".chzn-select").chosen()
   }
 
   /**	Thèmes : Afficher les données **/

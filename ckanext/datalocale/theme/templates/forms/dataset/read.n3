@@ -9,6 +9,25 @@
 a dcat:Dataset;
      dct:description "${c.pkg_dict['notes']}";
      dct:identifier "${c.pkg_dict['name']}";
+     rdfs:label "${c.pkg_dict['title']}";
+     skos:prefLabel "${c.pkg_dict['title']}";
+     dct:created "${c.pkg_dict['metadata_created']}";
+     dct:modified "${c.pkg_dict['metadata_modified']}";
+     dct:publisher <${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}> ;
+     dct:creator <${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}> ;   
+     dcat:theme ${c.pkg_dict.get('theme_available','')};
+     version ${c.pkg_dict.get('version','')};
+     maj ${c.pkg_dict.get('maj','')};
+     dct:rights ${c.pkg_dict.get('license_url','')};
+     foaf:thumbnail <${c.pkg_dict.get('image_url', '')}>;
+     
+     dcterms:temporal "Du ${c.pkg_dict.get('temporal_coverage-from', '')} au ${c.pkg_dict.get('temporal_coverage-to', '')}";
+     dcat:dataQuality "${c.pkg_dict.get('dataQuality','')}, score :  ${c.pkg_dict.get('openness_score','')}";
+     
+     dct:spatial "${c.pkg_dict.get('spatial-text', '')}";
+     dcterms:references <${c.pkg_dict.get('dcterms:references','')}>;
+     dct:source "${c.pkg_dict.get('dc:source','')}";
+
      dct:relation [
          rdf:value "";
          :label "change_note" ],

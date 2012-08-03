@@ -7,32 +7,24 @@
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:dcat="http://www.w3.org/ns/dcat#"
   xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcterms="http://purl.org/dc/terms"
 >
+<?python
+extras = dict(c.pkg_extras)         
+?>
   <dcat:Dataset rdf:about="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}">
     <owl:sameAs rdf:resource="urn:uuid:${c.pkg_dict['id']}"/>
     <dct:description>${c.pkg_dict['notes']}</dct:description>
-    <py:for each="tag_dict in c.pkg_dict['tags']">
+    <py:for each="tag_dict in c.pkg_dict.get('tags','')">
         <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
     </py:for>
     <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}"/>
     <rdfs:label>${c.pkg_dict['name']}</rdfs:label>
-
     <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
     <dct:title>${c.pkg_dict['title']}</dct:title>
-    <py:for each="rsc_dict in c.pkg_dict.get('resources', [])">
-        <dcat:distribution>
-            <dcat:Distribution>
-                <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>
-                    <dct:format py:if="rsc_dict.get('format')">
-                        <dct:IMT>
-                            <rdf:value>rsc_dict.get('format')</rdf:value>
-                            <rdfs:label>rsc_dict.get('format')</rdfs:label>
-                        </dct:IMT>
-                    </dct:format>
-               <dct:title py:if="rsc_dict.get('name')">${rsc_dict.get('name')}</dct:title>
-            </dcat:Distribution>
-        </dcat:distribution>
-    </py:for>
+    <version>${c.pkg_dict.get('version','')}</version>
+    <maj py:if="c.pkg_dict.get('maj','')">${c.pkg_dict.get('maj','')}</maj>
+    <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict.get('license_url','')}"/>
     <dct:creator  py:if="c.pkg_dict.get('author', None)">
       <rdf:Description>
         <foaf:name>${ c.pkg_dict['author'] }</foaf:name>
@@ -45,9 +37,44 @@
         <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
       </rdf:Description>
     </dct:contributor>
-
-    <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict['license_url']}"/>
-    <py:for each="extra_dict in c.pkg_dict.get('extras',None)">
+    <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}</dct:publisher>
+    <dct:creator py:if="c.pkg_dict.get('dct:creator','')">${c.site_url}/organization/${c.pkg_dict.get('dct:creator','')}</dct:creator>
+    <foaf:thumbnail py:if="c.pkg_dict.get('image_url', '')" rdf:resource="${c.pkg_dict.get('image_url', '')}"/>
+    <dct:created>${c.pkg_dict.get('metadata_created','')}</dct:created>
+    <dct:modified>${c.pkg_dict.get('metadata_modified','')}</dct:modified>
+    <dcat:theme py:if="c.pkg_dict.get('theme_available','')">${c.pkg_dict.get('theme_available','')}</dcat:theme>
+    <dcat:dataQuality py:if="c.pkg_dict.get('dataQuality','') or c.pkg_dict.get('openness_score','')">${c.pkg_dict.get('dataQuality','')}, score :  ${c.pkg_dict.get('openness_score','')}</dcat:dataQuality>
+<?python
+if c.pkg_dict.get('dct:accrualPeriodicity', '') == u'autre - merci de préciser':
+	accrualPeriodicity = extras.get('dct:accrualPeriodicity', '')
+else : 
+	accrualPeriodicity = c.pkg_dict.get('dct:accrualPeriodicity', '')
+if c.pkg_dict.get('geographic_granularity', '') == u'autre - merci de préciser':
+	geographic_granularity = extras.get('geographic_granularity', '')
+else : 
+	geographic_granularity = c.pkg_dict.get('geographic_granularity', '')
+?>
+    <dct:accrualPeriodicity py:if="c.pkg_dict.get('dct:accrualPeriodicity', '') and extras.get('dct:accrualPeriodicity', '')">${accrualPeriodicity}</dct:accrualPeriodicity>
+    <dcterms:temporal py:if="c.pkg_dict.get('temporal_coverage-from', '')">Du ${c.pkg_dict.get('temporal_coverage-from', '')} au ${c.pkg_dict.get('temporal_coverage-to', '')}</dcterms:temporal>    
+    <dct:spatial py:if="c.pkg_dict.get('spatial-text', '')">${c.pkg_dict.get('spatial-text', '')}</dct:spatial>
+    <dct:granularity py:if="geographic_granularity or c.pkg_dict.get('dcat:granularity', '')">${geographic_granularity} ${c.pkg_dict.get('dcat:granularity', '')}</dct:granularity>
+	<dcterms:references py:if="c.pkg_dict.get('dcterms:references','')">${c.pkg_dict.get('dcterms:references','')}</dcterms:references>
+	<dct:source py:if="c.pkg_dict.get('dc:source','')">${c.pkg_dict.get('dc:source','')}</dct:source>
+	<py:for each="rsc_dict in c.pkg_dict.get('resources', [])">
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>
+                    <dct:format py:if="rsc_dict.get('format')">
+                        <dct:IMT>
+                            <rdf:value>${rsc_dict.get('format')}</rdf:value>
+                            <rdfs:label>${rsc_dict.get('format')}</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title py:if="rsc_dict.get('name')">${rsc_dict.get('name')}</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+    </py:for>
+    <py:for each="extra_dict in c.pkg_dict.get('additional_extras','')">
         <dct:relation>
           <rdf:Description>
             <rdfs:label>${extra_dict.get('key','')}</rdfs:label>
