@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:t3="http://www.mondeca.com/system/t3#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:s08="http://www.w3.org/2008/05/skos#"
+	xmlns:eu="http://eurovoc.europa.eu/schema#"
+	xmlns:xl="http://www.w3.org/2008/05/skos-xl#"
+	xmlns:p="http://www.mondeca.com/system/publishing#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:oco="http://www.mondeca.com/system/ontology_creation_onto#"
+	xmlns:s04="http://www.w3.org/2004/02/skos/core#"
+	xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100163">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1282"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1453"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2573"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3025"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2370"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/883"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100164">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4436"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2180"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2258"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100165">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1748"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/558"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/695"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4157"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4367"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4750"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1953"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2186"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100166">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3232"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2242"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2246"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/41"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/53"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100167">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2702"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2703"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100168">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2152"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4045"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4179"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4704"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2001"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100169">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/77"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/517"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6034"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3062"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2166"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100170">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1346"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3461"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3467"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3474"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2189"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100171">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3489"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2460"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3074"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100172">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6722"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4697"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3450"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3476"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2500"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/99"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100173">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3451"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2464"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2628"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2647"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100174">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4304"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1451"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2163"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5640"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5767"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5130"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100175">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8473"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4479"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5258"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4017"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/525"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100176">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5442"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4040"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4057"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4060"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100177">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5576"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5620"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5051"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3258"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1005"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100178">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5789"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4222"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3935"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100179">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3929"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/523"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100180">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3954"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3513"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3878"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1432"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/573"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100181">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1538"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5371"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5400"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2701"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100182">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5923"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2351"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100183">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6922"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4010"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/565"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/566"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/567"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100184">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/538"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/584"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7347"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3908"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3899"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3900"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3901"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100185">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2402"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2497"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/712"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100186">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/84"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/335"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/427"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100187">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2515"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3058"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5848"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100188">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4006"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3013"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/637"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100189">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3659"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4362"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/56"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100190">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4256"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1800"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2616"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100191">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/524"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2488"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1786"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1810"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2449"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2450"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2487"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100192">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5842"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4380"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2519"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2520"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3156"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100193">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2128"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2292"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/614"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100194">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3584"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3185"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/11"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100195">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3193"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/138"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/139"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100196">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5268"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/13"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/87"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100197">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4291"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/474"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100198">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4370"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4671"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3239"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1016"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100199">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4602"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2486"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2510"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1809"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100200">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8469"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2149"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2495"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1452"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/285"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100201">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1630"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1804"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100202">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1000"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1488"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100203">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3151"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100204">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2448"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1018"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/424"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100205">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2698"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/929"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1012"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/394"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100206">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1021"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1310"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1321"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1325"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1326"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2504"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100207">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1039"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2489"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2632"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2639"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2656"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100208">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4184"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3307"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2398"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/965"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/540"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100209">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1909"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1916"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100210">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3300"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3318"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/52"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/385"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100211">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3487"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4305"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1820"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/85"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100212">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2517"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2690"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1700"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4706"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100213">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2459"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2688"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3257"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/317"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100214">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4050"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1004"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/108"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100215">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1415"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2479"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2789"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1754"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1268"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5881"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100216">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/490"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4619"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2475"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2496"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1221"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1687"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1690"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100217">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2467"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3683"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/668"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100218">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2059"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/784"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/795"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/873"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/778"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100219">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4554"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4705"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2175"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3278"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100220">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/486"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/494"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4366"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100221">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3855"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4361"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2473"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1370"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2012"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100222">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4486"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2472"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1422"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100223">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5922"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4488"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3028"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1405"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1426"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100224">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6382"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3941"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3946"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3949"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3952"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100225">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3928"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3956"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100226">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3582"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4300"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4703"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2469"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/69"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/554"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100227">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5985"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/445"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/813"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100228">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4189"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100229">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4413"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1154"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1164"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100230">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1155"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/54"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100231">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3581"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2474"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/539"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/802"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100232">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1074"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5974"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4299"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2468"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3522"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100233">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5275"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4276"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1737"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1802"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100234">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4543"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2184"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/82"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100235">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2491"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3273"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1163"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100236">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2178"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3209"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/557"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100237">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3101"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3131"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3160"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2494"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100238">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2015"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2181"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3098"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1954"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100239">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4539"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100240">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4522"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4515"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2512"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100241">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3092"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4505"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100242">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1158"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1707"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3144"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2470"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2825"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100243">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6011"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3146"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3150"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3549"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/833"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100244">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/343"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/371"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2090"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2524"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100245">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2442"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2443"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100246">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2972"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2477"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2493"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100247">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4358"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2814"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3605"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2551"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/937"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/962"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100248">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4363"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4412"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4630"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100249">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5962"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2014"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100250">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5877"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2711"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2723"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2734"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1277"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/711"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100251">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2505"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1063"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/651"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100252">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5913"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3544"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2320"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2476"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1372"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1652"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100253">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5360"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1602"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2412"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2413"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2414"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2416"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2417"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2418"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1115"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100254">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2737"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100255">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6788"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2763"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2775"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/239"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100256">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5017"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4314"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100257">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1258"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2735"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2736"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100258">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/656"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1360"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100259">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6052"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4416"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100260">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2481"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2707"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100261">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3689"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3797"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4415"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4418"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3632"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3641"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100262">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4185"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2478"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2817"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2914"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100263">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3737"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2498"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100264">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2767"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3743"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1411"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100265">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1274"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1414"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2364"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100266">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5350"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3783"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/753"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1412"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100267">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/744"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100268">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4303"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2507"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2720"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3587"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100269">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3798"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3809"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3810"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1362"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100270">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3820"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1417"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1882"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100271">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5614"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5615"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1410"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1718"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1834"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1845"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100272">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1401"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1400"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100273">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3879"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4414"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4565"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100274">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1386"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100275">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1418"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1388"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100276">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1398"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3895"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1390"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5359"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100277">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/909"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/911"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/912"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/913"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/914"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100278">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1506"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1520"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1329"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/864"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1088"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1184"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/337"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4840"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3780"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2564"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2288"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7861"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7868"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6135"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6136"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6138"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8189"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7814"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7815"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7816"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7817"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7855"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7879"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8301"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100279">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5259"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1587"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1615"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1632"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100280">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5424"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/281"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/311"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100281">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/956"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5448"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2705"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2838"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2848"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2858"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2113"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100282">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8365"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8366"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8367"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8369"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8278"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/7207"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/6205"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5776"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5778"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5780"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5781"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5083"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5087"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5265"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5283"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5302"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4587"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4607"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4690"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4845"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4069"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2106"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2117"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2148"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1794"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1844"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1847"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1105"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1191"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/187"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/594"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100283">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2079"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2119"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2200"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1658"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/122"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/130"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5655"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5775"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/5437"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4590"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4483"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100284">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/3778"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2287"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1086"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1087"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100285">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/8380"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2179"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/4365"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/1455"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100286">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2187"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100287">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2170"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2171"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2172"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2190"/>
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2167"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100288">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2188"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://eurovoc.europa.eu/100289">
+	<s04:hasTopConcept rdf:resource="http://eurovoc.europa.eu/2191"/>
+</rdf:Description>
+
+</rdf:RDF>

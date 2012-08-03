@@ -181,7 +181,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'ckan_author': [unicode, default(ckan_author_default), not_empty, convert_to_extras],
 		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
 		'dct:publisher': [convert_to_groups('id', 0), convert_to_extras],
-        	'dct:creator': [convert_to_groups('id', 1), convert_to_extras],
+        'dct:creator': [convert_to_groups('id', 1), convert_to_extras],
 		'capacity': [default(u'private'), convert_to_groups('capacity', 0),  convert_to_groups('capacity', 1)],
 		'themeTaxonomy': [ignore_missing, convert_to_tags(VOCAB_THEMES)],
 		'theme_available': [ignore_missing, datalocale_convert_to_tags('themeTaxonomy')],

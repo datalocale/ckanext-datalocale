@@ -22,7 +22,10 @@ name_match = re.compile('[a-zA-Z0-9_\-]*$')
 
 def datalocale_convert_from_tags(vocab):
     def callable(key, data, errors, context):
-        n = data[(vocab,)]
+        try:
+            n = data[(vocab,)]
+        except:
+            n = None
         if n and n[0]:
             name = n[0]
             for k in data.keys():
