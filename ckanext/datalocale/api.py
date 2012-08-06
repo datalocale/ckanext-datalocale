@@ -151,14 +151,14 @@ def datalocale_package_list(context, data_dict):
 
 def datalocale_show_roles(context, data_dict):
     p = base.model.Package.get(data_dict['id'])
-    q = Session.query(model.PackageRole)
+    q = model.Session.query(model.PackageRole)
     q = q.filter_by(package=p)
     q.all()
     return [({"package_id":role.package_id,"user_id":role.user_id,"role":role.role}) for role in q]
 
 def datalocale_role_user(context,data_dict):
     u = base.model.User.get(data_dict['id'])
-    q = Session.query(model.UserObjectRole)
+    q = model.Session.query(model.UserObjectRole)
     q = q.filter_by(user_id=u.id)
     q = q.filter_by(context="System")
     q.all()

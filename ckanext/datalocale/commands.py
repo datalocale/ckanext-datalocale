@@ -57,6 +57,11 @@ class DatalocaleCommand(cli.CkanCommand):
 	paster datalocale delete-geographic-granularity-vocab -c <config>
 	paster datalocale delete-temporal-vocab -c <config>
 
+    paster datalocale dump-rdf <path> -c <config>
+    paster datalocale dump-json <path> -c <config>
+    paster datalocale dump-csv <path> -c <config>
+    paster datalocale dump -c <config>
+    
     Example:
 	paster datalocale create-theme-vocab --config=/home/atos/pyenv/src/ckan/development.ini
 
@@ -103,6 +108,17 @@ class DatalocaleCommand(cli.CkanCommand):
             self.delete_temporal_vocab()
         elif cmd == 'delete-all-vocab':
             self.delete_all_vocab()
+        elif cmd == 'dump-rdf':
+            if len(self.args) == 2:
+                self.dump_rdf(self.args[1])
+        elif cmd == 'dump-json':
+            if len(self.args) == 2:
+                self.dump_json(self.args[1])
+        elif cmd == 'dump-csv':
+            if len(self.args) == 2:
+                self.dump_csv(self.args[1])
+        elif cmd == 'dump':
+            self.dump()
         else:
             log.error('Command "%s" not recognized' % (cmd,))
             
@@ -370,3 +386,83 @@ class DatalocaleCommand(cli.CkanCommand):
         except logic.NotFound:
             log.fatal('Vocabulary not found %s' % vocab_name)
             pass
+
+    def dump_rdf(self, path):
+        import urlparse
+        import urllib2
+        import pylons.config as config
+        import ckan.lib.helpers as h
+        import re
+        first = True
+        fetch_url = config['ckan.site_url']
+        user = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
+        context = {'model': model, 'session': model.Session, 'user': user['name']}
+        dataset_names = logic.get_action('datalocale_package_list')(context, {})
+        rdf = ""
+        dataset_nb = len(dataset_names)
+        i = 0
+        start_with = 'xmlns:dcterms="http://purl.org/dc/terms">'
+        end_with = '</rdf:RDF>'
+        for dataset_name in dataset_names:
+            dd = logic.get_action('package_show')(context, {'id':dataset_name })
+            if not dd['state'] == 'active':
+                continue
+
+            url = h.url_for( controller='package',action='read',
+                                                  id=dd['name'])
+
+            url = urlparse.urljoin(fetch_url, url[1:]) + '.rdf'
+            try:
+                rdf_filecontent = urllib2.urlopen(url).read()
+                if first:
+                    rdf += rdf_filecontent[:rdf_filecontent.index(end_with)]
+                else:
+                    rdf_filecontent = rdf_filecontent[rdf_filecontent.index(start_with)+len(start_with):rdf_filecontent.index(end_with)]
+                    rdf += rdf_filecontent
+                if i+1 >= dataset_nb:
+                    rdf += end_with
+
+            except IOError, ioe:
+                sys.stderr.write( str(ioe) + "\n" )
+            first = False
+            i += 1
+        f = open(path, 'w')
+        f.write(rdf)
+        f.close()
+        
+                
+    def _get_package_public(self):
+        from sqlalchemy.sql import and_, or_
+        query = model.Session.query(model.Package).\
+        join(model.PackageRole,model.PackageRole.package_id == model.Package.id).\
+        join(model.UserObjectRole, model.UserObjectRole.id == model.PackageRole.user_object_role_id).\
+        join(model.User,model.User.id == model.UserObjectRole.user_id).\
+        filter(model.Package.state == 'active').\
+        filter(model.User.name == 'visitor').\
+        outerjoin(model.Member, model.Member.table_id == model.Package.id).\
+        filter(or_(model.Member.capacity=='public', model.Member.capacity ==None ))
+        return query
+    
+    def dump_json(self, path):
+        import ckan.lib.dumper as dumper
+        query = self._get_package_public()
+        packages = query.all()
+        dump_file = open(path, 'w')
+        dumper.SimpleDumper().dump(dump_file, format='json', query=query)
+        
+    def dump_csv(self, path):
+        import ckan.lib.dumper as dumper
+        query = self._get_package_public()
+        packages = query.all()
+        dump_file = open(path, 'w')
+        dumper.SimpleDumper().dump(dump_file, format='csv', query=query)
+        
+    def dump(self, path = None):
+        folder = './public/dump/'
+        if not os.path.isdir( folder ):
+            os.makedirs( folder )
+        filename = folder + "Datalocale"
+        self.dump_csv(filename + ".csv")
+        self.dump_json(filename + ".json")
+        self.dump_rdf(filename + ".rdf")
+        
