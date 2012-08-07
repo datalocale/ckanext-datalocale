@@ -1,4 +1,5 @@
 # -*-coding:utf-8 -*
+# vim: set fileencoding=utf-8 :
 import os
 import sys
 import re
@@ -449,20 +450,53 @@ class DatalocaleCommand(cli.CkanCommand):
         packages = query.all()
         dump_file = open(path, 'w')
         dumper.SimpleDumper().dump(dump_file, format='json', query=query)
-        
+
     def dump_csv(self, path):
         import ckan.lib.dumper as dumper
-        query = self._get_package_public()
+	import csv
+        from ckan.lib.dumper import CsvWriter
+	import codecs
+	query = self._get_package_public()
         packages = query.all()
         dump_file = open(path, 'w')
-        dumper.SimpleDumper().dump(dump_file, format='csv', query=query)
+	dump_file.write(codecs.BOM_UTF8)
+        #dumper.SimpleDumper().dump(dump_file, format='csv', query=query)
+	row_dicts = []
+        for pkg in query:
+            pkg_dict = pkg.as_dict()
+            # flatten dict
+            for name, value in pkg_dict.items()[:]:
+                if isinstance(value, (list, tuple)):
+                    if value and isinstance(value[0], dict) and name == 'resources':
+                        for i, res in enumerate(value):
+                            prefix = 'resource-%i' % i
+                            pkg_dict[prefix + '-url'] = res['url']
+                            pkg_dict[prefix + '-format'] = res['format']
+                            pkg_dict[prefix + '-description'] = res['description']
+                    else:
+                        pkg_dict[name] = ' '.join(value)
+                if isinstance(value, dict):
+                    for name_, value_ in value.items():
+                        pkg_dict[name_] = value_
+                    del pkg_dict[name]
+            row_dicts.append(pkg_dict)
+        writer = CsvWriter(row_dicts)
+	writer_csv = csv.writer(dump_file, quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+        col_titles = []
+	rows_content = []
+	for cols in writer._col_titles:
+		col_titles.append(cols.encode('utf-8'))
+	writer_csv.writerow(col_titles)
+        for row in writer._rows:
+		writer_csv.writerow(row)	
+        #writer.save(dump_file)
         
     def dump(self, path = None):
         folder = './public/dump/'
         if not os.path.isdir( folder ):
             os.makedirs( folder )
-        filename = folder + "Datalocale"
-        self.dump_csv(filename + ".csv")
-        self.dump_json(filename + ".json")
-        self.dump_rdf(filename + ".rdf")
+        filename = folder + 'Datalocale'
+        self.dump_csv(filename + '.csv')
+        self.dump_json(filename + '.json')
+        self.dump_rdf(filename + '.rdf')
         
