@@ -95,7 +95,7 @@
         input_box.attr('name', new_name);
         input_box.attr('id', new_name);
         select_group = $("#user_group");
-        parent_dd.before(
+        parent_dd.after(
           '<input type="hidden" name="' + old_name + '" value="' + ui.item.value + '" />' +
           '<input type="hidden" name="' + old_name.replace('__name','__capacity') + '" value="'+select_group.val()+'" />' +
           '<dd>' + ui.item.label + '('+select_group.val()+')</dd>'
