@@ -210,23 +210,26 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def db_to_form_schema_options(self, options):
         schema = self.db_to_form_schema()
+        routes = request.environ.get('pylons.routes_dict')
         if options.get('type') == 'show' and options.get('api') == False:
-            context = options.get('context')
-            package = context.get('package')
-            package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
-            themeTaxonomy_url = package_dict.get('themeTaxonomy').keys()[0]
-            theme_url = package_dict.get('theme_available').keys()[0]
-            themeTaxonomy_name = package_dict.get('themeTaxonomy').get(themeTaxonomy_url)
-            theme_name = package_dict.get('theme_available').get(theme_url)
-            try:
-                tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
-                tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
-                c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
-                c.tag_theme = tag_theme.get('results')[0]
-                c.tag_themeTaxonomy['title'] = themeTaxonomy_name
-                c.tag_theme['title'] = theme_name
-            except logic.NotFound:
-                pass
+            if routes.get('controller') == 'package' and routes.get('action') == 'read':
+                context = options.get('context')
+                package = context.get('package')
+                package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
+                try:
+                    if len(package_dict.get('themeTaxonomy').keys()) > 0:
+                        themeTaxonomy_url = package_dict.get('themeTaxonomy').keys()[0]
+                        theme_url = package_dict.get('theme_available').keys()[0]
+                        themeTaxonomy_name = package_dict.get('themeTaxonomy').get(themeTaxonomy_url)
+                        theme_name = package_dict.get('theme_available').get(theme_url)
+                        tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
+                        tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
+                        c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
+                        c.tag_theme = tag_theme.get('results')[0]
+                        c.tag_themeTaxonomy['title'] = themeTaxonomy_name
+                        c.tag_theme['title'] = theme_name
+                except logic.NotFound:
+                    pass
         return schema
 
     def db_to_form_schema(self, package_type=None):
