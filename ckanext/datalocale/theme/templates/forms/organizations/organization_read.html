@@ -50,6 +50,24 @@
         <button class="less btn" style="display: none;"><img src="/images/chevron-up.png"/></button>
       </div>
     </div>
+    <div>
+    <py:if test="c.group_dict.get('foaf:name', '')">
+      <h3>Informations de contact</h3>     
+        <dl class="vcard">
+          <py:if test="c.group_dict.get('foaf:name', '')"><dt>Nom du contact</dt>
+          <dd>${c.group_dict.get('foaf:name', '')}</dd></py:if>
+          <py:if test="c.group_dict.get('mail', '')"><dt>Adresse mail</dt>
+          <dd>${c.group_dict.get('mail', '')}</dd></py:if>
+          <py:if test="c.group_dict.get('url', '')"><dt>Page d'accueil</dt>
+          <dd><a href="${c.group_dict.get('url', '')}">${c.group_dict.get('url', '')}</a></dd></py:if>
+          <py:if test="c.group_dict.get('phone', '')"><dt>Téléphone</dt>
+          <dd>${c.group_dict.get('phone', '')}</dd></py:if>
+          <py:if test="c.group_dict.get('locality', '')"><dt>Adresse</dt>
+          <dd>${c.group_dict.get('street-address', '')}<br/>
+          ${c.group_dict.get('postal-code', '')} ${c.group_dict.get('locality', '')} ${c.group_dict.get('country', '')}</dd></py:if>
+        </dl>
+     </py:if>
+    </div>
     <div class="group-dataset-list">
       <h3>Datasets</h3>
 

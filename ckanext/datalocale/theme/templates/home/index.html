@@ -6,7 +6,7 @@
 
   <py:def function="body_class">${h.literal('no-sidebar')}</py:def>
  
-  <py:def function="page_title">Welcome!</py:def>
+  <py:def function="page_title">Welcome</py:def>
 
   <div py:match="//div[@id='content']" class="front-page">
     <div>
@@ -31,8 +31,9 @@
           <div class="action-box-inner share clearfix">
           <h1>Share data</h1>
 
-          <p>Add your own datasets to share them with others and
-          to find other people interested in your data.</p>
+        Add your own datasets to share them with others and
+        to find other people interested in your data.
+          
           
           <py:choose test="h.check_access('package_create')">
             <a py:when="" href="${h.url_for(controller='package', action='new')}" class="create-button">Create a dataset &raquo;</a>

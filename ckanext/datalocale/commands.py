@@ -445,23 +445,27 @@ class DatalocaleCommand(cli.CkanCommand):
         return query
     
     def dump_json(self, path):
-        import ckan.lib.dumper as dumper
         query = self._get_package_public()
-        packages = query.all()
+        from time import gmtime, strftime
         dump_file = open(path, 'w')
-        dumper.SimpleDumper().dump(dump_file, format='json', query=query)
+        pkgs = []
+        for pkg in query:
+            pkg_dict = pkg.as_dict()
+            pkgs.append(pkg_dict)
+        json_content = []
+        timestamp = {"last update" : strftime("%d-%m-%Y %H:%M:%S", gmtime()) }
+        json_content.append(timestamp)
+        json_content.append({"results": pkgs})
+        json.dump(json_content, dump_file, indent=4)
 
     def dump_csv(self, path):
-        import ckan.lib.dumper as dumper
-	import csv
+        import csv
         from ckan.lib.dumper import CsvWriter
-	import codecs
-	query = self._get_package_public()
-        packages = query.all()
+        import codecs
+        query = self._get_package_public()
         dump_file = open(path, 'w')
-	dump_file.write(codecs.BOM_UTF8)
-        #dumper.SimpleDumper().dump(dump_file, format='csv', query=query)
-	row_dicts = []
+        dump_file.write(codecs.BOM_UTF8)
+        row_dicts = []
         for pkg in query:
             pkg_dict = pkg.as_dict()
             # flatten dict
@@ -481,15 +485,13 @@ class DatalocaleCommand(cli.CkanCommand):
                     del pkg_dict[name]
             row_dicts.append(pkg_dict)
         writer = CsvWriter(row_dicts)
-	writer_csv = csv.writer(dump_file, quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+        writer_csv = csv.writer(dump_file, quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
         col_titles = []
-	rows_content = []
-	for cols in writer._col_titles:
-		col_titles.append(cols.encode('utf-8'))
-	writer_csv.writerow(col_titles)
+        for cols in writer._col_titles:
+            col_titles.append(cols.encode('utf-8'))
+        writer_csv.writerow(col_titles)
         for row in writer._rows:
-		writer_csv.writerow(row)	
-        #writer.save(dump_file)
+            writer_csv.writerow(row)	
         
     def dump(self, path = None):
         folder = './public/dump/'

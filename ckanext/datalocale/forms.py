@@ -210,6 +210,23 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def db_to_form_schema_options(self, options):
         schema = self.db_to_form_schema()
+        if options.get('type') == 'show' and options.get('api') == False:
+            context = options.get('context')
+            package = context.get('package')
+            package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
+            themeTaxonomy_url = package_dict.get('themeTaxonomy').keys()[0]
+            theme_url = package_dict.get('theme_available').keys()[0]
+            themeTaxonomy_name = package_dict.get('themeTaxonomy').get(themeTaxonomy_url)
+            theme_name = package_dict.get('theme_available').get(theme_url)
+            try:
+                tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
+                tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
+                c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
+                c.tag_theme = tag_theme.get('results')[0]
+                c.tag_themeTaxonomy['title'] = themeTaxonomy_name
+                c.tag_theme['title'] = theme_name
+            except logic.NotFound:
+                pass
         return schema
 
     def db_to_form_schema(self, package_type=None):
@@ -276,23 +293,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
         ''' Add vocab tags to the bottom of the sidebar.'''
         routes = request.environ.get('pylons.routes_dict')
         if routes.get('controller') == 'package' and routes.get('action') == 'read':
-            for vocab in ('themeTaxonomy', 'theme_available' ):
-                try:
-                    vocab_tags = c.pkg_dict.get(vocab, [])
-                except NotFound:
-                    vocab_tags = None
-                if not vocab_tags:
-                    continue
-                html = '<li class="sidebar-section">'
-                if vocab == 'themeTaxonomy':
-                    html = html + '<h3>Th&egrave;mes</h3>'
-                html = html + '<ul class="tags clearfix">'
-                for tag in vocab_tags:
-                    html = html + '<li>%s</li>' % tag.encode('ascii', 'xmlcharrefreplace')
-                html = html + "</ul></li>"
+            try:
+                themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
+                theme_available = c.pkg_dict.get('theme_available', [])[0]
+                html = '<li class="sidebar-section"><h3>Th&egrave;mes</h3><ul class="tags clearfix">'\
+                    '<li><a href="{site_url}/tag/{themeT_id}">{themeT_title}</a></li><li><a href="{site_url}/tag/{theme_id}">{theme_title}</li></ul></li>'.\
+                    format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('id'), theme_id= c.tag_theme.get('id'))
                 stream = stream | Transformer(
                     "//div[@id='sidebar']//ul[@class='widget-list']"
                 ).append(HTML(html))
+            except NotFound:
+                pass   
             try:
                 '''Get id in the table and convert it to readable name'''
                 publisher = c.pkg_dict.get('dct:publisher','')

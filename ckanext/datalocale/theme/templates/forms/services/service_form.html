@@ -4,8 +4,8 @@
   <ul class="nav nav-tabs" py:if="c.action !='new'">
     <li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>
     <li><a data-toggle="tab" href="#further-information">Utilisateurs</a></li>
+    <li><a data-toggle="tab" href="#foaf">Informations de contact</a></li>
     <li><a data-toggle="tab" href="#extras">Extras</a></li>
-    <li><a data-toggle="tab" href="#foaf">FOAF</a></li>
   </ul>
 
 <form id="service-edit" action="" method="post"
@@ -194,7 +194,7 @@
     <label class="control-label" for="foaf:name">Nom</label>
     <div class="controls">
       <input id="foaf:name" name="foaf:name" type="text" value="${data.get('foaf:name', '')}" />
-      <p>Nom du contact(foaf:name)</p>
+      <p>Nom du contact (Obligatoire)</p>
     </div>
   </div>
   <div class="control-group">

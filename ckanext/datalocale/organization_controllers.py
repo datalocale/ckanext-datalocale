@@ -59,7 +59,7 @@ class DatalocaleOrganizationController(GroupController):
             'requester': c.userobj,
             'reason'   : reason
         }
-        email_msg = render("email/join_publisher_request.txt", extra_vars=extra_vars,
+        email_msg = render("forms/organizations/email/join_publisher_request.txt", extra_vars=extra_vars,
                          loader_class=NewTextTemplate)
 
         try:
@@ -68,6 +68,7 @@ class DatalocaleOrganizationController(GroupController):
                                recipient,
                                "Publisher request",
                                email_msg)
+                print('Mail send to %s (%s) Objet "Publisher request" : %s ' % (name,recipient, email_msg))
         except:
             h.flash_error(_("There is a problem with the system configuration"))
             errors = {"reason": ["No mail server was found"]}
@@ -75,7 +76,7 @@ class DatalocaleOrganizationController(GroupController):
                               error_summary=action.error_summary(errors))
 
         h.flash_success(_("Your application has been submitted"))
-        h.redirect_to( 'publisher_read', id=group.name)
+        h.redirect_to( 'organization_read', id=group.name)
 
     def apply(self, id=None, data=None, errors=None, error_summary=None):
         """

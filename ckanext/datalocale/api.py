@@ -83,8 +83,8 @@ def datalocale_package_show(context, data_dict):
     package = get_action('package_show')(context, data_dict)
     theme_available = package.get('theme_available', [])
     themeTaxonomy = package.get('themeTaxonomy', [])
-    package['themeTaxonomy'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback);
-    package['theme_available'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback); 
+    package['themeTaxonomy'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback);
+    package['theme_available'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback); 
     ''' Find extras that are not part of our schema '''
     # find extras that are not part of our schema
     additional_extras = []

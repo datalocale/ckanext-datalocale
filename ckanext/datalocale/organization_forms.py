@@ -59,7 +59,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         map.connect('/organization/edit/{id}', controller='group',
                     action='edit')
         map.connect('/organization/new', controller='group', action='new')
-        map.connect('/organization/{id}', controller=controller, action='read')
+        map.connect('/organization/{id}', controller='group', action='read')
         map.connect('/organization',  controller='group', action='index')
         map.redirect('/organization/publisher_read', '/organization/organization_read')
         return map
