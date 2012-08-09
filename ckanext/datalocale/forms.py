@@ -235,11 +235,12 @@ class DatalocaleDatasetForm(SingletonPlugin):
                         theme_name = package_dict.get('theme_available').get(theme_url)
                         tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
                         tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
-                        c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
-                        c.tag_theme = tag_theme.get('results')[0]
-                        c.tag_themeTaxonomy['title'] = themeTaxonomy_name
-                        c.tag_theme['title'] = theme_name
-                except logic.NotFound:
+                        if  tag_themeTaxonomy.get('results') :
+				c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
+                	        c.tag_theme = tag_theme.get('results')[0]
+                       		c.tag_themeTaxonomy['title'] = themeTaxonomy_name
+                        	c.tag_theme['title'] = theme_name
+                except (logic.NotFound, IndexError) as e:
                     pass
         return schema
 
@@ -316,7 +317,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 stream = stream | Transformer(
                     "//div[@id='sidebar']//ul[@class='widget-list']"
                 ).append(HTML(html))
-            except NotFound:
+            except (NotFound, IndexError) as e:
                 pass   
             try:
                 '''Get id in the table and convert it to readable name'''
