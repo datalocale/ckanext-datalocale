@@ -9,7 +9,7 @@ import ckan.model as model
 from ckan.model import Session
 from ckan.plugins import implements, SingletonPlugin
 from ckan.plugins import IActions
-from ckanext.datalocale import forms
+from ckanext.datalocale import forms, organization_forms
 log = logging.getLogger(__name__)
 
 class DatalocaleAPI(SingletonPlugin):
@@ -115,6 +115,14 @@ def datalocale_group_show(context, data_dict):
         groups['parent'] = [ { "id": parent[0].id, "name": parent[0].name, "title": parent[0].title, "description": parent[0].description, 
 		"type": parent[0].type, "image_url": parent[0].image_url, "approval_status": parent[0].approval_status, 
 		"state": parent[0].state, "revision_id": parent[0].revision_id}]
+    # find extras that are not part of our schema
+    additional_extras = []
+    schema_keys = organization_forms.DatalocaleOrganizationForm.form_to_db_schema(organization_forms.DatalocaleOrganizationForm()).keys()
+    extras = groups.get('extras', [])
+    for extra in extras:
+        if not extra['key'] in schema_keys:
+            additional_extras.append(extra)
+    groups['additional_extras'] = additional_extras
     return groups
 
 def datalocale_user_create(context, data_dict):
