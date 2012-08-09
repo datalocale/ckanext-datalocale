@@ -7,7 +7,7 @@ import ckan.logic as logic
 from ckan.logic import get_action, NotFound, NotAuthorized, check_access
 from ckan.lib import base
 from ckan.lib.base import c, model
-from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer, IGenshiStreamFilter, IActions
+from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
 from ckan.plugins import implements, SingletonPlugin
 import ckan.lib.plugins
 import ckan.plugins
@@ -72,8 +72,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
     implements(IDatasetForm, inherit=True)
     implements(IConfigurer, inherit=True)
     implements(IGenshiStreamFilter, inherit=True)
+    implements(IRoutes)
 
+    def before_map(self, map):
+        controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
+        map.connect('/storage/datalocale_upload_handle', controller=controller ,action='upload_handle')
+        return map
 
+    def after_map(self, map):
+        return map
+    
+                
     def update_config(self, config):
         """
         This IConfigurer implementation causes CKAN to look in the
@@ -113,6 +122,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def setup_template_variables(self, context, data_dict, package_type=None):
         ''' Translation '''
         import commands
+        import uuid
         ckan_lang = pylons.request.environ['CKAN_LANG']
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
@@ -126,6 +136,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         c.dataQuality_available = commands.tags_dataQuality
         c.temporal_granularity_available = commands.tags_temporal_granularity
         c.geographic_granularity_available = commands.tags_geographic_granularity
+        c.key_upload = config.get('ckan.storage.key_prefix', 'file/') + request.params.get('filepath', str(uuid.uuid4()))
         try : 
             if c.pkg_dict: 
                 if c.pkg_dict.get('dct:publisher', ''): 

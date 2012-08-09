@@ -27,6 +27,7 @@ setup(
 	"""
         [ckan.controllers]
 	organization_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
+	storage_datalocale=ckanext.datalocale.datalocale_storage:DatalocaleStorageController
 
         [ckan.plugins]
 	# Add plugins here, eg

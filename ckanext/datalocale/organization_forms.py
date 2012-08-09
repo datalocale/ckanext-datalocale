@@ -179,6 +179,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         use the available groups for the current user, but should be optional
         in case this is a top level group
         """
+        import uuid
+        c.key_upload = config.get('ckan.storage.key_prefix', 'file/') + request.params.get('filepath', str(uuid.uuid4()))
+        
         c.user_groups = c.userobj.get_groups('service')
         local_ctx = {'model': model, 'session': model.Session,
                    'user': c.user or c.author}
