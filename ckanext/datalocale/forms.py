@@ -26,6 +26,7 @@ log = logging.getLogger(__name__)
 VOCAB_FREQUENCY= u'dct:accrualPeriodicity'
 VOCAB_THEMES = u'dcat:themeTaxonomy'
 VOCAB_THEMES_CONCEPT = u'dcat:theme'
+VOCAB_THEMES_DOMAIN = u'eu:Domain'
 VOCAB_DATAQUALITY = u'dcat:dataQuality'
 VOCAB_GEOGRAPHIC_GRANULARITY = u'geographic_granularity'
 VOCAB_TEMPORAL_GRANULARITY = u'dct:temporal'
@@ -58,6 +59,7 @@ def _translate(terms, lang, fallback_lang):
                 term_translations[term] = term
     return term_translations
 
+    
 class DatalocaleDatasetForm(SingletonPlugin):
     """
       - ``IConfigurer`` allows us to override configuration normally
@@ -82,7 +84,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def after_map(self, map):
         return map
     
-                
     def update_config(self, config):
         """
         This IConfigurer implementation causes CKAN to look in the
@@ -221,27 +222,30 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def db_to_form_schema_options(self, options):
         schema = self.db_to_form_schema()
-        routes = request.environ.get('pylons.routes_dict')
-        if options.get('type') == 'show' and options.get('api') == False:
-            if routes.get('controller') == 'package' and routes.get('action') == 'read':
-                context = options.get('context')
-                package = context.get('package')
-                package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
-                try:
-                    if len(package_dict.get('themeTaxonomy').keys()) > 0:
-                        themeTaxonomy_url = package_dict.get('themeTaxonomy').keys()[0]
-                        theme_url = package_dict.get('theme_available').keys()[0]
-                        themeTaxonomy_name = package_dict.get('themeTaxonomy').get(themeTaxonomy_url)
-                        theme_name = package_dict.get('theme_available').get(theme_url)
-                        tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
-                        tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
-                        if  tag_themeTaxonomy.get('results') :
-				c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
-                	        c.tag_theme = tag_theme.get('results')[0]
-                       		c.tag_themeTaxonomy['title'] = themeTaxonomy_name
-                        	c.tag_theme['title'] = theme_name
-                except (logic.NotFound, IndexError) as e:
-                    pass
+        try:
+            routes = request.environ.get('pylons.routes_dict')
+            if options.get('type') == 'show' and options.get('api') == False:
+                if routes.get('controller') == 'package' and routes.get('action') == 'read':
+                    context = options.get('context')
+                    package = context.get('package')
+                    package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
+                    try:
+                        if len(package_dict.get('themeTaxonomy').keys()) > 0:
+                            themeTaxonomy_url = package_dict.get('themeTaxonomy').keys()[0]
+                            theme_url = package_dict.get('theme_available').keys()[0]
+                            themeTaxonomy_name = package_dict.get('themeTaxonomy').get(themeTaxonomy_url)
+                            theme_name = package_dict.get('theme_available').get(theme_url)
+                            tag_themeTaxonomy = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : themeTaxonomy_url, 'vocabulary_id': 'dcat:themeTaxonomy'})
+                            tag_theme = logic.get_action('tag_search')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'query' : theme_url, 'vocabulary_id': themeTaxonomy_url})
+                            if  tag_themeTaxonomy.get('results') :
+                                c.tag_themeTaxonomy = tag_themeTaxonomy.get('results')[0]
+                                c.tag_theme = tag_theme.get('results')[0]
+                                c.tag_themeTaxonomy['title'] = themeTaxonomy_name
+                                c.tag_theme['title'] = theme_name
+                    except (logic.NotFound, IndexError) as e:
+                        pass
+        except:
+            pass
         return schema
 
     def db_to_form_schema(self, package_type=None):

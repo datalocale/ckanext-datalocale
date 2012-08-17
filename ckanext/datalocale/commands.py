@@ -30,13 +30,10 @@ tags_temporal_granularity = [u'année', u'trimestre', u'mois', u'semaine', u'jou
 tags_dataQuality = [u'exhaustive', u'à améliorer', u'à enrichir', u'référence', u'échantillon']
 
 namespace_rdf = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-namespace_skos = 'http://www.w3.org/2004/02/skos/core#'
+namespace_skos = 'http://www.w3.org/2004/02/skos/core#' 
 namespace_xml = 'http://www.w3.org/XML/1998/namespace'
-namespace_eu = "http://eurovoc.europa.eu/schema#"
-filename_MicroThesaurus = "eurovoc_extract_1_Domain_MicroThesaurus.rdf"
-filename_Label = "eurovoc_extract_3_label.rdf"
-filename_HasTopConcept = "eurovoc_extract_2_hasTopConcept.rdf"
-
+namespace_eu = 'http://eurovoc.europa.eu/schema#'
+namespace_dc = 'http://purl.org/dc/elements/1.1/'
             
 class DatalocaleCommand(cli.CkanCommand):
     '''
@@ -139,6 +136,8 @@ class DatalocaleCommand(cli.CkanCommand):
     
     def create_theme_vocab(self):
         log.info('Creation in progress...')
+        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_eurovoc.xml'
+        self.create_vocab_from_file(VOCAB_THEMES, file_name)
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_contexte_historique.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_actions.xml'
@@ -148,12 +147,6 @@ class DatalocaleCommand(cli.CkanCommand):
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_typologie_documentaire.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
         log.info('Vocabulary created : theme')
-        
-    def create_eurovoc_vocab(self):
-        log.info('Creation in progress...')
-        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/eurovoc/'
-        self.create_vocab_from_file_eurovoc(VOCAB_THEMES, file_name)
-        log.info('Vocabulary created : eurovoc')
     
     def delete_theme_vocab(self):
         self._delete_special_vocab(VOCAB_THEMES)
@@ -210,155 +203,118 @@ class DatalocaleCommand(cli.CkanCommand):
                 log.fatal('Tag "%s" already belongs to vocab "%s"' % (tag, vocab_name))	
         log.info('Vocabulary created')
     
-    def create_vocab_from_file(self, vocab_name, file_name):
-        context = {'model': model, 'session': model.Session,
-                   'user': self.user_name}
-        #creation du vocabulaire principal
-        vocab = self._create_vocab(context, vocab_name)
-        dom = parse(file_name)
-        translations = []
-        tag_schema = logic.schema.default_create_tag_schema()
-        tag_schema['name'] = [unicode]
-        user = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
-        context = {'model': model, 'session': model.Session, 'user': user['name'], 'schema': tag_schema}
-        for conceptScheme in dom.getElementsByTagName('skos:ConceptScheme'):
-            thesaurus_uri = conceptScheme.getAttribute('ns0:about')
-            log.debug(thesaurus_uri)
-            '''Add the THEME tag'''
-            listTitle = conceptScheme.getElementsByTagName('dc:title')
-            for title in listTitle:
-                thesaurus_title = title.childNodes[0].nodeValue
-                log.debug(thesaurus_title)
-            try:
-                tag = {'name': thesaurus_uri,'vocabulary_id': vocab['id']}
-                logic.get_action('tag_create')(context, tag)
-            except logic.ValidationError, ve:
-                if not 'already belongs to vocabulary' in str(ve.error_dict):
-                    raise ve
-                log.info('Tag "%s" already belongs to vocab "%s"' % (thesaurus_uri, vocab_name))	
-            '''Translation of the THEME tag'''
-            translations.append({"term": thesaurus_uri,
-                                 "term_translation": unicode(thesaurus_title),
-                                 "lang_code": "fr"
-            })		
-            logic.get_action('term_translation_update_many')(context, {'data': translations})
-            
-            '''Add the next vocabulary'''
-            context = {'model': model, 'session': model.Session,'user': self.user_name}
-            vocab_theme = self._create_vocab(context, thesaurus_uri)
-            translations = []
-            for concept in dom.getElementsByTagName('skos:Concept'):
-                context = {'model': model, 'session': model.Session, 'user': user['name'],'schema': tag_schema}	
-                concept_uri = concept.getAttribute('ns0:about')
-                '''Add the THEME CONCEPT tag'''
-                listTitle = concept.getElementsByTagName('skos:prefLabel')
-                for title in listTitle:
-                    concept_title = title.childNodes[0].nodeValue
-                    log.debug(concept_title)
-                tag = {'name': concept_uri,'vocabulary_id': vocab_theme['id']}
-                try:
-                    logic.get_action('tag_create')(context, tag)
-                except logic.ValidationError, ve:
-                    if not 'already belongs to vocabulary' in str(ve.error_dict):
-                        raise ve
-                    log.fatal('Tag "%s" already belongs to vocab "%s"' % (concept_uri, vocab_theme['name']))	
-                    '''Translation of the THEME CONCEPT tag'''
-                translations.append({"term": concept_uri,
-        				"term_translation": concept_title,
-        				"lang_code": "fr"})		
-                logic.get_action('term_translation_update_many')(context, {'data': translations})	
-
-
-    def create_vocab_from_file_eurovoc(self, vocab_name, file_directory):
-        ''''Création du vocabulaire principal'''
-        import time
-        print time.strftime('%d/%m/%y %H:%M',time.localtime())
-        context = {'model': model, 'session': model.Session,
-                   'user': self.user_name}
-        vocab = self._create_vocab(context, vocab_name)
+    def create_vocab_from_file(self, vocab_name, filename):
+        ''' Initialisation '''
         tag_schema = logic.schema.default_create_tag_schema()
         tag_schema['name'] = [unicode]
         user = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
         context_tag = {'model': model, 'session': model.Session, 'user': user['name'], 'schema': tag_schema}
         context_model = {'model': model, 'session': model.Session,'user': self.user_name}
-        ''' Find all label '''
-        path_label = '{{{skos}}}prefLabel[@{{{xml}}}lang="fr"]'.format(skos=namespace_skos, xml=namespace_xml)
-        path_topConcept = '{{{skos}}}hasTopConcept'.format(skos=namespace_skos, xml=namespace_xml)
-        labels = {}
-        context_xml_label = xml.iterparse(file_directory+filename_Label, events=('end',), tag='{{{rdf}}}Description'.format(rdf=namespace_rdf))
-        print("Collecting labels")
-        for event, elem in context_xml_label:
-            label_uri = elem.get("{{{rdf}}}about".format(rdf=namespace_rdf))
-            label_preflabel = elem.find(path_label).text
-            elem.clear()
-            labels[label_uri] = label_preflabel
-        ''' Find all hasTopConcept '''
-        print("Collecting topConcept")
-        context_xml_topConcept = xml.iterparse(file_directory+filename_HasTopConcept, events=('end',), tag='{{{rdf}}}Description'.format(rdf=namespace_rdf))
-        topConcepts = {}
-        for event, elem in context_xml_topConcept:
-            hasTopConcept = []
-            thesaurus_uri = elem.get("{{{rdf}}}about".format(rdf=namespace_rdf))
-            for topConcept in elem.findall(path_topConcept):
-                concept_uri = topConcept.get("{{{rdf}}}resource".format(rdf=namespace_rdf))
-                hasTopConcept.append(concept_uri)
-            elem.clear()
-            topConcepts[thesaurus_uri] = hasTopConcept
-        ''''Création des ConceptScheme : ici les MicroThesaurus'''
-        print("Creation of Concept Schemes")
-        context_xml = xml.iterparse(file_directory+filename_MicroThesaurus, events=('end',), tag='{{{eu}}}MicroThesaurus'.format(eu=namespace_eu))
-        for event, elem in context_xml:
-            thesaurus_uri = elem.attrib.get("{%s}about" % namespace_rdf)
-            thesaurus_prefLabel = elem.find(path_label).text
-            elem.clear()
-            '''Add the thesaurus tag'''
-            try:
-                tag = {'name': thesaurus_uri.encode('utf-8'),'vocabulary_id': vocab['id'].encode('utf-8')}
-                logic.get_action('tag_create')(context_tag, tag)
-                translations = []
-                translations.append({"term": thesaurus_uri,
-                        "term_translation": thesaurus_prefLabel,
-                        "lang_code": "fr"})  
-                logic.get_action('term_translation_update_many')(context_tag, {'data': translations})   
-                del(translations)   
-            except logic.ValidationError, ve:
-                if not 'already belongs to vocabulary' in str(ve.error_dict):
-                    raise ve
-            thesaurus_vocabulary = self._create_vocab(context_model, thesaurus_uri)   
-            ''' Find children'''
-            for concept_uri in topConcepts.get(thesaurus_uri):
-                concept_label = labels[concept_uri]
-                context_tag = {'model': model, 'session': model.Session, 'user': user['name'],'schema': tag_schema}    
-                tag = {'name': concept_uri.encode('utf-8'),'vocabulary_id': thesaurus_vocabulary['id'].encode('utf-8')}
-                try:
-                    logic.get_action('tag_create')(context_tag, tag)
-                    translations = []
-                    translations.append({"term": concept_uri,
-                        "term_translation": concept_label,
-                        "lang_code": "fr"})  
-                    logic.get_action('term_translation_update_many')(context_tag, {'data': translations})
-                except logic.ValidationError, ve:
-                    if not 'already belongs to vocabulary' in str(ve.error_dict):
-                        raise ve
-        del context
-        print time.strftime('%d/%m/%y %H:%M',time.localtime())
+        
+        path_dctitle = '{{{dc}}}title'.format(dc=namespace_dc, xml=namespace_xml)
+        path_preflabel = '{{{skos}}}prefLabel[@{{{xml}}}lang="fr"]'.format(skos=namespace_skos, xml=namespace_xml)
+        path_inScheme = '{{{skos}}}inScheme'.format(skos=namespace_skos, xml=namespace_xml)
+        
+        vocab = self._create_vocab(context_model, vocab_name)
+        filename_parse = xml.parse(filename)
+        xml_skosConceptScheme = xml.iterparse(filename, events=('end',), tag='{{{skos}}}ConceptScheme'.format(skos=namespace_skos))
+        xml_skosConceptScheme_type = filename_parse.xpath('/rdf:RDF/rdf:Description/rdf:type[@rdf:resource="'+namespace_skos+'ConceptScheme"]',
+                                                               namespaces={'rdf': namespace_rdf})
+        xml_skosConcept = xml.iterparse(filename, events=('end',), tag='{{{skos}}}Concept'.format(skos=namespace_skos))
+        xml_skosConcept_type = filename_parse.xpath('/rdf:RDF/rdf:Description/rdf:type[@rdf:resource="'+namespace_skos+'Concept"]',
+                                                               namespaces={'rdf': namespace_rdf})
+        listConcept = {}
+        listConceptScheme = {}
+        listInScheme = {} #Parent : Fils
+        
+        print('Searching for "Concept"...')
+        #Get Concept list. Type <skos:Concept>
+        for event, elem in xml_skosConcept:
+            Concept_uri = elem.get("{{{rdf}}}about".format(rdf=namespace_rdf))
+            Concept_title = elem.find(path_preflabel).text
+            inScheme_uri = elem.find(path_inScheme).get("{{{rdf}}}resource".format(rdf=namespace_rdf))
+            listConcept[Concept_uri] = Concept_title
+            if inScheme_uri in listInScheme:
+                listInScheme[inScheme_uri].append(Concept_uri)
+            else:
+                listInScheme[inScheme_uri] = [Concept_uri]
+            #print(Concept_title, Concept_uri, inScheme_uri)
+        del(xml_skosConcept)
+        
+        print('Searching for "Concept"...')
+        #Get Concept list.Type <rdf:Description><type=skos:Concept>
+        for elem in xml_skosConcept_type:
+            parent = elem.getparent()
+            Concept_uri = parent.get("{{{rdf}}}about".format(rdf=namespace_rdf))
+            Concept_title = parent.find(path_preflabel).text
+            inScheme_uri = parent.find(path_inScheme).get("{{{rdf}}}resource".format(rdf=namespace_rdf))
+            listConcept[Concept_uri] = Concept_title
+            if inScheme_uri in listInScheme:
+                listInScheme[inScheme_uri].append(Concept_uri)
+            else:
+                listInScheme[inScheme_uri] = [Concept_uri]
+            #print(Concept_uri, Concept_title, inScheme_uri)
+        del(xml_skosConcept_type) 
+        
+        print('Searching for "ConceptScheme"...')
+        #Get ConceptScheme. Type <skos:ConceptScheme>
+        for event, elem in xml_skosConceptScheme:
+            ConceptScheme_uri = elem.get("{{{rdf}}}about".format(rdf=namespace_rdf))
+            ConceptScheme_title = elem.find(path_dctitle).text
+            listConceptScheme[ConceptScheme_uri] = ConceptScheme_title
+            #print(ConceptScheme_title, ConceptScheme_uri)
+        del(xml_skosConceptScheme)
+        
+        print('Searching for "ConceptScheme"...')
+        #Get ConceptScheme. Type <rdf:Description><type=skos:ConceptScheme>
+        for elem in xml_skosConceptScheme_type:
+            parent = elem.getparent()
+            ConceptScheme_uri = parent.get("{{{rdf}}}about".format(rdf=namespace_rdf))
+            ConceptScheme_title = parent.find(path_dctitle).text
+            listConceptScheme[ConceptScheme_uri] = ConceptScheme_title
+            #print(ConceptScheme_uri, ConceptScheme_title)
+        del(xml_skosConceptScheme_type)
+        
+        print('Matching "ConceptScheme" to "Concept"...')
+        for ConceptScheme_uri in listConceptScheme :
+            ConceptScheme_title = listConceptScheme[ConceptScheme_uri]
+            print("\t Saving :" + ConceptScheme_title)
+            self._create_tag(context_tag, vocab, ConceptScheme_uri, ConceptScheme_title)
+            vocab_ConceptScheme = self._create_vocab(context_model, ConceptScheme_uri)
+            for Concept_uri in listInScheme.get(ConceptScheme_uri):
+                Concept_title = listConcept.get(Concept_uri)
+                self._create_tag(context_tag, vocab_ConceptScheme, Concept_uri, Concept_title)
+            del(listInScheme[ConceptScheme_uri])
+            
     
-    def _create_vocab(self, context, vocab_name):
+    def _create_vocab(self, context_model, vocab_name):
             try:
                 print('Creating vocabulary "%s"' % vocab_name)
                 vocab = logic.get_action('vocabulary_create')(
-                    context, {'name': vocab_name}
+                    context_model, {'name': vocab_name}
                 )
             except logic.ValidationError, ve:
                 if not 'name is already in use' in str(ve.error_dict):
                     raise ve
                 print('Vocabulary "%s" already exists' % vocab_name)
                 vocab = logic.get_action('vocabulary_show')(
-                    context, {'id': vocab_name}
+                    context_model, {'id': vocab_name}
                 )
-            return vocab
-    
-
+            return vocab   
+             
+    def _create_tag(self, context_tag, vocab, uri, label):
+        try:
+            tag = {'name': uri.encode('utf-8'),'vocabulary_id': vocab['id'].encode('utf-8')}
+            logic.get_action('tag_create')(context_tag, tag)
+            translations = []
+            translations.append({"term": uri,
+                    "term_translation": label,
+                    "lang_code": "fr"})  
+            logic.get_action('term_translation_update_many')(context_tag, {'data': translations})   
+            del(translations)   
+        except logic.ValidationError, ve:
+            if not 'already belongs to vocabulary' in str(ve.error_dict):
+                raise ve
     
     def _delete_vocab(self, vocab_name):
         log.info('Deleting vocabulary "%s"' % vocab_name)
@@ -430,8 +386,7 @@ class DatalocaleCommand(cli.CkanCommand):
         f = open(path, 'w')
         f.write(rdf)
         f.close()
-        
-                
+                        
     def _get_package_public(self):
         from sqlalchemy.sql import and_, or_
         query = model.Session.query(model.Package).\
