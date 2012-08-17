@@ -160,6 +160,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         'locality': [convert_from_extras_groupform, ignore_missing],
         'postal-code': [convert_from_extras_groupform, ignore_missing],
         'country-name': [convert_from_extras_groupform, ignore_missing],
+        'revision_id': [ignore_missing, unicode],
     	})
         return schema
 
