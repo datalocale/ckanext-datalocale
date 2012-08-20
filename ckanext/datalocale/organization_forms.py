@@ -232,7 +232,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
         if routes.get('controller') == 'group' \
-            and routes.get('action') == 'edit':
+            and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
                 stream = stream | Transformer(
                         "//div[@id='minornavigation']//li[@class='dropdown ']"
                     ).remove()

@@ -209,7 +209,8 @@ class DatalocaleServiceForm(SingletonPlugin):
             stream = stream | Transformer(
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
-            if routes.get('controller') == 'group' and routes.get('action') == 'edit':
+            if routes.get('controller') == 'group' \
+            and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
                 html = ''
                 stream = stream | Transformer(
                         "//div[@id='minornavigation']//li[@class='dropdown ']"
