@@ -123,7 +123,8 @@ class DatalocaleOrganizationController(GroupController):
             "group" : group,
             "schema": schema.default_group_schema(),
             "model": model,
-            "session": model.Session
+            "session": model.Session,
+            'user': c.user or c.author
         }
 
         # Temporary cleanup of a capacity being sent without a name
@@ -133,7 +134,10 @@ class DatalocaleOrganizationController(GroupController):
         model.repo.new_revision()
         model_save.group_member_save(context, data_dict, 'users')
         model.Session.commit()
-
+        for user in users:
+            roles = []
+            roles.append(user.get('capacity'))
+            logic.get_action('user_role_update')(context, {'user': user.get('name',''), 'domain_object':group.id, 'roles': roles})   
         h.redirect_to( controller='group', action='edit', id=group.name)
 
 
