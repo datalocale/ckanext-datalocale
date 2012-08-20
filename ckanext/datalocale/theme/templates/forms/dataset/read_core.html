@@ -31,11 +31,14 @@ extras = dict(c.pkg_extras)
         <ul class="resource-list">
           <py:for each="res in c.pkg_dict.get('resources', [])">
           <li>
+          	<div id="res['id']">
             <a href="${h.url_for(controller='package', action='resource_read', id=c.pkg_dict['name'], resource_id=res['id'])}">
               ${h.resource_icon(res)}
               ${h.resource_display_name(res)}
+              <p class="extra-links format-box" style="float:right"></p>
               <span py:if="res.get('format')" class="format-box" property="dc:format">${res.get('format')}</span>
             </a>
+            </div>
             </li>
           </py:for>
         </ul>
