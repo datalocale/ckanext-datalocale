@@ -85,15 +85,7 @@
 	<script src="/scripts/jquery.fileupload/jquery.fileupload.js"></script>
 	<script src="/scripts/jquery.fileupload/jquery.fileupload-ui.js"></script>
 	<script src="/scripts/jquery.fileupload/jquery.fileupload-fp.js"></script>
-	<script>
-	$('#file_upload').fileupload({
-	    url: '/storage/datalocale_upload_handle',
-	    type: 'POST',
-	    done: function (e, data) {
-	    	$('#image_url').val(data.result);
-	    }
-	});
-	</script>
+	<script src="/scripts/datalocale-fileupload.js"></script>
 
   <div class="control-group homepage-field">
     <label class="control-label" for="url">Home Page</label>
