@@ -9,7 +9,7 @@ import ckan.model as model
 from ckan.model import Session
 from ckan.plugins import implements, SingletonPlugin
 from ckan.plugins import IActions
-from ckanext.datalocale import forms, organization_forms
+from ckanext.datalocale import forms_dataset, forms_organization
 log = logging.getLogger(__name__)
 
 class DatalocaleAPI(SingletonPlugin):
@@ -62,14 +62,14 @@ def datalocale_vocabulary_list(context, data_dict):
         for vocab in vocab_list : 
             try:
                 tags = get_action('tag_list')(context, {'vocabulary_id': vocab})
-                tag_translations = forms._translate(tags, lang, lang_fallback)
+                tag_translations = forms_dataset._translate(tags, lang, lang_fallback)
                 result = [(t, tag_translations[t]) for t in tags]
                 results.append(result)
             except NotFound:
                 log.fatal('Vocabulary NotFound')
         return results
     else:
-        tag_translations = forms._translate(vocab_list, lang, lang_fallback)
+        tag_translations = forms_dataset._translate(vocab_list, lang, lang_fallback)
         result = [(t, tag_translations[t]) for t in vocab_list]
         return result
 
@@ -83,12 +83,12 @@ def datalocale_package_show(context, data_dict):
     package = get_action('package_show')(context, data_dict)
     theme_available = package.get('theme_available', [])
     themeTaxonomy = package.get('themeTaxonomy', [])
-    package['themeTaxonomy'] = forms._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback);
-    package['theme_available'] = forms._translate(theme_available , ckan_lang, ckan_lang_fallback); 
+    package['themeTaxonomy'] = forms_dataset._translate(themeTaxonomy , ckan_lang, ckan_lang_fallback);
+    package['theme_available'] = forms_dataset._translate(theme_available , ckan_lang, ckan_lang_fallback); 
     ''' Find extras that are not part of our schema '''
     # find extras that are not part of our schema
     additional_extras = []
-    schema_keys = forms.DatalocaleDatasetForm.form_to_db_schema(forms.DatalocaleDatasetForm()).keys()
+    schema_keys = forms_dataset.DatalocaleDatasetForm.form_to_db_schema(forms_dataset.DatalocaleDatasetForm()).keys()
     extras = package.get('extras', [])
     for extra in extras:
         if not extra['key'] in schema_keys:
@@ -117,7 +117,7 @@ def datalocale_group_show(context, data_dict):
 		"state": parent[0].state, "revision_id": parent[0].revision_id}]
     # find extras that are not part of our schema
     additional_extras = []
-    schema_keys = organization_forms.DatalocaleOrganizationForm.form_to_db_schema(organization_forms.DatalocaleOrganizationForm()).keys()
+    schema_keys = forms_organization.DatalocaleOrganizationForm.form_to_db_schema(forms_organization.DatalocaleOrganizationForm()).keys()
     extras = groups.get('extras', [])
     for extra in extras:
         if not extra['key'] in schema_keys:
@@ -127,7 +127,7 @@ def datalocale_group_show(context, data_dict):
 
 def datalocale_user_create(context, data_dict):
     from ckan.lib.navl.validators import not_empty
-    from validators import email_validator
+    from converters import email_validator
     schema = context.get('schema')
     schema.update({
         'email': [not_empty, unicode, email_validator],

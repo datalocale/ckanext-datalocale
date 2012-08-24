@@ -31,11 +31,11 @@ extras = dict(c.pkg_extras)
         <ul class="resource-list">
           <py:for each="res in c.pkg_dict.get('resources', [])">
           <li>
-          	<div id="res['id']">
+          	<div id="${res['id']}">
             <a href="${h.url_for(controller='package', action='resource_read', id=c.pkg_dict['name'], resource_id=res['id'])}">
               ${h.resource_icon(res)}
               ${h.resource_display_name(res)}
-              <p class="extra-links format-box" style="float:right"></p>
+              <p class="resource-url-analytics" style="float:right"></p>
               <span py:if="res.get('format')" class="format-box" property="dc:format">${res.get('format')}</span>
             </a>
             </div>
@@ -120,6 +120,25 @@ extras = dict(c.pkg_extras)
 	    <td py:otherwise="" class="dataset-details">${c.pkg_dict.get('dct:accrualPeriodicity', '')}</td>
           </py:choose>
         </tr>
+        
+        <tr py:if="c.pkg_dict.get('metadata_created', '')">
+          <td class="dataset-label">Date de création</td>
+          <td class="dataset-details">${h.render_datetime(c.pkg_dict.get('metadata_created', []),'%d/%m/%Y')}</td>
+        </tr>
+        
+        <tr py:if="c.pkg_dict.get('metadata_modified', '')">
+          <td class="dataset-label">Date de modification</td>
+          <td class="dataset-details">${h.render_datetime(c.pkg_dict.get('metadata_modified', []),'%d/%m/%Y')}</td>
+        </tr>
+
+        
+        <tr py:if="c.pkg_dict.get('dct:accrualPeriodicity', '') and extras.get('dct:accrualPeriodicity', '')">
+          <td class="dataset-label">Fréquence de mise à jour</td>
+          <py:choose test="c.pkg_dict.get('dct:accrualPeriodicity', [])">
+	    <td py:when="u'autre - merci de préciser'" class="dataset-details">${extras.get('dct:accrualPeriodicity', '')}</td>
+	    <td py:otherwise="" class="dataset-details">${c.pkg_dict.get('dct:accrualPeriodicity', '')}</td>
+          </py:choose>
+        </tr>
 
         <tr py:if="c.pkg_dict.get('temporal_coverage-from', '')">
           <td class="dataset-label">Couverture temporelle</td>
@@ -136,7 +155,7 @@ extras = dict(c.pkg_extras)
 
         <tr py:if="c.pkg_dict.get('spatial', '')">
           <td class="dataset-label">Informations géographiques</td>
-          <td class="dataset-details"><a href="${c.pkg_dict.get('spatial-uri', [])}">${c.pkg_dict.get('spatial-text', 'Non renseigné')}</a></td>
+          <td class="dataset-details"><a href="${c.site_url}/dataset?ext_bbox=${c.bbox}">${c.pkg_dict.get('spatial-text', 'Non renseigné')}</a></td>
         </tr>
 
         <tr py:if="c.pkg_dict.get('dcat:granularity', '')">

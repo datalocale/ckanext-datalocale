@@ -1,5 +1,6 @@
 import os
 import pylons
+import re
 from pylons import config
 import logging
 import ckan.authz as authz
@@ -14,23 +15,14 @@ import ckan.plugins
 import ckan.logic.schema as default_schema
 from ckan.lib.navl.validators import ignore_missing, ignore_empty, keep_extras, not_empty, ignore, default
 from ckan.logic.converters import convert_to_extras, convert_from_extras, convert_to_tags, convert_from_tags, free_tags_only
-from validators import datalocale_convert_from_tags, datalocale_convert_to_tags, \
+from converters import datalocale_convert_from_tags, datalocale_convert_to_tags, \
 convert_to_groups, convert_from_groups_visibility, date_to_db, \
 extract_other, use_other, get_score
 from pylons import request
 from genshi.filters import Transformer
 from genshi.input import HTML
-
+from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_DATAQUALITY, VOCAB_GEOGRAPHIC_GRANULARITY, VOCAB_REFERENCES
 log = logging.getLogger(__name__)
-
-VOCAB_FREQUENCY= u'dct:accrualPeriodicity'
-VOCAB_THEMES = u'dcat:themeTaxonomy'
-VOCAB_THEMES_CONCEPT = u'dcat:theme'
-VOCAB_THEMES_DOMAIN = u'eu:Domain'
-VOCAB_DATAQUALITY = u'dcat:dataQuality'
-VOCAB_GEOGRAPHIC_GRANULARITY = u'geographic_granularity'
-VOCAB_TEMPORAL_GRANULARITY = u'dct:temporal'
-VOCAB_REFERENCES = u'dcterms:references'
 
 def _tags_and_translations(context, vocab, lang, lang_fallback):
     try:
@@ -180,17 +172,19 @@ class DatalocaleDatasetForm(SingletonPlugin):
         Returns the schema for mapping package data from a form to a format
         suitable for the database.
         """
-        try:
-            if c.userobj : 
-                ckan_author_default = c.userobj.id
-            else : 
-                ckan_author_default = ""
+        '''try:
+            if c:
+                if c.userobj : 
+                    ckan_author_default = c.userobj.id
+                else : 
+                    ckan_author_default = ""
         except NotFound:
             ckan_author_default = ""
-            pass
+            pass'''
         schema = default_schema.package_form_schema()
         schema.update({
-		'ckan_author': [unicode, default(ckan_author_default), not_empty, convert_to_extras],
+        'metadata_created' : [ignore_missing],
+		'ckan_author': [unicode, convert_to_extras],
 		'dct:contributor': [unicode, ignore_missing, convert_to_extras],
 		'dct:publisher': [convert_to_groups('id', 0), convert_to_extras],
         'dct:creator': [convert_to_groups('id', 1), convert_to_extras],
@@ -244,6 +238,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
                                 c.tag_theme['title'] = theme_name
                     except (logic.NotFound, IndexError) as e:
                         pass
+                    coords = re.findall(r"[+-]? *(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?", package_dict.get("spatial"))
+                    c.bbox = "{minLng}%2C{minLat}%2C{maxLng}%2C{MaxLat}".format(minLng = coords[0].strip(),minLat = coords[5].strip(),maxLng = coords[2].strip(),MaxLat = coords[1].strip() )
         except:
             pass
         return schema

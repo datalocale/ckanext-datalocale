@@ -1,5 +1,5 @@
-var json_data = {"Departements" : "","Cantons" : "","Communes" : ""}
-var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"), "Cantons": new Array("code-dept","code-canton","nom-chf"),"Communes": new Array("code-dept","code-comm","nom-comm") }
+var json_data = {"Departements" : "","Cantons" : "","Communes" : "", "Epci": ""}
+var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"), "Cantons": new Array("code-dept","code-canton","nom-chf"),"Communes": new Array("code-dept","code-comm","nom-comm"), "Epci": new Array("code-dept","code-epci","nom-epci") }
 
   $(function() {
     $("#themeTaxonomy").each(function () {
@@ -18,7 +18,7 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
     });
 
     $("#spatial_Departements").change(function(){
-        if($("#spatial_type").val() == "Communes") {spatialPopulateCommune($(this).val());}
+        if($("#spatial_type").val() == "Communes" || $("#spatial_type").val() == "Epci") {spatialPopulateExtra($("#spatial_type").val(), $(this).val());}
     });
 
     $('#generate-extent').click(function (event) 
@@ -30,31 +30,31 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
     });
 	/**	Gestion du datepicker */
     $("#temporal_coverage-from").datepicker({ minDate: new Date(2011, 1 - 1, 1), changeMonth: true, onSelect: function( selectedDate ) {
-	$( "#temporal_coverage-to" ).datepicker( "option", "minDate", selectedDate );} });
+	$("#temporal_coverage-to").datepicker("option", "minDate", selectedDate );} });
     $("#temporal_coverage-to").datepicker({ minDate: new Date(2011, 1 - 1, 1), changeMonth: true, onSelect: function( selectedDate ) {
-	$( "#temporal_coverage-from" ).datepicker( "option", "maxDate", selectedDate );} });
-    $('#temporal_coverage-from').datepicker('option', 'dateFormat', 'dd/mm/yy');
-    $('#temporal_coverage-from').datepicker("setDate", new Date(temporal_coverage_from));
-    $('#temporal_coverage-to').datepicker('option', 'dateFormat', 'dd/mm/yy');
-    $('#temporal_coverage-to').datepicker("setDate", new Date(temporal_coverage_to));
+	$("#temporal_coverage-from").datepicker("option", "maxDate", selectedDate );} });
+    $("#temporal_coverage-from").datepicker("option", 'dateFormat', 'dd/mm/yy');
+    $("#temporal_coverage-from").datepicker("setDate", new Date(temporal_coverage_from));
+    $("#temporal_coverage-to").datepicker("option", 'dateFormat', 'dd/mm/yy');
+    $("#temporal_coverage-to").datepicker("setDate", new Date(temporal_coverage_to));
   });	
 
   /**	Spatial : Récupérer les données (.json) **/
   function getSpatial(type_id) {
     if(type_id != "") {
-      if(type_id == "Communes") {getSpatial("Departements");}
-      if(json_data[type_id] != "") {if(type_id=="Communes") {spatialPopulateCommune($("#spatial_Departements").val());} else {spatialPopulate(type_id);} return;}
+      if(type_id == "Communes" || type_id == "Epci") {getSpatial("Departements");}
+      if(json_data[type_id] != "") {if(type_id=="Communes" || type_id == "Epci") {spatialPopulateExtra(type_id, $("#spatial_Departements").val());} else {spatialPopulate(type_id);} return;}
       $.ajax({
         dataType: 'text',
         success: function(string) {
-          data = $.parseJSON(string);
-	  json_data[type_id]  =data;; 
-	  if(type_id=="Communes") {
-	    spatialPopulateCommune($("#spatial_Departements").val());
-	  }
-	  else {
-            spatialPopulate(type_id);
-	  }
+        	data = $.parseJSON(string);
+	  		json_data[type_id] = data;; 
+	  		if(type_id=="Communes" || type_id=="Epci") {
+	    		spatialPopulateExtra(type_id,$("#spatial_Departements").val());
+	    	}
+	  		else {
+            	spatialPopulate(type_id);
+	  		}
         },
         url: '/data/'+type_id+'.json'
       });
@@ -68,13 +68,13 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
     spatialFillCombobox(data.features, type_id)
   }
 
-    /**	Spatial : Remplir la combobox "Communes" **/
-  function spatialPopulateCommune(departement_id) {
-    data = json_data["Communes"]
+    /**	Spatial : Remplir la combobox extra **/
+  function spatialPopulateExtra(extra, departement_id) {
+    data = json_data[extra]
     data_filter = jQuery.grep(data.features, function(element, index){
 	  return element.properties['code-dept'] == departement_id;
     });
-    spatialFillCombobox(data_filter,"Communes");
+    spatialFillCombobox(data_filter,extra);
   }
 
     /**	Spatial : Remplir une combobox **/
@@ -88,18 +88,18 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
        else
          $("#spatial_"+key).hide()
     }
-    if(type_id == "Communes")
+    if(type_id == "Communes" || type_id == "Epci")
        $("#spatial_Departements").attr("style","") 
     for(item in data_filter) {
-	value = data_filter[item].properties[json_label[type_id][1]]
-	label = data_filter[item].properties[json_label[type_id][2]]
-	geometry = data_filter[item].geometry
+		value = data_filter[item].properties[json_label[type_id][1]]
+		label = data_filter[item].properties[json_label[type_id][2]]
+		geometry = data_filter[item].geometry
         if(data_filter[item].properties.uri == selected_spatial_uri) {
           html += '<option value="'+ value+'" selected="selected">'+value+' - '+ label+'</option>'
-	}
-	else {
+		}
+		else {
           html += '<option value="'+ value+'">'+value+' - '+ label+'</option>'
-	}
+		}
      }
    $("#spatial_"+type_id).html(html);
    sortDropDownListByText("#spatial_"+type_id)

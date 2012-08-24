@@ -128,9 +128,12 @@ def date_to_db(value, context):
 
 def use_other(key, data, errors, context):
     other_key = key[-1] + '-other'
-    other_value = data.get((other_key,), '').strip()
-    if other_value:
-        data[key] = other_value
+    try:
+        other_value = data.get((other_key,), '').strip()
+        if other_value:
+            data[key] = other_value
+    except:
+        pass
 
 def extract_other(option_list):
     def other(key, data, errors, context):

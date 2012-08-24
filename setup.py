@@ -32,9 +32,9 @@ setup(
         [ckan.plugins]
 	# Add plugins here, eg
 	# myplugin=ckanext.myextension:PluginClass
-	datalocale_datasetform=ckanext.datalocale.forms:DatalocaleDatasetForm
-	datalocale_serviceform=ckanext.datalocale.service_forms:DatalocaleServiceForm
-	datalocale_organizationform=ckanext.datalocale.organization_forms:DatalocaleOrganizationForm
+	datalocale_datasetform=ckanext.datalocale.forms_dataset:DatalocaleDatasetForm
+	datalocale_serviceform=ckanext.datalocale.forms_service:DatalocaleServiceForm
+	datalocale_organizationform=ckanext.datalocale.forms_organization:DatalocaleOrganizationForm
 	datalocale_api=ckanext.datalocale.api:DatalocaleAPI
 
 	[paste.paster_command]

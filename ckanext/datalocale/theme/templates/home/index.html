@@ -1,97 +1,119 @@
-<html xmlns:py="http://genshi.edgewall.org/"
-  xmlns:i18n="http://genshi.edgewall.org/i18n"
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:py="http://genshi.edgewall.org/"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   py:strip=""
   >
 
   <py:def function="body_class">${h.literal('no-sidebar')}</py:def>
  
-  <py:def function="page_title">Welcome</py:def>
+  <py:def function="page_title">Welcome to ${g.site_title}</py:def>
 
   <div py:match="//div[@id='content']" class="front-page">
-    <div>
-      <h1 class="page_heading">Welcome to ${g.site_title}</h1>
-    </div>
-    <div class="row">
-      <div class="span4">
-        <div class="action-box">
-          <div class="action-box-inner find clearfix">
-            <h1>Find data</h1>
-
-            <form action="${h.url_for(controller='package', action='search')}" method="GET"> 
-              <input name="q" value="" class="search-field" placeholder="${_('Find datasets')}" /> 
-            </form> 
-            <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
+  <div role="main" class="hero">
+    <div id="content" class="container">
+    	<div class="flash-messages"></div>
+  <div class="hero-primary module module-popup">
+    <div class="module-content span6">
+        <header>
+              <h1 class="page-heading">Welcome to ${g.site_title}</h1>
+              <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
             browse, learn about and download.</p>
-          </div>
-        </div>
-      </div>
-      <div class="span4">
-        <div class="action-box">
-          <div class="action-box-inner share clearfix">
-          <h1>Share data</h1>
-
-        Add your own datasets to share them with others and
-        to find other people interested in your data.
-          
-          
-          <py:choose test="h.check_access('package_create')">
-            <a py:when="" href="${h.url_for(controller='package', action='new')}" class="create-button">Create a dataset &raquo;</a>
-            <py:otherwise>
-              <a href="${h.url_for(controller='user', action='login')}" class="create-button">Sign up &raquo;</a>
-            </py:otherwise>
-          </py:choose>
-          </div>
-        </div>
-      </div>
-      <!--<div class="span4">
-        <div class="action-box">
-          <div class="action-box-inner collaborate clearfix">
-          <h1>Collaborate</h1>
-
-          <p>Find out more about working with open data by exploring 
+            <p>Find out more about working with open data by exploring 
           these resources:</p>
-          <ul>
-            <li><a href="http://getthedata.org">GetTheData.org</a></li>
-            <li><a href="http://datapatterns.org">DataPatterns.org</a></li>
-            <li><a href="http://opendatahandbook.org">Open Data Handbook</a></li>
-          </ul>
-          </div>
-        </div>
-      </div>-->
-      <div class="span4">
-        <div class="action-box">
-          <div class="action-box-inner collaborate clearfix">
-          <h1>Download</h1>
-
-          <p>Télécharger le catalogue de Datalocale:</p>
           <ul>
             <li><a href="${c.site_url}/dump/Datalocale.rdf">au format rdf</a></li>
             <li><a href="${c.site_url}/dump/Datalocale.json">au format json</a></li>
             <li><a href="${c.site_url}/dump/Datalocale.csv">au format csv</a></li>
           </ul>
+        </header>
+    </div>
+  </div>
+  <section class="hero-secondary module module-info-overlay fade-in span6">
+    <py:choose>
+     <py:when test="c.user">
+    <div class="ckan-logged-in"><div class="module-content">
+      <h3 class="module-heading">Add a Dataset</h3>
+      <p>
+          You can <a href="/dataset/new">add a dataset</a> to get a sense of publisher workflow. This form
+          can be customised to require many additional fields. In this demo only
+          the most basic fields are required.
+      </p>
+    </div></div>
+    </py:when>
+    <py:otherwise>
+    <div class="ckan-logged-out"><div class="module-content">
+      <h3 class="module-heading">Inscrivez-vous</h3>
+      <p>
+          Vous pouvez vous <a href="/user/register">inscrire</a> ou vous <a href="/user/login">connecter</a> pour collaborer à projet Datalocale. 
+      </p>
+    </div></div></py:otherwise>
+    </py:choose>
+  </section>
+  <div class="hero-secondary span6" >
+    <div class="hero-secondary-inner">
+          <div class="module module-shallow module-narrow module-dark info">
+            <form class="dataset-search module-content clearfix" method="get" action="/dataset">
+              <h3 class="heading">Find data</h3>
+              <span class="control-group search-giant">
+                <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="${_('Find datasets')}" />
+                <button type="submit" value="Search">Submit</button>
+              </span>
+            </form>
           </div>
-        </div>
-      </div>
-    </div>
-    <div py:if="c.groups" class="row whoelse">
-      <div class="span12">
-        <h2>Who else is here?</h2>
-      </div>
-    </div>
-    <div class="row">
-      <py:for each="i, group_dict in enumerate(c.groups[:6])">
-        <div class="span4">
-          <div class="group">
-            <h3><a href="${h.url_for(controller='group', action='read', id=group_dict['name'])}">${group_dict['title']}</a></h3>
-            <p>
-              ${h.markdown_extract(group_dict['description'])}
-            </p>
-            <strong>${group_dict['title']} has ${group_dict['packages']} datasets.</strong>
+          <div class="tags">
+            <h3 class="tag">Popular</h3>
+				<ul class="tag-list">
+				<py:for each="facet in enumerate(c.search_facets.get('tags')['items'][:3]) ">
+				    <li>
+				      <a class="tag" href="/dataset?tags=${facet[1].get('name','')}">${facet[1].get('display_name','')}</a>
+				    </li>
+				</py:for>
+				</ul>
           </div>
-        </div>
-      </py:for>
     </div>
+  </div>
+  <section class="span6 group-list first module module-narrow module-shallow">
+    <header class="module-heading media">
+	    <div class="media-content">
+	      <h3 class="media-heading"><a href="/group">Les groupes</a></h3>
+	    </div>
+    </header>
+	<ul class="unstyled dataset-list">
+	<py:for each="facet in enumerate(c.groups[:3])">
+		<li class="dataset-item module-content">
+		  <div class="dataset-content">
+		    <h3 class="dataset-heading">
+		      <a href="/organization/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
+		    </h3>
+		      <div>${facet[1].get('description')}</div>
+		   	  ${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
+		      </div>
+		</li>
+	</py:for>
+	</ul>
+  </section>
+    <section class="span6 group-list module module-narrow module-shallow">
+    <header class="module-heading media">
+	    <div class="media-content">
+	      <h3 class="media-heading">Datasets</h3>
+	    </div>
+    </header>
+	<ul class="unstyled dataset-list">
+	<py:for each="dataset in c.datasets">
+		<li class="dataset-item module-content">
+		  <div class="dataset-content">
+		    <h3 class="dataset-heading">
+		      <a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
+		    </h3>
+		      <div>${dataset.get('notes','')}</div>
+		      </div>
+		</li>
+		</py:for>
+	</ul>
+  </section>
+  </div>
+  </div>
   </div>
   <xi:include href="layout.html" />
 </html>

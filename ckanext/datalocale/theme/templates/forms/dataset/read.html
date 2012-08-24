@@ -29,7 +29,7 @@
         <py:choose test="">
           <span py:when="c.pkg_dict.get('license_url')"><a
               href="${c.pkg_dict.get('license_url')}" rel="dc:rights">${c.pkg_dict.get('license_title')}</a></span>
-          <span py:when="c.pkg.license" property="dc:rights">${c.pkg_dict.get('license_title')}</span>
+          <span py:when="c.pkg.license" property="dc:rights">${c.pkg.license.title}</span>
         </py:choose>
 
         <py:if test="c.pkg_dict.get('isopen')">
@@ -46,14 +46,14 @@
 
     <li py:if="c.pkg_dict.get('tags')" class="sidebar-section">
       <h3>Tags</h3>
-      ${tag_list(c.pkg_dict.get('tags', ''))}
+      ${tag_list_datalocale(c.pkg_dict.get('tags', ''))}
     </li>
 
     <li py:if="c.pkg_dict.get('groups')" class="sidebar-section">
       <h3>Groups</h3>
-      <ul class="groups">
+      <ul class="groups tag-list">
         <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
-        <a href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
+        <a class="tag" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
         </li>
       </ul>
     </li>

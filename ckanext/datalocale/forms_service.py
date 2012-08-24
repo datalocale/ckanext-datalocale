@@ -11,7 +11,7 @@ from ckan.logic import check_access
 from pylons import request
 from genshi.filters import Transformer
 from genshi.input import HTML
-from ckanext.datalocale.validators import convert_to_extras_groupform,  convert_from_extras_groupform
+from converters import convert_to_extras_groupform,  convert_from_extras_groupform
 from ckan.logic.converters import date_to_db, date_to_form, convert_to_extras, convert_from_extras
 from ckan.lib.navl.validators import (ignore_empty, ignore_missing,
                                       not_empty,

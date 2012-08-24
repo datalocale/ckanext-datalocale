@@ -217,6 +217,14 @@ publisher = data.get('dct:publisher', {})
   </div>
 
   <div class="control-group tags-field">
+    <label class="control-label" for="metadata_created">Date de création</label>
+    <div class="controls">
+      <input id="metadata_created" name="metadata_created" type="text" value="${data.get('metadata_created', '')}" />
+      <p>Date de création du jeux de données</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
     <label class="control-label" for="frequency">Fréquence de mise à jour</label>
     <div class="controls">
       <select id="dct:accrualPeriodicity" class="chzn-select" name="dct:accrualPeriodicity">
@@ -277,6 +285,7 @@ publisher = data.get('dct:publisher', {})
         <option value="Departements">Départements</option>
         <option value="Cantons">Cantons</option>
         <option value="Communes">Communes</option>
+        <option value="Epci">EPCI</option>
       </select>
       <p>Sélectionnez un type d'élément</p>
     </div>
@@ -291,6 +300,9 @@ publisher = data.get('dct:publisher', {})
         <option value="">(None)</option>
       </select>
       <select id="spatial_Communes" name="spatial_Communes" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Epci" name="spatial_Epci" style="display:none">
         <option value="">(None)</option>
       </select>
     <p>Sélectionnez un élément pour calculer automatiquement la zone géographique</p>
@@ -375,7 +387,7 @@ publisher = data.get('dct:publisher', {})
         <li><a href="#" class="js-resource-add">${h.icon('page_white_add')}New resource...</a></li>
       </ul>
     </div>
-    <div class="span8">
+    <div class="span7">
       <div style="display: none;" class="resource-panel">
         <button class="btn btn-danger resource-panel-close">x</button>
         <div class="resource-details resource-add">

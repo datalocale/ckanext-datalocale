@@ -10,7 +10,6 @@ import ckan
 import ckan.model as model
 import ckan.logic as logic
 import ckan.lib.cli as cli
-import forms
 from xml.dom.minidom import parse
 import lxml.etree as xml
 import gc
@@ -24,6 +23,7 @@ VOCAB_THEMES_CONCEPT = u'dcat:theme'
 VOCAB_DATAQUALITY = u'dcat:dataQuality'
 VOCAB_GEOGRAPHIC_GRANULARITY = u'geographic_granularity'
 VOCAB_TEMPORAL_GRANULARITY = u'dct:temporal'
+VOCAB_REFERENCES = u'dcterms:references'
 tags_frequency = [u'jamais', u'irrégulier', u'annuelle', u'semestrielle' , u'trimestrielle', u'mensuelle', u'quotidienne', u'autre - merci de préciser']
 tags_geographic_granularity = [u'régional', u'départemental', u'etablissement public', u'commune', u'association', u'autre - merci de préciser']
 tags_temporal_granularity = [u'année', u'trimestre', u'mois', u'semaine', u'jour', u'heure', u'point', u'autre - merci de préciser']
@@ -117,6 +117,8 @@ class DatalocaleCommand(cli.CkanCommand):
                 self.dump_csv(self.args[1])
         elif cmd == 'dump':
             self.dump()
+        elif cmd == 'import-csv':
+            self.import_csv()
         else:
             log.error('Command "%s" not recognized' % (cmd,))
             
@@ -456,4 +458,107 @@ class DatalocaleCommand(cli.CkanCommand):
         self.dump_csv(filename + '.csv')
         self.dump_json(filename + '.json')
         self.dump_rdf(filename + '.rdf')
+        
+    def import_csv(self):
+        ''' Récupérer l'utilisateur en cours'''
+        user = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
+        client = model.User.get('6b82a606-16d9-4707-82bd-91f648739648')
+        context = {'model': model, 'session': model.Session, 'user': user['name']}
+        file = './public/dump/Datalocale-export.csv'
+        csv.register_dialect("myDialect", MyDialect) 
+        reader = csv.reader(open(file), delimiter=';', dialect = "myDialect")
+        crlf = '\r\n'
+        colums = reader.next()
+        ''''m = {"name":0,"title":1,"author":"Océane Ventura","author_email":"oceane.ventura@atos.net",
+             "maintainer":-1,"maintainer_email":-1, "license_id":5, "notes":2, "url": -1, "version":-1}'''
+        ''' Mapping du package : 
+        - si un chiffre : un numéro de colonne
+        - si un -1 : ignore
+        - si texte : utiliser la valeur
+        '''
+        m = {"name":1,"title":1,"ckan_author":client.id,"dct:contributor":client.fullname}
+        ''' Mapping pour les ressources '''
+        m_resource = {}
+        nb_resource = 0
+        ''' Mapping pour les tags '''
+        '''m_tags = {"free":4,"dct:accrualPeriodicity":10}'''
+        m_tags = {}
+        ''' Mapping pour les extras '''
+        m_extras = {"maj":9}
+        i=0
+        for row in reader : 
+            tags = [] #list of tag dictionaries
+            extras = [] #list of dataset extra dictionaries {'key':'value'}
+            groups = [] #list of dictionaries (id, name or title)
+            resources = [] #list of resource dictionaries
+            '''Ignore crlf in file : pour gérer les saut de lignes dans les descriptions'''
+            for col in row:
+                if crlf in col:
+                    col = col.rstrip()
+            pkg = {}
+            
+            ''' Get all package info '''
+            for key in m:
+                pkg[key] = self._csv_getvalue(key, row, m)
+            ''' Get all tags info '''
+            for key in m_tags:
+                if key == "free":
+                    free = row[m_tags['free']].split(',')
+                    for f in free:
+                        tags.append({"vocabulary_id": None, "name":f})
+                else:
+                    tags.append({"vocabulary_id": key, "name":row[m_tags[key]]})
+            ''' Get all tags extras '''
+            for key in m_extras:
+                value = self._csv_getextra(key, row, m_extras)
+                if value: extras.append({key:value})
+            #Add list
+            pkg['extras'] = extras
+            pkg['tags'] = tags
+            pkg['resources'] = resources
+            pkg['groups'] = groups
+            #Validators of name (uri)
+            if pkg.get('name'):
+                pkg['name']  = '_'.join(re.findall('[\w]+', pkg.get('name')))
+            ''' Enregistrement : se référer à la docs de l'API v3. Faire un package_update pour les ressources (et peut être pour les tags et/ou extras). '''
+            #dataset = logic.get_action('package_create')(context, pkg)
+            
+    def _csv_getvalue(self,colName,row,m):
+        index = m.get(colName)
+        value = ""
+        if index :
+            if index != -1 :
+                if type(index).__name__ == 'int':
+                    if len(row)>= index:
+                        value = row[index]
+                        value = unicode(row[index], 'utf-8')
+                elif type(index).__name__ == 'str':
+                    value = index
+                else: 
+                    value = ""
+        else:
+            value = ""
+        return value
+    
+    def _csv_getextra(self,extraName,row,m_extras):
+        index = m_extras.get(extraName)
+        value = ""
+        if index :
+            if index != -1 :
+                if type(index).__name__ == 'int':
+                    if len(row)>= index:
+                        value = row[index]
+                elif type(index).__name__ == 'str':
+                    value = index
+                else: 
+                    value = ""
+        else:
+            value = ""
+        return value
+    
+import csv
+class MyDialect(csv.excel): 
+        lineterminator = "\n" 
+
+
         
