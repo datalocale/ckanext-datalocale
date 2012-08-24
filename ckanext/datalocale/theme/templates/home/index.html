@@ -86,7 +86,7 @@
 		    <h3 class="dataset-heading">
 		      <a href="/organization/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
 		    </h3>
-		      <div>${facet[1].get('description')}</div>
+		      <div>${facet[1].get('description')[:200]}...</div>
 		   	  ${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
 		      </div>
 		</li>
@@ -106,7 +106,7 @@
 		    <h3 class="dataset-heading">
 		      <a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
 		    </h3>
-		      <div>${dataset.get('notes','')}</div>
+		      <div>${dataset.get('notes','')[:200]}</div>
 		      </div>
 		</li>
 		</py:for>
