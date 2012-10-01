@@ -84,12 +84,12 @@ extras = dict(c.pkg_extras)
         </tr>
 
         <tr py:if="c.pkg_dict.get('dct:creator', [])" id="dct:creator">
-          <td class="dataset-label">Propriétaire</td>
+          <td class="dataset-label">Groupe</td>
           <td class="dataset-details" property="dct:creator">${c.pkg_dict.get('dct:creator', [])}</td>
         </tr>
 
         <tr py:if="c.pkg_dict.get('dct:publisher', [])" id="dct:publisher">
-          <td class="dataset-label">Diffuseur</td>
+          <td class="dataset-label">Service</td>
           <td class="dataset-details" property="dct:publisher">${c.pkg_dict.get('dct:publisher', [])}</td>
         </tr>
 
