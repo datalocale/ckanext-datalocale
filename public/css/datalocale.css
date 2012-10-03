@@ -438,7 +438,7 @@ body .tag {
   color: #00B9F1;
   padding-left: 10px;
   padding-right: 5px;
-  margin-right: 11px;
+  margin-right: 10px;
 }
 .tag:before {
   content: "";
@@ -468,7 +468,7 @@ margin-right: 5px;
   padding: 0;
 }
 .hero .tags .tag {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 /**Search giant**/
@@ -476,15 +476,16 @@ margin-right: 5px;
 .search-giant {
   position: relative;
 }
+
 .search-giant input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 16px;
-  padding: 14px 10px;
-  width: 100%;
-  height: auto;
+  font-size: 12px;
+  padding: 10px 10px;
+  width: 70%;
+  height: 30px;
 }
 .search-giant button {
   cursor: pointer;
@@ -494,9 +495,9 @@ margin-right: 5px;
   display: block;
   border: none;
   padding: 0;
-  margin-top: -17px;
-  width: 30px;
-  height: 30px;
+  margin-top: -15px;
+  width: 25px;
+  height: 25px;
   background: transparent url("../img/icon-search-27x26.png") no-repeat center center;
   text-indent: -900em;
 }
@@ -556,4 +557,65 @@ font-size: 14px;
 
 .module-heading p {
 	font-size:12px;
+}
+
+
+.media-heading {
+	font-size:18px;
+}
+
+.media-heading a{
+	text-decoration:none;
+	color:#000;
+	line-height:normal;
+}
+
+.circle-green {
+	padding-top:25px;
+	margin:25px;
+	background-color:#31b44e;
+	height:225px;
+	-webkit-border-radius: 125px;
+	-moz-border-radius: 125px;
+	border-radius: 125px;
+	text-align:center;
+}
+
+.circle-red {
+	padding-top:25px;
+	margin:25px;
+	background-color:#ee4524;
+	height:225px;
+	-webkit-border-radius: 125px;
+	-moz-border-radius: 125px;
+	border-radius: 125px;
+	text-align:center;
+}
+
+.blue-hand {
+	padding:40px 0 0 20px;
+	margin:25px 0;
+	background:url("../img/main.png") no-repeat center center;
+	background-size:countain;
+	-moz-background-size:countain;
+	-webkit-background-size:countain;
+	-ms-background-size:countain;
+	-o-background-size:countain;
+	height:225px;
+	width:350px;
+}
+
+/* liste à puce pour la colonne groupe */
+.big-bullet {list-style-type: none;}
+.big-bullet:before {
+	content:"";
+	margin-bottom:140px;
+	margin-right:5px;
+	float:left;
+	height:50px;
+	width:50px;
+	background-color:#ee4524;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
 }

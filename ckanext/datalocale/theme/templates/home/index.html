@@ -13,22 +13,99 @@
   <div role="main" class="hero">
     <div id="content" class="container">
     	<div class="flash-messages"></div>
-  <div class="hero-primary module module-popup">
-    <div class="module-content span6">
-        <header>
-              <h1 class="page-heading">Welcome to ${g.site_title}</h1>
-              <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
-            browse, learn about and download.</p>
-            <p>Find out more about working with open data by exploring 
-          these resources:</p>
-          <ul>
-            <li><a href="${c.site_url}/dump/Datalocale.rdf">au format rdf</a></li>
-            <li><a href="${c.site_url}/dump/Datalocale.json">au format json</a></li>
-            <li><a href="${c.site_url}/dump/Datalocale.csv">au format csv</a></li>
-          </ul>
-        </header>
-    </div>
-  </div>
+	
+	<!-- ligne bootstrap -->
+	<div class="row">
+	
+	  <!-- bloc bienvenue -->
+	  <section class="span4 module-narrow module-shallow">
+	  	<header class="circle-green">
+			<div class="media-content">
+			  <h3 class="media-heading">Welcome to ${g.site_title}</h3>
+			  <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
+			browse, learn about and download.</p>
+			</div>
+		</header>
+		  <p>Find out more about working with open data by exploring 
+		  these resources:</p>
+		  <ul>
+			<li><a href="${c.site_url}/dump/Datalocale.rdf">au format rdf</a></li>
+			<li><a href="${c.site_url}/dump/Datalocale.json">au format json</a></li>
+			<li><a href="${c.site_url}/dump/Datalocale.csv">au format csv</a></li>
+		  </ul>
+	  </section>
+  
+	  <!-- bloc groupes -->
+	  <section class="span4 module-narrow module-shallow">
+		<header class="circle-red">
+			<div class="media-content">
+			  <h3 class="media-heading"><a href="/group">Les groupes</a></h3>
+			</div>
+		</header>
+		<ul class="unstyled dataset-list">
+		<py:for each="facet in enumerate(c.groups[:3])">
+			<li class="dataset-item big-bullet module-content">
+			  <div class="dataset-content">
+				<h3 class="dataset-heading">
+				  <a href="/organization/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
+				</h3>
+				  <div>${facet[1].get('description')[:200]}...</div>
+				  ${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
+			  </div>
+			</li>
+		</py:for>
+		</ul>
+	  </section>
+  
+    <div> <!-- colonne avec deux lignes -->
+	  <!-- bloc find data -->
+	  <div class="span4">
+		  <div class="module-shallow module-narrow blue-hand">
+			<form class="dataset-search module-content" method="get" action="/dataset">
+			  <h3 class="heading">Find data</h3>
+			  <span class="control-group search-giant">
+				<input type="text" class="search" name="q" value="" autocomplete="off" placeholder="${_('Find datasets')}" />
+				<button type="submit" value="Search">Submit</button>
+			  </span>
+			</form>
+		  </div>
+		  <div class="tags">
+			<h3 class="tag">Popular</h3>
+				<ul class="tag-list">
+				<py:for each="facet in enumerate(c.search_facets.get('tags')['items'][:3]) ">
+					<li>
+					  <a class="tag" href="/dataset?tags=${facet[1].get('name','')}">${facet[1].get('display_name','')}</a>
+					</li>
+				</py:for>
+				</ul>
+		  </div>
+	  </div>
+
+	  <section class="span4 module-narrow module-shallow">
+		<header>
+			<div class="media-content">
+			  <h3 class="media-heading">Datasets</h3>
+			</div>
+		</header>
+		<ul class="unstyled dataset-list">
+		<py:for each="dataset in c.datasets">
+			<li class="dataset-item module-content">
+			  <div class="dataset-content">
+				<h3 class="dataset-heading">
+				  <a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
+				</h3>
+				  <div>${dataset.get('notes','')[:200]}</div>
+				  </div>
+			</li>
+		</py:for>
+		</ul>
+	  </section>
+	
+	</div> <!-- fin de colone--> 
+	</div> <!-- fin de ligne bootstrap-->
+
+  
+  <!-- div "inscrivez-vous" désactivé
   <section class="hero-secondary module module-info-overlay fade-in span6">
     <py:choose>
      <py:when test="c.user">
@@ -49,69 +126,8 @@
       </p>
     </div></div></py:otherwise>
     </py:choose>
-  </section>
-  <div class="hero-secondary span6" >
-    <div class="hero-secondary-inner">
-          <div class="module module-shallow module-narrow module-dark info">
-            <form class="dataset-search module-content clearfix" method="get" action="/dataset">
-              <h3 class="heading">Find data</h3>
-              <span class="control-group search-giant">
-                <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="${_('Find datasets')}" />
-                <button type="submit" value="Search">Submit</button>
-              </span>
-            </form>
-          </div>
-          <div class="tags">
-            <h3 class="tag">Popular</h3>
-				<ul class="tag-list">
-				<py:for each="facet in enumerate(c.search_facets.get('tags')['items'][:3]) ">
-				    <li>
-				      <a class="tag" href="/dataset?tags=${facet[1].get('name','')}">${facet[1].get('display_name','')}</a>
-				    </li>
-				</py:for>
-				</ul>
-          </div>
-    </div>
-  </div>
-  <section class="span6 group-list first module module-narrow module-shallow">
-    <header class="module-heading media">
-	    <div class="media-content">
-	      <h3 class="media-heading"><a href="/group">Les groupes</a></h3>
-	    </div>
-    </header>
-	<ul class="unstyled dataset-list">
-	<py:for each="facet in enumerate(c.groups[:3])">
-		<li class="dataset-item module-content">
-		  <div class="dataset-content">
-		    <h3 class="dataset-heading">
-		      <a href="/organization/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
-		    </h3>
-		      <div>${facet[1].get('description')[:200]}...</div>
-		   	  ${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
-		      </div>
-		</li>
-	</py:for>
-	</ul>
-  </section>
-    <section class="span6 group-list module module-narrow module-shallow">
-    <header class="module-heading media">
-	    <div class="media-content">
-	      <h3 class="media-heading">Datasets</h3>
-	    </div>
-    </header>
-	<ul class="unstyled dataset-list">
-	<py:for each="dataset in c.datasets">
-		<li class="dataset-item module-content">
-		  <div class="dataset-content">
-		    <h3 class="dataset-heading">
-		      <a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
-		    </h3>
-		      <div>${dataset.get('notes','')[:200]}</div>
-		      </div>
-		</li>
-		</py:for>
-	</ul>
-  </section>
+  </section> -->
+  
   </div>
   </div>
   </div>
