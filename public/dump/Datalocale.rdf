@@ -1,0 +1,1988 @@
+<rdf:RDF xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:dcterms="http://purl.org/dc/terms">
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/camp-d-internement-de-merignac">
+    <owl:sameAs rdf:resource="urn:uuid:29675c9e-c3ca-449f-a740-2388c198ff5c"></owl:sameAs>
+    <dct:description>Inventaire en ligne des archives du camp d'internement de Mérignac (1940-1945)</dct:description>
+        <dcat:keyword>Mérignac</dcat:keyword>
+        <dcat:keyword>guerre 1939-1945</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/camp-d-internement-de-merignac"></foaf:homepage>
+    <rdfs:label>camp-d-internement-de-merignac</rdfs:label>
+    <dct:identifier>camp-d-internement-de-merignac</dct:identifier>
+    <dct:title>Camp d'internement de Mérignac</dct:title>
+    <version></version>
+    <dct:created>2012-06-14T14:33:04.645679</dct:created>
+    <dct:modified>2012-06-14T14:39:20.891717</dct:modified>
+    <dcat:theme>internement administratif</dcat:theme>
+	<dct:source>http://gael.gironde.fr/pages/index.html</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://gael.gironde.fr/ead.html?id=FRAD033_IR_71W"></dcat:accessURL>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/chlc-cdt33">
+    <owl:sameAs rdf:resource="urn:uuid:0df5d08a-cbb5-4b99-854a-b62998bfe7d0"></owl:sameAs>
+    <dct:description>Liste des champbres d'hôtels labélisées de la Gironde issues de la base de données SIRTAQUI</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/chlc-cdt33"></foaf:homepage>
+    <rdfs:label>chlc-cdt33</rdfs:label>
+    <dct:identifier>chlc-cdt33</dct:identifier>
+    <dct:title>Liste des chambres d'hôtels labélisées de la Gironde </dct:title>
+    <version></version>
+    <dct:created>2012-07-02T15:18:27.088757</dct:created>
+    <dct:modified>2012-07-06T14:40:41.869009</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-07-06T144536/Gironde-ChambresHotesLabelliseesCommune.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export excel de la base de données SIRTAQUI</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-1">
+    <owl:sameAs rdf:resource="urn:uuid:ef39f5df-38fb-4b9d-b9aa-796c1b3c743d"></owl:sameAs>
+    <dct:description>First test dataset edit desc</dct:description>
+        <dcat:keyword>arbres</dcat:keyword>
+        <dcat:keyword>ballades</dcat:keyword>
+        <dcat:keyword>jardins</dcat:keyword>
+        <dcat:keyword>paris</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-1"></foaf:homepage>
+    <rdfs:label>dataset-1</rdfs:label>
+    <dct:identifier>dataset-1</dct:identifier>
+    <dct:title>Dataset 1</dct:title>
+    <version>1.2.3</version>
+    <maj>j'ai mis à jour les champs de manière spontanée et complète</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>droit dauteur deLaBase</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oucourrieldelauteur"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>premier assistant deLaBase</foaf:name>
+        <foaf:mbox rdf:resource="mailto:courrielresponsable@free.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-11T15:32:03.641799</dct:created>
+    <dct:modified>2012-07-24T06:28:25.538396</dct:modified>
+    <dcat:theme>biodiversité</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  0</dcat:dataQuality>
+    <dct:accrualPeriodicity>aaa</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-23 au 2012-07-23</dcterms:temporal>
+    <dct:spatial>GIRONDE</dct:spatial>
+    <dct:granularity>zssss sssss</dct:granularity>
+	<dcterms:references>http://www.datalocale.fr</dcterms:references>
+	<dct:source>la base de données provient du progiciel qui sert à gèrer les données dans le cadre de la compéence truc et voilà voilà</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-18T163757/Kiosques_ouverts_a_Paris.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-18T163757/Kiosques_ouverts_a_Paris.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-2">
+    <owl:sameAs rdf:resource="urn:uuid:28b49f6c-b279-421f-bf2d-151ebd6e9e24"></owl:sameAs>
+    <dct:description>Description</dct:description>
+        <dcat:keyword>test</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-2"></foaf:homepage>
+    <rdfs:label>dataset-2</rdfs:label>
+    <dct:identifier>dataset-2</dct:identifier>
+    <dct:title>Dataset 2</dct:title>
+    <version>1.1</version>
+    <maj>Mise à jour</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <foaf:thumbnail rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/file/806e5b2b-6cb4-48df-931f-feec94419d8d"></foaf:thumbnail>
+    <dct:created>2012-07-11T08:11:47.484055</dct:created>
+    <dct:modified>2012-08-03T16:24:01.120634</dct:modified>
+    <dcat:theme>fruit</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  0</dcat:dataQuality>
+    <dct:accrualPeriodicity>fréquence</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-01-01 au 2013-01-01</dcterms:temporal>
+    <dct:spatial>BORDEAUX</dct:spatial>
+    <dct:granularity>couverture géographique Un an</dct:granularity>
+	<dcterms:references>Référence</dcterms:references>
+	<dct:source>Source</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://datalift.si.fr.atosorigin.com/fr/storage/f/2012-07-27T141940/place_livraison.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>Place_livraison de Paris</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-3">
+    <owl:sameAs rdf:resource="urn:uuid:3a033a3f-09a1-477f-afb6-2d28a3bbe5d5"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-3"></foaf:homepage>
+    <rdfs:label>dataset-3</rdfs:label>
+    <dct:identifier>dataset-3</dct:identifier>
+    <dct:title>Dataset 3</dct:title>
+    <version></version>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <dct:created>2012-07-12T10:21:56.253550</dct:created>
+    <dct:modified>2012-08-03T15:49:18.727849</dct:modified>
+    <dcat:theme>caution</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  </dcat:dataQuality>
+    <dcterms:temporal>Du 2012-07-01 au 2012-07-31</dcterms:temporal>
+    <dct:spatial>TEMPLE-LAGUYON</dct:spatial>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-4">
+    <owl:sameAs rdf:resource="urn:uuid:4b093710-01ac-4057-aecc-ea87074f62cf"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-4"></foaf:homepage>
+    <rdfs:label>dataset-4</rdfs:label>
+    <dct:identifier>dataset-4</dct:identifier>
+    <dct:title>Dataset 4</dct:title>
+    <version></version>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <dct:created>2012-07-27T12:38:14.588299</dct:created>
+    <dct:modified>2012-07-27T12:38:14.588299</dct:modified>
+    <dcterms:temporal>Du 2012-07-27 au 2012-07-27</dcterms:temporal>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-5">
+    <owl:sameAs rdf:resource="urn:uuid:611c938c-62a3-47bb-b2a1-9d18ced6bef4"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-5"></foaf:homepage>
+    <rdfs:label>dataset-5</rdfs:label>
+    <dct:identifier>dataset-5</dct:identifier>
+    <dct:title>Dataset 5</dct:title>
+    <version></version>
+    <dct:created>2012-07-17T13:22:43.426099</dct:created>
+    <dct:modified>2012-07-27T14:14:25.377929</dct:modified>
+    <dct:accrualPeriodicity>irrégulier</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-17 au 2012-07-17</dcterms:temporal>
+    <dct:granularity>test </dct:granularity>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-7">
+    <owl:sameAs rdf:resource="urn:uuid:07927e44-e9f7-4706-92dd-e34dcd769e4b"></owl:sameAs>
+    <dct:description>Avec ressource</dct:description>
+        <dcat:keyword>test</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-7"></foaf:homepage>
+    <rdfs:label>dataset-7</rdfs:label>
+    <dct:identifier>dataset-7</dct:identifier>
+    <dct:title>Dataset 7</dct:title>
+    <version>1.1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <foaf:thumbnail rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/file/806e5b2b-6cb4-48df-931f-feec94419d8d"></foaf:thumbnail>
+    <dct:created>2012-07-19T13:11:02.978062</dct:created>
+    <dct:modified>2012-07-27T14:19:23.735470</dct:modified>
+    <dcat:theme>19e siècle</dcat:theme>
+    <dcat:dataQuality>référence, score :  3</dcat:dataQuality>
+    <dct:accrualPeriodicity>irrégulier</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-01 au 2012-07-31</dcterms:temporal>
+    <dct:spatial>GIRONDE</dct:spatial>
+    <dct:granularity>départemental Association Gironde</dct:granularity>
+	<dcterms:references>Référence</dcterms:references>
+	<dct:source>Source</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/2012-07-24T095454/Kiosques_ouverts_%C3%A0_Paris.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>Kiosques_ouverts_à_Paris.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-8">
+    <owl:sameAs rdf:resource="urn:uuid:73fc978e-99d2-4fed-bf56-5ae7eb587213"></owl:sameAs>
+    <dct:description>Test Ckan Author</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-8"></foaf:homepage>
+    <rdfs:label>dataset-8</rdfs:label>
+    <dct:identifier>dataset-8</dct:identifier>
+    <dct:title>Dataset 8</dct:title>
+    <version></version>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <dct:created>2012-07-27T11:47:37.147658</dct:created>
+    <dct:modified>2012-07-27T14:15:10.796026</dct:modified>
+    <dcterms:temporal>Du 2012-07-27 au 2012-07-27</dcterms:temporal>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-9">
+    <owl:sameAs rdf:resource="urn:uuid:c67e2ae0-f021-4dc6-b249-f573201f0eee"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-9"></foaf:homepage>
+    <rdfs:label>dataset-9</rdfs:label>
+    <dct:identifier>dataset-9</dct:identifier>
+    <dct:title>Dataset 9</dct:title>
+    <version></version>
+    <dct:created>2012-07-18T12:00:15.706106</dct:created>
+    <dct:modified>2012-07-27T14:15:36.870444</dct:modified>
+    <dcterms:temporal>Du 2012-07-18 au 2012-07-18</dcterms:temporal>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dataset-test">
+    <owl:sameAs rdf:resource="urn:uuid:5b416335-b353-4fef-9bb9-4d8a198b9a1c"></owl:sameAs>
+    <dct:description>test dataset ssssss</dct:description>
+        <dcat:keyword>testtag tagstest</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dataset-test"></foaf:homepage>
+    <rdfs:label>dataset-test</rdfs:label>
+    <dct:identifier>dataset-test</dct:identifier>
+    <dct:title>dataset test</dct:title>
+    <version>1.2.0</version>
+    <maj>ddddddd</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>xxx</foaf:name>
+        <foaf:mbox rdf:resource="mailto:ed@ww.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>fsdtg</foaf:name>
+        <foaf:mbox rdf:resource="mailto:dsf@sss.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/c5a2d222-f19c-443c-b136-e7722a8f9cf0</dct:publisher>
+    <dct:creator>/organization/vfdgfdg</dct:creator>
+    <dct:created>2012-05-28T09:06:28.845533</dct:created>
+    <dct:modified>2012-05-28T11:19:30.529580</dct:modified>
+    <dcat:theme>guerre d'Algérie (1954-1962)</dcat:theme>
+	<dcterms:references>ssss</dcterms:references>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dcat-bdx">
+    <owl:sameAs rdf:resource="urn:uuid:3f7e5f15-cb07-45b3-99b0-e618536d31f0"></owl:sameAs>
+    <dct:description>le catalogue des jeux de données qui sont proposés dans le cadre du portail opendata de la ville de Bordeaux</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dcat-bdx"></foaf:homepage>
+    <rdfs:label>dcat-bdx</rdfs:label>
+    <dct:identifier>dcat-bdx</dct:identifier>
+    <dct:title>catalogue ville de Bordeaux</dct:title>
+    <version></version>
+    <dct:created>2012-07-10T07:22:32.225729</dct:created>
+    <dct:modified>2012-07-10T07:22:32.225729</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dcc-ens-agenda">
+    <owl:sameAs rdf:resource="urn:uuid:387f452a-c49f-4e71-ba50-a246982228b1"></owl:sameAs>
+    <dct:description>sdfsdf</dct:description>
+        <dcat:keyword>sqd</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dcc-ens-agenda"></foaf:homepage>
+    <rdfs:label>dcc-ens-agenda</rdfs:label>
+    <dct:identifier>dcc-ens-agenda</dct:identifier>
+    <dct:title>dcc-ens-agenda</dct:title>
+    <version>1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:p.romain@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:p.romain@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-17T21:13:51.984615</dct:created>
+    <dct:modified>2012-05-17T21:16:48.425800</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-05-17T211509/2_Data_ZonageAquitaine2009_liste_Arr.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-17T211509/2_Data_ZonageAquitaine2009_liste_Arr.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ddd">
+    <owl:sameAs rdf:resource="urn:uuid:8fcef705-d0a7-409d-86ff-ce9e05a72adc"></owl:sameAs>
+    <dct:description>dasdfsfsdf</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ddd"></foaf:homepage>
+    <rdfs:label>ddd</rdfs:label>
+    <dct:identifier>ddd</dct:identifier>
+    <dct:title>ddd</dct:title>
+    <version></version>
+    <dct:created>2012-06-01T13:52:55.386357</dct:created>
+    <dct:modified>2012-06-01T13:52:55.386357</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dddf">
+    <owl:sameAs rdf:resource="urn:uuid:a4c4dad3-dc1b-45fb-b09a-dd5f3148af44"></owl:sameAs>
+    <dct:description>rqwerwet</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dddf"></foaf:homepage>
+    <rdfs:label>dddf</rdfs:label>
+    <dct:identifier>dddf</dct:identifier>
+    <dct:title>dddf</dct:title>
+    <version></version>
+    <dct:created>2012-07-09T08:29:27.580653</dct:created>
+    <dct:modified>2012-07-09T08:29:27.580653</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/donnees-electorales-bordeaux">
+    <owl:sameAs rdf:resource="urn:uuid:bff22c5f-61e7-4e41-a0ed-c7193e3a5f7a"></owl:sameAs>
+    <dct:description>Pour réaliser la data-visualisation « Où Juppé a-t-il perdu en 2007 ? » nous avons fait appel aux données électorales du service des élections de la mairie de Bordeaux. Celle-ci nous a fourni, sous format PDF (donc non ré-exploitables directement) les résultats, bureau par bureau des seconds tours des élections législatives dans la circonscription de Bordeaux-centre pour les quatre scrutins qui nous intéressaient (1997, 2002, 2004, 2007). Nous avons dû retranscrire ces données dans un tableau Excel. L’intérêt de cette data-visualisation est d’abord de voir, géographiquement, l’évolution électorale de ce secteur devenu très tangent. Le service des élections de la mairie de Bordeaux nous a fourni le document cartographique, toujours sous format PDF (donc toujours non ré-exploitable), qui indique les limites des secteurs de votes, par cantons, avant 2012. Sur Google Earth, grâce à l’outil polygone, nous avons recréé les 55 secteurs de vote. Nous avons pu les exporter sous format KML, puis les intégrer dans Google Maps.</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/donnees-electorales-bordeaux"></foaf:homepage>
+    <rdfs:label>donnees-electorales-bordeaux</rdfs:label>
+    <dct:identifier>donnees-electorales-bordeaux</dct:identifier>
+    <dct:title>données électorales du service des élections de la mairie de Bordeaux</dct:title>
+    <version></version>
+    <dct:created>2012-06-01T11:58:42.590140</dct:created>
+    <dct:modified>2012-06-01T12:02:04.138986</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T104548/BDVBDX.kml"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>kml</rdf:value>
+                            <rdfs:label>kml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T104548/BDVBDX.kml</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T104701/Legislativesbordeauxpoints.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T104701/Legislativesbordeauxpoints.xls</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T120135/Legislativesbordeauxpoints_2007.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T120135/Legislativesbordeauxpoints_2007.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T120233/Legislativesbordeauxpoints_2004.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T120233/Legislativesbordeauxpoints_2004.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T120314/Legislativesbordeauxpoints_2002.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T120314/Legislativesbordeauxpoints_2002.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-01T120352/Legislativesbordeauxpoints_1997.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-01T120352/Legislativesbordeauxpoints_1997.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/dz-ijba-sportgironde">
+    <owl:sameAs rdf:resource="urn:uuid:e1badd76-a705-453a-9afd-1256507110c8"></owl:sameAs>
+    <dct:description>données produites dans le cadre du travail de première année de journalisme de l'IUT de Bordeaux sur les équipements et les pratiques sportives du département</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/dz-ijba-sportgironde"></foaf:homepage>
+    <rdfs:label>dz-ijba-sportgironde</rdfs:label>
+    <dct:identifier>dz-ijba-sportgironde</dct:identifier>
+    <dct:title>dataviz ijba sport en Gironde</dct:title>
+    <version></version>
+    <dct:created>2012-05-25T21:58:02.374977</dct:created>
+    <dct:modified>2012-05-25T22:07:16.983332</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datajournalismelab.fr/wp-content/uploads/2012/04/Equipements-sportifs-en-Gironde-donne%CC%81es-produites.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>données produites </dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datajournalismelab.fr/wp-content/uploads/2012/04/Equipements-sportifs-en-Gironde-donne%CC%81es-re%CC%81utilise%CC%81es.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>données réutilisées</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datajournalismelab.fr/wp-content/uploads/equipementsportifs/index.html"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xhtml</rdf:value>
+                            <rdfs:label>xhtml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>datavisualisation réalisée</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/eeee">
+    <owl:sameAs rdf:resource="urn:uuid:449305c0-398f-45f9-a643-7c57983e2944"></owl:sameAs>
+    <dct:description>sssss</dct:description>
+        <dcat:keyword>xzdcsf</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/eeee"></foaf:homepage>
+    <rdfs:label>eeee</rdfs:label>
+    <dct:identifier>eeee</dct:identifier>
+    <dct:title>eeee</dct:title>
+    <version>iyuiyui</version>
+    <maj>dasfsdf</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>ssss</foaf:name>
+        <foaf:mbox rdf:resource="mailto:tyiytiyu"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>utyir</foaf:name>
+        <foaf:mbox rdf:resource="mailto:tityi"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-07-10T07:08:12.537250</dct:created>
+    <dct:modified>2012-07-10T07:09:31.833592</dct:modified>
+    <dcat:theme>abandon de famille</dcat:theme>
+	<dcterms:references>dddddddd</dcterms:references>
+	<dct:source>dsadfs</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/eeeeeeeeee">
+    <owl:sameAs rdf:resource="urn:uuid:160b7540-e6b0-43c4-9420-3d1f9c890fed"></owl:sameAs>
+    <dct:description>wwwwwwwwww</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/eeeeeeeeee"></foaf:homepage>
+    <rdfs:label>eeeeeeeeee</rdfs:label>
+    <dct:identifier>eeeeeeeeee</dct:identifier>
+    <dct:title>eeeeeeeeee</dct:title>
+    <version>eee</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>wwwwwwww</foaf:name>
+        <foaf:mbox rdf:resource="mailto:qqq@ww.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>www</foaf:name>
+        <foaf:mbox rdf:resource="mailto:qqq2@ww.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-15T06:18:07.489087</dct:created>
+    <dct:modified>2012-05-15T06:19:39.505640</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ert">
+    <owl:sameAs rdf:resource="urn:uuid:409a9fcc-5682-4ff0-b47d-6ff9fd3fcf2f"></owl:sameAs>
+    <dct:description>ezrt</dct:description>
+        <dcat:keyword>ert</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ert"></foaf:homepage>
+    <rdfs:label>ert</rdfs:label>
+    <dct:identifier>ert</dct:identifier>
+    <dct:title>ert</dct:title>
+    <version></version>
+    <maj>ert</maj>
+    <dct:created>2012-05-22T15:42:40.929061</dct:created>
+    <dct:modified>2012-05-22T15:43:28.197914</dct:modified>
+    <dcat:theme>aménagement rural</dcat:theme>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ig-pc-cg33">
+    <owl:sameAs rdf:resource="urn:uuid:0678aea7-ed97-4465-aee4-16654766e8dd"></owl:sameAs>
+    <dct:description>Le réseau des pistes cyclables départementales est composée d'une dizaine de voies départementales réservées aux déplacements doux.Les voies sont numérotées en RD 800 et suivants. Seules figurent dans ce lot de données les équipements gérés par le Conseil Général de la Gironde. Certaines pistes cyclable, notamment dans l'agglomération bordelaise, permettant des interconnexions entre l'Ouest et l'Est du Département sont gérées par la communauté urbaine de Bordeaux.</dct:description>
+        <dcat:keyword>Gironde</dcat:keyword>
+        <dcat:keyword>cycle</dcat:keyword>
+        <dcat:keyword>pistes cyclables</dcat:keyword>
+        <dcat:keyword>randonnées</dcat:keyword>
+        <dcat:keyword>routes départementales</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ig-pc-cg33"></foaf:homepage>
+    <rdfs:label>ig-pc-cg33</rdfs:label>
+    <dct:identifier>ig-pc-cg33</dct:identifier>
+    <dct:title>Réseau des pistes cyclables départementales</dct:title>
+    <version>2010</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Olivier Mougel</foaf:name>
+        <foaf:mbox rdf:resource="mailto:"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:publisher>/organization/2452aa30-4e77-4473-8de8-3190f3e9e391</dct:publisher>
+    <dct:creator>/organization/15d2d151-31a7-48d2-9b9a-1ad305bc6b92</dct:creator>
+    <foaf:thumbnail rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/file/ae6b0225-a4bd-4b6b-adbb-cde33c47bcb3"></foaf:thumbnail>
+    <dct:created>2012-06-13T19:52:33.066894</dct:created>
+    <dct:modified>2012-08-02T07:34:42.634299</dct:modified>
+    <dcat:theme>transport</dcat:theme>
+    <dcat:dataQuality>à améliorer, score :  0</dcat:dataQuality>
+    <dct:accrualPeriodicity>irrégulier</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+    <dct:spatial>GIRONDE</dct:spatial>
+    <dct:granularity>départemental 1:20000</dct:granularity>
+	<dcterms:references>http://gironde.fr/cg33/jcms/c_24287/les-pistes-cyclables-de-gironde</dcterms:references>
+	<dct:source>extraction de la base de données oracle de référence</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/geoserver/datalocale/wms/kml?layers=datalocale:DI_PCYCL"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>kml</rdf:value>
+                            <rdfs:label>kml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export KML</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/geoserver/datalocale/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=datalocale:DI_PCYCL&amp;maxFeatures=50&amp;outputFormat=SHAPE-ZIP"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>esri shapefile</rdf:value>
+                            <rdfs:label>esri shapefile</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export SHAPE</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ig-tracefibre-gn">
+    <owl:sameAs rdf:resource="urn:uuid:82547294-c504-4652-89e1-4cabd98c6ed0"></owl:sameAs>
+    <dct:description>tracé du réseau de fibre optique mis en oeuvre par le syndicat mixte Gironde numérique</dct:description>
+        <dcat:keyword>Gironde</dcat:keyword>
+        <dcat:keyword>fibre optique</dcat:keyword>
+        <dcat:keyword>internet</dcat:keyword>
+        <dcat:keyword>réseau</dcat:keyword>
+        <dcat:keyword>économie</dcat:keyword>
+        <dcat:keyword>équipement</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ig-tracefibre-gn"></foaf:homepage>
+    <rdfs:label>ig-tracefibre-gn</rdfs:label>
+    <dct:identifier>ig-tracefibre-gn</dct:identifier>
+    <dct:title>Tracé du réseau fibre optique de Gironde Numérique</dct:title>
+    <version>1.15</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>syndicat mixte Gironde numérique</foaf:name>
+        <foaf:mbox rdf:resource="mailto:accueil@girondenumerique.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Régis Guillaume</foaf:name>
+        <foaf:mbox rdf:resource="mailto:r.guillaume@girondenumerique.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/71ed97f1-2b38-4dfa-a4e0-394781e2be51</dct:publisher>
+    <dct:created>2012-06-04T10:23:31.623432</dct:created>
+    <dct:modified>2012-07-26T13:05:29.134211</dct:modified>
+    <dcat:theme>réseau d'information</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dcterms:references>http://www.girondenumerique.fr/index.php?option=com_content&amp;view=category&amp;id=40&amp;layout=blog&amp;Itemid=41</dcterms:references>
+	<dct:source>export depuis le SI de GN vers le SI du CG33 et transformation d'oracle spatial en PostGIS</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-04T102635/GN_FI_OPT.kmz"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>kml</rdf:value>
+                            <rdfs:label>kml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-04T102635/GN_FI_OPT.kmz</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-04T102734/GN_FI_OPT.zip"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>esri shapefile</rdf:value>
+                            <rdfs:label>esri shapefile</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-04T102734/GN_FI_OPT.zip</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/geoserver/wms?service=WMS&amp;version=1.1.0"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>wms</rdf:value>
+                            <rdfs:label>wms</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>web services d'interrogation géographique</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/jeuuuuu">
+    <owl:sameAs rdf:resource="urn:uuid:d56422e0-034a-4d89-a77c-79fa9b5f4f12"></owl:sameAs>
+    <dct:description>dddd</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/jeuuuuu"></foaf:homepage>
+    <rdfs:label>jeuuuuu</rdfs:label>
+    <dct:identifier>jeuuuuu</dct:identifier>
+    <dct:title>jeuuuuu</dct:title>
+    <version>34543</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>gggggg</foaf:name>
+        <foaf:mbox rdf:resource="mailto:tttttttt"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>r555555</foaf:name>
+        <foaf:mbox rdf:resource="mailto:434535"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-16T08:17:55.463352</dct:created>
+    <dct:modified>2012-05-16T08:19:03.085185</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/new.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>555</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/jjjjjjj">
+    <owl:sameAs rdf:resource="urn:uuid:aa85faa6-667a-4a48-af82-b0abafc4f71f"></owl:sameAs>
+    <dct:description>iiiioi</dct:description>
+        <dcat:keyword>ccc</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/jjjjjjj"></foaf:homepage>
+    <rdfs:label>jjjjjjj</rdfs:label>
+    <dct:identifier>jjjjjjj</dct:identifier>
+    <dct:title>jjjjjjj</dct:title>
+    <version>yrtytr</version>
+    <maj>wwwwwwwwwwwwwwwwww</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>fffffffff</foaf:name>
+        <foaf:mbox rdf:resource="mailto:tryrty"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>ytryrt</foaf:name>
+        <foaf:mbox rdf:resource="mailto:yrtyrt"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-23T13:00:06.422251</dct:created>
+    <dct:modified>2012-07-27T11:35:14.614764</dct:modified>
+    <dcat:theme>préhistoire</dcat:theme>
+    <dcterms:temporal>Du 2012-07-23 au 2012-07-23</dcterms:temporal>
+    <dct:spatial>SEYCHES</dct:spatial>
+    <dct:granularity>fffffff tertey</dct:granularity>
+	<dcterms:references>yrtyrt</dcterms:references>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/kiosques-paris">
+    <owl:sameAs rdf:resource="urn:uuid:7cc55fb1-b927-434d-9778-403fd8b8127f"></owl:sameAs>
+    <dct:description></dct:description>
+        <dcat:keyword>test</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/kiosques-paris"></foaf:homepage>
+    <rdfs:label>kiosques-paris</rdfs:label>
+    <dct:identifier>kiosques-paris</dct:identifier>
+    <dct:title>Kiosques à Paris</dct:title>
+    <version>1.2</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Opendata Paris</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:oceane.ventura@gmail.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/d4b3af9d-d989-4db3-8025-0f06ea6f87c1</dct:publisher>
+    <dct:creator>/organization/25d75149-ec4e-48f7-8840-bbd25443924b</dct:creator>
+    <foaf:thumbnail rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/file/806e5b2b-6cb4-48df-931f-feec94419d8d"></foaf:thumbnail>
+    <dct:created>2012-07-03T13:53:18.930886</dct:created>
+    <dct:modified>2012-07-31T08:45:48.933635</dct:modified>
+    <dcat:theme>équipement matériel</dcat:theme>
+    <dcat:dataQuality>référence, score :  3</dcat:dataQuality>
+    <dct:accrualPeriodicity>tous les 2 jours</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-15 au 2012-07-17</dcterms:temporal>
+    <dct:granularity>nationale Paris</dct:granularity>
+	<dcterms:references>http://datalift.si.fr.atosorigin.com</dcterms:references>
+	<dct:source>Source</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://datalift.si.fr.atosorigin.com/storage/f/2012-07-24T154020/Kiosques_ouverts_%C3%A0_Pari-2s.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>Kiosques ouverts à Paris</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/lignes-r-guli-res-de-transport-public-transgironde">
+    <owl:sameAs rdf:resource="urn:uuid:37b8a026-28c7-4c8b-a3bd-966419372fb0"></owl:sameAs>
+    <dct:description>fdghdfh f ghdfh</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/lignes-r-guli-res-de-transport-public-transgironde"></foaf:homepage>
+    <rdfs:label>lignes-r-guli-res-de-transport-public-transgironde</rdfs:label>
+    <dct:identifier>lignes-r-guli-res-de-transport-public-transgironde</dct:identifier>
+    <dct:title>Lignes régulières de transport public TransGironde</dct:title>
+    <version>v2</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Direction des transports terrestres</foaf:name>
+        <foaf:mbox rdf:resource="mailto:DGAT-DTT-SGOT@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Jean-Luc Bidart</foaf:name>
+        <foaf:mbox rdf:resource="mailto:Jean-l.bidart@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-15T08:19:29.261948</dct:created>
+    <dct:modified>2012-05-15T08:20:18.042053</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/liste-bib-gironde-2011">
+    <owl:sameAs rdf:resource="urn:uuid:7396d291-bdcc-46bd-830a-11a3ca498517"></owl:sameAs>
+    <dct:description>Le fichier mis à disposition contient la liste et la description des services proposés par les  bibliothèques municipales et intercommunales partenaires de la Bibliothèque Départementale de prêt de la Gironde.
+
+Il indique notamment les heures d'ouverture, les services proposés aux publics ainsi que les informations permettant de localiser et contacter ces établissements.Le fichier mis à disposition contient la liste et la description des services proposés par les  bibliothèques municipales et intercommunales partenaires de la Bibliothèque Départementale de prêt de la Gironde.</dct:description>
+        <dcat:keyword>Gironde</dcat:keyword>
+        <dcat:keyword>bibliothèques</dcat:keyword>
+        <dcat:keyword>lecture publique</dcat:keyword>
+        <dcat:keyword>réseau</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/liste-bib-gironde-2011"></foaf:homepage>
+    <rdfs:label>liste-bib-gironde-2011</rdfs:label>
+    <dct:identifier>liste-bib-gironde-2011</dct:identifier>
+    <dct:title>Liste des bibliothèques du réseau de lecture publique de la Gironde</dct:title>
+    <version>1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>BDP</foaf:name>
+        <foaf:mbox rdf:resource="mailto:bdp@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Benoît Roucou</foaf:name>
+        <foaf:mbox rdf:resource="mailto:b.roucou@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/2452aa30-4e77-4473-8de8-3190f3e9e391</dct:publisher>
+    <dct:creator>/organization/15d2d151-31a7-48d2-9b9a-1ad305bc6b92</dct:creator>
+    <dct:created>2012-06-25T19:08:34.568869</dct:created>
+    <dct:modified>2012-07-26T13:05:49.262820</dct:modified>
+    <dcat:theme>bibliothèque</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dcterms:references>http://gironde.fr/cg33/jcms/c_9356/la-bibliotheque-departementale-de-pret</dcterms:references>
+	<dct:source>export des bibliothèques du réseeau depuis la base de données oracle de production via un chargement dans l'ODS</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-25T192055/LISTE_BDP_20110623_0.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export csv depuis la base ODS</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/sites/default/files/sources_opendata/LISTE_BDP_20110623_0.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export xls depuis la base ODS</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/liste-equipements_sportifs-cg33">
+    <owl:sameAs rdf:resource="urn:uuid:f4944c24-b830-436d-8cfd-ccc0b36951c2"></owl:sameAs>
+    <dct:description>La liste des équipements sportifs du département est réalisé dans l'objectif de permettre un égal accès de tous aux pratiques sportives,
+La bureau de l'aménagement sportif des territoires participe à la mise en oeuvre du Schéma Départemental des Equipements Sportifs qui vise à assurer une couverture optimale et agir en faveur d’un aménagement durable et équilibré du territoire.</dct:description>
+        <dcat:keyword>Gironde</dcat:keyword>
+        <dcat:keyword>collèges</dcat:keyword>
+        <dcat:keyword>sport</dcat:keyword>
+        <dcat:keyword>équipement</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/liste-equipements_sportifs-cg33"></foaf:homepage>
+    <rdfs:label>liste-equipements_sportifs-cg33</rdfs:label>
+    <dct:identifier>liste-equipements_sportifs-cg33</dct:identifier>
+    <dct:title>liste des équipements sportifs du département</dct:title>
+    <version>1.1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>BEVP</foaf:name>
+        <foaf:mbox rdf:resource="mailto:i.desbordes@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Dominique Bouteiller</foaf:name>
+        <foaf:mbox rdf:resource="mailto:d.bouteiller@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/2452aa30-4e77-4473-8de8-3190f3e9e391</dct:publisher>
+    <dct:created>2012-06-19T19:51:50.659161</dct:created>
+    <dct:modified>2012-07-26T13:06:01.927470</dct:modified>
+    <dcat:theme>équipement collectif</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dcterms:references>http://gironde.fr/cg33/jcms/c_33506/sport</dcterms:references>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-19T195028/LISTE_EQUIP_SPORTIF_20110712.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-19T195028/liste_equip_sportif_20110712.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/liste-sp-cg33">
+    <owl:sameAs rdf:resource="urn:uuid:e69cf09c-e9e8-47e3-be69-09d18e558878"></owl:sameAs>
+    <dct:description>La liste des services de proximité du domaine social pour le département de la Gironde. Il contient la fiche descriptive des antennes d'accueil du public</dct:description>
+        <dcat:keyword>Gironde</dcat:keyword>
+        <dcat:keyword>antenne</dcat:keyword>
+        <dcat:keyword>services de proximité</dcat:keyword>
+        <dcat:keyword>services sociaux</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/liste-sp-cg33"></foaf:homepage>
+    <rdfs:label>liste-sp-cg33</rdfs:label>
+    <dct:identifier>liste-sp-cg33</dct:identifier>
+    <dct:title>Liste des services sociaux de proximité</dct:title>
+    <version>2</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>DAGMS</foaf:name>
+        <foaf:mbox rdf:resource="mailto:dagms@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Pascale Boebion</foaf:name>
+        <foaf:mbox rdf:resource="mailto:p.boebion@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/2452aa30-4e77-4473-8de8-3190f3e9e391</dct:publisher>
+    <dct:creator>/organization/15d2d151-31a7-48d2-9b9a-1ad305bc6b92</dct:creator>
+    <dct:created>2012-06-25T19:22:32.878771</dct:created>
+    <dct:modified>2012-07-26T13:06:38.784987</dct:modified>
+    <dcat:theme>aide sociale</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dcterms:references>http://gironde.fr/cg33/jcms/c_5234/solidarite</dcterms:references>
+	<dct:source>export des points d'accueil du public depuis la base ODS de référence</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-25T193101/LISTE_SERVICE_PROX_201100703.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export csv depuis la base ODS</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/sites/default/files/sources_opendata/LISTE_SERVICE_PROX_201100703.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export xls depuis la base ODS</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/sites/default/files/sources_opendata/fiche%20descriptive-SERVICE_PROX.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>fiche descriptive</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/liste-sub-cra-2011">
+    <owl:sameAs rdf:resource="urn:uuid:c4483db7-bf30-4d9c-b3b1-dc5c2696ddb3"></owl:sameAs>
+    <dct:description>Liste des subventions versées aux associations de droit français et aux fondations reconnues d’utilité publique selon la loi n° 2006 - 586 du 23 mai 2006 relative au volontariat associatif et à l’engagement éducatif. Le décret n° 2006-887 du 17 juillet 2006 précise les modalités de diffusion de cette liste.</dct:description>
+        <dcat:keyword>Aquitaine</dcat:keyword>
+        <dcat:keyword>association</dcat:keyword>
+        <dcat:keyword>association culturelle</dcat:keyword>
+        <dcat:keyword>région</dcat:keyword>
+        <dcat:keyword>subvention</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/liste-sub-cra-2011"></foaf:homepage>
+    <rdfs:label>liste-sub-cra-2011</rdfs:label>
+    <dct:identifier>liste-sub-cra-2011</dct:identifier>
+    <dct:title>Liste des subventions aux associations et fondations reconnues d'utilité publique 2010</dct:title>
+    <version>2011</version>
+    <maj>mise à jour de la fiche descriptive</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>bureau des affaires juridiques</foaf:name>
+        <foaf:mbox rdf:resource="mailto:baf@aquitaine.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>direction administrative</foaf:name>
+        <foaf:mbox rdf:resource="mailto:dtic@aquitaine.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/38418d55-2900-47da-aa73-e674a9b59ed8</dct:publisher>
+    <dct:creator>/organization/15d2d151-31a7-48d2-9b9a-1ad305bc6b92</dct:creator>
+    <dct:created>2012-06-21T19:52:46.028497</dct:created>
+    <dct:modified>2012-07-26T13:06:47.783713</dct:modified>
+    <dcat:theme>association cultuelle</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dcterms:references>http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000242710&amp;dateTexte=</dcterms:references>
+	<dct:source>extraction du logiciel de gestion des attributions de subvention du Conseil régional d'Aquitaine</dct:source>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-21T201746/Subventions_associations_fondations_region_aquitaine_2010.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-21T201746/Subventions_associations_fondations_region_aquitaine_2010.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/listing-agendaculturel-cra">
+    <owl:sameAs rdf:resource="urn:uuid:77b04799-7d51-42b6-af3e-1fab4ef8a7d8"></owl:sameAs>
+    <dct:description>Une sélection d’événements publics ou professionnels dans le champ des compétences de la Région Aquitaine.
+
+Le flux agenda régional agrège une sélection des données de l'agenda d'Aquitaine Europe Communication (http://aecom.org) et une sélection des données fêtes et manifestations de la base Sirtaqui du Comité régional du tourisme d'Aquitaine (http://www.tourisme-aquitaine.fr/fr//pagesEditos.asp?idpage=1076).
+
+La structure du flux de chaque thème est la suivante :
+
+http://agenda.aquitaine.fr/spip.php?page=fluxagenda&amp;theme=1
+ 
+
+Pour fusionner plusieurs thèmes, il convient de rajouter un | entre chaque numéro de thème.
+
+Exemple, pour récupérer les événements des thèmes Jeunesse et TIC-numérique, le flux sera
+
+http://agenda.aquitaine.fr/spip.php?page=fluxagenda&amp;theme=24|31
+
+La liste des thèmes ainsi que le descriptif du flux RSS est disponible dans le ressource explicative en pièce jointe.</dct:description>
+        <dcat:keyword>Aquitaine</dcat:keyword>
+        <dcat:keyword>Conseil Régional</dcat:keyword>
+        <dcat:keyword>Economie</dcat:keyword>
+        <dcat:keyword>Environnement</dcat:keyword>
+        <dcat:keyword>Europe</dcat:keyword>
+        <dcat:keyword>Gastronomie</dcat:keyword>
+        <dcat:keyword>Jeunesse</dcat:keyword>
+        <dcat:keyword>Patrimoine</dcat:keyword>
+        <dcat:keyword>Recherche</dcat:keyword>
+        <dcat:keyword>atelier</dcat:keyword>
+        <dcat:keyword>concours</dcat:keyword>
+        <dcat:keyword>conférence</dcat:keyword>
+        <dcat:keyword>culture</dcat:keyword>
+        <dcat:keyword>débat</dcat:keyword>
+        <dcat:keyword>excursion</dcat:keyword>
+        <dcat:keyword>exposition</dcat:keyword>
+        <dcat:keyword>salon</dcat:keyword>
+        <dcat:keyword>spectacle</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/listing-agendaculturel-cra"></foaf:homepage>
+    <rdfs:label>listing-agendaculturel-cra</rdfs:label>
+    <dct:identifier>listing-agendaculturel-cra</dct:identifier>
+    <dct:title>Agenda événementiel régional</dct:title>
+    <version></version>
+    <dct:creator>/organization/Comité régional du tourisme en Aquitaine</dct:creator>
+    <dct:created>2012-05-23T08:54:08.465933</dct:created>
+    <dct:modified>2012-05-25T22:43:11.617656</dct:modified>
+    <dcat:theme>manifestation culturelle</dcat:theme>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://agenda.aquitaine.fr/spip.php?page=fluxagenda"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xml</rdf:value>
+                            <rdfs:label>xml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>le flux RSS de l'agenda</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.datalocale.fr/sites/default/files/sources_opendata/descriptionFluxAgendaCulturel.pdf"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>pdf</rdf:value>
+                            <rdfs:label>pdf</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>documentation du flux rss formaté en XML</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/mctnl-cdt33">
+    <owl:sameAs rdf:resource="urn:uuid:c6431e00-91d5-4633-8619-ac7f0f21630f"></owl:sameAs>
+    <dct:description>Liste des meublés classés tourisme non labélisés de la Gironde issus de la base de donnes SIRTAQUI</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/mctnl-cdt33"></foaf:homepage>
+    <rdfs:label>mctnl-cdt33</rdfs:label>
+    <dct:identifier>mctnl-cdt33</dct:identifier>
+    <dct:title>Liste des meublés classés tourisme non labélisés de la Gironde</dct:title>
+    <version></version>
+    <dct:created>2012-07-02T15:21:14.268420</dct:created>
+    <dct:modified>2012-07-06T14:43:34.088399</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-07-06T144952/Gironde-MeublesClassesTourisme-nonlabellisesCommune.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>export excel de la base de données SIRTAQUI</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ot-said">
+    <owl:sameAs rdf:resource="urn:uuid:933e2186-3cd0-4721-a573-c6e2361bbd9d"></owl:sameAs>
+    <dct:description>Ont participé à la constitution de cette base de données : RAUDIN, MOPA, AEC
+Données concernant un échantillon de 166 sites web d'offices de tourisme sur 179 et 25 sites web de syndicats d’initiative sur 53.
+Les données ici disponibles ne sont pas destinées à une réutilisation dans un cadre commercial ou pour toute opération de démarchage ou prospection.</dct:description>
+        <dcat:keyword>Aquitaine</dcat:keyword>
+        <dcat:keyword>culture</dcat:keyword>
+        <dcat:keyword>service-public</dcat:keyword>
+        <dcat:keyword>tourisme</dcat:keyword>
+        <dcat:keyword>économie</dcat:keyword>
+        <dcat:keyword>équipement</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ot-said"></foaf:homepage>
+    <rdfs:label>ot-said</rdfs:label>
+    <dct:identifier>ot-said</dct:identifier>
+    <dct:title>ot-said</dct:title>
+    <version>2</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>siad</foaf:name>
+        <foaf:mbox rdf:resource="mailto:contact@siad.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>promain</foaf:name>
+        <foaf:mbox rdf:resource="mailto:p.romain@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-19T19:31:14.509961</dct:created>
+    <dct:modified>2012-06-22T14:06:42.291396</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-19T192425/7.2_Data_TourismePublicOTSIAquitaine2009_liste-CRT.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-19T192425/7.2_Data_TourismePublicOTSIAquitaine2009_liste-CRT.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-19T192547/7.2_Data_TourismePublicOTSIAquitaine2009_liste-OT.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-19T192547/7.2_Data_TourismePublicOTSIAquitaine2009_liste-OT.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-19T192651/7.2_Data_TourismePublicOTSIAquitaine2009_liste-SI.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-19T192651/7.2_Data_TourismePublicOTSIAquitaine2009_liste-SI.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://siad.aecom.org/content/download/5669/100734/3/fre-FR/7.2_Data_TourismePublicOTSIAquitaine2009_liste.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>Liste des offices de tourisme et syndicats d'initiative au format excel 2010</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-22T141059/7.2_Data_TourismePublicOTSIAquitaine2009_liste-OT.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-22T141059/7.2_Data_TourismePublicOTSIAquitaine2009_liste-OT.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/pppp">
+    <owl:sameAs rdf:resource="urn:uuid:21ff9b5d-eb70-4c03-88f3-d0035a37f2d3"></owl:sameAs>
+    <dct:description>ppp</dct:description>
+        <dcat:keyword>terme</dcat:keyword>
+        <dcat:keyword>tgs</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/pppp"></foaf:homepage>
+    <rdfs:label>pppp</rdfs:label>
+    <dct:identifier>pppp</dct:identifier>
+    <dct:title>pppp</dct:title>
+    <version>fsdgs</version>
+    <maj>objet</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:sss"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>sss</foaf:name>
+        <foaf:mbox rdf:resource="mailto:asfsdg"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/104f30ac-5cea-4680-9ac1-8ada23be5d57</dct:publisher>
+    <dct:creator>/organization/dddd</dct:creator>
+    <dct:created>2012-05-28T14:07:06.365037</dct:created>
+    <dct:modified>2012-05-28T14:08:46.201475</dct:modified>
+    <dcat:theme>Bas-Empire</dcat:theme>
+	<dcterms:references>ref</dcterms:references>
+	<dct:source>src</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/programmation-scenesdete">
+    <owl:sameAs rdf:resource="urn:uuid:9fb24c21-0a10-46b1-ba07-231faf2235ef"></owl:sameAs>
+    <dct:description>programmation 2012 des scènes d'été en Gironde</dct:description>
+        <dcat:keyword>culture</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/programmation-scenesdete"></foaf:homepage>
+    <rdfs:label>programmation-scenesdete</rdfs:label>
+    <dct:identifier>programmation-scenesdete</dct:identifier>
+    <dct:title>programmation scenesdete</dct:title>
+    <version>1.2.0</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Maryse thomas</foaf:name>
+        <foaf:mbox rdf:resource="mailto:m.thomas@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Celine Berno-Cordes</foaf:name>
+        <foaf:mbox rdf:resource="mailto:c.berno_cordes@cg33.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/e1ccd384-6dea-47f3-a7be-81e8abdd021d</dct:publisher>
+    <dct:creator>/organization/15d2d151-31a7-48d2-9b9a-1ad305bc6b92</dct:creator>
+    <dct:created>2012-05-15T13:57:09.394777</dct:created>
+    <dct:modified>2012-08-05T21:46:44.765019</dct:modified>
+    <dcat:theme>politique culturelle</dcat:theme>
+    <dcat:dataQuality>à améliorer, score :  0</dcat:dataQuality>
+    <dct:accrualPeriodicity>annuelle</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-08-05 au 2012-08-05</dcterms:temporal>
+    <dct:spatial>GIRONDE</dct:spatial>
+    <dct:granularity>départemental </dct:granularity>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-17T212119/programmation_sdg-15.05.2012.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-17T212119/programmation_sdg-15.05.2012.xls</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-02T220741/programmation_sdg-15.05.2012.kml"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>kml</rdf:value>
+                            <rdfs:label>kml</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-02T220741/programmation_sdg-15.05.2012.kml</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-06-18T191305/programmation_sdg-15.05.2012.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-18T191305/programmation_sdg-15.05.2012.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/qqq">
+    <owl:sameAs rdf:resource="urn:uuid:188b4eaa-b3a0-44d9-bbce-443dc84d9a6c"></owl:sameAs>
+    <dct:description>qqq</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/qqq"></foaf:homepage>
+    <rdfs:label>qqq</rdfs:label>
+    <dct:identifier>qqq</dct:identifier>
+    <dct:title>qqq</dct:title>
+    <version></version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>qq</foaf:name>
+        <foaf:mbox rdf:resource="mailto:qq"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>qqq</foaf:name>
+        <foaf:mbox rdf:resource="mailto:qqqq"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-07-26T06:50:25.654305</dct:created>
+    <dct:modified>2012-07-26T06:50:40.333005</dct:modified>
+    <dcterms:temporal>Du 2012-07-25 au 2012-07-25</dcterms:temporal>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/qqqqqqaaaa">
+    <owl:sameAs rdf:resource="urn:uuid:29c673f8-0886-4a86-90fd-7c196e6900f3"></owl:sameAs>
+    <dct:description>eeee</dct:description>
+        <dcat:keyword>rerer</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/qqqqqqaaaa"></foaf:homepage>
+    <rdfs:label>qqqqqqaaaa</rdfs:label>
+    <dct:identifier>qqqqqqaaaa</dct:identifier>
+    <dct:title>qqqqqqaaaa</dct:title>
+    <version>rewrwrtew</version>
+    <maj>tertrt</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>zzz</foaf:name>
+        <foaf:mbox rdf:resource="mailto:fferter"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>eeee</foaf:name>
+        <foaf:mbox rdf:resource="mailto:reter"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/0dc45a9f-4699-4f94-8997-4b366c00d5fc</dct:publisher>
+    <dct:creator>/organization/e17b2efb-9f67-4d35-9ae9-3c176d93c14f</dct:creator>
+    <dct:created>2012-07-27T11:11:56.679177</dct:created>
+    <dct:modified>2012-07-27T11:15:07.522583</dct:modified>
+    <dcat:theme>10e siècle</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>ddd</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-24 au 2012-07-24</dcterms:temporal>
+    <dct:spatial>DORDOGNE</dct:spatial>
+    <dct:granularity>fwerwet rerer</dct:granularity>
+	<dcterms:references>rerer</dcterms:references>
+	<dct:source>rere</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/qqqqqqqq">
+    <owl:sameAs rdf:resource="urn:uuid:149a5345-3aef-4961-a42b-336d391cb867"></owl:sameAs>
+    <dct:description>qqq</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/qqqqqqqq"></foaf:homepage>
+    <rdfs:label>qqqqqqqq</rdfs:label>
+    <dct:identifier>qqqqqqqq</dct:identifier>
+    <dct:title>qqqqqqqq</dct:title>
+    <version></version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>ccccccccc</foaf:name>
+      </rdf:Description>
+    </dct:creator>
+    <dct:created>2012-05-15T13:15:39.166811</dct:created>
+    <dct:modified>2012-05-16T11:14:50.637569</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="wwww"></dcat:accessURL>
+               <dct:title>tst uuuuuuu</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/qsldkhjdsf">
+    <owl:sameAs rdf:resource="urn:uuid:d242f510-1aac-4fa5-afb8-5432398021ce"></owl:sameAs>
+    <dct:description>zerzer</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/qsldkhjdsf"></foaf:homepage>
+    <rdfs:label>qsldkhjdsf</rdfs:label>
+    <dct:identifier>qsldkhjdsf</dct:identifier>
+    <dct:title>qsldkhjdsf</dct:title>
+    <version></version>
+    <dct:created>2012-06-29T10:20:00.852368</dct:created>
+    <dct:modified>2012-06-29T10:20:46.569005</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/storage/f/2012-06-29T102613/2_Data_ZonageAquitaine2009_liste.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-06-29T102613/2_Data_ZonageAquitaine2009_liste.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/resultatelectioncommunes2012">
+    <owl:sameAs rdf:resource="urn:uuid:9ad5cb68-5efb-4bc6-8334-fbe01550ae92"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/resultatelectioncommunes2012"></foaf:homepage>
+    <rdfs:label>resultatelectioncommunes2012</rdfs:label>
+    <dct:identifier>resultatelectioncommunes2012</dct:identifier>
+    <dct:title>resultatElectioncommunes2012</dct:title>
+    <version></version>
+    <dct:created>2012-05-24T15:34:42.967185</dct:created>
+    <dct:modified>2012-05-24T15:36:11.972591</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://www.data.gouv.fr/var/download/b42cded1bcaa5ff6eb1ed40ab4c503d3.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>eeeee</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/rff">
+    <owl:sameAs rdf:resource="urn:uuid:0ccb2114-0f27-42f5-b2a6-e20a4b62dbe3"></owl:sameAs>
+    <dct:description>rwerwr</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/rff"></foaf:homepage>
+    <rdfs:label>rff</rdfs:label>
+    <dct:identifier>rff</dct:identifier>
+    <dct:title>rff</dct:title>
+    <version></version>
+    <dct:created>2012-07-12T08:17:53.798537</dct:created>
+    <dct:modified>2012-07-12T08:17:53.798537</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/rffff">
+    <owl:sameAs rdf:resource="urn:uuid:563b286a-7da0-4c14-bdb0-70289a258393"></owl:sameAs>
+    <dct:description></dct:description>
+        <dcat:keyword>ddd</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/rffff"></foaf:homepage>
+    <rdfs:label>rffff</rdfs:label>
+    <dct:identifier>rffff</dct:identifier>
+    <dct:title>rffff</dct:title>
+    <version></version>
+    <maj>ddddwqw edwew</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>ddd</foaf:name>
+        <foaf:mbox rdf:resource="mailto:dsgsdfh"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>gdfh</foaf:name>
+        <foaf:mbox rdf:resource="mailto:gdfgdf"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-07-26T08:31:35.262177</dct:created>
+    <dct:modified>2012-07-26T08:35:30.920286</dct:modified>
+    <dcat:theme>14e siècle</dcat:theme>
+    <dcat:dataQuality>à améliorer, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>dddd</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-24 au 2012-07-25</dcterms:temporal>
+    <dct:spatial>DORDOGNE</dct:spatial>
+    <dct:granularity>ddd ddddddddd</dct:granularity>
+	<dcterms:references>dddddddddd</dcterms:references>
+	<dct:source>dddddddddddd</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/rrrrrr">
+    <owl:sameAs rdf:resource="urn:uuid:bb0de371-b8f0-43aa-8fbd-da654b8283c8"></owl:sameAs>
+    <dct:description>rr5534</dct:description>
+        <dcat:keyword>tertert</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/rrrrrr"></foaf:homepage>
+    <rdfs:label>rrrrrr</rdfs:label>
+    <dct:identifier>rrrrrr</dct:identifier>
+    <dct:title>rrrrrr</dct:title>
+    <version></version>
+    <maj>tertr</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>trtr</foaf:name>
+      </rdf:Description>
+    </dct:creator>
+    <dct:created>2012-07-11T06:17:03.064831</dct:created>
+    <dct:modified>2012-07-11T06:18:03.271091</dct:modified>
+    <dcat:theme>abandon de famille</dcat:theme>
+	<dcterms:references>wetert</dcterms:references>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/rrrr-spa">
+    <owl:sameAs rdf:resource="urn:uuid:dbb05406-9785-4107-9b0e-b069a17968af"></owl:sameAs>
+    <dct:description>edede</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/rrrr-spa"></foaf:homepage>
+    <rdfs:label>rrrr-spa</rdfs:label>
+    <dct:identifier>rrrr-spa</dct:identifier>
+    <dct:title>rrrr spa</dct:title>
+    <version>rwerwer</version>
+    <maj>rwerwer</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>ddd</foaf:name>
+        <foaf:mbox rdf:resource="mailto:ddd"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>ddd</foaf:name>
+        <foaf:mbox rdf:resource="mailto:4235345"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/0dc45a9f-4699-4f94-8997-4b366c00d5fc</dct:publisher>
+    <dct:created>2012-07-31T07:06:13.016261</dct:created>
+    <dct:modified>2012-07-31T07:08:04.846844</dct:modified>
+    <dcat:theme>10e siècle</dcat:theme>
+    <dcat:dataQuality>à améliorer, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>rfewrwerewr</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-27 au 2012-07-29</dcterms:temporal>
+    <dct:spatial>DORDOGNE</dct:spatial>
+    <dct:granularity>rwerwer rqwere</dct:granularity>
+	<dcterms:references>rwerwer</dcterms:references>
+	<dct:source>rwerwer</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/rtrr">
+    <owl:sameAs rdf:resource="urn:uuid:2ddd7e50-5754-4b6b-b3b4-0e546cb6b8d8"></owl:sameAs>
+    <dct:description>rrrrrrrrrr</dct:description>
+        <dcat:keyword>7777777</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/rtrr"></foaf:homepage>
+    <rdfs:label>rtrr</rdfs:label>
+    <dct:identifier>rtrr</dct:identifier>
+    <dct:title>rtrr</dct:title>
+    <version></version>
+    <maj>ffffffff</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>qqqqqqq</foaf:name>
+        <foaf:mbox rdf:resource="mailto:eeeeeeeee"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>ggggggggggg</foaf:name>
+        <foaf:mbox rdf:resource="mailto:uuuuuuuuuuuuuu"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/bfe3b8ed-26b2-4eb8-9e0e-ad570939a2a5</dct:publisher>
+    <dct:created>2012-08-01T09:22:19.522973</dct:created>
+    <dct:modified>2012-08-01T09:23:38.335303</dct:modified>
+    <dcat:theme>agrément</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>ffffffffffffff</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-29 au 2012-07-29</dcterms:temporal>
+    <dct:spatial>DORDOGNE</dct:spatial>
+    <dct:granularity>ddddddddd ddddd</dct:granularity>
+	<dcterms:references>tftftftftftf</dcterms:references>
+	<dct:source>yyyyyy</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/spatioooo">
+    <owl:sameAs rdf:resource="urn:uuid:f8763c0c-41e7-47ef-8ca1-0c25a430429c"></owl:sameAs>
+    <dct:description>rwetwerter</dct:description>
+        <dcat:keyword>dffffg</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/spatioooo"></foaf:homepage>
+    <rdfs:label>spatioooo</rdfs:label>
+    <dct:identifier>spatioooo</dct:identifier>
+    <dct:title>spatioooo</dct:title>
+    <version></version>
+    <maj>dsdfsdfsf</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto: Auteur du courriel"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto: Courriel du responsable"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/bfe3b8ed-26b2-4eb8-9e0e-ad570939a2a5</dct:publisher>
+    <dct:created>2012-07-30T12:38:54.868842</dct:created>
+    <dct:modified>2012-07-30T12:40:44.333043</dct:modified>
+    <dcat:theme>adjudication</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>vfvvvvv</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-27 au 2012-07-27</dcterms:temporal>
+    <dct:spatial>DORDOGNE</dct:spatial>
+    <dct:granularity>gdfyrtyrty Granularité</dct:granularity>
+	<dcterms:references>Référence </dcterms:references>
+	<dct:source>Source</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/sssss">
+    <owl:sameAs rdf:resource="urn:uuid:e2ff790f-3f6c-45db-8bed-76981e56b653"></owl:sameAs>
+    <dct:description>dsr bnnn xxxx</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/sssss"></foaf:homepage>
+    <rdfs:label>sssss</rdfs:label>
+    <dct:identifier>sssss</dct:identifier>
+    <dct:title>sssss</dct:title>
+    <version></version>
+    <dct:created>2012-06-12T08:38:45.738133</dct:created>
+    <dct:modified>2012-06-12T08:38:45.738133</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/structures-d-h-bergement">
+    <owl:sameAs rdf:resource="urn:uuid:d54ebb5c-a300-4b57-acca-256887ddb228"></owl:sameAs>
+    <dct:description>Ont participé à la constitution de cette base de données : RAUDIN, CRTA, AEC
+Échantillon de 661 sites web (200 nouveaux depuis 2008) sur 1125 hôtels et 509 sites web (65 nouveaux) sur 838 campings
+Les données ici disponibles ne sont pas destinées à une réutilisation dans un cadre commercial ou pour toute opération de démarchage ou prospection.</dct:description>
+        <dcat:keyword>Aquitaine</dcat:keyword>
+        <dcat:keyword>Tourisme</dcat:keyword>
+        <dcat:keyword>économie</dcat:keyword>
+        <dcat:keyword>équipement</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/structures-d-h-bergement"></foaf:homepage>
+    <rdfs:label>structures-d-h-bergement</rdfs:label>
+    <dct:identifier>structures-d-h-bergement</dct:identifier>
+    <dct:title>Structures d'hébergement</dct:title>
+    <version>1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>SIAD</foaf:name>
+        <foaf:mbox rdf:resource="mailto:contact@&amp;siad.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>responsable de la donnée</foaf:name>
+        <foaf:mbox rdf:resource="mailto:http://datalocale.fr/user/50/contact_form"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:created>2012-05-18T07:41:52.255850</dct:created>
+    <dct:modified>2012-05-18T07:44:31.216851</dct:modified>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://siad.aecom.org/content/download/5668/100725/2/fre-FR/8.2_Data_TourismePriveHebergeursAquitaine2009_liste.xls"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>xls</rdf:value>
+                            <rdfs:label>xls</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>promain</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-18T074051/8.2_Data_TourismePriveHebergeursAquitaine2009_liste-Camping.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-18T074051/8.2_Data_TourismePriveHebergeursAquitaine2009_liste-Camping.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/test">
+    <owl:sameAs rdf:resource="urn:uuid:339f447c-c8a9-4bf9-9278-ff47aca5d571"></owl:sameAs>
+    <dct:description>ccc</dct:description>
+        <dcat:keyword>conférence</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/test"></foaf:homepage>
+    <rdfs:label>test</rdfs:label>
+    <dct:identifier>test</dct:identifier>
+    <dct:title>test</dct:title>
+    <version></version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>aaaa</foaf:name>
+        <foaf:mbox rdf:resource="mailto:rer@rewrewr.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>dddd</foaf:name>
+        <foaf:mbox rdf:resource="mailto:ddd@eee.com"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/a756f49b-6534-4ed1-87de-31fdf8cdb7b3</dct:publisher>
+    <dct:creator>/organization/e17b2efb-9f67-4d35-9ae9-3c176d93c14f</dct:creator>
+    <dct:created>2012-05-16T07:21:48.858318</dct:created>
+    <dct:modified>2012-07-26T13:08:04.122807</dct:modified>
+    <dcat:theme>oeuf</dcat:theme>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+	<dct:source>Table TEST, database DATALOCALE</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/test-2">
+    <owl:sameAs rdf:resource="urn:uuid:d1516bc7-6b18-458b-87ce-c0d196612f47"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/test-2"></foaf:homepage>
+    <rdfs:label>test-2</rdfs:label>
+    <dct:identifier>test-2</dct:identifier>
+    <dct:title>test 2</dct:title>
+    <version></version>
+    <dct:created>2012-06-26T10:04:15.010620</dct:created>
+    <dct:modified>2012-06-26T10:04:15.010620</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/test-ebiz-jeu">
+    <owl:sameAs rdf:resource="urn:uuid:9bc320d6-2d09-40f1-8a93-dfbcf32fc0bb"></owl:sameAs>
+    <dct:description>zzzzzz</dct:description>
+        <dcat:keyword>pppp</dcat:keyword>
+        <dcat:keyword>zzz</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/test-ebiz-jeu"></foaf:homepage>
+    <rdfs:label>test-ebiz-jeu</rdfs:label>
+    <dct:identifier>test-ebiz-jeu</dct:identifier>
+    <dct:title>test ebiz jeu</dct:title>
+    <version>Version</version>
+    <maj>sssss dddddd</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>Auteur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:Auteur du courriel"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Mainteneur</foaf:name>
+        <foaf:mbox rdf:resource="mailto:Courriel du responsable"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/104f30ac-5cea-4680-9ac1-8ada23be5d57</dct:publisher>
+    <dct:creator>/organization/Propriétaire</dct:creator>
+    <dct:created>2012-05-28T14:04:23.767559</dct:created>
+    <dct:modified>2012-05-28T14:06:45.798295</dct:modified>
+    <dcat:theme>contrôle</dcat:theme>
+	<dcterms:references>Référence liée</dcterms:references>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/test-spatial">
+    <owl:sameAs rdf:resource="urn:uuid:efab32a9-a34e-4a4a-9b68-09632a886d3a"></owl:sameAs>
+    <dct:description>eee</dct:description>
+        <dcat:keyword>tags</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/test-spatial"></foaf:homepage>
+    <rdfs:label>test-spatial</rdfs:label>
+    <dct:identifier>test-spatial</dct:identifier>
+    <dct:title>test spatial</dct:title>
+    <version>1.2</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>aaaaaaaaa</foaf:name>
+        <foaf:mbox rdf:resource="mailto:sasdstfet"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>rwetet</foaf:name>
+        <foaf:mbox rdf:resource="mailto:rwetwer"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/bfe3b8ed-26b2-4eb8-9e0e-ad570939a2a5</dct:publisher>
+    <dct:creator>/organization/e17b2efb-9f67-4d35-9ae9-3c176d93c14f</dct:creator>
+    <dct:created>2012-07-24T10:57:19.678113</dct:created>
+    <dct:modified>2012-07-26T13:18:43.351825</dct:modified>
+    <dcat:theme>agrément</dcat:theme>
+    <dcat:dataQuality>exhaustive, score :  </dcat:dataQuality>
+    <dct:accrualPeriodicity>vvvvvvv</dct:accrualPeriodicity>
+    <dcterms:temporal>Du 2012-07-21 au 2012-07-21</dcterms:temporal>
+    <dct:spatial>MEILHAN-SUR-GARONNE</dct:spatial>
+    <dct:granularity>ttttt Granularité</dct:granularity>
+	<dcterms:references>reference</dcterms:references>
+	<dct:source>Source</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/vvvv-bbb">
+    <owl:sameAs rdf:resource="urn:uuid:b131f9ae-f216-4475-b53d-802811070eaf"></owl:sameAs>
+    <dct:description>sfsdf</dct:description>
+        <dcat:keyword>tag2</dcat:keyword>
+        <dcat:keyword>tag3</dcat:keyword>
+        <dcat:keyword>tagon</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/vvvv-bbb"></foaf:homepage>
+    <rdfs:label>vvvv-bbb</rdfs:label>
+    <dct:identifier>vvvv-bbb</dct:identifier>
+    <dct:title>vvvv bbb</dct:title>
+    <version>fsdfs</version>
+    <maj>xxx</maj>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>sss</foaf:name>
+        <foaf:mbox rdf:resource="mailto:ss"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>fsdfd</foaf:name>
+        <foaf:mbox rdf:resource="mailto:fsdfsd"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:publisher>/organization/d7e6853d-5d4d-47f7-a595-38574144f369</dct:publisher>
+    <dct:creator>/organization/dd</dct:creator>
+    <dct:created>2012-05-28T11:23:46.595967</dct:created>
+    <dct:modified>2012-05-28T12:04:43.729555</dct:modified>
+    <dcat:theme>guerre d'Algérie (1954-1962)</dcat:theme>
+	<dcterms:references>sss</dcterms:references>
+	<dct:source>ewewerwet</dct:source>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/vvvvvvvv">
+    <owl:sameAs rdf:resource="urn:uuid:292bd96c-426a-4878-a370-ea4f50f690c7"></owl:sameAs>
+    <dct:description>fff</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/vvvvvvvv"></foaf:homepage>
+    <rdfs:label>vvvvvvvv</rdfs:label>
+    <dct:identifier>vvvvvvvv</dct:identifier>
+    <dct:title>vvvvvvvv</dct:title>
+    <version></version>
+    <dct:created>2012-06-12T09:25:19.674758</dct:created>
+    <dct:modified>2012-06-12T09:25:19.674758</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/ww">
+    <owl:sameAs rdf:resource="urn:uuid:add48769-5ae7-41ab-806d-b8995bf875d1"></owl:sameAs>
+    <dct:description>www</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/ww"></foaf:homepage>
+    <rdfs:label>ww</rdfs:label>
+    <dct:identifier>ww</dct:identifier>
+    <dct:title>ww</dct:title>
+    <version></version>
+    <dct:publisher>/organization/bfe3b8ed-26b2-4eb8-9e0e-ad570939a2a5</dct:publisher>
+    <dct:creator>/organization/e17b2efb-9f67-4d35-9ae9-3c176d93c14f</dct:creator>
+    <dct:created>2012-07-26T06:22:22.216226</dct:created>
+    <dct:modified>2012-07-26T13:20:52.345249</dct:modified>
+    <dcterms:temporal>Du 2012-07-26 au 2012-07-26</dcterms:temporal>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/www">
+    <owl:sameAs rdf:resource="urn:uuid:8b072f50-3b2f-4881-afd0-b6e05be9a980"></owl:sameAs>
+    <dct:description></dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/www"></foaf:homepage>
+    <rdfs:label>www</rdfs:label>
+    <dct:identifier>www</dct:identifier>
+    <dct:title>www</dct:title>
+    <version></version>
+    <dct:created>2012-06-19T08:24:00.898026</dct:created>
+    <dct:modified>2012-06-19T08:24:00.898026</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/xxxxxxxxx">
+    <owl:sameAs rdf:resource="urn:uuid:9f0bd1d9-b313-4c6c-a623-9a0dceca693a"></owl:sameAs>
+    <dct:description>asdsaf</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/xxxxxxxxx"></foaf:homepage>
+    <rdfs:label>xxxxxxxxx</rdfs:label>
+    <dct:identifier>xxxxxxxxx</dct:identifier>
+    <dct:title>xxxxxxxxx</dct:title>
+    <version></version>
+    <dct:created>2012-06-14T08:07:19.216272</dct:created>
+    <dct:modified>2012-06-14T08:07:19.216272</dct:modified>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/z_ervoie_s">
+    <owl:sameAs rdf:resource="urn:uuid:faa35396-45e2-4579-a19c-92e8dcbb9a6a"></owl:sameAs>
+    <dct:description>Emplacement représentant par une surface le futur élargissement ou la future création de voie publique défini dans le plan local d'urbanisme (PLU). Le PLU est un document d'urbanisme règlementaire qui traduit le projet d'aménagement et de développement de l'agglomération.
+Ces donn\ées n'ont pas un caracère opposable : seul le PLU papier approuvé au 1/5000 est opposable suite au contrôle de légalité.</dct:description>
+        <dcat:keyword>aménagement</dcat:keyword>
+        <dcat:keyword>plu</dcat:keyword>
+        <dcat:keyword>urbanisme</dcat:keyword>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/z_ervoie_s"></foaf:homepage>
+    <rdfs:label>z_ervoie_s</rdfs:label>
+    <dct:identifier>z_ervoie_s</dct:identifier>
+    <dct:title>Emplacement réservé de voirie</dct:title>
+    <version>1</version>
+    <dct:creator>
+      <rdf:Description>
+        <foaf:name>service du PLU</foaf:name>
+        <foaf:mbox rdf:resource="mailto:pplacin@cu-bordeaux.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:creator>
+    <dct:contributor>
+      <rdf:Description>
+        <foaf:name>Sébastine Cart-Lamy</foaf:name>
+        <foaf:mbox rdf:resource="mailto:scartlamy@cu-bordeaux.fr"></foaf:mbox>
+      </rdf:Description>
+    </dct:contributor>
+    <dct:creator>/organization/CUB</dct:creator>
+    <dct:created>2012-05-23T10:14:35.906903</dct:created>
+    <dct:modified>2012-05-25T21:21:19.831212</dct:modified>
+    <dcat:theme>urbanisme</dcat:theme>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://data.lacub.fr/files.php?gid=57&amp;format=6"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>emplacement de voirie au format csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="/fr/storage/f/2012-05-25T142126/Z_ERVOIE_S.csv"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>csv</rdf:value>
+                            <rdfs:label>csv</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>2012-05-25T142126/Z_ERVOIE_S.csv</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="http://data.lacub.fr/files.php?gid=57&amp;format=2"></dcat:accessURL>
+                    <dct:format>
+                        <dct:IMT>
+                            <rdf:value>esri shapefile</rdf:value>
+                            <rdfs:label>esri shapefile</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title>dateCreation/rs/altTag de l'icone du orudcteur :)</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+  </dcat:Dataset>
+
+  <dcat:Dataset rdf:about="http://datalift.si.fr.atosorigin.com/dataset/zsers">
+    <owl:sameAs rdf:resource="urn:uuid:eaded12e-e53b-4414-945b-2c9da5714dff"></owl:sameAs>
+    <dct:description>qsdfqs</dct:description>
+    <foaf:homepage rdf:resource="http://datalift.si.fr.atosorigin.com/dataset/zsers"></foaf:homepage>
+    <rdfs:label>zsers</rdfs:label>
+    <dct:identifier>zsers</dct:identifier>
+    <dct:title>zsers</dct:title>
+    <version></version>
+    <dct:created>2012-07-03T08:29:03.098092</dct:created>
+    <dct:modified>2012-07-03T08:29:03.098092</dct:modified>
+  </dcat:Dataset>
+</rdf:RDF>
