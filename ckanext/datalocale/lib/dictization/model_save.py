@@ -99,14 +99,14 @@ def package_extras_save(extra_dicts, obj, context):
         if extra_dict.get("deleted"):
             continue
 
-        try:
+       
             if extra_dict['value'] is None:
                 pass
             elif extras_as_string:
                 new_extras[extra_dict["key"]] = extra_dict["value"]
             else:
                 new_extras[extra_dict["key"]] = h.json.loads(extra_dict["value"])
-        except:
+  
             new_extras[extra_dict["key"]] = "";
     #new
     for key in set(new_extras.keys()) - set(old_extras.keys()):
