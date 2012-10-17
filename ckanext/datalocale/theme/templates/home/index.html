@@ -93,8 +93,12 @@
 			  <div class="dataset-content">
 				<h3 class="dataset-heading">
 				  <a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
-				</h3>
-				  <div>${dataset.get('notes','')[:200]}</div>
+				</h3> 
+					<py:if test="dataset.get('notes','')">
+					  <div>
+					  ${dataset.get('notes','')[:200]}
+					  </div>
+					</py:if>
 				  </div>
 			</li>
 		</py:for>
