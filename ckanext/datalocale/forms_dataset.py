@@ -209,7 +209,10 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'image_url': [ignore_missing, convert_to_extras],
     	})
         schema['groups'].update({
-            'capacity': [ignore_missing, unicode]
+            'capacity': [ignore_missing, unicode],
+            'id': [ignore_missing],
+            'name': [ignore_missing],
+            'title': [ignore_missing]
         })
         return schema
 
