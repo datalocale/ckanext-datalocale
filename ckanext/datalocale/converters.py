@@ -78,7 +78,9 @@ def datalocale_convert_to_tags(vocab):
 
 def convert_to_groups(field, num):
     def convert(key, data, errors, context):
-        data[('groups', num, field)] = data[key]
+        data[('groups', num, field)] = data[key].replace('"', '').replace('\\','')
+        #if data[key][0] != '"':
+         #   data[key] = '"' + data[key] + '"'
     return convert
 
 def convert_from_groups_visibility(field):
