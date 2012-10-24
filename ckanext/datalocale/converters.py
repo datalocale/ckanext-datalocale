@@ -76,7 +76,8 @@ def datalocale_convert_to_tags(vocab):
             data[('tags', num + n, 'vocabulary_id')] = v.id
     return callable
 
-def convert_to_groups(field, num):
+def convert_to_groups(field, num): 
+    
     def convert(key, data, errors, context):
         data[('groups', num, field)] = data[key].replace('"', '').replace('\\','')
         #if data[key][0] != '"':
