@@ -37,35 +37,41 @@ log = logging.getLogger(__name__)
     Copy of the ckan/ckanext/organizations/controllers.py
     Main modification : path of template (render) 
 '''
-class DatalocaleOrganizationController(GroupController):
+class DatalocaleServiceController(GroupController):
     implements(IGroupController, inherit=True)
        
-    def index(self):
+    def listFromOrganization (self, id):
         group_type = self._guess_group_type()
-
+        group_type = "service"
+        
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author, 'for_view': True,
                    'with_private': False}
 
-        data_dict = {'all_fields': True, 'type': 'organization'}
+        data_dict = {'all_fields': True}
 
+        c.group = model.Group.get(id)
+        
+        results = c.group.get_children_groups('organization')
+        
+        for i in range(len(results)):
+            group_tmp = model.Group.get(results[i]["name"])
+            package_list = group_tmp.active_packages().all()
+            results[i]["description"] = group_tmp.description
+            results[i]["packages"] = len(package_list)
+ 
         try:
             check_access('site_read', context)
         except NotAuthorized:
             abort(401, _('Not authorized to see this page'))
 
-        results = get_action('group_list')(context, data_dict)
-    
-        new_results = []
-        for res in results:
-            if res["type"] == "organization":
-                new_results.append(res)
-        
+        # #results = get_action('group_list')(context, data_dict)
+
         c.page = Page(
-            collection=new_results,
+            collection=results,
             page=request.params.get('page', 1),
             url=h.pager_url,
-            items_per_page=20
+            items_per_page=2
         )
         return render( self._index_template(group_type) )
     

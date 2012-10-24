@@ -133,13 +133,13 @@ class DatalocaleDatasetForm(SingletonPlugin):
         try : 
             if c.pkg_dict: 
                 if c.pkg_dict.get('dct:publisher', ''): 
-                    c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher','')}) 
+                    c.current_publisher = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:publisher','').replace('\\', '').replace('"', '')}) 
         except NotFound:
             c.current_publisher = None
         try:
             if c.pkg_dict :  
                 if c.pkg_dict.get('dct:creator', ''): 	
-                    c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator','')})
+                    c.current_creator = logic.get_action('group_show')(context, {'id':c.pkg_dict.get('dct:creator','').replace('\\', '').replace('"', '')})
         except NotFound : 
             c.current_creator = None
         try:

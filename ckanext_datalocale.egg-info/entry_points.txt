@@ -1,0 +1,18 @@
+
+        [ckan.controllers]
+	organization_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
+	service_datalocale=ckanext.datalocale.service_controllers:DatalocaleServiceController
+	storage_datalocale=ckanext.datalocale.datalocale_storage:DatalocaleStorageController
+	
+        [ckan.plugins]
+	# Add plugins here, eg
+	# myplugin=ckanext.myextension:PluginClass
+	
+	datalocale_datasetform=ckanext.datalocale.forms_dataset:DatalocaleDatasetForm
+	datalocale_serviceform=ckanext.datalocale.forms_service:DatalocaleServiceForm
+	datalocale_organizationform=ckanext.datalocale.forms_organization:DatalocaleOrganizationForm
+	datalocale_api=ckanext.datalocale.api:DatalocaleAPI
+
+	[paste.paster_command]
+	datalocale = ckanext.datalocale.commands:DatalocaleCommand
+	

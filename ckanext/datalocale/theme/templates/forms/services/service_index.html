@@ -1,10 +1,10 @@
 <html xmlns:py="http://genshi.edgewall.org/"
   xmlns:i18n="http://genshi.edgewall.org/i18n"
-  xmlns:xi="http://www.w3.org/2001/XInclude"
-  py:strip="">
+xmlns:xi="http://www.w3.org/2001/XInclude"
+py:strip="">
 
-  <py:def function="page_title">Services</py:def>
-  <py:def function="page_heading">Services</py:def>
+  <py:def function="page_title">Services associés au groupe ${c.group.name}</py:def>
+  <py:def function="page_heading">Services associés au groupe ${c.group.name}</py:def>
 
   <py:match path="primarysidebar">
     <li class="widget-container boxed widget_text">
@@ -16,7 +16,7 @@
 
   <div py:match="content">
     ${c.page.pager()}
-    ${group_list_from_dict(c.page.items)}
+    ${service_list_from_dict(c.page.items)}
     ${c.page.pager()}
   </div>
 

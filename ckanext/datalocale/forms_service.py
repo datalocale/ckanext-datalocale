@@ -46,11 +46,14 @@ class DatalocaleServiceForm(SingletonPlugin):
                 config.get('extra_template_paths', '')])
 
         # Override /group/* as the default groups urls
-        #config['ckan.default.group_type'] = 'service'
+       ## config['ckan.default.group_type'] = 'service'
 
     def before_map(self, map):
-        controller = 'ckanext.datalocale.organization_controllers:DatalocaleOrganizationController'
+        controller = 'ckanext.datalocale.service_controllers:DatalocaleServiceController'
         map.connect('/service/users/{id}', controller=controller, action='users')
+        map.connect('/service/from-organization/{id}', controller=controller, action='listFromOrganization')
+        map.connect('/service/{id}', controller=controller, action='read')
+        map.redirect('/service', '/organization')
         return map
 
     def after_map(self, map):
