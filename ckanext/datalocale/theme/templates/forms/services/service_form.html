@@ -251,7 +251,8 @@
 </fieldset>
 
 <div class="form-actions">
-  <input id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
+  <input py:if="c.action =='new'" id="saves" class="btn btn-primary" name="save" type="submit" value="Ajouter un service" />
+  <input py:if="c.action !='new'" id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
   <py:if test="c.group">
     <input id="cancel" class="btn href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='group', action='read', id=c.group.name)}" />
   </py:if>
