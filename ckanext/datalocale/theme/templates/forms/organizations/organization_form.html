@@ -27,7 +27,7 @@
 
 <fieldset class="tab-pane fade active in" id="basic-information">
  <div class="control-group title-field">
-    <label class="control-label" for="title">Nom de l'organisation</label>
+    <label class="control-label" for="title">Nom du groupe</label>
     <div class="controls">
       <input id="title"
         class="js-title"
@@ -41,7 +41,7 @@
     <label class="control-label" for="name">Url</label>
     <div class="controls">
       <div class="input-prepend">
-        <span class="add-on">${h.url(controller='group', action='search')+'/'}</span>
+        <span class="add-on">/organization/</span>
         <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
       </div>
       <p class="js-url-is-valid">&nbsp;</p>

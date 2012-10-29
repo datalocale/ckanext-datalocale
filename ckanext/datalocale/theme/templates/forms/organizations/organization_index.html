@@ -3,8 +3,8 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   py:strip="">
 
-  <py:def function="page_title">Organizations</py:def>
-  <py:def function="page_heading">Organizations</py:def>
+  <py:def function="page_title">Groupes</py:def>
+  <py:def function="page_heading">Groupes</py:def>
 
   <py:match path="primarysidebar">
     <li class="widget-container boxed widget_text">
@@ -16,7 +16,7 @@
 
   <div py:match="content">
     ${c.page.pager()}
-    ${group_list_from_dict(c.page.items)}
+    ${organization_list_from_dict(c.page.items)}
     ${c.page.pager()}
   </div>
 

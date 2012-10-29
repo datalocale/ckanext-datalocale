@@ -183,3 +183,6 @@ var json_label = {"Departements": new Array("code-dept","code-dept","nom-dept"),
         $(this).val(selectedValue);
     });
   }
+  
+
+
