@@ -116,32 +116,13 @@
     </div>
   </div>
 
-<?python
-creator = data.get('dct:creator', {})
-?>
-  <div class="control-group">
-    <label class="control-label" for="dct:creator">Groupe</label>
-    <div class="controls">
-      <select id="dct:creator" class="chzn-select" name="dct:creator">
-        <option selected="selected" value="">(None)</option>
-        <py:for each="tag in c.creators_available">
-          <option py:attrs="{'selected':'selected'} if creator == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
-        </py:for>
-	<py:if test="c.current_creator">
-	   <py:if test="not filter(lambda obj: obj.name == c.current_creator.get('name',''), c.creators_available)">
-	     <option selected="selected" value="${c.current_creator.get('id','')}">${c.current_creator.get('title')}</option>
-	   </py:if>
-	</py:if>
-      </select>
-      <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
-    </div>
-  </div>
+
 
 <?python
 publisher = data.get('dct:publisher', {})
 ?>
   <div class="control-group">
-    <label class="control-label" for="dct:publisher">Service</label>
+    <label class="control-label" for="dct:publisher">Groupe</label>
     <div class="controls">
       <select id="dct:publisher" class="chzn-select" name="dct:publisher">
         <option selected="selected" value="">(None)</option>
@@ -155,6 +136,27 @@ publisher = data.get('dct:publisher', {})
 	</py:if>
       </select>
       <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
+    </div>
+  </div>
+
+<?python
+creator = data.get('dct:creator', {})
+?>
+  <div class="control-group">
+    <label class="control-label" for="dct:creator">Service</label>
+    <div class="controls">
+      <select id="dct:creator" class="chzn-select" name="dct:creator">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.creators_available">
+          <option py:attrs="{'selected':'selected'} if creator == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+        </py:for>
+	<py:if test="c.current_creator">
+	   <py:if test="not filter(lambda obj: obj.name == c.current_creator.get('name',''), c.creators_available)">
+	     <option selected="selected" value="${c.current_creator.get('id','')}">${c.current_creator.get('title')}</option>
+	   </py:if>
+	</py:if>
+      </select>
+      <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
     </div>
   </div>
 

@@ -45,6 +45,30 @@ def site_read(context,data_dict=None):
     check_access('site_read',context,data_dict)
     return True
 
+def get_package_from_group(context, data_dict) :    
+
+    group_name = data_dict["group_name"]
+    with_services = data_dict["with_services"]
+    group = None
+
+    packages = []
+    if group == None:
+        group = Model.group.get(group_name)
+        
+    if with_services == False and group != None:
+            packages_tmp = group.active_packages().all()
+            if packages_tmp != None:
+                packages.append(package_tmp)
+            
+    if with_services == True:
+            children = group.get_children_groups("service")
+            for child in children:
+                nchild = Model.group.get(child["name"])
+                packages_tmp = nchild.active_packages().all()
+                if packages_tmp != None:
+                    packages.append(packages_tmp)
+    return packages
+        
 def package_list(context, data_dict):
     '''Lists packages by name or id'''
 

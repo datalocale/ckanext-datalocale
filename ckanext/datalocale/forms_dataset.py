@@ -211,7 +211,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         schema['groups'].update({
             'capacity': [ignore_missing, unicode],
             'id': [ignore_missing],
-            'name': [ignore_missing],
+            'name': [],
             'title': [ignore_missing]
         })
         return schema

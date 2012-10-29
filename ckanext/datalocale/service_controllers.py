@@ -1,4 +1,8 @@
 import logging
+import genshi
+import datetime
+from urllib import urlencode
+
 from ckan.lib.base import BaseController, c, model, request, render, h, g
 from ckan.lib.base import ValidationException, abort, gettext
 from pylons.i18n import get_lang, _
@@ -52,7 +56,7 @@ class DatalocaleServiceController(GroupController):
 
         c.group = model.Group.get(id)
         
-        results = c.group.get_children_groups('organization')
+        results = c.group.get_children_groups('service')
         
         for i in range(len(results)):
             group_tmp = model.Group.get(results[i]["name"])
@@ -182,6 +186,155 @@ class DatalocaleServiceController(GroupController):
             logic.get_action('user_role_update')(context, {'user': user.get('name',''), 'domain_object':group.id, 'roles': roles})   
         h.redirect_to( controller='group', action='edit', id=group.name)
 
+    def new(self, parent, data=None, errors=None, error_summary=None):
+        group_type = self._guess_group_type(True)
+        group_type = "service"
+        if data:
+            data['type'] = "service"
+
+        group_parent = model.Group.get(parent)
+
+        c.parenttitle = group_parent.title
+        c.parentid = group_parent.name
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'extras_as_string': True,
+                   'save': 'save' in request.params,
+                   'parent': parent}
+        try:
+            check_access('group_create',context)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to create a group'))
+
+        if context['save'] and not data:
+            return self._save_new(context, group_type)
+
+        data = data or {}
+        errors = errors or {}
+        error_summary = error_summary or {}
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
+
+        self._setup_template_variables(context,data)
+        c.form = render(self._group_form(group_type=group_type), extra_vars=vars)
+        return render(self._new_template(group_type))
+
+    def read(self, id):
+        from ckan.lib.search import SearchError
+        group_type = self._get_group_type(id.split('@')[0])
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author,
+                   'schema': self._form_to_db_schema(group_type=group_type),
+                   'for_view': True, 'extras_as_string': True}
+        data_dict = {'id': id}
+        q = c.q = request.params.get('q', '') # unicode format (decoded from utf8)
+
+        try:
+            c.group_dict = get_action('group_show')(context, data_dict)
+            c.group = context['group']
+        except NotFound:
+            abort(404, _('Group not found'))
+        except NotAuthorized:
+            abort(401, _('Unauthorized to read group %s') % id)
+
+        # Search within group
+        q += ' groups: "%s"' % c.group_dict.get('name')
+
+        try:
+            description_formatted = ckan.misc.MarkdownFormat().to_html(c.group_dict.get('description',''))
+            c.description_formatted = genshi.HTML(description_formatted)
+        except Exception, e:
+            error_msg = "<span class='inline-warning'>%s</span>" % _("Cannot render description")
+            c.description_formatted = genshi.HTML(error_msg)
+
+        c.group_admins = self.authorizer.get_admins(c.group)
+
+        context['return_query'] = True
+
+        limit = 20
+        try:
+            page = int(request.params.get('page', 1))
+        except ValueError, e:
+            abort(400, ('"page" parameter must be an integer'))
+
+        # most search operations should reset the page counter:
+        params_nopage = [(k, v) for k,v in request.params.items() if k != 'page']
+
+        def search_url(params):
+            url = h.url_for(controller='group', action='read', id=c.group_dict.get('name'))
+            params = [(k, v.encode('utf-8') if isinstance(v, basestring) else str(v)) \
+                            for k, v in params]
+            return url + u'?' + urlencode(params)
+
+        def drill_down_url(**by):
+            params = list(params_nopage)
+            params.extend(by.items())
+            return search_url(set(params))
+
+        c.drill_down_url = drill_down_url
+
+        def remove_field(key, value):
+            params = list(params_nopage)
+            params.remove((key, value))
+            return search_url(params)
+
+        c.remove_field = remove_field
+
+        def pager_url(q=None, page=None):
+            params = list(params_nopage)
+            params.append(('page', page))
+            return search_url(params)
+
+        try:
+            c.fields = []
+            search_extras = {}
+            for (param, value) in request.params.items():
+                if not param in ['q', 'page'] \
+                        and len(value) and not param.startswith('_'):
+                    if not param.startswith('ext_'):
+                        c.fields.append((param, value))
+                        q += ' %s: "%s"' % (param, value)
+                    else:
+                        search_extras[param] = value
+
+
+            fq = 'capacity:"public"'
+            if (c.userobj and c.group and c.userobj.is_in_group(c.group)):
+                fq = ''
+
+            data_dict = {
+                'q':q,
+                'fq':fq,
+                'facet.field':g.facets,
+                'rows':limit,
+                'start':(page-1)*limit,
+                'extras':search_extras
+            }
+
+            query = get_action('package_search')(context,data_dict)
+
+            c.page = h.Page(
+                collection=query['results'],
+                page=page,
+                url=pager_url,
+                item_count=query['count'],
+                items_per_page=limit
+            )
+            c.facets = query['facets']
+            c.search_facets = query['search_facets']
+            c.page.items = query['results']
+        except SearchError, se:
+            log.error('Group search error: %r', se.args)
+            c.query_error = True
+            c.facets = {}
+            c.page = h.Page(collection=[])
+
+        # Add the group's activity stream (already rendered to HTML) to the
+        # template context for the group/read.html template to retrieve later.
+        c.group_activity_stream = \
+                ckan.logic.action.get.group_activity_list_html(context,
+                    {'id': c.group_dict['id']})
+
+        return render( self._read_template(c.group_dict['type']) )
+ 
 
     def users(self, id, data=None, errors=None, error_summary=None):
         c.group = model.Group.get(id)

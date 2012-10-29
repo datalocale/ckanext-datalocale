@@ -58,8 +58,8 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     action='apply')
         map.connect('/organization/edit/{id}', controller='group',
                     action='edit')
-        map.connect('/organization/new', controller='group', action='new')
-        map.connect('/organization/{id}', controller='group', action='read')
+        map.connect('/organization/new', controller=controller, action='new')
+        map.connect('/organization/{id}', controller=controller, action='read')
         map.connect('/organization',  controller=controller, action='index')
         map.redirect('/organization/publisher_read', '/organization/organization_read')
         
@@ -222,45 +222,47 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     c.additional_extras.append(extra)
 
     def filter(self, stream):
+        controller = "ckanext.datalocale.organization_controllers:DatalocaleOrganizationController"
+        serviceController = "ckanext.datalocale.service_controllers:DatalocaleServiceController"
         routes = request.environ.get('pylons.routes_dict')
         #Add button to the navbar
-        if routes.get('controller') == 'group' \
-            and routes.get('action') == 'index':
-            route = h.subnav_named_route(c, h.icon('group_add') + _('Ajouter une organisation'), "organization_new", action='new')
-            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _('Se connecter pour ajouter une organisation'), "organization_new", action='new')
-            html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
+        if routes.get('controller') == serviceController and routes.get('action') == 'listFromOrganization':
+            ##route = h.subnav_named_route(c, h.icon('group_add') + _(u'Ajouter un service pour ce groupe'), serviceController, action='new')
+            ##route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un service pour ce groupe'), "service_new", action='new')
+            ##html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
+            html = ''
             stream = stream | Transformer(
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
-        if routes.get('controller') == 'group' \
+           
+           
+                    
+            if routes.get('controller') == 'group' \
             and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
+                html = ''
                 stream = stream | Transformer(
                         "//div[@id='minornavigation']//li[@class='dropdown ']"
                     ).remove()
+                    
         #Add group hierarchy in group view sidebar  
-        if routes.get('controller') == 'ckanext.datalocale.organization_controllers:DatalocaleOrganizationController' \
-            and routes.get('action') == 'read':
+        if routes.get('controller') == controller and routes.get('action') == 'read':
                 children_organizations = c.group.get_children_groups('organization')
                 children_services = c.group.get_children_groups('service')
                 parent_organizations = c.group.get_groups('organization')
                 parent_services = c.group.get_groups('service')
                 html = ""
                 if children_organizations or children_services : 
-                    html += " <h3>Groupes fils</h3><ul class='groups no-break'>"
-                    for children in children_organizations:
-                        html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
-                    for children in children_services:
-                        html += "<li><a href='%s/fr/service/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
-                    html += " </ul>"
-                if parent_organizations or parent_organizations:
-                    html += " <h3>Groupes parents</h3><ul class='groups no-break'>"
-                    for parent in parent_organizations:
-                        html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
-                    for parent in parent_services:
-                        html += "<li><a href='%s/fr/service/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
-                    html += " </ul>"
+                        html += u" <h3>Services</h3><ul class='groups no-break'>"
+                        for children in children_organizations:
+                            html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
+                        for children in children_services:
+                            html += "<li><a href='%s/fr/service/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
+                        html += " </ul>"
+                    
                 stream = stream | Transformer(
                         "//div[@id='sidebar']//li[@id='hierarchie']"
                     ).append(HTML(html))
         return stream
+
+
 
