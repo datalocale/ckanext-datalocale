@@ -50,12 +50,12 @@ class DatalocaleServiceForm(SingletonPlugin):
 
     def before_map(self, map):
         controller = 'ckanext.datalocale.service_controllers:DatalocaleServiceController'
-        map.connect('/service/users/{id}', controller=controller, action='users')
-        map.connect('/service/from-organization/{id}', controller=controller, action='listFromOrganization')
-        map.connect('/service/{id}', controller=controller, action='read')
-        map.connect('/service/new/from-organization/{parent}', controller=controller, action='new')
+        map.connect('/producteur/users/{id}', controller=controller, action='users')
+        map.connect('/producteur/from-diffuseur/{id}', controller=controller, action='listFromOrganization')
+        map.connect('/producteur/{id}', controller=controller, action='read')
+        map.connect('/producteur/new/from-diffuseur/{parent}', controller=controller, action='new')
         
-        map.redirect('/service', '/organization')
+        map.redirect('/producteur', '/organization')
         return map
 
     def after_map(self, map):
@@ -209,8 +209,8 @@ class DatalocaleServiceForm(SingletonPlugin):
      
         #Add button to the navbar
         if routes.get('controller') == controller and routes.get('action') == 'index':
-            route = h.subnav_named_route(c, h.icon('group_add') + _(u'Ajouter un service &aagrave; ce groupe'), "service_new", action='new')
-            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un service &aagrave; ce groupe'), "service_new", action='new')
+            route = h.subnav_named_route(c, h.icon('group_add') + _(u'Ajouter un producteur pour ce diffuseur'), "service_new", action='new')
+            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un producteur pour ce diffuseur'), "service_new", action='new')
             html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
             html = ''
             stream = stream | Transformer(
@@ -232,11 +232,11 @@ class DatalocaleServiceForm(SingletonPlugin):
                 html = ""
 
                 if parent_organizations or parent_organizations:
-                    html += " <h3>Groupes parents</h3><ul class='groups no-break'>"
+                    html += " <h3>Diffuseurs parents</h3><ul class='groups no-break'>"
                     for parent in parent_organizations:
                          html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
                     for parent in parent_services:
-                         html += "<li><a href='%s/fr/service/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
+                         html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
                     html += " </ul>"
                     
                 stream = stream | Transformer(

@@ -206,7 +206,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
 		'dc:source': [ignore_missing, unicode, convert_to_extras],
 		'maj': [ignore_missing, unicode, convert_to_extras],
 		'resources': default_schema.default_resource_schema(),
-		'image_url': [ignore_missing, convert_to_extras],
+		'image_url': [ignore_missing, convert_to_extras]
     	})
         schema['groups'].update({
             'capacity': [ignore_missing, unicode],
@@ -342,7 +342,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         if routes.get('controller') == 'user' and routes.get('action') == 'read':	
             user = base.model.User.get(c.id)
             groups = user.get_groups()
-            html = "<dt>Groupes</dt><dd>"
+            html = "<dt>Diffuseur</dt><dd>"
             for group in groups :
                 html += "<a href='/organization/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"

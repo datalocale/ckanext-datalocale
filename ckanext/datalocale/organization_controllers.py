@@ -45,6 +45,7 @@ class DatalocaleOrganizationController(GroupController):
        
     def index(self):
         group_type = self._guess_group_type()
+        group_type = "organization"
 
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author, 'for_view': True,
@@ -310,7 +311,32 @@ class DatalocaleOrganizationController(GroupController):
             roles.append(user.get('capacity'))
             logic.get_action('user_role_update')(context, {'user': user.get('name',''), 'domain_object':group.id, 'roles': roles})   
         h.redirect_to( controller='group', action='edit', id=group.name)
+   
+    def new(self, data=None, errors=None, error_summary=None):
+        group_type = "organization"
+        if data:
+            data['type'] = group_type
 
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'extras_as_string': True,
+                   'save': 'save' in request.params,
+                   'parent': request.params.get('parent', None)}
+        try:
+            check_access('group_create',context)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to create a group'))
+
+        if context['save'] and not data:
+            return self._save_new(context, group_type)
+
+        data = data or {}
+        errors = errors or {}
+        error_summary = error_summary or {}
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
+
+        self._setup_template_variables(context,data)
+        c.form = render(self._group_form(group_type=group_type), extra_vars=vars)
+        return render(self._new_template(group_type))
 
     def users(self, id, data=None, errors=None, error_summary=None):
         c.group = model.Group.get(id)
