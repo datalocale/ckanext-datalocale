@@ -32,6 +32,8 @@ SERVICE_URL_ID="service-a"
 SERVICE_NAME="Service A"
 # ! ATOS DEVELOPMENT CKAN PARAMS
 
+DATE=`date '+%Y-%m-%dT%H%M%S'`
+
 JSON='{
         "author": "", 
         "author_email": "", 
@@ -65,8 +67,11 @@ JSON='{
         "type": "None", 
         "url": "", 
         "version": "",
-	"tag_string": "mon tag, test"
+	"tag_string": "mon tag, test",
+	"resources" : [{"resource_type": "file.upload", "description": "Description of the ressource", "format": "csv", "hash": "md5:21cb13a5505f4dc831f9683b433cda8d", "size" : 274, "owner": "oceane", "name":"Name_of_the_resource", "last_modified": "", "url":"'$CKAN_URL'storage/f/2012-11-05T150255/Petit_Kiosques_ouverts_a_Paris.csv", "webstore_url":"'$CKAN_URL'storage/f/2012-11-05T150255/Petit_Kiosques_ouverts_a_Paris.csv"} ]
 }'
+
+# resources: you can get the informations from ./ckan-resource-read.sh resource_key
 
 echo $JSON | python -mjson.tool
 
