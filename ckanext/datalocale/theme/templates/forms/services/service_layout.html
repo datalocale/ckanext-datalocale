@@ -30,7 +30,7 @@ controller='group', action='history', id=c.group.name, format='atom', days=7)}
 
     <ul py:if="not c.group or c.action=='listFromOrganization'" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + _('List Organizations'), "organization_index", action="index" )}
+        ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
       </li>
  
     </ul>

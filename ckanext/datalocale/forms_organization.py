@@ -50,19 +50,19 @@ class DatalocaleOrganizationForm(SingletonPlugin):
 
     def before_map(self, map):
         controller = 'ckanext.datalocale.organization_controllers:DatalocaleOrganizationController'
-        map.connect('/organization/users/{id}', controller=controller,
+        map.connect('/diffuseur/users/{id}', controller=controller,
                     action='users')
-        map.connect('/organization/apply/{id}', controller=controller,
+        map.connect('/diffuseur/apply/{id}', controller=controller,
                     action='apply')
-        map.connect('/organization/apply', controller=controller,
+        map.connect('/diffuseur/apply', controller=controller,
                     action='apply')
-        map.connect('/organization/edit/{id}', controller='group',
+        map.connect('/diffuseur/edit/{id}', controller='group',
                     action='edit')
-        map.connect('/organization/new', controller=controller, action='new')
-        map.connect('/organization/{id}', controller=controller, action='read')
-        map.connect('/organization',  controller=controller, action='index')
-        map.redirect('/organization/publisher_read', '/organization/organization_read')
-        
+        map.connect('/diffuseur/new', controller=controller, action='new')
+        map.connect('/diffuseur/{id}', controller=controller, action='read')
+        map.connect('/diffuseur',  controller=controller, action='index')
+        map.redirect('/diffuseur/publisher_read', '/diffuseur/organization_read')
+        map.redirect('/organization', '/diffuseur')
         return map
 
     def after_map(self, map):
@@ -252,11 +252,11 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                 parent_services = c.group.get_groups('service')
                 html = ""
                 if children_organizations or children_services : 
-                        html += u" <h3>Services</h3><ul class='groups no-break'>"
+                        html += u" <h3>Producteurs</h3><ul class='groups no-break'>"
                         for children in children_organizations:
-                            html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
+                            html += "<li><a href='%s/fr/diffuseur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
                         for children in children_services:
-                            html += "<li><a href='%s/fr/service/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
+                            html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
                         html += " </ul>"
                     
                 stream = stream | Transformer(

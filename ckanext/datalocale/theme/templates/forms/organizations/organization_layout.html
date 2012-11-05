@@ -9,10 +9,10 @@
   <py:match path="minornavigation">
     <ul py:if="not c.action=='index' and c.group" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + _('List Organizations'), "organization_index", action="index" )}
+        ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
       </li>
 	<li  py:if="c.group and h.check_access('group_edit_permissions',{'id':c.group.name})">
-        <a href="${h.url_for('/service/new/from-organization/')}${c.group.name}">${h.icon('group_edit') + _('Ajouter un service à ce groupe')}</a>
+        <a href="${h.url_for('/producteur/new/from-diffuseur/')}${c.group.name}">${h.icon('group_edit') + _('Ajouter un producteur à ce diffuseur')}</a>
       </li>
       <li  py:attrs="{'class':'active'} if c.action=='read' else {}">${h.subnav_named_route(c, h.icon('group') + _('View'), 'organization_read',controller='group', action='read', id=c.group.name)}</li>
       <li  py:attrs="{'class':'active'} if c.action=='history' else {}">${h.subnav_named_route(c, h.icon('page_white_stack') + _('History'), 'organization_action', controller='group', action='history', id=c.group.name)}</li>
@@ -35,10 +35,10 @@
 
     <ul py:if="c.action=='index' or c.action=='new'" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + _('List Organizations'), "organization_index", action="index" )}
+        ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
       </li>
       <li class="${'active' if c.action=='new' else ''} ckan-logged-in" >
-        <a href="${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='new')}">${h.icon('group_add') + _('Add an organization')}</a>
+        <a href="${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='new')}">${h.icon('group_add') + 'Ajouter un diffuseur'}</a>
       </li>
     </ul>
   </py:match>

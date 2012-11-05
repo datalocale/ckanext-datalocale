@@ -71,7 +71,7 @@
 	          	<ul class="unstyled">
 	            <li class="ckan-logged-in" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
 	            <li class="active">${h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index')}</li>
-	            <li>${h.nav_named_link(_('Groups'), name='%s_index' % h.default_group_type() )}</li>
+	            <li>${h.nav_named_link("Diffuseurs", name='%s_index' % h.default_group_type() )}</li>
 	            <li>${h.nav_link(_('About'), controller='home', action='about')}</li>
 	            </ul>
 	          </nav>
@@ -151,11 +151,6 @@
   <li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
   <li>${h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=1))}</li>
   <li>${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')}</li>
-  <li><a href="http://ckan.org/contact">Contact Us</a></li>
-  <li><a href="http://ckan.org/datasuite/services">Pricing</a></li>
-  <li><a href="http://okfn.org/privacy">Privacy Policy</a></li>
-  <li><a href="http://ckan.org">CKAN</a></li>
-  <li><a href="http://okfn.org">OKFN</a></li>
           </ul>
           <h3 class="widget-title">Sections</h3>
           <div class="textwidget">

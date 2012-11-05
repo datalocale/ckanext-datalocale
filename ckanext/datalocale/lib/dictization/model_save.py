@@ -9,6 +9,7 @@ import ckan.lib.helpers as h
 def resource_dict_save(res_dict, context):
     model = context["model"]
     session = context["session"]
+    import sys
 
     id = res_dict.get("id")
     obj = None
@@ -100,14 +101,15 @@ def package_extras_save(extra_dicts, obj, context):
             continue
 
        
-            if extra_dict['value'] is None:
-                pass
-            elif extras_as_string:
-                new_extras[extra_dict["key"]] = extra_dict["value"]
-            else:
-                new_extras[extra_dict["key"]] = h.json.loads(extra_dict["value"])
-  
-            new_extras[extra_dict["key"]] = "";
+            try:
+                if extra_dict['value'] is None or extra_dict['value']=="":
+                    pass
+                elif extras_as_string:
+                    new_extras[extra_dict["key"]] = extra_dict["value"]
+                else:
+                    new_extras[extra_dict["key"]] = h.json.loads(extra_dict["value"])
+            except:
+                new_extras[extra_dict["key"]] = "";
     #new
     for key in set(new_extras.keys()) - set(old_extras.keys()):
         state = 'pending' if context.get('pending') else 'active'
@@ -153,6 +155,8 @@ def package_tag_list_save(tag_dicts, package, context):
     allow_partial_update = context.get("allow_partial_update", False)
     if not tag_dicts and allow_partial_update:
         return
+
+    import sys
 
     model = context["model"]
     session = context["session"]

@@ -50,7 +50,7 @@
     </li>
 
     <li py:if="c.pkg_dict.get('groups')" class="sidebar-section">
-      <h3>Groups</h3>
+      <h3>Diffuseur</h3>
       <ul class="groups tag-list">
         <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
         <a class="tag" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
