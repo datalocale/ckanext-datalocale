@@ -305,12 +305,10 @@ class DatalocaleDatasetController(BaseController):
         c.package_activity_stream = \
                 ckan.logic.action.get.package_activity_list_html(context,
                     {'id': c.current_package_id})
-        import sys
+
         gps_tmp = []
         gps = c.pkg_dict.get("groups", "")
         for gp in gps:
-            
-            
              contexttt = {'model': model, 'session': model.Session,
              'user': c.user or c.author,
              'for_view': True, 'extras_as_string': True}
@@ -319,6 +317,13 @@ class DatalocaleDatasetController(BaseController):
              gps_tmp.append(gp_tmp)    
              
         c.pkg_dict["groups"] = gps_tmp
+
+        contributor = model.User.get(c.pkg_dict["ckan_author"])
+        if contributor:
+            c.pkg_dict["contributor_name"] = contributor.name
+            c.pkg_dict["contributor_mail"] = contributor.email
+            c.pkg_dict["contributor_title"] = contributor.fullname
+            
         PackageSaver().render_package(c.pkg_dict, context)
 
         template = self._read_template( package_type )

@@ -331,6 +331,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 '''Get id in the table and convert it to readable name'''
                 publisher = c.pkg_dict.get('dct:publisher','')
                 creator = c.pkg_dict.get('dct:creator','')
+                rdfPublisher = ""
+                rdfCreator = ""
                 if c.pkg_dict.get('groups') :
                     for group in c.pkg_dict.get('groups') : 
                         group_id = group.get('id')
@@ -361,9 +363,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
                             stream = stream | Transformer("//tr[@id='%s']//td[@class='dataset-details']" % div).replace(HTML(html_bis))
   
                             
-                    if rdfPublisher: 
+                    if rdfPublisher != "": 
                         stream = stream | Transformer('//publisher').replace(HTML(rdfPublisher))
-                    if rdfCreator:
+                    if rdfCreator != "":
                         stream = stream | Transformer('//creator').replace(HTML(rdfCreator))
             except NotFound:
                 stream = stream

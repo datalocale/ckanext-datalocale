@@ -25,16 +25,19 @@ extras = dict(c.pkg_extras)
     <version>${c.pkg_dict.get('version','')}</version>
     <maj py:if="c.pkg_dict.get('maj','')">${c.pkg_dict.get('maj','')}</maj>
     <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict.get('license_url','')}"/>
-    <dct:contributor py:if="c.pkg_dict.get('maintainer', None)">
+   
+    <dct:contributor about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
       <rdf:Description>
-        <foaf:name>${ c.pkg_dict['maintainer'] }</foaf:name>
-        <foaf:mbox  py:if="c.pkg_dict.get('maintainer_email', None)" rdf:resource="mailto:${c.pkg_dict['maintainer_email']}"/>
+        <foaf:name>${c.pkg_dict.get('contributor_title','')}</foaf:name>
+        <foaf:mbox rdf:resource="mailto:${c.pkg_dict.get('contributor_mail','')}"/>
       </rdf:Description>
     </dct:contributor>
-    <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">
-    ${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}
-    </dct:publisher>
+    
+    <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}  </dct:publisher>
+    
     <dct:creator py:if="c.pkg_dict.get('dct:creator','')">${c.site_url}/organization/${c.pkg_dict.get('dct:creator','')}</dct:creator>
+    
+    
     <foaf:thumbnail py:if="c.pkg_dict.get('image_url', '')" rdf:resource="${c.pkg_dict.get('image_url', '')}"/>
     <dct:created>${c.pkg_dict.get('metadata_created','')}</dct:created>
     <dct:modified>${c.pkg_dict.get('metadata_modified','')}</dct:modified>
