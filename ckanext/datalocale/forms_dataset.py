@@ -70,7 +70,10 @@ class DatalocaleDatasetForm(SingletonPlugin):
 
     def before_map(self, map):
         controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
+        controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
         map.connect('/storage/datalocale_upload_handle', controller=controller ,action='upload_handle')
+        map.connect('/dataset/{id}.{format}', controller=controller_dataset,action='read')
+        map.connect('/dataset/{id}', controller=controller_dataset ,action='read')
         return map
 
     def after_map(self, map):
@@ -221,8 +224,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
         schema = self.db_to_form_schema()
         try:
             routes = request.environ.get('pylons.routes_dict')
+            controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
             if options.get('type') == 'show' and options.get('api') == False:
-                if routes.get('controller') == 'package' and routes.get('action') == 'read':
+                if (routes.get('controller') == 'package' or routes.get('controller') == controller_dataset) and routes.get('action') == 'read':
                     context = options.get('context')
                     package = context.get('package')
                     package_dict = logic.get_action('datalocale_package_show')({'model': model, 'api_version':'3', 'user':context.get('user')} ,{'id' : package.id })
@@ -310,7 +314,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
     def filter(self, stream):
         ''' Add vocab tags to the bottom of the sidebar.'''
         routes = request.environ.get('pylons.routes_dict')
-        if routes.get('controller') == 'package' and routes.get('action') == 'read':
+        controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
+        if ((routes.get('controller') == 'package' or routes.get('controller') == controller_dataset) and routes.get('action') == 'read'):
             try:
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
                 theme_available = c.pkg_dict.get('theme_available', [])[0]
@@ -328,15 +333,38 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 creator = c.pkg_dict.get('dct:creator','')
                 if c.pkg_dict.get('groups') :
                     for group in c.pkg_dict.get('groups') : 
-                        group_id = group.get('id','')
+                        group_id = group.get('id')
                         div = ""
                         if group_id == publisher:
-                            div = 'dct:publisher'
+                            div = 'dct:publisher' 
+                            rdfCreator = '<dct:publisher rdf:about="%s/diffuseur/%s">' % (c.site_url, group.get('name', ''))
+                            rdfCreator +=        '<rdf:Description> \
+                                             <foaf:name>' + group.get('title', '') + '</foaf:name> \
+                                             <foaf:mbox rdf:resource="mailto:' + group.get('mail', '')+ '"></foaf:mbox>\
+                                       </rdf:Description>\
+                                  </dct:publisher>'
+                            html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/diffuseur/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
+                            if div:
+                              stream = stream | Transformer("//tr[@id='%s']//td[@class='dataset-details']" % div).replace(HTML(html_bis))
+               
                         if group_id == creator: 
                             div = 'dct:creator'
-                        html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/organization/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
+                            rdfPublisher = '<dct:creator rdf:about="%s/producteur/%s">'% (c.site_url, group.get('name', ''))
+                            rdfPublisher += '<rdf:Description> \
+                                             <foaf:name>' + group.get('title', '') + '</foaf:name> \
+                                             <foaf:mbox rdf:resource="mailto:' + group.get('mail', '')+ '"></foaf:mbox>\
+                                       </rdf:Description>\
+                                  </dct:creator>' 
+                            html_bis = '<td class="dataset-details" property="rdf:value"><a href="%s/producteur/%s">%s</a></td>' % (c.site_url, group.get('name', ''), group.get('title', ''))
+                        
                         if div:
                             stream = stream | Transformer("//tr[@id='%s']//td[@class='dataset-details']" % div).replace(HTML(html_bis))
+  
+                            
+                    if rdfPublisher: 
+                        stream = stream | Transformer('//publisher').replace(HTML(rdfPublisher))
+                    if rdfCreator:
+                        stream = stream | Transformer('//creator').replace(HTML(rdfCreator))
             except NotFound:
                 stream = stream
         if routes.get('controller') == 'user' and routes.get('action') == 'read':	
@@ -344,7 +372,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
             groups = user.get_groups()
             html = "<dt>Diffuseur</dt><dd>"
             for group in groups :
-                html += "<a href='/organization/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
+                html += "<a href='/diffuseur/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"
             stream = stream | Transformer("//div[@id='content']//dl[@class='vcard']").append(HTML(html))
         return stream
