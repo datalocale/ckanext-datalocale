@@ -446,7 +446,7 @@ class DatalocaleDatasetController(BaseController):
             return self._save_new(context)
 
         data = data or clean_dict(unflatten(tuplize_dict(parse_params(
-            request.params, ignore_keys=[CACHE_PARAMETER]))))
+            request.params))))
         c.resources_json = json.dumps(data.get('resources',[]))
 
         errors = errors or {}

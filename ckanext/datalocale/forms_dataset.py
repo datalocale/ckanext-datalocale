@@ -23,6 +23,7 @@ from genshi.filters import Transformer
 from genshi.input import HTML
 from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_DATAQUALITY, VOCAB_GEOGRAPHIC_GRANULARITY, VOCAB_REFERENCES
 log = logging.getLogger(__name__)
+from routes import Mapper
 
 def _tags_and_translations(context, vocab, lang, lang_fallback):
     try:
@@ -69,12 +70,42 @@ class DatalocaleDatasetForm(SingletonPlugin):
     implements(IRoutes)
 
     def before_map(self, map):
-        controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
-        controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
-        map.connect('/storage/datalocale_upload_handle', controller=controller ,action='upload_handle')
-        map.connect('/dataset/{id}.{format}', controller=controller_dataset,action='read')
-        map.connect('/dataset/{id}', controller=controller_dataset ,action='read')
-        return map
+            controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
+            controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
+            map.connect('/dataset', action='search', controller=controller_dataset)
+            map.connect('/dataset/{action}', controller=controller_dataset,
+              requirements=dict(action='|'.join([
+                  'list',
+                  'new',
+                  'autocomplete',
+                  'search'
+                  ]))
+              )
+    
+            map.connect('/dataset/{action}/{id}/{revision}', controller=controller_dataset, action='read_ajax',
+              requirements=dict(action='|'.join([
+              'read',
+              'edit',
+              'authz',
+              'history',
+              ]))
+            )
+            map.connect('/dataset/{action}/{id}', controller=controller_dataset,
+              requirements=dict(action='|'.join([
+              'edit',
+              'editresources',
+              'authz',
+              'history',
+              'read_ajax',
+              'history_ajax',
+              ]))
+              )
+            map.connect('/dataset/{id}.{format}', action='read', controller=controller_dataset)
+            map.connect('/dataset/{id}', action='read', controller=controller_dataset)
+            map.connect('/dataset/{id}/resource/{resource_id}', action='resource_read', controller=controller_dataset)
+            map.connect('/dataset/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer', controller=controller_dataset)
+
+            return map
 
     def after_map(self, map):
         return map
@@ -333,6 +364,10 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 creator = c.pkg_dict.get('dct:creator','')
                 rdfPublisher = ""
                 rdfCreator = ""
+                license_url = c.pkg_dict.get('license_url','')
+                rdfLicenseUrl = '<dct:rights rdf:resource="'+license_url+'"/>'
+                stream = stream | Transformer("//rights").replace(HTML(rdfLicenseUrl))
+                
                 if c.pkg_dict.get('groups') :
                     for group in c.pkg_dict.get('groups') : 
                         group_id = group.get('id')

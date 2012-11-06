@@ -24,7 +24,8 @@ extras = dict(c.pkg_extras)
     <dct:title>${c.pkg_dict['title']}</dct:title>
     <version>${c.pkg_dict.get('version','')}</version>
     <maj py:if="c.pkg_dict.get('maj','')">${c.pkg_dict.get('maj','')}</maj>
-    <dct:rights py:if="c.pkg_dict.get('license_url', None)" rdf:resource="${c.pkg_dict.get('license_url','')}"/>
+    
+    <dct:rights rdf:resource="${c.pkg_dict.get('license_url', '')}"/>
    
     <dct:contributor about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
       <rdf:Description>
@@ -32,6 +33,8 @@ extras = dict(c.pkg_extras)
         <foaf:mbox rdf:resource="mailto:${c.pkg_dict.get('contributor_mail','')}"/>
       </rdf:Description>
     </dct:contributor>
+    
+    
     
     <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}  </dct:publisher>
     
