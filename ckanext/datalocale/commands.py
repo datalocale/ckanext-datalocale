@@ -434,6 +434,8 @@ class DatalocaleCommand(cli.CkanCommand):
                             pkg_dict[prefix + '-url'] = res['url']
                             pkg_dict[prefix + '-format'] = res['format']
                             pkg_dict[prefix + '-description'] = res['description']
+                    elif value and isinstance(value[0], dict) and name == 'license_id':
+                            pkg_dict[name] = ' '.join(value)
                     else:
                         pkg_dict[name] = ' '.join(value)
                 if isinstance(value, dict):

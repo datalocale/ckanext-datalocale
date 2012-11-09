@@ -22,6 +22,7 @@ name_match = re.compile('[a-zA-Z0-9_\-]*$')
 
 def datalocale_convert_from_tags(vocab):
     def callable(key, data, errors, context):
+        # Affichage
         try:
             n = data[(vocab,)]
         except:
@@ -44,12 +45,16 @@ def datalocale_convert_from_tags(vocab):
                     if data[k].get('vocabulary_id') == v.id:
                         name = data[k].get('display_name', data[k]['name'])
                         tags.append(name)
+                        tag_id = v.id
+            ## Ecrasement de l'ID
             data[key] = tags
     return callable
 
 def datalocale_convert_to_tags(vocab):
     def callable(key, data, errors, context):
         from ckan.logic.validators import tag_in_vocabulary_validator
+        import sys
+
         name = data[(vocab,)]
         new_tags = data.get(key)
         if not new_tags:
@@ -70,10 +75,11 @@ def datalocale_convert_to_tags(vocab):
 
         for tag in new_tags:
             tag_in_vocabulary_validator(tag, context)
-
+        
         for num, tag in enumerate(new_tags):
             data[('tags', num + n, 'name')] = tag
             data[('tags', num + n, 'vocabulary_id')] = v.id
+            
     return callable
 
 def convert_to_groups(field, num): 

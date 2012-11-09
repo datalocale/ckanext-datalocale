@@ -150,10 +150,11 @@ class DatalocaleDatasetForm(SingletonPlugin):
         ''' Translation '''
         import commands
         import uuid
-        ckan_lang = pylons.request.environ['CKAN_LANG']
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
-        c.licences = [('', '')] + base.model.Package.get_license_options()
+        c.licences = [('', '')] + ckan.model.Package.get_license_options()
+        #registredlicenses = ckan.model.license.LicenseRegister()
+        #c.licenses = [('', '', '')] + [(l.title, l.id, l.url) for l in registredlicenses.values()]
         c.is_sysadmin = authz.Authorizer().is_sysadmin(c.user)
         c.resource_columns = model.Resource.get_columns()
         c.publishers_available = c.groups_available
@@ -351,7 +352,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
                 theme_available = c.pkg_dict.get('theme_available', [])[0]
                 html = '<li class="sidebar-section"><h3>Th&egrave;mes</h3><ul class="tags clearfix">'\
-                    '<li><a href="{site_url}/tag/{themeT_id}">{themeT_title}</a></li><li><a href="{site_url}/tag/{theme_id}">{theme_title}</li></ul></li>'.\
+                    '<li><a href="{site_url}/tag/{themeT_id}">{themeT_title}</a></li></ul><h3>Sous Th&egrave;mes</h3><ul class="tags clearfix"><li><a href="{site_url}/tag/{theme_id}">{theme_title}</li></ul></li>'.\
                     format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('id'), theme_id= c.tag_theme.get('id'))
                 stream = stream | Transformer(
                     "//div[@id='sidebar']//ul[@class='widget-list']"
@@ -364,10 +365,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 creator = c.pkg_dict.get('dct:creator','')
                 rdfPublisher = ""
                 rdfCreator = ""
-                license_url = c.pkg_dict.get('license_url','')
-                rdfLicenseUrl = '<dct:rights rdf:resource="'+license_url+'"/>'
-                stream = stream | Transformer("//rights").replace(HTML(rdfLicenseUrl))
-                
                 if c.pkg_dict.get('groups') :
                     for group in c.pkg_dict.get('groups') : 
                         group_id = group.get('id')
