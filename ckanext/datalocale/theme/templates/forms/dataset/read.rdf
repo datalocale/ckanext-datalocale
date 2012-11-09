@@ -8,6 +8,8 @@
   xmlns:dcat="http://www.w3.org/ns/dcat#"
   xmlns:dct="http://purl.org/dc/terms/"
   xmlns:dcterms="http://purl.org/dc/terms"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:ogc="http://www.opengis.net/rdf#"
 >
 <?python
 extras = dict(c.pkg_extras)         
@@ -25,25 +27,25 @@ extras = dict(c.pkg_extras)
     <version>${c.pkg_dict.get('version','')}</version>
     <maj py:if="c.pkg_dict.get('maj','')">${c.pkg_dict.get('maj','')}</maj>
     
-    <dct:rights rdf:resource="${c.pkg_dict.get('license_url', '')}"/>
-   
+
+        <py:choose test="">
+           <dct:rights py:when="c.pkg.license" rdf:resource="${c.pkg.license.url}">
+           	${c.pkg.license.title}
+           </dct:rights>
+        </py:choose>
+
     <dct:contributor about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
       <rdf:Description>
         <foaf:name>${c.pkg_dict.get('contributor_title','')}</foaf:name>
         <foaf:mbox rdf:resource="mailto:${c.pkg_dict.get('contributor_mail','')}"/>
       </rdf:Description>
     </dct:contributor>
-    
-    
-    
     <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}  </dct:publisher>
-    
     <dct:creator py:if="c.pkg_dict.get('dct:creator','')">${c.site_url}/organization/${c.pkg_dict.get('dct:creator','')}</dct:creator>
-    
-    
     <foaf:thumbnail py:if="c.pkg_dict.get('image_url', '')" rdf:resource="${c.pkg_dict.get('image_url', '')}"/>
     <dct:created>${c.pkg_dict.get('metadata_created','')}</dct:created>
     <dct:modified>${c.pkg_dict.get('metadata_modified','')}</dct:modified>
+    <dcat:themeTaxonomy py:if="c.pkg_dict.get('theme_available','')">${c.pkg_dict.get('themeTaxonomy','')}</dcat:themeTaxonomy>
     <dcat:theme py:if="c.pkg_dict.get('theme_available','')">${c.pkg_dict.get('theme_available','')}</dcat:theme>
     <dcat:dataQuality py:if="c.pkg_dict.get('dataQuality','') or c.pkg_dict.get('openness_score','')">${c.pkg_dict.get('dataQuality','')}, score :  ${c.pkg_dict.get('openness_score','')}</dcat:dataQuality>
 <?python
@@ -58,7 +60,27 @@ else :
 ?>
     <dct:accrualPeriodicity py:if="c.pkg_dict.get('dct:accrualPeriodicity', '') and extras.get('dct:accrualPeriodicity', '')">${accrualPeriodicity}</dct:accrualPeriodicity>
     <dcterms:temporal py:if="c.pkg_dict.get('temporal_coverage-from', '')">Du ${c.pkg_dict.get('temporal_coverage-from', '')} au ${c.pkg_dict.get('temporal_coverage-to', '')}</dcterms:temporal>    
-    <dct:spatial py:if="c.pkg_dict.get('spatial-text', '')">${c.pkg_dict.get('spatial-text', '')}</dct:spatial>
+    <dcterms:location  py:if="c.pkg_dict.get('spatial','') != ''" about="${c.pkg_dict.get('spatial-uri', '')}">
+    	<locn:geographicIdentifier>
+    		${c.pkg_dict.get('spatial-uri', '')}
+    	</locn:geographicIdentifier>
+    	<locn:geographicName py:if="c.pkg_dict.get('spatial-text', '')">
+    		${c.pkg_dict.get('spatial-text', '')}
+    	</locn:geographicName>
+    	<locn:Geometry>
+    		<ogc:Polygon>
+    			<ogc:asWKT rdf:datatype="ocg:WKTLiteral">
+    				&lt;http://www.opengis.net/def/crs/OGC/1.3/CRS84&gt; Polygon(<py:for each="poly in c.spatialTmp">
+    				(
+    					<py:for each="coord in poly">
+    					${coord[0]} ${coord[1]}<py:if test="coord != poly[len(poly) - 1]">,</py:if>  					
+    					</py:for>
+    				)<py:if test="poly != c.spatialTmp[len(c.spatialTmp) - 1]">,</py:if>  	
+    				</py:for>)
+    			</ogc:asWKT>
+    		</ogc:Polygon>
+    	</locn:Geometry>
+    </dcterms:location>
     <dct:granularity py:if="geographic_granularity or c.pkg_dict.get('dcat:granularity', '')">${geographic_granularity} ${c.pkg_dict.get('dcat:granularity', '')}</dct:granularity>
 	<dcterms:references py:if="c.pkg_dict.get('dcterms:references','')">${c.pkg_dict.get('dcterms:references','')}</dcterms:references>
 	<dct:source py:if="c.pkg_dict.get('dc:source','')">${c.pkg_dict.get('dc:source','')}</dct:source>

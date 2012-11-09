@@ -1,7 +1,9 @@
 import logging
 from urllib import urlencode
 import datetime
-
+import pylons
+import ckan.logic as logic
+from ckan.logic import get_action, NotFound, NotAuthorized, check_access
 from pylons import config
 from pylons.i18n import _
 from autoneg.accept import negotiate
@@ -21,6 +23,9 @@ import ckan.authz
 import ckan.rating
 import ckan.misc
 import ckan.logic.action.get
+import json
+from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_DATAQUALITY, VOCAB_GEOGRAPHIC_GRANULARITY, VOCAB_REFERENCES
+
 #from home import CACHE_PARAMETER
 
 from ckan.lib.plugins import lookup_package_plugin
@@ -28,6 +33,33 @@ from ckanext.organizations.controllers import OrganizationController
 
 log = logging.getLogger(__name__)
 
+def _tags_and_translations(context, vocab, lang, lang_fallback):
+    try:
+        tags = logic.get_action('tag_list')(context, {'vocabulary_id': vocab})
+        tag_translations = _translate(tags, lang, lang_fallback)
+        return [(t, tag_translations[t]) for t in tags]
+    except logic.NotFound:
+        return []
+def _translate(terms, lang, fallback_lang):
+    translations = logic.get_action('term_translation_show')(
+    {'model': model},
+    {'terms': terms, 'lang_codes': [lang]}
+    )
+
+    term_translations = {}
+    for translation in translations:
+        term_translations[translation['term']] = translation['term_translation']
+
+    for term in terms:
+        if not term in term_translations:
+            translation = logic.get_action('term_translation_show')({'model': model},{'terms': [term], 'lang_codes': [fallback_lang]})
+            if translation:
+                term_translations[term] = translation[0]['term_translation']
+            else:
+                term_translations[term] = term
+    return term_translations
+
+    
 def _encode_params(params):
     return [(k, v.encode('utf-8') if isinstance(v, basestring) else str(v)) \
                                   for k, v in params]
@@ -323,12 +355,21 @@ class DatalocaleDatasetController(BaseController):
             c.pkg_dict["contributor_name"] = contributor.name
             c.pkg_dict["contributor_mail"] = contributor.email
             c.pkg_dict["contributor_title"] = contributor.fullname
-            
+        if c.pkg_dict.get("spatial", "") != "":
+            c.spatialTmp = json.loads(c.pkg_dict["spatial"])
+            c.spatialTmp = c.spatialTmp["coordinates"]
+        ckan_lang = pylons.request.environ['CKAN_LANG']
+        ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+        c.tT_available = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
+        c.t_available = _tags_and_translations(context, VOCAB_THEMES_CONCEPT, ckan_lang, ckan_lang_fallback)
+        
+        ## 
+        ## Ajouter un rdf:about sur themes et sous themes
+        ##         
+        
         PackageSaver().render_package(c.pkg_dict, context)
-
         template = self._read_template( package_type )
         template = template[:template.index('.')+1] + format
-
         return render( template, loader_class=loader)
 
 
