@@ -360,6 +360,8 @@ class DatalocaleDatasetController(BaseController):
             c.spatialTmp = c.spatialTmp["coordinates"]
         ckan_lang = pylons.request.environ['CKAN_LANG']
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+        ckan_lang = "fr"
+        ckan_lang_fallback = "fr"
         c.tT_available = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
         c.t_available = _tags_and_translations(context, VOCAB_THEMES_CONCEPT, ckan_lang, ckan_lang_fallback)
         
