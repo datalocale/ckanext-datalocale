@@ -150,6 +150,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         ''' Translation '''
         import commands
         import uuid
+        ckan_lang = pylons.request.environ['CKAN_LANG']
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
         c.licences = [('', '')] + ckan.model.Package.get_license_options()

@@ -34,14 +34,16 @@ extras = dict(c.pkg_extras)
            </dct:rights>
         </py:choose>
 
-    <dct:contributor about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
+    <dct:contributor py:if="c.pkg_dict.get('contributor_name','')!=''" about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
       <rdf:Description>
         <foaf:name>${c.pkg_dict.get('contributor_title','')}</foaf:name>
         <foaf:mbox rdf:resource="mailto:${c.pkg_dict.get('contributor_mail','')}"/>
       </rdf:Description>
     </dct:contributor>
+    
     <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}  </dct:publisher>
     <dct:creator py:if="c.pkg_dict.get('dct:creator','')">${c.site_url}/organization/${c.pkg_dict.get('dct:creator','')}</dct:creator>
+    
     <foaf:thumbnail py:if="c.pkg_dict.get('image_url', '')" rdf:resource="${c.pkg_dict.get('image_url', '')}"/>
     <dct:created>${c.pkg_dict.get('metadata_created','')}</dct:created>
     <dct:modified>${c.pkg_dict.get('metadata_modified','')}</dct:modified>
