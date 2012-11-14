@@ -62,7 +62,7 @@ JSON='{
         "spatial-text": "\"GIRONDE\"", 
         "spatial-uri": "\"http://data.ign.fr/id/geofla/departement/33\"", 
         "themeTaxonomy":  "http://eurovoc.europa.eu/100156",
-"theme_available" : "http://eurovoc.europa.eu/2556",
+	"theme_available" : "http://eurovoc.europa.eu/2556",
         "title": "'$DATASET_TILE'", 
         "type": "None", 
         "url": "", 

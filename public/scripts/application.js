@@ -29,29 +29,35 @@ CKAN.Utils = CKAN.Utils || {};
       window.location = ($(e.target).attr('action'));
     });
 
-    var isGroupView = $('body.group.read').length > 0;
-    if (isGroupView) {
+    var isGroupView = ($('body.group.read').length > 0);
+    var isOrgaView = $('body.DatalocaleOrganizationController.read').length > 0;
+    var isServiceView = $('body.DatalocaleServiceController.read').length > 0;
+    
+    if (isGroupView || isOrgaView || isServiceView) {
       // Show extract of notes field
       CKAN.Utils.setupNotesExtract();
     }
 
-    var isDatasetView = $('body.package.read').length > 0;
+    var isDatasetView = ($('body.package.read').length > 0 || $('body.DatalocaleDatasetController.read').length > 0);
     if (isDatasetView) {
       // Show extract of notes field
       CKAN.Utils.setupNotesExtract();
     }
 
-    var isResourceView = $('body.package.resource_read').length > 0;
+    var isResourceView = ($('body.package.resource_read').length > 0 || $('body.DatalocaleDatasetController.resource_read').length > 0);
     if (isResourceView) {
+      alert('ok resource view');
       CKAN.DataPreview.loadPreviewDialog(preload_resource);
     }
 
-    var isEmbededDataviewer = $('body.package.resource_embedded_dataviewer').length > 0;
+    var isEmbededDataviewer = ($('body.package.resource_embedded_dataviewer').length > 0 || $('body.DatalocaleDatasetController.resource_embedded_dataviewer').length > 0);
     if (isEmbededDataviewer) {
+    	alert('ok embed data viewver');
       CKAN.DataPreview.loadEmbeddedPreview(preload_resource, reclineState);
+  	
     }
 
-    var isDatasetNew = $('body.package.new').length > 0;
+    var isDatasetNew = ($('body.package.new').length > 0 || $('body.DatalocaleDatasetController.new').length > 0);
     if (isDatasetNew) {
       // Set up magic URL slug editor
       var urlEditor = new CKAN.View.UrlEditor({
@@ -61,20 +67,11 @@ CKAN.Utils = CKAN.Utils || {};
       $("#title").focus();
     }
     
-    var isGroupNew = $('body.DatalocaleOrganizationController.new').length > 0;
+    var isOrgaNew = $('body.DatalocaleOrganizationController.new').length > 0;
     var isServiceNew = $('body.DatalocaleServiceController.new').length > 0;
-
-    if (isGroupNew || isServiceNew) {
-      // Set up magic URL slug editor
-      var urlEditor = new CKAN.View.UrlEditor({
-        slugType: 'group'
-      });
-      $('#save').val(CKAN.Strings.addGroup);
-      $("#title").focus();
-    }
-    
     var isGroupNew = $('body.group.new').length > 0;
-    if (isGroupNew) {
+    
+    if (isGroupNew || isOrgaNew || isServiceNew) {
       // Set up magic URL slug editor
       var urlEditor = new CKAN.View.UrlEditor({
         slugType: 'group'
@@ -83,7 +80,7 @@ CKAN.Utils = CKAN.Utils || {};
       $("#title").focus();
     }
 
-    var isDatasetEdit = $('body.package.edit').length > 0;
+    var isDatasetEdit = ($('body.package.edit').length > 0 || $('body.DatalocaleDatasetController.edit').length > 0);
     if (isDatasetEdit) {
       CKAN.Utils.warnOnFormChanges($('form#dataset-edit'));
       var urlEditor = new CKAN.View.UrlEditor({
@@ -93,7 +90,8 @@ CKAN.Utils = CKAN.Utils || {};
       // Set up dataset delete button
       CKAN.Utils.setupDatasetDeleteButton();
     }
-    var isDatasetResourceEdit = $('body.package.editresources').length > 0;
+    
+    var isDatasetResourceEdit = ($('body.package.editresources').length > 0 || $('body.DatalocaleDatasetController.editresources').length > 0);
     if (isDatasetNew || isDatasetResourceEdit) {
       // Selectively enable the upload button
       var storageEnabled = $.inArray('storage',CKAN.plugins)>=0;
@@ -116,7 +114,9 @@ CKAN.Utils = CKAN.Utils || {};
     }
 
     var isGroupEdit = $('body.group.edit').length > 0;
-    if (isGroupEdit) {
+    var isOrgaEdit = $('body.DatalocaleOrganizationController.edit').length > 0;
+    var isServiceEdit = $('body.DatalocaleServiceController.edit').length > 0;
+    if (isGroupEdit || isOrgaEdit || isServiceEdit) {
       var urlEditor = new CKAN.View.UrlEditor({
           slugType: 'group'
       });
