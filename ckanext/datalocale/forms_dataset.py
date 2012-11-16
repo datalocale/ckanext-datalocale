@@ -70,11 +70,12 @@ class DatalocaleDatasetForm(SingletonPlugin):
     implements(IRoutes)
 
     def before_map(self, map):
+     
             controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
             controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
             map.connect('/dataset', action='search', controller=controller_dataset)
             map.connect('/dataset/{action}', controller=controller_dataset,
-              requirements=dict(action='|'.join([
+            requirements=dict(action='|'.join([
                   'list',
                   'new',
                   'autocomplete',
@@ -104,7 +105,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
             map.connect('/dataset/{id}', action='read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}', action='resource_read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer', controller=controller_dataset)
-
             return map
 
     def after_map(self, map):

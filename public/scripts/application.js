@@ -9,6 +9,7 @@ CKAN.Utils = CKAN.Utils || {};
 /* ================================= */
 (function ($) {
   $(document).ready(function () {
+
     CKAN.Utils.relatedSetup($("#form-add-related"));
     CKAN.Utils.setupUserAutocomplete($('input.autocomplete-user'));
     CKAN.Utils.setupOrganizationUserAutocomplete($('input.autocomplete-organization-user'));
@@ -41,6 +42,7 @@ CKAN.Utils = CKAN.Utils || {};
     var isDatasetView = ($('body.package.read').length > 0 || $('body.DatalocaleDatasetController.read').length > 0);
     if (isDatasetView) {
       // Show extract of notes field
+      $('body.DatalocaleDatasetController.read').addClass("package");
       CKAN.Utils.setupNotesExtract();
     }
 
@@ -113,6 +115,15 @@ CKAN.Utils = CKAN.Utils || {};
       $( ".drag-drop-list" ).disableSelection();
     }
 
+
+	  setTimeout(function() {
+	
+		  CKAN.DatasetMap.map.controls[0].disableZoomWheel();
+		  CKAN.DatasetMap.map.controls[1].disableZoomWheel();
+		  //CKAN.DatasetMap.map.Control.Navigation.disableZoomWheel();
+		  alert('disable ok ');
+		}, 2000);
+	  
     var isGroupEdit = $('body.group.edit').length > 0;
     var isOrgaEdit = $('body.DatalocaleOrganizationController.edit').length > 0;
     var isServiceEdit = $('body.DatalocaleServiceController.edit').length > 0;
@@ -1782,7 +1793,6 @@ CKAN.DataPreview = function ($, my) {
                  .replace(/'/g, '&#x27')
                  .replace(/\//g,'&#x2F;');
   };
-
 
   // Export the CKANEXT object onto the window.
   $.extend(true, window, {CKANEXT: {}});
