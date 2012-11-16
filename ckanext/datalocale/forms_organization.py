@@ -231,13 +231,28 @@ class DatalocaleOrganizationForm(SingletonPlugin):
             ##route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un service pour ce groupe'), "service_new", action='new')
             ##html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
             html = ''
+            
             stream = stream | Transformer(
                         "//div[@id='minornavigation']//ul[@class='nav nav-pills']"
                     ).append(HTML(html))
            
-           
-                    
-            if routes.get('controller') == 'group' \
+        if (routes.get('controller') == controller or routes.get('controller') == "home" ) and routes.get('action') == 'index':
+                local_ctx = {'model': model, 'session': model.Session,
+                'user': c.user or c.author}
+                q = model.Session.query(model.SystemRole).filter_by(role=model.Role.ADMIN)
+                sysadmins=[uor.user for uor in q.all() if uor.user]
+                if c.user in [a.name for a in sysadmins]:
+                    c.is_superuser_or_groupadmin = True
+                else:
+                    c.is_superuser_or_groupadmin = False
+
+                if c.is_superuser_or_groupadmin:
+                    mhtml = '<li><a href="/diffuseur/new">Ajouter un diffuseur</a></li>'
+                    stream = stream | Transformer(
+                            "//li[@class='add_diffuseur']"
+                    ).append(HTML(mhtml))
+
+        if routes.get('controller') == 'group' \
             and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
                 html = ''
                 stream = stream | Transformer(

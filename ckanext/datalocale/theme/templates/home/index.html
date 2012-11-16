@@ -1,5 +1,4 @@
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:py="http://genshi.edgewall.org/"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   py:strip=""
@@ -23,12 +22,11 @@
 			<div class="media-content">
 			  <h3 class="media-heading">Doc</h3>
 			  <ul class="unstyled circle-padding">
-				<li><a href="aPropos">A propos</a></li>
-				<li><a href="drupal7/docUserCreate">Créer un utilisateur</a></li>
-				<li><a href="drupal7/docDiffuseurCreate">Créer un diffuseur</a></li>
-				<li><a href="drupal7/docProducteurCreate">Créer un producteur</a></li>
-				<li><a href="drupal7/docCreateDataset">Déposer un jeu de données</a></li>
-				<li><a href="drupal7/docWebServices">Outillage</a></li>
+				<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
+				<li py:if="not c.user"><a href="{c.site_url}/user/new">Créer un compte</a></li>
+				<li py:if="c.user" class="add_diffuseur"></li>
+				<li><a  href="${c.site_url}/diffuseur">Créer un producteur</a></li>
+				<li><a  href="${c.site_url}/dataset/new">Déposer un jeu de données</a></li>
 			  </ul>
 			  <!-- <h3 class="media-heading">Welcome to ${g.site_title}</h3>
 			  <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
@@ -43,6 +41,15 @@
 			<li><a href="${c.site_url}/dump/Datalocale.csv">au format csv</a></li>
 		  </ul>
 	  </section>
+<?python
+c.diffuseurNum = 0
+c.producteurNum = 0
+for c.gp in c.groups:
+ if c.gp["type"] == "organization":
+  c.diffuseurNum = c.diffuseurNum + 1
+ elif c.gp["type"] == "service":
+  c.producteurNum = c.producteurNum + 1
+?>
   
 	  <!-- bloc groupes -->
 	  <section class="span4 module-narrow module-shallow">
@@ -50,9 +57,8 @@
 			<div class="media-content">
 			  <h3 class="media-heading">Ressources</h3>
 			  <ul class="unstyled circle-padding">
-				<li><a href="/user">145 utilisateurs</a> disponibles</li>
-				<li><a href="/groups">56 producteurs</a> disponibles</li>
-				<li><a href="/diffuseur">16 diffuseurs</a> disponibles</li>
+				<li ><a href="${c.site_url}/user"><span id="userNumSpan">145</span> utilisateurs</a> disponibles</li>
+				<li><a href="${c.site_url}/diffuseur">${c.producteurNum} producteurs rattachés <br/>à ${c.diffuseurNum} diffuseurs</a></li>
 			  </ul>	
 			  <!-- <h3 class="media-heading"><a href="/group">Les diffuseurs</a></h3> -->
 			</div>
@@ -78,13 +84,13 @@
 		  <div class="module-shallow module-narrow blue-hand">
 			  <!-- <h3 class="heading">Find data</h3> -->
 			  <ul class="unstyled circle-padding">
-			  	<li>naviguez <a href="/theme">par thèmes</a></li>
-			  	<li class="blue-hand-line-margin">naviguez <a href="/tags">par tags</a></li>
-			  	<li>Il y  a actuellement <a href="/dataset">134 jeux de données</a> disponibles</li>
-			  	<li class="blue-hand-line-margin">téléchargez le catalogue : 
-			  		<a href="${c.site_url}/dump/Datalocale.rdf"> rdf</a>
-			  		<a href="${c.site_url}/dump/Datalocale.json"> json</a>
-			  		<a href="${c.site_url}/dump/Datalocale.csv"> csv</a>
+			  	<li>Naviguer <a href="${c.site_url}/tag">Par thèmes</a></li>
+			  	<li class="blue-hand-line-margin">Naviguer <a href="${c.site_url}/tag">Par tags</a></li>
+			  	<li>Il y  a actuellement <a href="${h.url_for(controller='package', action='search')}">${c.package_count}  datasets</a></li>
+			  	<li class="blue-hand-line-margin">Télécharger le catalogue : 
+			  		<a href="${c.site_url}/dump/Datalocale.rdf"> RDF</a> -
+			  		<a href="${c.site_url}/dump/Datalocale.json"> JSON</a> -
+			  		<a href="${c.site_url}/dump/Datalocale.csv"> CSV</a> 
 			  	</li>
 			  </ul>
 			  <h3 class="media-heading" id="blue-hand-title">Données</h3>	

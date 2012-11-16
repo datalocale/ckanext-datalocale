@@ -37,9 +37,8 @@
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
         ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
       </li>
-      <li class="${'active' if c.action=='new' else ''} ckan-logged-in" >
-        <a href="${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='new')}">${h.icon('group_add') + 'Ajouter un diffuseur'}</a>
-      </li>
+      <li class="add_diffuseur${'active' if c.action=='new' else ''}" >
+         </li>
     </ul>
   </py:match>
 
