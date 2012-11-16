@@ -27,14 +27,13 @@
   <link rel="alternate" type="application/atom+xml" title="${g.site_title} - Recent Revision History" href="${h.url_for(controller='revision', action='list', format='atom', days=1)}" />
   </py:otherwise>
   </py:choose>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
   
   <link rel="stylesheet" href="${h.url_for_static('/scripts/vendor/jqueryui/1.8.14/css/jquery-ui.custom.css')}" type="text/css" media="screen, print" />
   <link rel="stylesheet" href="${h.url_for_static('/css/bootstrap.2.1.min.css')}" type="text/css" media="screen, projection" />
   <link rel="stylesheet" href="${h.url_for_static('/css/chosen.css')}" type="text/css" />
   <link rel="stylesheet" href="${h.url_for_static('/css/style-datalocale.css?v=2')}" />
   <link rel="stylesheet" href="${h.url_for_static('/css/datalocale.css')}" />
-  <link rel="stylesheet" href="${h.url_for_static('/css/flags32.css')}" />
   ${jsConditionalForIe(9, '&lt;script type="text/javascript" src="' + h.url_for_static('/scripts/vendor/html5shiv/html5.js') + '"&gt;&lt;/script&gt;')}
 
   <py:if test="defined('optional_head')">
@@ -61,33 +60,28 @@
         </div>
         </div>
         <div class="span7" id="mcontent">
-	        <div class="menu span5">
-	          <nav id="menusearch">
-	            <form action="${h.url(controller='package', action='search')}" method="GET">
-	              <input name="q" value="${c.q if hasattr(c, 'q') else ''}" class="search" placeholder="${_('Find datasets')}" />
-	            </form>
-	          </nav>
-	          <nav id="mainmenu" class="first section navigation">
-	          	<ul class="unstyled">
-	            <li class="ckan-logged-in" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
-	            <li class="active">${h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index')}</li>
-	            <li>${h.nav_named_link("Diffuseurs", name='%s_index' % h.default_group_type() )}</li>
-	            <li>${h.nav_link(_('About'), controller='home', action='about')}</li>
-	            </ul>
-	          </nav>
-	        </div>
-	        <div class="menu account span2">
+	        <div class="menu account">
 	        <ul class="unstyled">
 	          <li class="ckan-logged-in" style="display: none;">
 	            <a href="${h.url_for(controller='user',action='me')}">${h.gravatar((c.userobj.email_hash if c and c.userobj else ''),size=20)}${c.user}</a>
 	            <a href="${h.url_for('/user/_logout')}">Logout</a>
 	          </li>
 	          <li class="ckan-logged-out">
-	            <a href="${h.url_for(controller='user',action='login')}">Login</a>
-	            <a href="${h.url_for(controller='user',action='register')}">Register</a>
+              <a href="${h.url_for(controller='user',action='register')}"><img src="../img/inscrire.png" width="24px" class="header-button"/> Register</a>
+	            <a href="${h.url_for(controller='user',action='login')}"><img src="../img/identifier.png" width="18px" class="header-button"/> Login</a>
 	          </li>
 	          </ul>
 	        </div>
+        </div>
+        <div class="menu span12">
+          <nav id="mainmenu" class="first section navigation">
+            <ul class="unstyled">
+              <li class="ckan-logged-in" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
+              <li class="navbutton blue">${h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index')}</li>
+              <li class="navbutton orange">${h.nav_named_link("Diffuseurs", name='%s_index' % h.default_group_type() )}</li>
+              <li class="navbutton grey">${h.nav_link(_('About'), controller='home', action='about')}</li>
+            </ul>
+          </nav>
         </div>
       </header>
     </div>
@@ -145,13 +139,15 @@
   <div class="clearfix"></div>
   <div class="footer outer">
     <footer class="container site-footer">
-    <nav class="footer-links span4">
+    <nav class="footer-links span3">
     	<h3 class="widget-title">About ${g.site_title}</h3>
           <ul class="unstyled row-fluid">
   <li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
   <li>${h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=1))}</li>
   <li>${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')}</li>
           </ul>
+      </nav>
+      <nav class="footer-links span3">
           <h3 class="widget-title">Sections</h3>
           <div class="textwidget">
             <ul class="unstyled">
@@ -182,21 +178,21 @@
               </li>
             </ul>
           </div>
-      </nav>
-      <nav class="footer-links span4">
+      </nav> 
+      <nav class="footer-links span3">
       <h3 class="widget-title">Languages</h3>
       	<div class="textwidget">
 <?python  current_url = request.environ['CKAN_CURRENT_URL'] ?>
-              <ul id="country unstyled" name="url" class="f16">
+              <ul id="country" name="url" class="unstyled">
               <py:for each="locale in h.get_available_locales()">
               <li><a href="${h.url(current_url, locale=str(locale))}">
-                  <div class="flag ${str(locale)}"></div>${locale.display_name or locale.english_name}</a>
+                  <img class="flag flag-${str(locale)}" src="../img/blank.gif"/>${locale.display_name or locale.english_name}</a>
                 </li>
               </py:for>
               </ul>
           </div>
       </nav>
-        <div class="span3">
+      <nav class="footer-links span2">
           <h3 class="widget-title">Meta</h3>
           <p id="credits">
             &copy; 2012
@@ -204,12 +200,12 @@
             <a href="http://okfn.org/">Open Knowledge Foundation</a>
             Licensed under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>
             <a href="http://opendefinition.org/"><img alt="This Content and Data is Open" src="http://assets.okfn.org/images/ok_buttons/od_80x15_blue.png" style="border: none;"/></a>
-
             <br/><br/>
             Powered by <a href="http://ckan.org">CKAN</a> v${c.__version__}.<br/>
           </p>
-        </div>
+        </nav>
     </footer>
+    <div id="footer-img"></div>
   </div> <!-- eo #container -->
   
   <div style="display:none;" id="scripts">
@@ -228,11 +224,20 @@
   <script type="text/javascript" src="${h.url_for_static('/scripts/vendor/jquery.fileupload/20110801/jquery.iframe-transport.js')}"></script>
   <script type="text/javascript" src="${h.url_for_static('/scripts/vendor/jquery.fileupload/20110801/jquery.fileupload.js')}"></script>
 
+
   <!-- Translated js strings live inside an html template. -->
   <xi:include href="js_strings.html" />
   <!-- finally our application js that sets everything up-->
   <script type="text/javascript" src="${h.url_for_static('/scripts/application.js?lang=${c.locale}')}"></script>
   <script type="text/javascript" src="${h.url_for_static('/scripts/templates.js')}"></script>
+  <!-- Code-only rounded HTML boxes-->
+  <!--[if lte IE 8]>
+  <script type="text/javascript" src="/scripts/roundies.js"></script>
+  <script>
+  DD_roundies.addRule('#mainmenu .navbutton', '5px');
+  
+  </script>
+  <![endif]-->
 
   <script type="text/javascript">
     CKAN.plugins = [
@@ -268,7 +273,6 @@
 	${ h.snippet('snippets/internal-tracking.html') }
   </py:if>
   </div> <!-- #scripts -->
-
   <py:if test="defined('optional_footer')">
     ${optional_footer()}
   </py:if>
