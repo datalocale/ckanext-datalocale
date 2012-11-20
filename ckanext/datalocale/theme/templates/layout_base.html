@@ -139,7 +139,7 @@
   <div class="clearfix"></div>
   <div class="footer outer">
     <footer class="container site-footer">
-    <nav class="footer-links span3">
+    <nav class="footer-links span6">
     	<h3 class="widget-title">About ${g.site_title}</h3>
           <ul class="unstyled row-fluid">
   <li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
@@ -147,7 +147,7 @@
   <li>${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')}</li>
           </ul>
       </nav>
-      <nav class="footer-links span3">
+<!--       <nav class="footer-links span3">
           <h3 class="widget-title">Sections</h3>
           <div class="textwidget">
             <ul class="unstyled">
@@ -179,7 +179,8 @@
             </ul>
           </div>
       </nav> 
-      <nav class="footer-links span3">
+ -->      
+      <nav class="footer-links span2">
       <h3 class="widget-title">Languages</h3>
       	<div class="textwidget">
 <?python  current_url = request.environ['CKAN_CURRENT_URL'] ?>
@@ -192,7 +193,7 @@
               </ul>
           </div>
       </nav>
-      <nav class="footer-links span2">
+      <nav class="footer-links span3">
           <h3 class="widget-title">Meta</h3>
           <p id="credits">
             &copy; 2012

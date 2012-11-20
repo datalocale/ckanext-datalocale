@@ -511,7 +511,7 @@ header #mcontent {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 12px;
-    padding: 10px 10px;
+    padding: 5px;
     width: 120%;
     height: 30px;
   }
@@ -604,6 +604,10 @@ header #mcontent {
   text-align: justify;
   }
 
+  .media-content h4 {
+    margin-left: 25px;
+  }
+
  .circle-green {
   background: url('../img/rond-vert.png') no-repeat;
   margin: 25px;
@@ -673,12 +677,13 @@ header #mcontent {
   margin-right: 60px;
 }
  /* liste à puce pour la colonne groupe */
-
+/*
  #red-bullet-list li {
   list-style-image: url('../img/red-bullet.png');
   margin-left: 50px;
-}
-/* .big-bullet {
+} */
+/*
+ .big-bullet {
   list-style-type: none;
   list-style-image: url('../img/red-bullet.png');
   }
