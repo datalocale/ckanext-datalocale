@@ -43,20 +43,23 @@
             </span>
         </py:if>
     </li>
-
+	<li class="themes_sous_themes"></li>
+	<li class="sidebar-section" py:for="group in sorted(c.pkg_dict.groups, key=lambda g: (g['title'] or g['name']))" >
+      <h3 py:if="group.get('type') == 'organization'">Diffuseur</h3>
+      <h3 py:if="group.get('type') == 'service'">Producteur</h3>
+      <ul class="groups tag-list">
+        <li>
+        <a class="tag" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
+        </li>
+      </ul>
+    </li>
     <li py:if="c.pkg_dict.get('tags')" class="sidebar-section">
       <h3>Tags</h3>
       ${tag_list_datalocale(c.pkg_dict.get('tags', ''))}
     </li>
 
-    <li py:if="c.pkg_dict.get('groups')" class="sidebar-section">
-      <h3>Diffuseur</h3>
-      <ul class="groups tag-list">
-        <li py:for="group in sorted(c.pkg_dict.groups, key=lambda g: g['title'] or g['name'])">
-        <a class="tag" href="${h.url_for(controller='group', action='read', id=group['name'])}">${group.get('title') or group.get('name')}</a>
-        </li>
-      </ul>
-    </li>
+
+
 
     <li py:if="c.package_relationships" class="sidebar-section">
       <h3>Related Datasets</h3>

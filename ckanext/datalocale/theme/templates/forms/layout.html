@@ -4,10 +4,10 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   py:strip=""
   >
-  <ul py:def="tag_list_datalocale(tags)" class="tags-list groups">
+  <ul py:def="tag_list_datalocale(tags)" class="tag-list groups">
     <py:for each="tag in tags">
     <li py:if="not tag.get('vocabulary_id')">
-      <a href="${h.url_for(controller='tag', action='read', id=tag['name'])}" class="tag">${tag['display_name']}</a>
+      <a href="/dataset?tags=${tag['name']}" class="tag">${tag['display_name']}</a>
     </li>
     </py:for>
   </ul>

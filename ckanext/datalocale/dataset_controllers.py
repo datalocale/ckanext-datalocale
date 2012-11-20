@@ -8,15 +8,15 @@ from pylons import config
 from pylons.i18n import _
 from autoneg.accept import negotiate
 
-from ckan.logic import get_action, check_access
+from ckan.logic  import get_action, check_access
 from ckan.lib.helpers import date_str_to_datetime
 from ckan.lib.base import request, c, BaseController, model, abort, h, g, render
 from ckan.lib.base import response, redirect, gettext
 from ckan.lib.package_saver import PackageSaver, ValidationException
 from ckan.lib.navl.dictization_functions import DataError, unflatten, validate
 from ckan.lib.helpers import json
-from ckan.logic import NotFound, NotAuthorized, ValidationError
-from ckan.logic import tuplize_dict, clean_dict, parse_params, flatten_to_string_key
+from ckan.logic  import NotFound, NotAuthorized, ValidationError
+from ckan.logic  import tuplize_dict, clean_dict, parse_params, flatten_to_string_key
 from ckan.lib.i18n import get_lang
 import ckan.forms
 import ckan.authz
@@ -24,6 +24,7 @@ import ckan.rating
 import ckan.misc
 import ckan.logic.action.get
 import json
+from api import datalocale_vocabulary_list
 from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_DATAQUALITY, VOCAB_GEOGRAPHIC_GRANULARITY, VOCAB_REFERENCES
 
 #from home import CACHE_PARAMETER
@@ -140,6 +141,8 @@ class DatalocaleDatasetController(BaseController):
     def search(self):
         from ckan.lib.search import SearchError
 
+        ckan_lang = pylons.request.environ['CKAN_LANG']
+        ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         package_type = self._guess_package_type()
 
         try:
@@ -210,12 +213,21 @@ class DatalocaleDatasetController(BaseController):
             c.fields = []
             search_extras = {}
             fq = ''
+            import sys    
+           
             for (param, value) in request.params.items():
+                
                 if param not in ['q', 'page', 'sort'] \
                         and len(value) and not param.startswith('_'):
-                    if not param.startswith('ext_'):
+                    if not param.startswith('ext_'):                       
+                        if param == "producteurs" or param == "diffuseurs":
+                            Nparam = 'groups'
+                        elif param == "themes" or param == "sous_themes":
+                            Nparam = 'tags'
+                        else:
+                            Nparam = param
                         c.fields.append((param, value))
-                        fq += ' %s:"%s"' % (param, value)
+                        fq += ' %s:"%s"' % (Nparam, value)
                     else:
                         search_extras[param] = value
 
@@ -242,9 +254,79 @@ class DatalocaleDatasetController(BaseController):
                 item_count=query['count'],
                 items_per_page=limit
             )
+            
             c.facets = query['facets']
             c.search_facets = query['search_facets']
             c.page.items = query['results']
+            
+            
+            # FACETS DIFFUSEURS / PRODUCTEURS
+            #
+            #
+            # We separe the services from the organizations to make two news facet
+            data_dict = {'all_fields': True, 'type' : 'organization'}
+            results = get_action('group_list')(context, data_dict)
+            organizationFacet = {'title':'diffuseurs', 'items' : []}
+            serviceFacet = {'title':'producteurs', 'items' : []}
+            # Facet group list
+            for group in c.facets["groups"]:
+                #sys.stderr.write("\tGroup to check: " + group + "\n \n")
+                matchedOrganization = False
+                for organization in results:
+                    if group == organization["name"]:
+                        groupJson = {'name' : organization["name"], 'display_name' : organization["title"], 'count' : c.facets["groups"][group]}
+                        if organization["type"] == "organization":
+                            matchedOrganization = True
+                        #sys.stderr.write("Current Organization:" + organization["name"] + "\n \n")  
+                        break
+                if matchedOrganization == True:
+                    organizationFacet["items"].append(groupJson)
+                    #sys.stderr.write("*** Organization matched: " + group + "\n\n")
+                else:
+                    serviceFacet["items"].append(groupJson)
+                    #sys.stderr.write("*** Service matched: " + group + "\n\n")
+            c.search_facets[u"producteurs"] = serviceFacet
+            c.search_facets[u"diffuseurs"] = organizationFacet
+            #
+            #
+            # ! FACETS DIFFUSEURS / PRODUCTEURS    
+            
+            # FACETS THEMES / SOUS THEMES
+            #
+            #
+            #
+            themesFacet = {'title':'themes', 'items' : []}
+            sousThemesFacet = {'title':'sous_themes', 'items' : []}
+            tagsFacet = {'title':'tags', 'items' : []}
+            try:
+                themes = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
+                sous_themes = []
+                for key, value in themes:
+                    data_dict = {"id": key}
+                    sous_themes.append(datalocale_vocabulary_list(context, data_dict))
+                for tag in c.search_facets[u"tags"]["items"]:
+                    is_theme_or_sstheme = False
+                    for theme in themes:
+                        if theme[0] == tag["name"]:
+                            tagJson = {'name' : theme[0], 'display_name' : theme[1], 'count' : tag["count"]}
+                            themesFacet["items"].append(tagJson)
+                            is_theme_or_sstheme = True
+                    for sous_theme in sous_themes:
+                        for sous_theme_couple in sous_theme:
+                            if sous_theme_couple[0] == tag["name"]:
+                                tagJson = {'name' : sous_theme_couple[0], 'display_name' : sous_theme_couple[1], 'count' : tag["count"]}
+                                sousThemesFacet["items"].append(tagJson)
+                                is_theme_or_sstheme = True
+                    if is_theme_or_sstheme == False:
+                        tagJson = {'name' : tag["name"], 'display_name' : tag["display_name"], 'count' : tag["count"]}
+                        tagsFacet["items"].append(tagJson)
+                c.search_facets[u"themes"] = themesFacet
+                c.search_facets[u"sous_themes"] = sousThemesFacet
+                c.search_facets[u"tags"] = tagsFacet
+            except NotFound:
+                c.themeTaxonomy_available = []
+            
+            
         except SearchError, se:
             log.error('Dataset search error: %r', se.args)
             c.query_error = True
@@ -347,8 +429,9 @@ class DatalocaleDatasetController(BaseController):
              data_dict = {'id': gp.get("name")}
              gp_tmp = get_action('group_show')(contexttt, data_dict)
              gps_tmp.append(gp_tmp)    
-             
+        
         c.pkg_dict["groups"] = gps_tmp
+
 
         contributor = model.User.get(c.pkg_dict["ckan_author"])
         if contributor:

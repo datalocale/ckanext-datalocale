@@ -352,12 +352,12 @@ class DatalocaleDatasetForm(SingletonPlugin):
             try:
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
                 theme_available = c.pkg_dict.get('theme_available', [])[0]
-                html = '<li class="sidebar-section"><h3>Th&egrave;mes</h3><ul class="tags clearfix">'\
-                    '<li><a href="{site_url}/tag/{themeT_id}">{themeT_title}</a></li></ul><h3>Sous Th&egrave;mes</h3><ul class="tags clearfix"><li><a href="{site_url}/tag/{theme_id}">{theme_title}</li></ul></li>'.\
-                    format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('id'), theme_id= c.tag_theme.get('id'))
+                html = '<li class="sidebar-section"><h3>Th&egrave;me</h3><ul class="tags clearfix">'\
+                    '<li><a href="{site_url}/dataset?themes={themeT_id}">{themeT_title}</a></li></ul><h3>Sous Th&egrave;me</h3><ul class="tags clearfix"><li><a href="{site_url}/dataset?sous_themes={theme_id}">{theme_title}</li></ul></li>'.\
+                    format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('name'), theme_id= c.tag_theme.get('name'))
                 stream = stream | Transformer(
-                    "//div[@id='sidebar']//ul[@class='widget-list']"
-                ).append(HTML(html))
+                    "//div[@id='sidebar']//ul[@class='widget-list']//li[@class='themes_sous_themes']"
+                ).replace(HTML(html))
             except (NotFound, IndexError) as e:
                 pass   
             try:

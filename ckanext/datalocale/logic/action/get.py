@@ -12,8 +12,8 @@ import ckan
 import ckan.authz
 import ckan.lib.dictization
 import ckan.lib.base
-import ckan.logic as logic
-import ckan.logic.action
+import ckanext.datalocale.logic  as logic
+import ckanext.datalocale.logic.action
 import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.navl.dictization_functions
 import ckan.model.misc as misc

@@ -234,7 +234,7 @@ class DatalocaleServiceForm(SingletonPlugin):
                 if parent_organizations or parent_organizations:
                     html += " <h3>Diffuseurs parents</h3><ul class='groups no-break'>"
                     for parent in parent_organizations:
-                         html += "<li><a href='%s/fr/organization/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
+                         html += "<li><a href='%s/fr/diffuseur/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
                     for parent in parent_services:
                          html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
                     html += " </ul>"
