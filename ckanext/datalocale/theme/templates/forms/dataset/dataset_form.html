@@ -451,12 +451,12 @@ creator = data.get('dct:creator', {})
     </div>
   </div>
 <?python
-contributor = data.get('dct:contributor', {})
-contributor_id = data.get('ckan_author', {})
-if not contributor_id:
+contributor = data.get('dct:contributor', "")
+contributor_id = data.get('ckan_author', "")
+if not contributor_id or contributor_id == "":
   if c.contributor:
     contributor_id = c.contributor.id
-if not contributor:
+if not contributor or contributor == "":
   if c.contributor:
     contributor = c.contributor.fullname
 		

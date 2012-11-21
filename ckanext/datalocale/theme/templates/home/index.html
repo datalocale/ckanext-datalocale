@@ -133,9 +133,16 @@ for c.gp in c.groups:
 		  <div class="tags">
 			<h3 class="tag">Popular</h3>
 				<ul class="tag-list">
-				<py:for each="facet in enumerate(c.search_facets.get('tags')['items'][:3]) ">
-					<li>
-					  <a class="tag" href="/dataset?tags=${facet[1].get('name','')}">${facet[1].get('display_name','')}</a>
+				<?python
+				exclude_list = ['à enrichir','exhaustive', 'à améliorer', 'référence', 'échantillon']
+				count = 0
+				?>
+				<py:for each="facet in enumerate(c.search_facets.get('tags')['items'])">
+					<li py:if="facet[1].get('name','') not in exclude_list and count in [0,1,2]">
+					  <a class="tag" href="/dataset?tags=${facet[1].get('name','')}" style="text-transform:lowercase; text-transform:capitalize">${facet[1].get('display_name','')}</a>
+					<?python
+						count  += 1
+					?>
 					</li>
 				</py:for>
 				</ul>

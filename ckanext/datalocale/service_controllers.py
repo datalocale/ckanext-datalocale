@@ -2,7 +2,9 @@ import logging
 import genshi
 import datetime
 from urllib import urlencode
-
+import pylons
+from pylons import config
+from pylons.i18n import _
 from ckan.lib.base import BaseController, c, model, request, render, h, g
 from ckan.lib.base import ValidationException, abort, gettext
 from pylons.i18n import get_lang, _
@@ -26,6 +28,8 @@ from ckan.lib.helpers import Page
 
 from ckan.plugins import IGroupController, implements
 from ckan.controllers.group import GroupController
+from api import datalocale_vocabulary_list
+from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_DATAQUALITY, VOCAB_GEOGRAPHIC_GRANULARITY, VOCAB_REFERENCES
 
 
 import pylons.config as config
@@ -36,6 +40,32 @@ from ckan.lib.navl.validators import (ignore_missing,
                                       keep_extras,)
 
 log = logging.getLogger(__name__)
+
+def _tags_and_translations(context, vocab, lang, lang_fallback):
+    try:
+        tags = logic.get_action('tag_list')(context, {'vocabulary_id': vocab})
+        tag_translations = _translate(tags, lang, lang_fallback)
+        return [(t, tag_translations[t]) for t in tags]
+    except logic.NotFound:
+        return []
+def _translate(terms, lang, fallback_lang):
+    translations = logic.get_action('term_translation_show')(
+    {'model': model},
+    {'terms': terms, 'lang_codes': [lang]}
+    )
+
+    term_translations = {}
+    for translation in translations:
+        term_translations[translation['term']] = translation['term_translation']
+
+    for term in terms:
+        if not term in term_translations:
+            translation = logic.get_action('term_translation_show')({'model': model},{'terms': [term], 'lang_codes': [fallback_lang]})
+            if translation:
+                term_translations[term] = translation[0]['term_translation']
+            else:
+                term_translations[term] = term
+    return term_translations
 
 '''
     Copy of the ckan/ckanext/organizations/controllers.py
@@ -290,8 +320,12 @@ class DatalocaleServiceController(GroupController):
                 if not param in ['q', 'page'] \
                         and len(value) and not param.startswith('_'):
                     if not param.startswith('ext_'):
+                        if param == "themes" or param == "sous_themes":
+                            Nparam = 'tags'
+                        else:
+                            Nparam = param
                         c.fields.append((param, value))
-                        q += ' %s: "%s"' % (param, value)
+                        q += ' %s: "%s"' % (Nparam, value)
                     else:
                         search_extras[param] = value
 
@@ -321,11 +355,51 @@ class DatalocaleServiceController(GroupController):
             c.facets = query['facets']
             c.search_facets = query['search_facets']
             c.page.items = query['results']
+            
+            # FACETS THEMES / SOUS THEMES
+            #
+            #
+            #
+            themesFacet = {'title':'themes', 'items' : []}
+            sousThemesFacet = {'title':'sous_themes', 'items' : []}
+            tagsFacet = {'title':'tags', 'items' : []}
+            ckan_lang = pylons.request.environ['CKAN_LANG']
+            ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+            try:
+                themes = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
+                sous_themes = []
+                for key, value in themes:
+                    data_dict = {"id": key}
+                    sous_themes.append(datalocale_vocabulary_list(context, data_dict))
+                for tag in c.search_facets[u"tags"]["items"]:
+                    is_theme_or_sstheme = False
+                    for theme in themes:
+                        if theme[0] == tag["name"]:
+                            tagJson = {'name' : theme[0], 'display_name' : theme[1], 'count' : tag["count"]}
+                            themesFacet["items"].append(tagJson)
+                            is_theme_or_sstheme = True
+                    for sous_theme in sous_themes:
+                        for sous_theme_couple in sous_theme:
+                            if sous_theme_couple[0] == tag["name"]:
+                                tagJson = {'name' : sous_theme_couple[0], 'display_name' : sous_theme_couple[1], 'count' : tag["count"]}
+                                sousThemesFacet["items"].append(tagJson)
+                                is_theme_or_sstheme = True
+                    if is_theme_or_sstheme == False:
+                        tagJson = {'name' : tag["name"], 'display_name' : tag["display_name"], 'count' : tag["count"]}
+                        tagsFacet["items"].append(tagJson)
+                c.search_facets[u"themes"] = themesFacet
+                c.search_facets[u"sous_themes"] = sousThemesFacet
+                c.search_facets[u"tags"] = tagsFacet
+            except NotFound:
+                c.themeTaxonomy_available = []
         except SearchError, se:
             log.error('Group search error: %r', se.args)
             c.query_error = True
             c.facets = {}
             c.page = h.Page(collection=[])
+
+
+
 
         # Add the group's activity stream (already rendered to HTML) to the
         # template context for the group/read.html template to retrieve later.
