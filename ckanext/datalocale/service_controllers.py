@@ -105,7 +105,7 @@ class DatalocaleServiceController(GroupController):
             collection=results,
             page=request.params.get('page', 1),
             url=h.pager_url,
-            items_per_page=2
+            items_per_page=20
         )
         return render( self._index_template(group_type) )
     

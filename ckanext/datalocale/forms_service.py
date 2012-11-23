@@ -46,7 +46,7 @@ class DatalocaleServiceForm(SingletonPlugin):
                 config.get('extra_template_paths', '')])
 
         # Override /group/* as the default groups urls
-       ## config['ckan.default.group_type'] = 'service'
+
 
     def before_map(self, map):
         controller = 'ckanext.datalocale.service_controllers:DatalocaleServiceController'
@@ -56,6 +56,9 @@ class DatalocaleServiceForm(SingletonPlugin):
         map.connect('/producteur/new/from-diffuseur/{parent}', controller=controller, action='new')
         
         map.redirect('/producteur', '/organization')
+        map.redirect('/service', '/producteur')
+        map.redirect('/service/{id}', '/producteur/{id}')
+        map.redirect('/service/new', '/producteur/new')
         return map
 
     def after_map(self, map):
@@ -225,18 +228,13 @@ class DatalocaleServiceForm(SingletonPlugin):
                     
         #Add group hierarchy in group view sidebar  
         if routes.get('controller') == controller and routes.get('action') == 'read':
-                children_organizations = c.group.get_children_groups('organization')
-                children_services = c.group.get_children_groups('service')
                 parent_organizations = c.group.get_groups('organization')
-                parent_services = c.group.get_groups('service')
                 html = ""
 
                 if parent_organizations or parent_organizations:
                     html += " <h3>Diffuseurs parents</h3><ul class='groups no-break'>"
                     for parent in parent_organizations:
                          html += "<li><a href='%s/fr/diffuseur/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
-                    for parent in parent_services:
-                         html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, parent.name, parent.title)
                     html += " </ul>"
                     
                 stream = stream | Transformer(

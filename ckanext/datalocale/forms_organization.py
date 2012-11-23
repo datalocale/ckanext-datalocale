@@ -227,9 +227,6 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         routes = request.environ.get('pylons.routes_dict')
         #Add button to the navbar
         if routes.get('controller') == serviceController and routes.get('action') == 'listFromOrganization':
-            ##route = h.subnav_named_route(c, h.icon('group_add') + _(u'Ajouter un service pour ce groupe'), serviceController, action='new')
-            ##route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un service pour ce groupe'), "service_new", action='new')
-            ##html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
             html = ''
             
             stream = stream | Transformer(
@@ -261,15 +258,10 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     
         #Add group hierarchy in group view sidebar  
         if routes.get('controller') == controller and routes.get('action') == 'read':
-                children_organizations = c.group.get_children_groups('organization')
                 children_services = c.group.get_children_groups('service')
-                parent_organizations = c.group.get_groups('organization')
-                parent_services = c.group.get_groups('service')
                 html = ""
-                if children_organizations or children_services : 
+                if children_services : 
                         html += u" <h3>Producteurs</h3><ul class='groups no-break'>"
-                        for children in children_organizations:
-                            html += "<li><a href='%s/fr/diffuseur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
                         for children in children_services:
                             html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
                         html += " </ul>"
