@@ -271,6 +271,7 @@ class DatalocaleDatasetController(BaseController):
             # Facet group list
             for group in c.facets["groups"]:
                 #sys.stderr.write("\tGroup to check: " + group + "\n \n")
+                groupJson={}
                 matchedOrganization = False
                 for organization in results:
                     if group == organization["name"]:
