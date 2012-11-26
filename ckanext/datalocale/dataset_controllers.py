@@ -270,22 +270,20 @@ class DatalocaleDatasetController(BaseController):
             serviceFacet = {'title':'producteurs', 'items' : []}
             # Facet group list
             for group in c.facets["groups"]:
-                #sys.stderr.write("\tGroup to check: " + group + "\n \n")
-                groupJson={}
+                groupJson = None
                 matchedOrganization = False
                 for organization in results:
                     if group == organization["name"]:
                         groupJson = {'name' : organization["name"], 'display_name' : organization["title"], 'count' : c.facets["groups"][group]}
                         if organization["type"] == "organization":
-                            matchedOrganization = True
-                        #sys.stderr.write("Current Organization:" + organization["name"] + "\n \n")  
+                            matchedOrganization = True  
                         break
                 if matchedOrganization == True:
-                    organizationFacet["items"].append(groupJson)
-                    #sys.stderr.write("*** Organization matched: " + group + "\n\n")
+                    if groupJson: 
+                        organizationFacet["items"].append(groupJson)
                 else:
-                    serviceFacet["items"].append(groupJson)
-                    #sys.stderr.write("*** Service matched: " + group + "\n\n")
+                    if groupJson:
+                        serviceFacet["items"].append(groupJson)
             c.search_facets[u"producteurs"] = serviceFacet
             c.search_facets[u"diffuseurs"] = organizationFacet
             #
