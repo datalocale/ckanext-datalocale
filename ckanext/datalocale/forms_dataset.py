@@ -434,7 +434,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 html += "<a href='/diffuseur/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"
             stream = stream | Transformer("//div[@id='content']//dl[@class='vcard']").append(HTML(html))
-        if routes.get('controller') == controller_tag and routes.get('action') == 'index':
+            
+        if routes.get('controller') == controller_tag and routes.get('action') == 'index' and request.params.get('themes', '') == 'true':
             context = {'model': model, 'session': model.Session,            
             'user': c.user or c.author, 'for_view': True}
             q = {}
