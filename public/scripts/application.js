@@ -10,7 +10,7 @@ CKAN.Utils = CKAN.Utils || {};
 (function ($) {
   $(document).ready(function () {
 
-	if ($("#themesCloudDiv"))
+	if ($("#themesCloudDiv").length)
 	{
 		  $("#themesCloudDiv").jQCloud(word_array);
 	}
