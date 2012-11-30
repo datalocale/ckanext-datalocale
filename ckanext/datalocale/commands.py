@@ -118,8 +118,9 @@ class DatalocaleCommand(cli.CkanCommand):
         elif cmd == 'dump':
             self.dump()
         elif cmd == 'import-csv':
-            self.import_csv()
-        else:
+            if len(self.args) == 6:
+                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5] 
+	else:
             log.error('Command "%s" not recognized' % (cmd,))
             
     def create_all_vocab(self):
@@ -460,104 +461,131 @@ class DatalocaleCommand(cli.CkanCommand):
         self.dump_csv(filename + '.csv')
         self.dump_json(filename + '.json')
         self.dump_rdf(filename + '.rdf')
-        
-    def import_csv(self):
-        ''' Récupérer l'utilisateur en cours'''
-        user = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
-        client = model.User.get('6b82a606-16d9-4707-82bd-91f648739648')
-        context = {'model': model, 'session': model.Session, 'user': user['name']}
-        file = './public/dump/Datalocale-export.csv'
-        csv.register_dialect("myDialect", MyDialect) 
-        reader = csv.reader(open(file), delimiter=';', dialect = "myDialect")
-        crlf = '\r\n'
-        colums = reader.next()
-        ''''m = {"name":0,"title":1,"author":"Océane Ventura","author_email":"oceane.ventura@atos.net",
-             "maintainer":-1,"maintainer_email":-1, "license_id":5, "notes":2, "url": -1, "version":-1}'''
-        ''' Mapping du package : 
-        - si un chiffre : un numéro de colonne
-        - si un -1 : ignore
-        - si texte : utiliser la valeur
-        '''
-        m = {"name":1,"title":1,"ckan_author":client.id,"dct:contributor":client.fullname}
-        ''' Mapping pour les ressources '''
-        m_resource = {}
-        nb_resource = 0
-        ''' Mapping pour les tags '''
-        '''m_tags = {"free":4,"dct:accrualPeriodicity":10}'''
-        m_tags = {}
-        ''' Mapping pour les extras '''
-        m_extras = {"maj":9}
-        i=0
-        for row in reader : 
-            tags = [] #list of tag dictionaries
-            extras = [] #list of dataset extra dictionaries {'key':'value'}
-            groups = [] #list of dictionaries (id, name or title)
-            resources = [] #list of resource dictionaries
-            '''Ignore crlf in file : pour gérer les saut de lignes dans les descriptions'''
-            for col in row:
-                if crlf in col:
-                    col = col.rstrip()
-            pkg = {}
+         
+    def import_csv(self, file_path, separator, user, publisher_name, creator_name):
+        ''' Récupéreration l'utilisateur en cours'''
+        ckan = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
+        ckan_user = model.User.get(user)
+        publisher = model.Group.get(publisher_name)
+        creator = model.Group.get(creator_name)
+        context = {'model': model, 'session': model.Session, 'user': ckan['name']}
+        ''' Récupéreration du chemin du fichier csv'''
+        file = file_path
+        with open(file, 'r') as f:
+            csv.register_dialect("myDialect", MyDialect) 
+            '''Paramétrage du format de sortie du CSV'''
+            reader = csv.reader(open(file), delimiter=separator, dialect = "myDialect")
+            '''Création de la table d'association du fichier CSV'''
+            fields = self._csv_set_match()
+            i = 0
+            while i < 4:
+                reader.next()
+                i = i + 1
+            for row in reader:
+                dataset_package = self._csv_setdefaults(ckan_user, publisher.id, creator.id)
+                self._csv_setdata(dataset_package, row, fields)
+		print dataset_package
+#                dataset = logic.get_action('package_create')(context, dataset_package)
+                resource = logic.get_action('package_show')(context, {"id": dataset_package["name"]})
+                extras = resource["extras"]
+                dataset_resource = self._csv_setresources(extras[0]["__extras"]["package_id"], row)
+                print dataset_resource 
+#		 dataset_package["resources"] = dataset_resource
+#                dataset_update = logic.get_action('package_update')(context, dataset_package)
+#                print dataset_update         
+                break
             
-            ''' Get all package info '''
-            for key in m:
-                pkg[key] = self._csv_getvalue(key, row, m)
-            ''' Get all tags info '''
-            for key in m_tags:
-                if key == "free":
-                    free = row[m_tags['free']].split(',')
-                    for f in free:
-                        tags.append({"vocabulary_id": None, "name":f})
-                else:
-                    tags.append({"vocabulary_id": key, "name":row[m_tags[key]]})
-            ''' Get all tags extras '''
-            for key in m_extras:
-                value = self._csv_getextra(key, row, m_extras)
-                if value: extras.append({key:value})
-            #Add list
-            pkg['extras'] = extras
-            pkg['tags'] = tags
-            pkg['resources'] = resources
-            pkg['groups'] = groups
-            #Validators of name (uri)
-            if pkg.get('name'):
-                pkg['name']  = '_'.join(re.findall('[\w]+', pkg.get('name')))
-            ''' Enregistrement : se référer à la docs de l'API v3. Faire un package_update pour les ressources (et peut être pour les tags et/ou extras). '''
-            #dataset = logic.get_action('package_create')(context, pkg)
-            
-    def _csv_getvalue(self,colName,row,m):
-        index = m.get(colName)
-        value = ""
-        if index :
-            if index != -1 :
-                if type(index).__name__ == 'int':
-                    if len(row)>= index:
-                        value = row[index]
-                        value = unicode(row[index], 'utf-8')
-                elif type(index).__name__ == 'str':
-                    value = index
-                else: 
-                    value = ""
-        else:
-            value = ""
-        return value
+    def _csv_set_match(self):
+        m_match = {
+                      "dc:source": 1,
+                       "name": 2,
+                       "title": 3,
+                       "dct:description": 4,
+                       "dcat:theme": -1,
+                       "inspire": -1,
+                       "dcat:keywords": -1,
+                       "license_id": 8,
+                       "dct:issued": -1,
+                       "dct:modified": -1,
+                       "obj_maj": 11,
+                       "dct:accrualPeriodicity": 12,
+                       "dct:created": -1,
+                       "dct:creator": -1,
+                       "dct:publisher": -1,
+                       "dct:contributor": 16,
+                       "dct:spatial": -1,
+                       "dct:temporal": 18,
+                       "dct:language": -1,
+                       "dct:format": -1,
+                       "dcat:dataQuality": -1,
+                       "dcat:granularity": 22,
+                       "dterms:reference": 23,
+                       "dcat:themeTaxomony": -1,
+                       "resources_start": 25
+                  }
+        return m_match
     
-    def _csv_getextra(self,extraName,row,m_extras):
-        index = m_extras.get(extraName)
-        value = ""
-        if index :
-            if index != -1 :
-                if type(index).__name__ == 'int':
-                    if len(row)>= index:
-                        value = row[index]
-                elif type(index).__name__ == 'str':
-                    value = index
-                else: 
-                    value = ""
-        else:
-            value = ""
-        return value
+    def _csv_setdefaults(self, client, publisher, creator):
+        dataset_package = {
+                           "capacity": "public", 
+                           "ckan_author": "\"'%s'\"" % client.id, 
+                           "dct:publisher": "\"%s\"" % publisher, 
+                           "dct:creator" : "\"%s\"" % creator,
+                           "geographic_granularity": "autre - merci de préciser", 
+                           "geographic_granularity-other": "\"Nationale\"", 
+                          }
+        return dataset_package
     
+    def _csv_setdata(self, dataset_package, row, fields):
+        for value in fields:
+            if fields.get(value) != -1:
+                  if value == "name":
+                      dataset_package[value] = unicode(row[fields.get(value) - 1] + "-70", "utf-8")
+                      dataset_package[value] = dataset_package[value].lower()
+                  elif value == "title":
+                      dataset_package[value] = unicode(row[fields.get(value) - 1], "utf-8")
+                  elif value == "dc:source":
+                      dataset_package[value] = "\"%s\"" % row[fields.get(value) - 1]
+                  elif value == "dcat:granularity":
+                      dataset_package[value] = "\"%s\"" % unicode(row[fields.get(value) - 1], "utf-8")
+                  elif value == "dct:modified":
+                      dataset_package["obj_maj"] = "\"%s\"" % row[fields.get(value) - 1]
+                  elif value == "dct:accrualPeriodicity":
+                      dataset_package[value] = "\"%s\"" % row[fields.get(value) - 1]
+                      dataset_package[value] = dataset_package[value].lower()
+                  elif value == "dct:description":
+                      dataset_package["notes"] = unicode(row[fields.get(value) - 1], "utf-8")
+                  elif value == "dct:contributor":
+                      dataset_package[value] = "\"%s\"" % unicode(row[fields.get(value) - 1], "utf-8")
+                  elif value == "dterms:reference":
+                      dataset_package["dterms:reference"] = "\"%s\"" % row[fields.get(value) - 1]
+                  elif value == "license_id":
+                      dataset_package[value] = "\"%s\"" % row[fields.get(value) - 1]
+                  elif value == "dct:temporal":
+                      temporal = row[fields.get(value) - 1]
+                      dates = {}
+                      type1 = re.compile('\d{4}\sà\s\d{4}')
+                      type2 = re.compile('\d{4}\s-\s\d{4}')
+                      if type1.match(temporal) != None:
+                          dates = self._format_dataset_date(type1.match(temporal).group())
+                      elif type2.match(temporal) != None:
+                          dates = self._format_dataset_date(type2.match(temporal).group())
+#                          dataset_package["temporal_coverage-from"] = dates["beg"]
+#                          dataset_package["temporal_coverage-to"] = dates["end"]
+    
+    def _format_dataset_date(self, raw):
+        m_dates = {}
+        str1 = raw
+        m_dates["beg"] = "01/01/" + str1[0:4]
+        str2 = raw
+        m_dates["end"] = "01/01/" + str2[-4:len(str2)]
+        return m_dates
+    
+    def _csv_setresources(self, package_id, row):
+        resource = {}
+        resource["package_id"] = package_id
+        resource["url"] = unicode(row[27], "utf-8")
+        return resource
 import csv
 class MyDialect(csv.excel): 
         lineterminator = "\n" 
