@@ -10,6 +10,12 @@ CKAN.Utils = CKAN.Utils || {};
 (function ($) {
   $(document).ready(function () {
 
+	if ($("#themesCloudDiv"))
+	{
+		  $("#themesCloudDiv").jQCloud(word_array);
+	}
+	
+	  
     CKAN.Utils.relatedSetup($("#form-add-related"));
     CKAN.Utils.setupUserAutocomplete($('input.autocomplete-user'));
     CKAN.Utils.setupOrganizationUserAutocomplete($('input.autocomplete-organization-user'));
@@ -114,15 +120,6 @@ CKAN.Utils = CKAN.Utils || {};
       });
       $( ".drag-drop-list" ).disableSelection();
     }
-
-
-	  setTimeout(function() {
-	
-		  CKAN.DatasetMap.map.controls[0].disableZoomWheel();
-		  CKAN.DatasetMap.map.controls[1].disableZoomWheel();
-		  //CKAN.DatasetMap.map.Control.Navigation.disableZoomWheel();
-		  alert('disable ok ');
-		}, 2000);
 	  
     var isGroupEdit = $('body.group.edit').length > 0;
     var isOrgaEdit = $('body.DatalocaleOrganizationController.edit').length > 0;

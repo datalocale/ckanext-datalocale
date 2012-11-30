@@ -36,6 +36,9 @@
   <link rel="stylesheet" href="${h.url_for_static('/css/datalocale.css')}" />
   ${jsConditionalForIe(9, '&lt;script type="text/javascript" src="' + h.url_for_static('/scripts/vendor/html5shiv/html5.js') + '"&gt;&lt;/script&gt;')}
 
+  <!-- Theme and Tag Js library include -->
+  <link rel="stylesheet" href="${h.url_for_static('/scripts/jQCloud/jqcloud/jqcloud.css')}" />
+  
   <py:if test="defined('optional_head')">
     ${optional_head()}
   </py:if>
@@ -225,6 +228,8 @@
   <script type="text/javascript" src="${h.url_for_static('/scripts/vendor/jquery.fileupload/20110801/jquery.iframe-transport.js')}"></script>
   <script type="text/javascript" src="${h.url_for_static('/scripts/vendor/jquery.fileupload/20110801/jquery.fileupload.js')}"></script>
 
+  <!-- Theme and Tag Js library include -->
+  <script type="text/javascript" src="${h.url_for_static('/scripts/jQCloud/jqcloud/jqcloud-1.0.2.min.js')}"></script>
 
   <!-- Translated js strings live inside an html template. -->
   <xi:include href="js_strings.html" />
