@@ -141,14 +141,6 @@ class DatalocaleCommand(cli.CkanCommand):
         log.info('Creation in progress...')
         file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_eurovoc.xml'
         self.create_vocab_from_file(VOCAB_THEMES, file_name)
-        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_contexte_historique.xml'
-        self.create_vocab_from_file(VOCAB_THEMES, file_name)
-        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_actions.xml'
-        self.create_vocab_from_file(VOCAB_THEMES, file_name)
-        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_matieres.xml'
-        self.create_vocab_from_file(VOCAB_THEMES, file_name)
-        file_name = os.path.dirname(os.path.abspath(__file__)) + '/../../data/theme_typologie_documentaire.xml'
-        self.create_vocab_from_file(VOCAB_THEMES, file_name)
         log.info('Vocabulary created : theme')
     
     def delete_theme_vocab(self):
@@ -332,15 +324,20 @@ class DatalocaleCommand(cli.CkanCommand):
             pass
     
     def _delete_special_vocab(self, vocab_name):
-        log.info('Deleting vocabulary "%s"' % vocab_name)
+        log.fatal('Deleting vocabulary "%s"' % vocab_name)
         context = {'model': model, 'session': model.Session, 'user': self.user_name}
         try:
             vocab = logic.get_action('vocabulary_show')(context, {'id': vocab_name})
             for tag in vocab.get('tags'):
-                sub_vocab = logic.get_action('vocabulary_show')(context, {'id': tag['name']})
-                for sub_tag in sub_vocab.get('tags'):
-                    logic.get_action('tag_delete')(context, {'id': sub_tag['id']})
-                logic.get_action('vocabulary_delete')(context, {'id': sub_vocab['id']})
+                log.fatal('Vocab available: %s' % str(tag['name']))
+                try:
+                    sub_vocab = logic.get_action('vocabulary_show')(context, {'id': tag['name']})
+                    if sub_vocab:
+                        for sub_tag in sub_vocab.get('tags'):
+                            logic.get_action('tag_delete')(context, {'id': sub_tag['id']})
+                        logic.get_action('vocabulary_delete')(context, {'id': sub_vocab['id']})
+                except logic.NotFound:
+                    log.fatal('Sub vocab not found for vocab %s' % tag["name"])
                 logic.get_action('tag_delete')(context, {'id': tag['id']})
             logic.get_action('vocabulary_delete')(context, {'id': vocab['id']})
         except logic.NotFound:

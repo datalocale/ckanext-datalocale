@@ -90,26 +90,26 @@ class DatalocaleOrganizationController(GroupController):
             abort(401, _('Not authorized to see this page'))
 
         results = get_action('group_list')(context, data_dict)
-    
         new_results = []
-        for res in results:
-            if res["type"] == "organization":
-                c.group = model.Group.get(res["name"])
-                children = c.group.get_children_groups('service')
-                res["children_num"]= len(children)
-                #data_dict = {"group_name":res["name"], "with_services": True}
-                #dataset_num = len(get_action('get_package_from_group')(context, data_dict))
-                #res["dataset_num"] = dataset_num
-                
-                data_dict = {
-                        'q': 'groups:' + res["name"],
-                        'fq':'',
-                        'facet.field':"['groups', 'tags', 'res_format', 'license']",
-                        'extras':''
-                        }
-                query = get_action('package_search')(context,data_dict)
-                res["dataset_num"] = query["count"]
-                new_results.append(res)
+        if results:
+            for res in results:
+                if res["type"] == "organization":
+                    c.group = model.Group.get(res["name"])
+                    children = c.group.get_children_groups('service')
+                    res["children_num"]= len(children)
+                    #data_dict = {"group_name":res["name"], "with_services": True}
+                    #dataset_num = len(get_action('get_package_from_group')(context, data_dict))
+                    #res["dataset_num"] = dataset_num
+                    
+                    data_dict = {
+                            'q': 'groups:' + res["name"],
+                            'fq':'',
+                            'facet.field':"['groups', 'tags', 'res_format', 'license']",
+                            'extras':''
+                            }
+                    query = get_action('package_search')(context,data_dict)
+                    res["dataset_num"] = query["count"]
+                    new_results.append(res)
         c.page = Page(
             collection=new_results,
             page=request.params.get('page', 1),

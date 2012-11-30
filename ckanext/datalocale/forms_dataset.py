@@ -6,6 +6,7 @@ import logging
 import ckan.authz as authz
 import ckan.logic as logic
 from ckan.logic import get_action, NotFound, NotAuthorized, check_access
+from ckan.lib.base import request, c, BaseController, model, abort, h, g, render
 from ckan.lib import base
 from ckan.lib.base import c, model
 from ckan.plugins import IDatasetForm, IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
@@ -25,6 +26,8 @@ from commands import VOCAB_FREQUENCY, VOCAB_THEMES, VOCAB_THEMES_CONCEPT, VOCAB_
 log = logging.getLogger(__name__)
 from routes import Mapper
 
+
+
 def _tags_and_translations(context, vocab, lang, lang_fallback):
     try:
         tags = logic.get_action('tag_list')(context, {'vocabulary_id': vocab})
@@ -32,7 +35,7 @@ def _tags_and_translations(context, vocab, lang, lang_fallback):
         return [(t, tag_translations[t]) for t in tags]
     except logic.NotFound:
         return []
-
+    
 def _translate(terms, lang, fallback_lang):
     translations = logic.get_action('term_translation_show')(
 	{'model': model},
@@ -52,6 +55,26 @@ def _translate(terms, lang, fallback_lang):
                 term_translations[term] = term
     return term_translations
 
+def datalocale_vocabulary_list(context, data_dict):
+    data = {'vocabulary_id': data_dict['id']}
+    vocab_list = get_action('tag_list')(context, data)
+    lang = pylons.request.environ['CKAN_LANG']
+    lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+    if data_dict.get('recursive'):
+        results = []
+        for vocab in vocab_list : 
+            try:
+                tags = get_action('tag_list')(context, {'vocabulary_id': vocab})
+                tag_translations = _translate(tags, lang, lang_fallback)
+                result = [(t, tag_translations[t]) for t in tags]
+                results.append(result)
+            except NotFound:
+                log.fatal('Vocabulary NotFound')
+        return results
+    else:
+        tag_translations = _translate(vocab_list, lang, lang_fallback)
+        result = [(t, tag_translations[t]) for t in vocab_list]
+        return result
     
 class DatalocaleDatasetForm(SingletonPlugin):
     """
@@ -348,6 +371,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         ''' Add vocab tags to the bottom of the sidebar.'''
         routes = request.environ.get('pylons.routes_dict')
         controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
+        controller_tag = 'tag'
         if ((routes.get('controller') == 'package' or routes.get('controller') == controller_dataset) and routes.get('action') == 'read'):
             try:
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
@@ -410,6 +434,79 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 html += "<a href='/diffuseur/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"
             stream = stream | Transformer("//div[@id='content']//dl[@class='vcard']").append(HTML(html))
+            
+        if routes.get('controller') == controller_tag and routes.get('action') == 'index' and request.params.get('themes', '') == 'true':
+            context = {'model': model, 'session': model.Session,            
+            'user': c.user or c.author, 'for_view': True}
+            q = {}
+            fq = ''
+            data_dict = {
+                'q':q,
+                'fq':fq,
+                'facet.field':g.facets,
+            }
+
+            query = get_action('package_search')(context,data_dict)
+            c.facets = query['facets']
+            c.search_facets = query['search_facets']
+            
+ 
+            
+            # FACETS THEMES / SOUS THEMES
+            #
+            #
+            #
+            ckan_lang = pylons.request.environ['CKAN_LANG']
+            ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
+            themesFacet = {'title':'themes', 'items' : []}
+            sousThemesFacet = {'title':'sous_themes', 'items' : []}
+            tagsFacet = {'title':'tags', 'items' : []}
+            try:
+                themes = _tags_and_translations(context, VOCAB_THEMES, ckan_lang, ckan_lang_fallback)
+                sous_themes = []
+                for key, value in themes:
+                    data_dict = {"id": key}
+                    sous_themes.append(datalocale_vocabulary_list(context, data_dict))
+                for tag in c.search_facets[u"tags"]["items"]:
+                    is_theme_or_sstheme = False
+                    for theme in themes:
+                        if theme[0] == tag["name"]:
+                            tagJson = {'name' : theme[0], 'display_name' : theme[1], 'count' : tag["count"]}
+                            themesFacet["items"].append(tagJson)
+                            is_theme_or_sstheme = True
+                    for sous_theme in sous_themes:
+                        for sous_theme_couple in sous_theme:
+                            if sous_theme_couple[0] == tag["name"]:
+                                tagJson = {'name' : sous_theme_couple[0], 'display_name' : sous_theme_couple[1], 'count' : tag["count"]}
+                                sousThemesFacet["items"].append(tagJson)
+                                is_theme_or_sstheme = True
+                    if is_theme_or_sstheme == False:
+                        tagJson = {'name' : tag["name"], 'display_name' : tag["display_name"], 'count' : tag["count"]}
+                        tagsFacet["items"].append(tagJson)
+                c.search_facets[u"themes"] = themesFacet
+                c.search_facets[u"sous_themes"] = sousThemesFacet
+                c.search_facets[u"tags"] = tagsFacet
+                import sys
+                sys.stderr.write("facets: " + (str(c.search_facets[u"themes"])))  
+            except NotFound:
+                sys.stderr.write("NotFound")  
+            
+            loop = False
+            html = u'<h2>Themes</h2><br/><div id="themesCloudDiv" style="width: 450px; height: 600px;margin:auto;overflow:visible;"></div>'
+            html += '<script type="text/javascript"> var word_array = ['
+            for theme in c.search_facets[u"themes"]["items"]:
+                if loop:
+                    html += ','
+                else:
+                    loop = True
+                html += '{text: "' + theme["display_name"] + '", weight: 10, link: "/dataset?themes=' + theme["name"] + '"}'
+            for stheme in c.search_facets[u"sous_themes"]["items"]:
+                if loop:
+                    html += ','
+                html += '{text: "' + stheme["display_name"] + '", weight: 5, link: "/dataset?sous_themes=' + stheme["name"] + '"}'
+            html += '];'
+            html += '</script>'
+            stream = stream | Transformer("//div[@class='container']//div[@id='content']//div").replace(HTML(html))
         return stream
 
    

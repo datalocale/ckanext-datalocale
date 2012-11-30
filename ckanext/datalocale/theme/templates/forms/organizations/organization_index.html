@@ -13,12 +13,13 @@
     </li>
   </py:match>
 
-
+ <py:if test="c and c.page and c.page.items">
   <div py:match="content">
-    ${c.page.pager()}
+    ${c.page.pager()}   
     ${organization_list_from_dict(c.page.items)}
     ${c.page.pager()}
   </div>
+  </py:if>
 
   <xi:include href="organization_layout.html" />
 </html>

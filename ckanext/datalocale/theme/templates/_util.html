@@ -80,7 +80,9 @@
         and this renders the standard group listing. Same as the above, but using dictionaries -->
   <table class="table table-bordered table-striped table-condensed groups" py:def="organization_list_from_dict(groups)">
     <tr><th>Nom</th><th> Jeux de<br/>données</th><th>Description</th><th>Producteur</th><th py:if="0">Ajouter un<br/>Producteur</th></tr>
+    <py:if test="groups">
     <py:for each="group in groups">
+    <py:if test="group and group['name'] and group['name'] != ''">
     <tr>
       <td><a href="/diffuseur/${group['name']}">${group['display_name']}</a></td>
       <td><a href="/dataset?diffuseurs=${group['name']}">${group['dataset_num']}</a></td>
@@ -89,7 +91,9 @@
       <td py:if="0"><a py:if="0 and h.check_access('group_edit_permissions',{'id':group['name']})" href="/producteur/new/from-diffuseur/${group['name']}">+</a>
       </td>
     </tr>
+    </py:if>
     </py:for>
+    </py:if>
   </table>
   
 
