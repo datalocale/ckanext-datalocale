@@ -486,8 +486,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 c.search_facets[u"themes"] = themesFacet
                 c.search_facets[u"sous_themes"] = sousThemesFacet
                 c.search_facets[u"tags"] = tagsFacet
-                import sys
-                sys.stderr.write("facets: " + (str(c.search_facets[u"themes"])))  
             except NotFound:
                 sys.stderr.write("NotFound")  
             
