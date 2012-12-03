@@ -96,6 +96,9 @@ class DatalocaleDatasetForm(SingletonPlugin):
      
             controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
             controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
+            controller_storage = 'ckanext.datalocale.storage_controllers:DatalocaleStorageController'
+            
+            map.connect('/storage/datalocale_upload_handle', action='upload_handle', controller=controller_storage)
             map.connect('/dataset', action='search', controller=controller_dataset)
             map.connect('/dataset/{action}', controller=controller_dataset,
             requirements=dict(action='|'.join([
