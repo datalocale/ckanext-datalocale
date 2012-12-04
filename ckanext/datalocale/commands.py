@@ -119,10 +119,11 @@ class DatalocaleCommand(cli.CkanCommand):
         elif cmd == 'dump':
             self.dump()
         elif cmd == 'import-csv':
-            if len(self.args) == 7:
-                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5], self.args[6])
-            if len(self.args) == 5:
-                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4]) 
+            if len(self.args) == 8:
+                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5],
+				 self.args[6], self.args[7])
+            if len(self.args) == 6:
+                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5]) 
 	else:
             log.error('Command "%s" not recognized' % (cmd,))
             
@@ -462,7 +463,7 @@ class DatalocaleCommand(cli.CkanCommand):
         self.dump_json(filename + '.json')
         self.dump_rdf(filename + '.rdf')
          
-    def import_csv(self, file_path, user, separator, data_line, publisher_name = None, creator_name = None):
+    def import_csv(self, file_path, api, user, separator, data_line, publisher_name = None, creator_name = None):
         ''' Récupéreration l'utilisateur en cours'''
         ckan = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
         ckan_user = model.User.get(user)
@@ -470,7 +471,7 @@ class DatalocaleCommand(cli.CkanCommand):
         creator = model.Group.get(creator_name)
         '''Inisialisation du client API'''
         ckanc = ckanclient.CkanClient(base_location="http://localhost:5000/api",
-                             api_key="2053b78f-7d13-4fee-8163-db18758c460c")
+					 api_key=api)
         ''' Récupéreration du chemin du fichier csv'''
         file = file_path
         with open(file, 'r') as f:
@@ -495,8 +496,9 @@ class DatalocaleCommand(cli.CkanCommand):
                     dataset_resource = self._csv_setresources(row)
                     dataset_package["resources"] = dataset_resource
                 '''Enregistrement du jeux de données'''
-                ckanc.package_register_post(dataset_package)
-            
+                if (ckanc.package_register_post(dataset_package) != None): 
+			print "Ajout du jeu de données %s réussi." % str(dataset_package["name"]).upper()
+ 
     def _csv_set_match(self):
         m_match = {
                       "dc:source": 1,
@@ -549,7 +551,7 @@ class DatalocaleCommand(cli.CkanCommand):
         for value in fields:
             if fields.get(value) != -1:
                   if value == "name":
-                      dataset_package[value] = unicode(row[fields.get(value) - 1] + "-a", "utf-8")
+                      dataset_package[value] = unicode(row[fields.get(value) - 1], "utf-8")
                       dataset_package[value] = dataset_package[value].lower()
                   elif value == "title":
                       dataset_package[value] = unicode(row[fields.get(value) - 1], "utf-8")
@@ -601,11 +603,6 @@ class DatalocaleCommand(cli.CkanCommand):
 		       }]
         return resource
     
-    def _csv_setresources(self, package_id, row):
-        resource = {}
-        resource["package_id"] = package_id
-        resource["url"] = unicode(row[27], "utf-8")
-        return resource
 import csv
 class MyDialect(csv.excel): 
         lineterminator = "\n" 
