@@ -601,6 +601,11 @@ class DatalocaleCommand(cli.CkanCommand):
 		       }]
         return resource
     
+    def _csv_setresources(self, package_id, row):
+        resource = {}
+        resource["package_id"] = package_id
+        resource["url"] = unicode(row[27], "utf-8")
+        return resource
 import csv
 class MyDialect(csv.excel): 
         lineterminator = "\n" 
