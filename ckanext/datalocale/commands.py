@@ -13,6 +13,7 @@ import ckan.lib.cli as cli
 from xml.dom.minidom import parse
 import lxml.etree as xml
 import gc
+import ckanclient
 
 import logging
 log = logging.getLogger()
@@ -118,8 +119,10 @@ class DatalocaleCommand(cli.CkanCommand):
         elif cmd == 'dump':
             self.dump()
         elif cmd == 'import-csv':
-            if len(self.args) == 6:
-                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5]) 
+            if len(self.args) == 7:
+                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4], self.args[5], self.args[6])
+            if len(self.args) == 5:
+                self.import_csv(self.args[1], self.args[2], self.args[3], self.args[4]) 
 	else:
             log.error('Command "%s" not recognized' % (cmd,))
             
@@ -459,13 +462,15 @@ class DatalocaleCommand(cli.CkanCommand):
         self.dump_json(filename + '.json')
         self.dump_rdf(filename + '.rdf')
          
-    def import_csv(self, file_path, user, separator, publisher_name, creator_name):
+    def import_csv(self, file_path, user, separator, data_line, publisher_name = None, creator_name = None):
         ''' Récupéreration l'utilisateur en cours'''
         ckan = logic.get_action('get_site_user')({'model': model, 'ignore_auth': True}, {})
         ckan_user = model.User.get(user)
         publisher = model.Group.get(publisher_name)
         creator = model.Group.get(creator_name)
-        context = {'model': model, 'session': model.Session, 'user': ckan['name']}
+        '''Inisialisation du client API'''
+        ckanc = ckanclient.CkanClient(base_location="http://localhost:5000/api",
+                             api_key="2053b78f-7d13-4fee-8163-db18758c460c")
         ''' Récupéreration du chemin du fichier csv'''
         file = file_path
         with open(file, 'r') as f:
@@ -474,24 +479,23 @@ class DatalocaleCommand(cli.CkanCommand):
             reader = csv.reader(open(file), delimiter=separator, dialect = "myDialect")
             '''Création de la table d'association du fichier CSV'''
             fields = self._csv_set_match()
+            '''Parcours du fichier jusqu'à la première ligne de données'''
             i = 0
-            while i < 4:
+            while i < int(data_line) - 1:
                 reader.next()
                 i = i + 1
+            '''Création du jeux de données à ajouter'''
             for row in reader:
-                dataset_package = self._csv_setdefaults(ckan_user, publisher.id, creator.id)
+                '''Ajout des valeurs par défaut à tous les jeux de données'''
+                dataset_package = self._csv_setdefaults(ckan_user, publisher, creator)
+                '''Ajout des valeurs récupérées dans le fichier'''
                 self._csv_setdata(dataset_package, row, fields)
-#		print dataset_package
-		package_id = logic.get_action('package_show')(context, {"id": "arbres-100"})
-		print package_id
-		extras = package_id["extras"]
-		r_id = extras[0]["__extras"]["package_id"]
-		dataset_resource = self._csv_setresources(r_id, row)
-		print dataset_resource 
-                dataset = logic.get_action('resource_create')(context, dataset_resource)
-#		dataset = logic.get_action('package_create')(context, dataset_package)
-		print dataset
-                break
+                '''Ajout des ressources du jeux de données'''
+                if row[24] != "":
+                    dataset_resource = self._csv_setresources(row)
+                    dataset_package["resources"] = dataset_resource
+                '''Enregistrement du jeux de données'''
+                ckanc.package_register_post(dataset_package)
             
     def _csv_set_match(self):
         m_match = {
@@ -512,21 +516,28 @@ class DatalocaleCommand(cli.CkanCommand):
                        "dct:publisher": -1,
                        "dct:contributor": 16,
                        "dct:spatial": -1,
-                       "dct:temporal": 18,
+                       "dct:temporal": -1,
                        "dct:language": -1,
                        "dct:format": -1,
                        "dcat:dataQuality": -1,
                        "dcat:granularity": 22,
                        "dterms:reference": 23,
                        "dcat:themeTaxomony": -1,
-                       "resources_start": 25
                   }
         return m_match
     
     def _csv_setdefaults(self, client, publisher, creator):
+        if (publisher == None):
+            publisher = ""
+        else:
+            publisher = publisher.id
+        if (creator == None):
+            creator = ""
+        else:
+            creator = creator.id
         dataset_package = {
-                           "capacity": "public", 
-                           "ckan_author": "\"'%s'\"" % client.id, 
+                           "capacity": "public",
+                           "ckan_author": "\"'%s'\"" % client, 
                            "dct:publisher": "\"%s\"" % publisher, 
                            "dct:creator" : "\"%s\"" % creator,
                            "geographic_granularity": "autre - merci de préciser", 
@@ -538,7 +549,7 @@ class DatalocaleCommand(cli.CkanCommand):
         for value in fields:
             if fields.get(value) != -1:
                   if value == "name":
-                      dataset_package[value] = unicode(row[fields.get(value) - 1] + "-100", "utf-8")
+                      dataset_package[value] = unicode(row[fields.get(value) - 1] + "-a", "utf-8")
                       dataset_package[value] = dataset_package[value].lower()
                   elif value == "title":
                       dataset_package[value] = unicode(row[fields.get(value) - 1], "utf-8")
@@ -558,33 +569,38 @@ class DatalocaleCommand(cli.CkanCommand):
                   elif value == "dterms:reference":
                       dataset_package["dterms:reference"] = "\"%s\"" % row[fields.get(value) - 1]
                   elif value == "license_id":
-                      dataset_package[value] = "\"%s\"" % row[fields.get(value) - 1]
-                  elif value == "dct:temporal":
-                      temporal = row[fields.get(value) - 1]
-                      dates = {}
-                      type1 = re.compile('\d{4}\sà\s\d{4}')
-                      type2 = re.compile('\d{4}\s-\s\d{4}')
-                      if type1.match(temporal) != None:
-                          dates = self._format_dataset_date(type1.match(temporal).group())
-                      elif type2.match(temporal) != None:
-                          dates = self._format_dataset_date(type2.match(temporal).group())
-#                          dataset_package["temporal_coverage-from"] = dates["beg"]
-#                          dataset_package["temporal_coverage-to"] = dates["end"]
+                      dataset_package[value] = row[fields.get(value) - 1]
+#                  elif value == "dct:temporal":
+#                      temporal = row[fields.get(value) - 1]
+#                      dates = {}
+#                      type1 = re.compile('\d{4}\sà\s\d{4}')
+#                      type2 = re.compile('\d{4}\s-\s\d{4}')
+#                      if type1.match(temporal) != None:
+#                          dates = self._format_dataset_date(type1.match(temporal).group())
+#                          dataset_package["temporal_coverage-from"] = "\"%s\"" % unicode(dates["beg"], "utf-8")
+#                          dataset_package["temporal_coverage-to"] = "\"%s\"" % unicode(dates["end"], "utf-8")
+#                      elif type2.match(temporal) != None:
+#                          dates = self._format_dataset_date(type2.match(temporal).group())
+#                          dataset_package["temporal_coverage-from"] = "\'%s\'" % dates["beg"]
+#                          dataset_package["temporal_coverage-to"] = "\'%s\'" % dates["end"]
     
-    def _format_dataset_date(self, raw):
-        m_dates = {}
-        str1 = raw
-        m_dates["beg"] = "01/01/" + str1[0:4]
-        str2 = raw
-        m_dates["end"] = "01/01/" + str2[-4:len(str2)]
-        return m_dates
+#    def _format_dataset_date(self, raw):
+#        m_dates = {}
+#        str1 = raw
+#        m_dates["beg"] = "01/01/" + str1[0:4]
+#        str2 = raw
+#        m_dates["end"] = "01/01/" + str2[-4:len(str2)]
+#        return m_dates
     
-    def _csv_setresources(self, package_id, row):
-	resource = {
-        		"package_id": "arbres-100",
-        		"url": "\"%s\"" % unicode(row[27], "utf-8"),
-		   }
+    def _csv_setresources(self, row):
+	resource = [{
+			     "url": unicode(row[27], "utf-8"),
+                 "resource_type": row[24],
+                 "format": row[25],
+                 "name": row[26]
+		       }]
         return resource
+    
 import csv
 class MyDialect(csv.excel): 
         lineterminator = "\n" 
