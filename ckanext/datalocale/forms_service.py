@@ -9,6 +9,7 @@ from ckan.plugins import IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
 from ckan.plugins import implements, SingletonPlugin
 from ckan.logic import check_access
 from pylons import request
+from pylons.i18n import _
 from genshi.filters import Transformer
 from genshi.input import HTML
 from converters import convert_to_extras_groupform,  convert_from_extras_groupform

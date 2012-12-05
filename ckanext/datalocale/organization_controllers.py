@@ -97,10 +97,6 @@ class DatalocaleOrganizationController(GroupController):
                     c.group = model.Group.get(res["name"])
                     children = c.group.get_children_groups('service')
                     res["children_num"]= len(children)
-                    #data_dict = {"group_name":res["name"], "with_services": True}
-                    #dataset_num = len(get_action('get_package_from_group')(context, data_dict))
-                    #res["dataset_num"] = dataset_num
-                    
                     data_dict = {
                             'q': 'groups:' + res["name"],
                             'fq':'',

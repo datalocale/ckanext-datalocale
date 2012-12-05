@@ -2,6 +2,7 @@ import os
 import pylons
 import re
 from pylons import config
+from pylons.i18n import _
 import logging
 import ckan.authz as authz
 import ckan.logic as logic
@@ -379,8 +380,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
             try:
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
                 theme_available = c.pkg_dict.get('theme_available', [])[0]
-                html = '<li class="sidebar-section"><h3>Th&egrave;me</h3><ul class="tags clearfix">'\
-                    '<li><a href="{site_url}/dataset?themes={themeT_id}">{themeT_title}</a></li></ul><h3>Sous Th&egrave;me</h3><ul class="tags clearfix"><li><a href="{site_url}/dataset?sous_themes={theme_id}">{theme_title}</li></ul></li>'.\
+                html = '<li class="sidebar-section"><h3>' + ('Th&egrave;me') + '</h3><ul class="tags clearfix">'\
+                    '<li><a href="{site_url}/dataset?themes={themeT_id}">{themeT_title}</a></li></ul><h3>' + ('Sous Th&egrave;me') + '</h3><ul class="tags clearfix"><li><a href="{site_url}/dataset?sous_themes={theme_id}">{theme_title}</li></ul></li>'.\
                     format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('name'), theme_id= c.tag_theme.get('name'))
                 stream = stream | Transformer(
                     "//div[@id='sidebar']//ul[@class='widget-list']//li[@class='themes_sous_themes']"
@@ -432,7 +433,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
         if routes.get('controller') == 'user' and routes.get('action') == 'read':	
             user = base.model.User.get(c.id)
             groups = user.get_groups()
-            html = "<dt>Diffuseur</dt><dd>"
+            html = "<dt>" + _('Diffuseur') + "</dt><dd>"
             for group in groups :
                 html += "<a href='/diffuseur/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"
@@ -493,7 +494,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 sys.stderr.write("NotFound")  
             
             loop = False
-            html = u'<h2>Themes</h2><br/><div id="themesCloudDiv" style="width: 450px; height: 600px;margin:auto;overflow:visible;"></div>'
+            html = u'<h2>' + _('Themes') + '</h2><br/><div id="themesCloudDiv" style="width: 450px; height: 600px;margin:auto;overflow:visible;"></div>'
             html += '<script type="text/javascript"> var word_array = ['
             for theme in c.search_facets[u"themes"]["items"]:
                 if loop:

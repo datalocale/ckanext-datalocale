@@ -9,6 +9,7 @@ from ckan.plugins import IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
 from ckan.plugins import implements, SingletonPlugin
 from ckan.logic import check_access
 from pylons import request
+from pylons.i18n import _
 from genshi.filters import Transformer
 from genshi.input import HTML
 from converters import convert_to_extras_groupform,  convert_from_extras_groupform
@@ -244,7 +245,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     c.is_superuser_or_groupadmin = False
 
                 if c.is_superuser_or_groupadmin:
-                    mhtml = '<li><a href="/diffuseur/new">Ajouter un diffuseur</a></li>'
+                    mhtml = '<li><a href="/diffuseur/new">' + _('Ajouter un diffuseur') + '</a></li>'
                     stream = stream | Transformer(
                             "//li[@class='add_diffuseur']"
                     ).append(HTML(mhtml))
@@ -261,9 +262,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                 children_services = c.group.get_children_groups('service')
                 html = ""
                 if children_services : 
-                        html += u" <h3>Producteurs</h3><ul class='groups no-break'>"
+                        html += u" <h3>" + _('Producteurs') + "</h3><ul class='groups no-break'>"
                         for children in children_services:
-                            html += "<li><a href='%s/fr/producteur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
+                            html += "<li><a href='%s/producteur/%s' class='label'>%s</a><li>" % (c.site_url, children.get('name',''), children.get('title',''))
                         html += " </ul>"
                     
                 stream = stream | Transformer(
