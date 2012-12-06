@@ -571,7 +571,10 @@ class DatalocaleCommand(cli.CkanCommand):
                   elif value == "dterms:reference":
                       dataset_package["dterms:reference"] = "\"%s\"" % row[fields.get(value) - 1]
                   elif value == "license_id":
-                      dataset_package[value] = row[fields.get(value) - 1]
+                      if (row[fields.get(value) - 1] == "Licence ouverte"):
+                          dataset_package[value] = "lo-ol"
+                      else:
+                          dataset_package[value] = row[fields.get(value) - 1]
 #                  elif value == "dct:temporal":
 #                      temporal = row[fields.get(value) - 1]
 #                      dates = {}
@@ -596,7 +599,7 @@ class DatalocaleCommand(cli.CkanCommand):
     
     def _csv_setresources(self, row):
 	resource = [{
-			     "url": unicode(row[27], "utf-8"),
+			     "url": unicode(row[28], "utf-8"),
                  "resource_type": row[24],
                  "format": row[25],
                  "name": row[26]
