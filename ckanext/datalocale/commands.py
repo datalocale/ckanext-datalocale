@@ -573,6 +573,8 @@ class DatalocaleCommand(cli.CkanCommand):
                   elif value == "license_id":
                       if (row[fields.get(value) - 1] == "Licence ouverte"):
                           dataset_package[value] = "lo-ol"
+                      elif (row[fields.get(value) - 1] == ""):
+                          dataset_package[value] = "notspecified"
                       else:
                           dataset_package[value] = row[fields.get(value) - 1]
 #                  elif value == "dct:temporal":
