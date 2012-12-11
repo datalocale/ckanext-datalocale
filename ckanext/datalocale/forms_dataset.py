@@ -380,9 +380,15 @@ class DatalocaleDatasetForm(SingletonPlugin):
             try:
                 themeTaxonomy = c.pkg_dict.get('themeTaxonomy', [])[0]
                 theme_available = c.pkg_dict.get('theme_available', [])[0]
+                
+                ThemeId = str(c.tag_themeTaxonomy.get('name'))
+                ThemeName = str(themeTaxonomy.encode('ascii', 'xmlcharrefreplace'))
+                
                 html = '<li class="sidebar-section"><h3>' + ('Th&egrave;me') + '</h3><ul class="tags clearfix">'\
-                    '<li><a href="{site_url}/dataset?themes={themeT_id}">{themeT_title}</a></li></ul><h3>' + ('Sous Th&egrave;me') + '</h3><ul class="tags clearfix"><li><a href="{site_url}/dataset?sous_themes={theme_id}">{theme_title}</li></ul></li>'.\
-                    format(themeT_title = themeTaxonomy.encode('ascii', 'xmlcharrefreplace'), theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = c.tag_themeTaxonomy.get('name'), theme_id= c.tag_theme.get('name'))
+                    '<li><a href="{site_url}/dataset?themes={themeT_id}">{themeT_title}</a></li></ul>' . format(site_url=c.site_url, themeT_id = ThemeId, themeT_title = ThemeName)
+                    
+                html +=    '<h3>' + ('Sous Th&egrave;me') + '</h3><ul class="tags clearfix"><li><a href="{site_url}/dataset?sous_themes={theme_id}">{theme_title}</li></ul></li>'.format(themeT_title = ThemeName, theme_title = theme_available.encode('ascii', 'xmlcharrefreplace'), site_url=c.site_url, themeT_id = ThemeId, theme_id= c.tag_theme.get('name'))
+
                 stream = stream | Transformer(
                     "//div[@id='sidebar']//ul[@class='widget-list']//li[@class='themes_sous_themes']"
                 ).replace(HTML(html))
