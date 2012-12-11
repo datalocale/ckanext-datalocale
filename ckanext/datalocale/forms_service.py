@@ -49,7 +49,43 @@ class DatalocaleServiceForm(SingletonPlugin):
 
         # Override /group/* as the default groups urls
 
+    def form_to_db_schema(self):
+        """
+        Returns the schema for mapping group data from a form to a format
+        suitable for the database.
+        """
+        schema = default_schema.group_form_schema()
+        schema.update({ 
+        'foaf:name': [ignore_missing, convert_to_extras_groupform],
+        'url': [ignore_missing, convert_to_extras_groupform],
+        'mail': [ignore_missing, convert_to_extras_groupform],
+        'phone': [ignore_missing, convert_to_extras_groupform],
+        'street-address': [ignore_missing, convert_to_extras_groupform],
+        'locality': [ignore_missing, convert_to_extras_groupform],
+        'postal-code': [ignore_missing, convert_to_extras_groupform],
+        'country-name': [ignore_missing, convert_to_extras_groupform],
+        })
+        return schema
 
+    def db_to_form_schema(self):
+        """
+        Returns the schema for mapping group data from the database into a
+        format suitable for the form (optional)
+        """
+        schema = default_schema.group_form_schema()
+        schema.update({
+        'foaf:name': [convert_from_extras_groupform, ignore_missing],
+        'url': [convert_from_extras_groupform, ignore_missing],
+        'mail': [convert_from_extras_groupform, ignore_missing],
+        'phone': [convert_from_extras_groupform, ignore_missing],
+        'street-address': [convert_from_extras_groupform, ignore_missing],
+        'locality': [convert_from_extras_groupform, ignore_missing],
+        'postal-code': [convert_from_extras_groupform, ignore_missing],
+        'country-name': [convert_from_extras_groupform, ignore_missing],
+        'revision_id': [ignore_missing, unicode],
+        })
+        return schema
+    
     def before_map(self, map):
         controller = 'ckanext.datalocale.service_controllers:DatalocaleServiceController'
         map.connect('/producteur/users/{id}', controller=controller, action='users')
