@@ -2,7 +2,8 @@ import os, logging
 import ckan.logic as logic
 from ckan.logic import NotFound, NotAuthorized, ValidationError
 import ckan.logic.schema as default_schema
-from ckan.lib.base import render, c, model, abort, request
+from ckan.logic import get_action, NotFound, NotAuthorized, check_access
+from ckan.lib.base import render, c, model, abort, request, g
 from ckan.lib.base import redirect, _, config, h
 from ckan.lib.navl.dictization_functions import Invalid, validate, missing
 from ckan.plugins import IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
@@ -135,7 +136,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         suitable for the database.
         """
         schema = default_schema.group_form_schema()
-        schema.update({
+        schema.update({ 
 		'foaf:name': [ignore_missing, convert_to_extras_groupform],
         'url': [ignore_missing, convert_to_extras_groupform],
         'mail': [ignore_missing, convert_to_extras_groupform],
@@ -249,7 +250,24 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     stream = stream | Transformer(
                             "//li[@class='add_diffuseur']"
                     ).append(HTML(mhtml))
+                    
+        if routes.get('controller') == "home" and routes.get('action') == 'index':
+            
+            context = {'model': model, 'session': model.Session,            
+            'user': c.user or c.author, 'for_view': True}
+            q = {}
+            fq = ''
+            data_dict = {
+                'q':q,
+                'fq':fq,
+                'facet.field':g.facets,
+            }
 
+            query = get_action('user_list')(context,data_dict)
+            userNum = str(len(query))
+            stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
+            
+            
         if routes.get('controller') == 'group' \
             and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
                 html = ''

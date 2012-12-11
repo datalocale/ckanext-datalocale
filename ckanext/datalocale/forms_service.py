@@ -2,6 +2,7 @@ import os, logging
 import ckan.logic as logic
 from ckan.logic import NotFound, NotAuthorized, ValidationError
 import ckan.logic.schema as default_schema
+from ckan.logic import get_action, NotFound, NotAuthorized, check_access
 from ckan.lib.base import render, c, model, abort, request
 from ckan.lib.base import redirect, _, config, h
 from ckan.lib.navl.dictization_functions import Invalid, validate, missing
@@ -124,42 +125,6 @@ class DatalocaleServiceForm(SingletonPlugin):
         we were wanting to act as the fallback, we'd return True
         """
         return False
-
-    def form_to_db_schema(self):
-        """
-        Returns the schema for mapping group data from a form to a format
-        suitable for the database.
-        """
-        schema = default_schema.group_form_schema()
-        schema.update({
-        'foaf:name': [ignore_missing, convert_to_extras_groupform],
-        'url': [ignore_missing, convert_to_extras_groupform],
-        'mail': [ignore_missing, convert_to_extras_groupform],
-        'phone': [ignore_missing, convert_to_extras_groupform],
-        'street-address': [ignore_missing, convert_to_extras_groupform],
-        'locality': [ignore_missing, convert_to_extras_groupform],
-        'postal-code': [ignore_missing, convert_to_extras_groupform],
-        'country-name': [ignore_missing, convert_to_extras_groupform],
-        })
-        return schema
-
-    def db_to_form_schema(self):
-        """
-        Returns the schema for mapping group data from the database into a
-        format suitable for the form (optional)
-        """
-        schema = default_schema.group_form_schema()
-        schema.update({
-        'foaf:name': [convert_from_extras_groupform, ignore_missing],
-        'url': [convert_from_extras_groupform, ignore_missing],
-        'mail': [convert_from_extras_groupform, ignore_missing],
-        'phone': [convert_from_extras_groupform, ignore_missing],
-        'street-address': [convert_from_extras_groupform, ignore_missing],
-        'locality': [convert_from_extras_groupform, ignore_missing],
-        'postal-code': [convert_from_extras_groupform, ignore_missing],
-        'country-name': [convert_from_extras_groupform, ignore_missing],
-        })
-        return schema
 
     def check_data_dict(self, data_dict):
         """
