@@ -1,0 +1,3397 @@
+# Translations template for ckan.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the ckan project.
+#
+# Translators:
+# <aka.keronos@gmail.com>, 2011, 2012.
+#   <aka.keronos@gmail.com>, 2012.
+# <internet@davidread.org>, 2011.
+# okfn <sysadmin@okfn.org>, 2011.
+# Sean Hammond <sean.hammond@okfn.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: CKAN\n"
+"Report-Msgid-Bugs-To: http://trac.ckan.org/\n"
+"POT-Creation-Date: 2012-04-26 14:49+0200\n"
+"PO-Revision-Date: 2012-06-01 17:05+0000\n"
+"Last-Translator: keronos <aka.keronos@gmail.com>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/ckan/language/"
+"fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:6
+#: ckanext/stats/templates/ckanext/stats/index.html:8
+#: ckan/templates/layout_base.html:170
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:37
+#: ckan/templates/admin/layout.html:10
+msgid "Home"
+msgstr "Accueil"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:43
+msgid "Total number of Datasets"
+msgstr "Nombre total de jeux de données"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:46
+msgid "Revisions to Datasets per week"
+msgstr "Révisions de jeux de données par semaine"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:49
+msgid "Top Rated Datasets"
+msgstr "Les jeux de données les mieux notés"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:51
+msgid "Average rating"
+msgstr "notation moyenne"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:51
+msgid "Number of ratings"
+msgstr "Nombre de notation"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:56
+msgid "No ratings"
+msgstr "Pas de notation"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:58
+msgid "Most Edited Datasets"
+msgstr "Les jeux de données les plus édités"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:60
+msgid "Number of edits"
+msgstr "Nombre d'édition"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:66
+msgid "Largest Groups"
+msgstr "Groupe le plus large"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:68
+#: ckan/forms/common.py:796 ckan/logic/validators.py:114
+msgid "Group"
+msgstr "Groupe"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:74
+msgid "Top Tags"
+msgstr "Tag le plus utilisé"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:81
+msgid "Users owning most datasets"
+msgstr "Utilisateurs possédant le plus de jeux de données"
+
+#: ckanext/stats/templates/ckanext/stats/index.html:88
+msgid "Page last updated:"
+msgstr "Page la plus récemment mise à jour"
+
+#: ckanext/stats/templates/ckanext/stats/leaderboard.html:6
+msgid "Leaderboard - Stats"
+msgstr "Tableau de bord - statistiques"
+
+#: ckanext/stats/templates/ckanext/stats/leaderboard.html:17
+msgid "Dataset Leaderboard"
+msgstr "Tableau de bord des jeux de données"
+
+#: ckanext/stats/templates/ckanext/stats/leaderboard.html:18
+msgid ""
+"Choose a dataset attribute and find out which categories in that area have "
+"the most datasets. E.g. tags, groups, license, res_format, country."
+msgstr ""
+"Choississez un attribut de jeu de données et découvrez quelles sont les "
+"catégories qui rassemblent le plus de jeux de donnéesdans cette zone. Par "
+"exemple tags, grouopes, licences, format, pays"
+
+#: ckanext/stats/templates/ckanext/stats/leaderboard.html:20
+msgid "Choose area"
+msgstr "Choississez une zone"
+
+#: ckan/new_authz.py:19
+#, python-format
+msgid "Authorization function not found: %s"
+msgstr "Fonction d'authentification %s indisponible"
+
+#: ckan/controllers/admin.py:19
+msgid "Need to be system administrator to administer"
+msgstr "Vous devez être un administrateur système pour administrer"
+
+#: ckan/controllers/admin.py:105
+msgid "Changes Saved"
+msgstr "Modifications enregistrées"
+
+#: ckan/controllers/admin.py:152
+msgid "User Added"
+msgstr "utilisateur ajouté"
+
+#: ckan/controllers/admin.py:159
+msgid "unknown authorization group:"
+msgstr "groupe d'autorisation inconnnu:"
+
+#: ckan/controllers/admin.py:169
+msgid "Authorization Group Added"
+msgstr "groupe d'autorisation ajouté"
+
+#: ckan/controllers/admin.py:268
+#, python-format
+msgid ""
+"Cannot purge package %s as associated revision %s includes non-deleted "
+"packages %s"
+msgstr ""
+"Impossible de purger le paquet %s car les révisions associées %s contiennent "
+"les paquets non-supprimés %s"
+
+#: ckan/controllers/admin.py:287
+#, python-format
+msgid "Problem purging revision %s: %s"
+msgstr "Une problème a été rencontré lors de la purge de la révision %s: %s"
+
+#: ckan/controllers/admin.py:289
+msgid "Purge complete"
+msgstr "Purge terminée"
+
+#: ckan/controllers/admin.py:291
+msgid "Action not implemented."
+msgstr "Action non implémentée"
+
+#: ckan/controllers/api.py:114 ckan/controllers/api.py:180
+msgid "Access denied"
+msgstr "Accès non-autorisé"
+
+#: ckan/controllers/api.py:118 ckan/controllers/api.py:185
+#: ckan/lib/base.py:484 ckan/logic/validators.py:61
+#: ckan/logic/validators.py:72 ckan/logic/validators.py:87
+#: ckan/logic/validators.py:101 ckan/logic/validators.py:114
+#: ckan/logic/validators.py:136 ckan/logic/action/create.py:337
+msgid "Not found"
+msgstr "Indisponible"
+
+#: ckan/controllers/api.py:124
+msgid "Bad request"
+msgstr "Requête incorrecte"
+
+#: ckan/controllers/api.py:150
+#, python-format
+msgid "Action name not known: %s"
+msgstr "L'action %s est inconnue"
+
+#: ckan/controllers/api.py:161 ckan/controllers/api.py:314
+#: ckan/controllers/api.py:368
+#, python-format
+msgid "JSON Error: %s"
+msgstr "Erreur JSON: %s"
+
+#: ckan/controllers/api.py:166
+#, python-format
+msgid "Bad request data: %s"
+msgstr "Mauvaise requête de données: %s"
+
+#: ckan/controllers/api.py:200
+msgid "Parameter Error"
+msgstr "Erreur de paramétrage"
+
+#: ckan/controllers/api.py:281
+#, python-format
+msgid "Cannot read entity of this type: %s"
+msgstr "Impossible de lire les entités de type %s"
+
+#: ckan/controllers/api.py:319
+#, python-format
+msgid "Cannot create new entity of this type: %s %s"
+msgstr "Ne peut créer un nouvel élément de ce type : %s %s"
+
+#: ckan/controllers/api.py:345
+msgid "Unable to add package to search index"
+msgstr "Echec d'ajout du paquet à l'index de recherche "
+
+#: ckan/controllers/api.py:373
+#, python-format
+msgid "Cannot update entity of this type: %s"
+msgstr "Ne peut modifier un élement de ce type : %s"
+
+#: ckan/controllers/api.py:393
+msgid "Unable to update search index"
+msgstr "Echec de mise à jour de l'index de recherche"
+
+#: ckan/controllers/api.py:415
+#, python-format
+msgid "Cannot delete entity of this type: %s %s"
+msgstr "Ne peut supprimer un élément de ce type : %s %s"
+
+#: ckan/controllers/api.py:438
+msgid "No revision specified"
+msgstr "Aucune révision spécifiée"
+
+#: ckan/controllers/api.py:442
+#, python-format
+msgid "There is no revision with id: %s"
+msgstr "La révision avec l'identifiant %s n'existe pas"
+
+#: ckan/controllers/api.py:452
+msgid "Missing search term ('since_id=UUID' or 'since_time=TIMESTAMP')"
+msgstr "Pas de terme de recherche ('since_id=UUID' ou 'since_time=TIMESTAMP')"
+
+#: ckan/controllers/api.py:460
+#, python-format
+msgid "Could not read parameters: %r"
+msgstr "Impossible de lire les paramètres %r"
+
+#: ckan/controllers/api.py:507
+#, python-format
+msgid "Bad search option: %s"
+msgstr "Mauvaise option de recherche : %s"
+
+#: ckan/controllers/api.py:510
+#, python-format
+msgid "Unknown register: %s"
+msgstr "Enregistrement %s inconnu"
+
+#: ckan/controllers/api.py:518
+msgid "Malformed qjson value"
+msgstr "valeur qjson inconnue"
+
+#: ckan/controllers/api.py:527
+msgid "Request params must be in form of a json encoded dictionary."
+msgstr "Les paramètres de la requête doivent être encodés au format json."
+
+#: ckan/controllers/authorization_group.py:44
+#, python-format
+msgid "Not authorized to read %s"
+msgstr "Non-autorisé à lire %s"
+
+#: ckan/controllers/authorization_group.py:107 ckan/controllers/group.py:379
+#, python-format
+msgid "User %r not authorized to edit %r"
+msgstr "L'utilisateur %r n'est pas autorisé à éditer %r"
+
+#: ckan/controllers/group.py:386
+msgid "CKAN Group Revision History"
+msgstr "Historique de révision du groupe CKAN"
+
+#: ckan/controllers/group.py:388
+msgid "Recent changes to CKAN Group: "
+msgstr "Modifications récents du groupe CKAN"
+
+#: ckan/controllers/home.py:30
+msgid "This site is currently off-line. Database is not initialised."
+msgstr ""
+"Le site est actuellement indisponible. La base de données n'est pas "
+"initialisée."
+
+#: ckan/controllers/home.py:64
+#, python-format
+msgid ""
+"Please <a href=\"%s\">update your profile</a> and add your email address and "
+"your full name. "
+msgstr ""
+"Merci de<a href=\"%s\">mettre à jour votre profil</a> et d'ajouter votre "
+"adresse email et votre nom complet"
+
+#: ckan/controllers/home.py:66 ckan/controllers/home.py:72
+#, python-format
+msgid "%s uses your email address if you need to reset your password."
+msgstr ""
+"%s utilise votre adresse email si vous avez besoin de mettre à jour votre "
+"mot de passe"
+
+#: ckan/controllers/home.py:70
+#, python-format
+msgid ""
+"Please <a href=\"%s\">update your profile</a> and add your email address. "
+msgstr ""
+"Merci de<a href=\"%s\">mettre à jour votre profil</a> et d'ajouter votre "
+"adresse email"
+
+#: ckan/controllers/home.py:76
+#, python-format
+msgid "Please <a href=\"%s\">update your profile</a> and add your full name."
+msgstr ""
+"Merci de<a href=\"%s\">mettre à jour votre profil</a> et d'ajouter votre nom "
+"complet"
+
+#: ckan/controllers/revision.py:40
+msgid "CKAN Repository Revision History"
+msgstr "Historique du dépôt CKAN"
+
+#: ckan/controllers/revision.py:42
+msgid "Recent changes to the CKAN repository."
+msgstr "Modifications récentes du dépôt CKAN."
+
+#: ckan/controllers/revision.py:101
+#, python-format
+msgid "Datasets affected: %s.\n"
+msgstr "Jeux de données affectés: %s.\n"
+
+#: ckan/controllers/revision.py:177
+msgid "Revision updated"
+msgstr "Révision mise à jour"
+
+#: ckan/controllers/tag.py:54 ckan/forms/common.py:923
+msgid "Other"
+msgstr "Autre"
+
+#: ckan/controllers/tag.py:67
+msgid "Tag not found"
+msgstr "Mot-clé introuvable"
+
+#: ckan/controllers/user.py:127
+msgid "Unauthorized to create a user"
+msgstr "Vous n'êtes pas autorisé à créer un utilisateur"
+
+#: ckan/controllers/user.py:153
+#, python-format
+msgid "Unauthorized to create user %s"
+msgstr "Vous n'êtes pas autorisé à créer l'utilisateur %s"
+
+#: ckan/controllers/user.py:155 ckan/controllers/user.py:208
+#: ckan/controllers/user.py:237 ckan/controllers/user.py:359
+#: ckan/controllers/user.py:379
+msgid "User not found"
+msgstr "Utilisateur introuvable"
+
+#: ckan/controllers/user.py:159
+msgid "Bad Captcha. Please try again."
+msgstr "Mauvais Captcha. Merci d'essayer à nouveau"
+
+#: ckan/controllers/user.py:174
+#, python-format
+msgid ""
+"User \"%s\" is now registered but you are still logged in as \"%s\" from "
+"before"
+msgstr ""
+"L'utiliasteur \"%s\" est maintenant enregistré mais vous êtes toujours "
+"authentifiée en tant que \"%s\" depuis votre visite précédente"
+
+#: ckan/controllers/user.py:187
+msgid "No user specified"
+msgstr "Pas d'utilisateur spécifié"
+
+#: ckan/controllers/user.py:206 ckan/controllers/user.py:235
+#: ckan/controllers/user.py:377
+#, python-format
+msgid "Unauthorized to edit user %s"
+msgstr "Vous n'êtes pas autorisé à modifier l'utilisateur %s"
+
+#: ckan/controllers/user.py:213
+#, python-format
+msgid "User %s not authorized to edit %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier %s"
+
+#: ckan/controllers/user.py:232
+msgid "Profile updated"
+msgstr "Profil mis à jour"
+
+#: ckan/controllers/user.py:276
+#, python-format
+msgid "%s is now logged in"
+msgstr "%s est maintenant connecté"
+
+#: ckan/controllers/user.py:279
+msgid "Login failed. Bad username or password."
+msgstr ""
+"l'authentification a échouée. Erreur dans le nom d'utilisateur ou dans le "
+"mot de passe"
+
+#: ckan/controllers/user.py:281
+msgid " (Or if using OpenID, it hasn't been associated with a user account.)"
+msgstr ""
+" (Si vous utilisez OpenID, ce mécanisme d'identification n'a pas été "
+"associée à un compte d'utilisateur du site.)"
+
+#: ckan/controllers/user.py:334
+#, python-format
+msgid "\"%s\" matched several users"
+msgstr "\"%s\" correspond à plusieurs utilisateurs"
+
+#: ckan/controllers/user.py:336 ckan/controllers/user.py:338
+#, python-format
+msgid "No such user: %s"
+msgstr "Pas d'utilisateur correspondant à: %s"
+
+#: ckan/controllers/user.py:343
+msgid "Please check your inbox for a reset code."
+msgstr "Merci de vérifier votre boîte de courriel pour votre code réinitialisé"
+
+#: ckan/controllers/user.py:346
+#, python-format
+msgid "Could not send reset link: %s"
+msgstr "Impossible d'envoyer le lien de réinitialisation: %s"
+
+#: ckan/controllers/user.py:363
+msgid "Invalid reset key. Please try again."
+msgstr "Clé de réinitialisation invalide. Merci d'essayer à nouveau."
+
+#: ckan/controllers/user.py:374
+msgid "Your password has been reset."
+msgstr "Votre mot de passe a bien été réinitialisé."
+
+#: ckan/controllers/user.py:396
+msgid "Error: Could not parse About text"
+msgstr "Erreur: Impossible de parser le texte à propos"
+
+#: ckan/controllers/user.py:404
+msgid "Your password must be 4 characters or longer."
+msgstr "Votre mot de passe doit comporter au moins 4 caractères"
+
+#: ckan/controllers/user.py:406
+msgid "The passwords you entered do not match."
+msgstr "Les mots de passe saisis ne correspondent pas."
+
+#: ckan/forms/authorization_group.py:45 ckan/forms/group.py:52
+#: ckan/forms/package.py:38 ckan/forms/package.py:110
+#: ckan/templates/js_strings.html:46 ckan/templates/user/read.html:23
+msgid "Name"
+msgstr "Nom d'utilisateur"
+
+#: ckan/forms/authorization_group.py:46
+msgid "<strong>Unique identifier</strong> for group."
+msgstr ""
+"<strong>L'identifiant</strong> du groupe doit être<strong>unique</strong>."
+
+#: ckan/forms/authorization_group.py:55 ckan/forms/group.py:63
+msgid "Details"
+msgstr "Détails"
+
+#: ckan/forms/common.py:26 ckan/logic/validators.py:185
+#: ckan/logic/validators.py:420
+#, python-format
+msgid "Name must be at least %s characters long"
+msgstr "Le nom doit comporter au moins %s caractères"
+
+#: ckan/forms/common.py:28
+msgid ""
+"Name must be purely lowercase alphanumeric (ascii) characters and these "
+"symbols: -_"
+msgstr ""
+"Le nom ne peut contenir que des lettres minuscules, des chiffres (ascii) ou "
+"les symboles : -_"
+
+#: ckan/forms/common.py:41
+msgid "Dataset name already exists in database"
+msgstr "Le nom du jeu de données existe déjà dans la base de données"
+
+#: ckan/forms/common.py:54 ckan/logic/validators.py:255
+msgid "Group name already exists in database"
+msgstr "Le nom de groupe existe déjà dans la base de données"
+
+#: ckan/forms/common.py:143
+#, python-format
+msgid "Value does not match required format: %s"
+msgstr "La valeur ne satisfait pas au format requis: %s"
+
+#: ckan/forms/common.py:351
+msgid "Dataset resource(s) incomplete."
+msgstr "les ressources du jeu de données sont incomplètes"
+
+#: ckan/forms/common.py:524 ckan/logic/validators.py:261
+#, python-format
+msgid "Tag \"%s\" length is less than minimum %s"
+msgstr "La longueur du tag \"%s\" est inférieure au minimum requis (%s)"
+
+#: ckan/forms/common.py:526
+#, python-format
+msgid "Tag \"%s\" must not contain any quotation marks: \""
+msgstr "Tag \"%s\" ne doit pas contenir de guillemets: \""
+
+#: ckan/forms/common.py:543 ckan/logic/validators.py:239
+#, python-format
+msgid "Duplicate key \"%s\""
+msgstr "Clé \"%s\" dupliquée"
+
+#: ckan/forms/common.py:546
+#, python-format
+msgid "Extra key-value pair: key is not set for value \"%s\"."
+msgstr ""
+"Paire supplémentaire clé-valeur: la clé est absente pour la valeur \"%s\"."
+
+#: ckan/forms/common.py:781 ckan/templates/package/new_package_form.html:116
+msgid "Cannot add any groups."
+msgstr "Impossible d'ajouter un groupe."
+
+#: ckan/forms/common.py:826
+#, python-format
+msgid ""
+"Can't derived new group selection from serialized value structured like "
+"this: %s"
+msgstr ""
+"Impossible de dériver le nouveau groupe sélectionné à partir de la valeur "
+"sérialisée structurée comme: %s"
+
+#: ckan/forms/common.py:906
+msgid "other - please specify"
+msgstr "autre - merci de préciser"
+
+#: ckan/forms/group.py:87
+msgid "Package"
+msgstr "Paquet"
+
+#: ckan/forms/group.py:88
+msgid "Add packages"
+msgstr "Ajouter un jeu de données"
+
+#: ckan/forms/package.py:34
+msgid "A short descriptive title for the data set."
+msgstr "Un court titre descriptif pour le jeu de données "
+
+#: ckan/forms/package.py:35
+msgid ""
+"It should not be a description though - save that for the Notes field. Do "
+"not give a trailing full stop."
+msgstr ""
+"Cela ne doit pas pas constituer une description - à spécifier dans le champs "
+"note. Ne terminez pas par un point"
+
+#: ckan/forms/package.py:39
+msgid "A unique identifier for the package."
+msgstr "Un identifiant unique pour le jeu de données"
+
+#: ckan/forms/package.py:40
+msgid ""
+"It should be broadly humanly readable, in the spirit of Semantic Web URIs. "
+"Only use an acronym if it is widely recognised. Renaming is possible but "
+"discouraged."
+msgstr ""
+"Il doit être si possible compréhensible par un être humain, dans l'esprit "
+"des URI du web de données. N'utilisez un acronyme que s'il est largement "
+"employé. Le renommage est possible mais déconseillé."
+
+#: ckan/forms/package.py:64
+msgid "The licence under which the dataset is released."
+msgstr "La licence sous laquelle est publié ce jeu de données"
+
+#: ckan/forms/package.py:69
+#, python-format
+msgid ""
+"Comma-separated terms that may link this dataset to similar ones. For more "
+"information on conventions, see <a href=\"%s\">this wiki page</a>."
+msgstr ""
+"Termes séparés par des virgules qui peuvent lier ce jeux de données à "
+"d'autres similaires. Pour plus d'informations sur les conventions, voir <a "
+"href=\"%s\">cette page wiki</a>."
+
+#: ckan/forms/package.py:74
+msgid "The files containing the data or address of the APIs for accessing it."
+msgstr ""
+"Les fichiers contenant les données ou l'adresse de l'API permettant d'y "
+"accéder"
+
+#: ckan/forms/package.py:75
+msgid ""
+"<br />These can be repeated as required. For example if the data is being "
+"supplied in multiple formats, or split into different areas or time periods, "
+"each file is a different 'resource' which should be described differently. "
+"They will all appear on the dataset page on CKAN together.<br /><br /> "
+"<b>URL:</b> This is the Internet link directly to the data - by selecting "
+"this link in a web browser, the user will immediately download the full data "
+"set. Note that datasets are not hosted on this site, but by the publisher of "
+"the data. Alternatively the URL can point to an API server such as a SPARQL "
+"endpoint or JSON-P service.<br /> <b>Format:</b> This should give the file "
+"format in which the data is supplied. <br /><b>Description</b> Any "
+"information you want to add to describe the resource.<br />"
+msgstr ""
+"Vous pouvez répéter ce champ autant de fois que nécessaire. Par exemple, si "
+"les données sont disponibles dans plusieurs formats, ou réparties en "
+"périodes ou zones géographiques différentes, chaque fichier est une "
+"\"ressource\" différente qui doit être décrite différemment. Elles "
+"apparaîtront ensemble sur la page du jeu de données dans CKAN.URL: saisissez "
+"le lien qui manèe directement à la donnée - en sélectionnant ce lien dans un "
+"navigateur Internet, l'utilisateur téléchargera directement le jeu de donnée "
+"intégralement. Notez que les jeux de données ne sont pas hébergés sur ce "
+"site, mais par l'éditeur de la donnée. Alternativement, l'URL peut pointer "
+"vers un serveur d'API tel qu'un point d'accès SPARQL ou un service JSON-P."
+"Format: saisissez ici le format dans lequel le jeu de données est mis à "
+"disposition. Description: saisissez ici toute information utile que vous "
+"souhaiteriez ajouter à la description de la ressource à télécharger."
+
+#: ckan/forms/package.py:76
+msgid ""
+"Format choices: CSV | RDF | XML | XBRL | SDMX | HTML+RDFa | Other as "
+"appropriate"
+msgstr ""
+"Choix de format : CSV | RDF | XML | XBRL | SDMX | HTML+RDFa | Autres si "
+"approprié"
+
+#: ckan/forms/package.py:80 ckan/forms/package.py:111
+msgid "Notes"
+msgstr "Notes"
+
+#: ckan/forms/package.py:81
+msgid "The main description of the dataset"
+msgstr "La description principale du jeu de données"
+
+#: ckan/forms/package.py:82
+msgid ""
+"It is often displayed with the package title. In particular, it should start "
+"with a short sentence that describes the data set succinctly, because the "
+"first few words alone may be used in some views of the data sets."
+msgstr ""
+"Elle est souvent affichée avec le titre du jeu de données. En particulier, "
+"elle devrait débuter par une phrase courte qui décrit succinctement le jeu "
+"de données, car ces premiers mots seulement pourront parfois être affichés "
+"dans des vues résumées du jeu de données."
+
+#: ckan/forms/package.py:83
+#, python-format
+msgid "You can use %sMarkdown formatting%s here."
+msgstr "Vous pouvez utiliser %sformat wiki%s ici"
+
+#: ckan/forms/package.py:94
+msgid "Basic information"
+msgstr "Informations sommaires"
+
+#: ckan/forms/package.py:97 ckan/templates/layout_base.html:78
+#: ckan/templates/package/new_package_form.html:93
+#: ckan/templates/package/read.html:49 ckan/templates/revision/read.html:64
+msgid "Groups"
+msgstr "Groupes"
+
+#: ckan/forms/package.py:98 ckan/forms/package.py:105
+msgid "Detail"
+msgstr "Détails"
+
+#: ckan/forms/package.py:110
+msgid "URL"
+msgstr "URL"
+
+#: ckan/forms/package_dict.py:95
+#, python-format
+msgid "Resource should be a dictionary: %r"
+msgstr "La ressource devrait être un dictionnaire: %r"
+
+#: ckan/forms/package_dict.py:112
+#, python-format
+msgid "Key unknown: %s"
+msgstr "clé inconnue: %s"
+
+#: ckan/forms/package_dict.py:114
+msgid "Key blank"
+msgstr "clé vide"
+
+#: ckan/lib/base.py:464
+msgid "Updated"
+msgstr "Mis à jour"
+
+#: ckan/lib/base.py:476
+msgid "User role(s) added"
+msgstr "Rôle(s) utilisateur ajouté(s)"
+
+#: ckan/lib/base.py:478
+msgid "Please supply a user name"
+msgstr "Merci de fournir un nom d'utilisateur"
+
+#: ckan/lib/helpers.py:504
+msgid "Update your avatar at gravatar.com"
+msgstr "Mettez à jour votre avataz sur gravatar.com"
+
+#: ckan/lib/helpers.py:624 ckan/templates/js_strings.html:64
+msgid "Unknown"
+msgstr "Inconnu(e)"
+
+#: ckan/lib/helpers.py:660
+msgid "no name"
+msgstr "pas de nom"
+
+#: ckan/lib/helpers.py:693
+msgid "Created new dataset."
+msgstr "Nouveau jeu de données créés"
+
+#: ckan/lib/helpers.py:695
+msgid "Edited resources."
+msgstr "Ressources mis à jour"
+
+#: ckan/lib/helpers.py:697
+msgid "Edited settings."
+msgstr "Paramètres mis à jour"
+
+#: ckan/lib/mailer.py:21
+#, python-format
+msgid "Dear %s,"
+msgstr "Cher %s,"
+
+#: ckan/lib/mailer.py:34
+#, python-format
+msgid "%s <%s>"
+msgstr "%s <%s>"
+
+#: ckan/lib/mailer.py:58
+msgid "No recipient email address available!"
+msgstr "Pas de destinataire d'adresse email disponible!"
+
+#: ckan/lib/mailer.py:63
+#, python-format
+msgid ""
+"You have requested your password on %(site_title)s to be reset.\n"
+"\n"
+"Please click the following link to confirm this request:\n"
+"\n"
+"   %(reset_link)s\n"
+msgstr ""
+"Vous avez demandé le réinitialisation de votre mot de passe sur le site %"
+"(site_title)s.\n"
+"\n"
+"Merci de cliquer sur le lien suivant pour confirmer votre requête:\n"
+"\n"
+"   %(reset_link)s\n"
+
+#: ckan/lib/mailer.py:95 ckan/templates/user/perform_reset.html:6
+#: ckan/templates/user/perform_reset.html:14
+msgid "Reset your password"
+msgstr "Réinitialiser votre mot de passe"
+
+#: ckan/lib/package_saver.py:29
+msgid "Cannot render package description"
+msgstr "Impossible de restituer la description du jeu de données"
+
+#: ckan/lib/package_saver.py:34
+msgid "No web page given"
+msgstr "Pas de page web fournie"
+
+#: ckan/lib/package_saver.py:38
+msgid "Author not given"
+msgstr "Créateur non renseigné"
+
+#: ckan/lib/package_saver.py:44
+msgid "Maintainer not given"
+msgstr "Mainteneur non renseigné"
+
+#: ckan/lib/package_saver.py:101 ckan/logic/validators.py:51
+msgid "No links are allowed in the log_message."
+msgstr "Aucun lien autorisé dans le log_message."
+
+#: ckan/lib/navl/validators.py:54
+#, python-format
+msgid "The input field %(name)s was not expected."
+msgstr "Le champ saisi %(name)s n'était pas attendu."
+
+#: ckan/lib/navl/validators.py:93
+msgid "Please enter an integer value"
+msgstr "Vous devez saisir un nombre entier"
+
+#: ckan/logic/converters.py:59 ckan/logic/converters.py:74
+#, python-format
+msgid "Tag vocabulary \"%s\" does not exist"
+msgstr "le mot clé \"%s\" n'existe pas"
+
+#: ckan/logic/validators.py:32
+msgid "Invalid integer"
+msgstr "Nombre entier invalide"
+
+#: ckan/logic/validators.py:42
+msgid "Date format incorrect"
+msgstr "Format de date incorrect"
+
+#: ckan/logic/validators.py:124
+msgid "That group name or ID does not exist."
+msgstr "Ce groupe d'utilisateur ou cet identifiant n'existe pas."
+
+#: ckan/logic/validators.py:136
+msgid "Activity type"
+msgstr "Type d'activité"
+
+#: ckan/logic/validators.py:182
+msgid "That name cannot be used"
+msgstr "Ce nom ne peut pas être utilisé"
+
+#: ckan/logic/validators.py:187 ckan/logic/validators.py:423
+#, python-format
+msgid "Name must be a maximum of %i characters long"
+msgstr "Le nom doit être d'une longueur inférieur à %i caractères"
+
+#: ckan/logic/validators.py:190
+msgid ""
+"Url must be purely lowercase alphanumeric (ascii) characters and these "
+"symbols: -_"
+msgstr ""
+"Les URL doivent être en caractères alphanumériques (ascii) minuscules "
+"uniquement et les symboles -_"
+
+#: ckan/logic/validators.py:208
+msgid "That URL is already in use."
+msgstr "Cette URL est déjà utilisée"
+
+#: ckan/logic/validators.py:213
+#, python-format
+msgid "Name \"%s\" length is less than minimum %s"
+msgstr "La longueur du nom \"%s\" est inférieure au minimum %s"
+
+#: ckan/logic/validators.py:217
+#, python-format
+msgid "Name \"%s\" length is more than maximum %s"
+msgstr "La longueur du nom \"%s\" est supérieur au maximum %s"
+
+#: ckan/logic/validators.py:223
+#, python-format
+msgid "Version must be a maximum of %i characters long"
+msgstr ""
+"La version ne doit pas être supérieure à une longueur de caractère de %i "
+
+#: ckan/logic/validators.py:265
+#, python-format
+msgid "Tag \"%s\" length is more than maximum %i"
+msgstr "La longueur du tag \"%s\" est supérieure à la longueur maximale %i"
+
+#: ckan/logic/validators.py:273
+#, python-format
+msgid "Tag \"%s\" must be alphanumeric characters or symbols: -_."
+msgstr ""
+"Le tag \"%s\" ne peut contenir que des lettres minuscules, des chiffres ou "
+"les symboles : -_"
+
+#: ckan/logic/validators.py:281
+#, python-format
+msgid "Tag \"%s\" must not be uppercase"
+msgstr "Le tag \"%s\" ne peut contenir de lettres majuscules"
+
+#: ckan/logic/validators.py:372
+msgid "That login name is not available."
+msgstr "Ce nom d'utilisateur n'est pas disponible."
+
+#: ckan/logic/validators.py:381
+msgid "Please enter both passwords"
+msgstr "Merci d'entrer les 2 mots de passe"
+
+#: ckan/logic/validators.py:387
+msgid "Your password must be 4 characters or longer"
+msgstr "Votre mot de passe doit comporter au moins 4 caractères"
+
+#: ckan/logic/validators.py:395
+msgid "The passwords you entered do not match"
+msgstr "Les mots de passe saisis ne correspondent pas."
+
+#: ckan/logic/validators.py:411
+msgid ""
+"Edit not allowed as it looks like spam. Please avoid links in your "
+"description."
+msgstr ""
+"La modification n'est pas autorisée car elle ressemble à du spam. Merci "
+"d'éviter les liens dans votre description."
+
+#: ckan/logic/validators.py:428
+msgid "That vocabulary name is already in use."
+msgstr "Ce nom de vocabulaire est déjà utilisé"
+
+#: ckan/logic/validators.py:434
+#, python-format
+msgid "Cannot change value of key from %s to %s. This key is read-only"
+msgstr ""
+"On ne peut pas changer le valeur de la clée de %s à %s. Cette clée est en "
+"lecture seulement "
+
+#: ckan/logic/validators.py:443
+msgid "Tag vocabulary was not found."
+msgstr "Ce tag de vocabulaire n'a pas été trouvé"
+
+#: ckan/logic/validators.py:456
+#, python-format
+msgid "Tag %s does not belong to vocabulary %s"
+msgstr "Le tag %s n'appartient pas au vocabulaire %s"
+
+#: ckan/logic/validators.py:462
+msgid "No tag name"
+msgstr "Pas de tag "
+
+#: ckan/logic/validators.py:475
+#, python-format
+msgid "Tag %s already belongs to vocabulary %s"
+msgstr "Le tag %s appartient déjà au vocabulaire %s"
+
+#: ckan/logic/action/create.py:65 ckan/logic/action/create.py:271
+#, python-format
+msgid "REST API: Create object %s"
+msgstr "REST API: Création de l'objet %s"
+
+#: ckan/logic/action/create.py:179
+#, python-format
+msgid "REST API: Create package relationship: %s %s %s"
+msgstr "REST API: Création d'une relation de paquet : %s %s %s"
+
+#: ckan/logic/action/create.py:214
+#, python-format
+msgid "REST API: Create member object %s"
+msgstr "API REST: création de l'objet membre %s"
+
+#: ckan/logic/action/create.py:324
+msgid "You must supply a package id or name (parameter \"package\")."
+msgstr ""
+"Vous devez fournir un identifiant ou un nom pour le jeu de données "
+"(paramètre \"jeu de données\")"
+
+#: ckan/logic/action/create.py:326
+msgid "You must supply a rating (parameter \"rating\")."
+msgstr "Veuillez proposer une note (paramètre \"notation\")."
+
+#: ckan/logic/action/create.py:331
+msgid "Rating must be an integer value."
+msgstr "La note doit être un nombre entier."
+
+#: ckan/logic/action/create.py:335
+#, python-format
+msgid "Rating must be between %i and %i."
+msgstr "La note doit être comprise entre %i et %i."
+
+#: ckan/logic/action/delete.py:27
+#, python-format
+msgid "REST API: Delete Package: %s"
+msgstr "API REST: suppression du jeu de données: %s"
+
+#: ckan/logic/action/delete.py:62 ckan/logic/action/delete.py:135
+#, python-format
+msgid "REST API: Delete %s"
+msgstr "API REST : Suppression de %s"
+
+#: ckan/logic/action/delete.py:188
+#, python-format
+msgid "Could not find tag \"%s\""
+msgstr "Impossible de trouver le tag \"%s\""
+
+#: ckan/logic/action/update.py:114
+msgid "Related was not found."
+msgstr "Pas d'élément lié trouvé."
+
+#: ckan/logic/action/update.py:142
+msgid "Resource was not found."
+msgstr "Ressource introuvable"
+
+#: ckan/logic/action/update.py:157 ckan/logic/action/update.py:210
+#: ckan/logic/action/update.py:339
+#, python-format
+msgid "REST API: Update object %s"
+msgstr "API REST : mise à jour de l'objet %s"
+
+#: ckan/logic/action/update.py:176 ckan/logic/action/update.py:232
+msgid "Package was not found."
+msgstr "Jeu de données introuvable"
+
+#: ckan/logic/action/update.py:263
+#, python-format
+msgid "REST API: Update package relationship: %s %s %s"
+msgstr "REST API: Mise à jour de la relation de paquet: %s %s %s"
+
+#: ckan/logic/action/update.py:454
+msgid "TaskStatus was not found."
+msgstr "Le statut de tâches n'a pas été trouvé"
+
+#: ckan/logic/auth/create.py:11
+#, python-format
+msgid "User %s not authorized to create packages"
+msgstr "L'utilisateur %s n'est pas autorisé à créer des jeux de données"
+
+#: ckan/logic/auth/create.py:16 ckan/logic/auth/update.py:23
+#, python-format
+msgid "User %s not authorized to edit these groups"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier ces groupes"
+
+#: ckan/logic/auth/create.py:28 ckan/logic/auth/publisher/create.py:31
+msgid "You must be logged in to add a related item"
+msgstr "Vous devez vous identifier pour ajouter un élément lié"
+
+#: ckan/logic/auth/create.py:48 ckan/logic/auth/publisher/create.py:60
+#, python-format
+msgid "User %s not authorized to edit these packages"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier ces jeux de données"
+
+#: ckan/logic/auth/create.py:58 ckan/logic/auth/publisher/create.py:88
+#: ckan/logic/auth/publisher/create.py:92
+#, python-format
+msgid "User %s not authorized to create groups"
+msgstr "L'utilisateur %s n'est pas autorisé à créer ces groupes"
+
+#: ckan/logic/auth/create.py:68
+#, python-format
+msgid "User %s not authorized to create authorization groups"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à modifier ces groupes d'authentification"
+
+#: ckan/logic/auth/create.py:82
+#, python-format
+msgid "User %s not authorized to create users"
+msgstr "L'utilisateur %s n'est pas autorisé à créer des utilisateurs"
+
+#: ckan/logic/auth/create.py:111
+msgid "Group was not found."
+msgstr "Groupe introuvable."
+
+#: ckan/logic/auth/create.py:131 ckan/logic/auth/publisher/create.py:114
+msgid "Valid API key needed to create a package"
+msgstr "Une clé d'API valide est nécessaire pour créer un jeu de données"
+
+#: ckan/logic/auth/create.py:139 ckan/logic/auth/publisher/create.py:122
+msgid "Valid API key needed to create a group"
+msgstr "Une clé d'API valide est nécessaire pour créer un groupe"
+
+#: ckan/logic/auth/delete.py:14
+#, python-format
+msgid "User %s not authorized to delete package %s"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer le jeu de données %s"
+
+#: ckan/logic/auth/delete.py:23 ckan/logic/auth/delete.py:31
+#: ckan/logic/auth/publisher/delete.py:36
+#: ckan/logic/auth/publisher/delete.py:44
+msgid "Only the owner can delete a related item"
+msgstr "Seul un propriétaire peut supprimer un élément lié"
+
+#: ckan/logic/auth/delete.py:47
+#, python-format
+msgid "User %s not authorized to delete relationship %s"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer la relation %s"
+
+#: ckan/logic/auth/delete.py:58 ckan/logic/auth/publisher/delete.py:67
+#, python-format
+msgid "User %s not authorized to delete group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer le groupe %s"
+
+#: ckan/logic/auth/delete.py:74 ckan/logic/auth/publisher/delete.py:83
+#, python-format
+msgid "User %s not authorized to delete task_status"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer task_status"
+
+#: ckan/logic/auth/get.py:79
+#, python-format
+msgid "User %s not authorized to read these packages"
+msgstr "L'utilisateur %s n'est pas autorisé à lire ces jeux de données"
+
+#: ckan/logic/auth/get.py:90 ckan/logic/auth/publisher/get.py:85
+#: ckan/logic/auth/publisher/get.py:117
+#, python-format
+msgid "User %s not authorized to read package %s"
+msgstr "L'utilisateur %s n'est pas autorisé à lire le jeu de données %s"
+
+#: ckan/logic/auth/get.py:110 ckan/logic/auth/update.py:39
+msgid "No package found for this resource, cannot check auth."
+msgstr ""
+"Pas de jeu de données trouvé pour cette ressource, impossible de vérifier "
+"l'authentification."
+
+#: ckan/logic/auth/get.py:116 ckan/logic/auth/publisher/get.py:115
+#, python-format
+msgid "User %s not authorized to read resource %s"
+msgstr "L'utilisateur %s n'est pas autorisé à lire la ressource %s"
+
+#: ckan/logic/auth/get.py:131
+#, python-format
+msgid "User %s not authorized to read group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à lire le groupe %s"
+
+#: ckan/logic/auth/update.py:19
+#, python-format
+msgid "User %s not authorized to edit package %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier le jeu de données %s"
+
+#: ckan/logic/auth/update.py:45
+#, python-format
+msgid "User %s not authorized to read edit %s"
+msgstr "L'utilisateur %s n'est pas autorisé à lire ou modifier %s"
+
+#: ckan/logic/auth/update.py:59
+#, python-format
+msgid "User %s not authorized to change state of package %s"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à modifier l'état du jeu de données %s"
+
+#: ckan/logic/auth/update.py:70
+#, python-format
+msgid "User %s not authorized to edit permissions of package %s"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à modifier les permissions du jeu de "
+"données %s"
+
+#: ckan/logic/auth/update.py:81
+#, python-format
+msgid "User %s not authorized to edit group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier le groupe %s"
+
+#: ckan/logic/auth/update.py:89 ckan/logic/auth/update.py:94
+#: ckan/logic/auth/publisher/update.py:95
+#: ckan/logic/auth/publisher/update.py:100
+msgid "Only the owner can update a related item"
+msgstr "Seul le propriétaire peut modifier un élément lié"
+
+#: ckan/logic/auth/update.py:106
+#, python-format
+msgid "User %s not authorized to change state of group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier l'état du groupe %s"
+
+#: ckan/logic/auth/update.py:117
+#, python-format
+msgid "User %s not authorized to edit permissions of group %s"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à modifier les permissions du groupe %s"
+
+#: ckan/logic/auth/update.py:128 ckan/logic/auth/update.py:139
+#, python-format
+msgid "User %s not authorized to edit permissions of authorization group %s"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à modifier les permissions du groupe "
+"d'authentification %s"
+
+#: ckan/logic/auth/update.py:150 ckan/logic/auth/publisher/update.py:124
+#, python-format
+msgid "User %s not authorized to edit user %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier l'utilisateur %s"
+
+#: ckan/logic/auth/update.py:160 ckan/logic/auth/publisher/update.py:134
+#, python-format
+msgid "User %s not authorized to change state of revision"
+msgstr "L'utilisateur %s n'est pas modifier l'état de révision"
+
+#: ckan/logic/auth/update.py:173 ckan/logic/auth/publisher/update.py:147
+#, python-format
+msgid "User %s not authorized to update task_status table"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à mettre à jour la table task_status"
+
+#: ckan/logic/auth/update.py:191 ckan/logic/auth/publisher/update.py:161
+#, python-format
+msgid "User %s not authorized to update term_translation table"
+msgstr ""
+"L'utilisateur %s n'est pas authorisé à mettre à jour la table "
+"term_translation"
+
+#: ckan/logic/auth/update.py:201 ckan/logic/auth/publisher/update.py:174
+msgid "Valid API key needed to edit a package"
+msgstr "Une clé d'API valide est nécessaire pour modifier un jeu de données"
+
+#: ckan/logic/auth/update.py:209 ckan/logic/auth/publisher/update.py:182
+msgid "Valid API key needed to edit a group"
+msgstr "Une clé d'API valide est nécessaire pour modifier un groupe"
+
+#: ckan/logic/auth/publisher/create.py:52
+msgid "Two package IDs are required"
+msgstr "Deux IDs de de paquet sont requises"
+
+#: ckan/logic/auth/publisher/create.py:74
+msgid "User is not authorized to create groups"
+msgstr "L'utilisateur n'est pas autorisé à créer des groupes"
+
+#: ckan/logic/auth/publisher/create.py:97
+msgid "Authorization groups not implemented in this profile"
+msgstr "Les groupes d'autorisation ne sont pas implémentés dans ce profile "
+
+#: ckan/logic/auth/publisher/delete.py:26
+#, python-format
+msgid "User %s not authorized to delete packages in these group"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à supprimer des paquets dans ce groupe"
+
+#: ckan/logic/auth/publisher/delete.py:58
+#: ckan/logic/auth/publisher/delete.py:63
+msgid "Only members of this group are authorized to delete this group"
+msgstr "Seuls les membres de ce groupe sont autorisés à supprimer ce groupe"
+
+#: ckan/logic/auth/publisher/get.py:82
+#, python-format
+msgid "User not authorized to read package %s"
+msgstr "L'utilisateur n'est pas autorisé à lire le paquet %s"
+
+#: ckan/logic/auth/publisher/get.py:137
+#, python-format
+msgid "User %s not authorized to show group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à montrer le groupe %s"
+
+#: ckan/logic/auth/publisher/update.py:29
+#, python-format
+msgid "User %s not authorized to edit packages in these groups"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à mettre à jour des paquets dans ce "
+"groupe"
+
+#: ckan/logic/auth/publisher/update.py:47
+#: ckan/logic/auth/publisher/update.py:50
+#, python-format
+msgid "User %s not authorized to edit resources in this package"
+msgstr ""
+"L'utilisateur %s n'est pas autorisé à éditer une ressource dans ce paquet"
+
+#: ckan/logic/auth/publisher/update.py:62
+msgid "Package edit permissions is not available"
+msgstr "Les permissions d'édition de ce paquet ne sont  pas disponibles"
+
+#: ckan/logic/auth/publisher/update.py:74
+msgid "Only members of this group are authorized to edit this group"
+msgstr "Seuls les membres de ce grope sont autorisés à mettre à jour ce groupe"
+
+#: ckan/logic/auth/publisher/update.py:83
+#, python-format
+msgid "Could not find user %s"
+msgstr "Impossible de trouver l'utilisateur %s"
+
+#: ckan/logic/auth/publisher/update.py:87
+#, python-format
+msgid "User %s not authorized to edit this group"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier ce groupe"
+
+#: ckan/logic/auth/publisher/update.py:108
+msgid "Group edit permissions is not implemented"
+msgstr "Les permissions d'édition de ce groupe ne sont pas implémentées"
+
+#: ckan/logic/auth/publisher/update.py:111
+#: ckan/logic/auth/publisher/update.py:115
+msgid "Authorization group update not implemented"
+msgstr "La mise à jour des groupes d'autorisation n'est pas implémentée"
+
+#: ckan/model/license.py:61
+msgid "License Not Specified"
+msgstr "La licence n'est pas fournie"
+
+#: ckan/model/license.py:166
+msgid "Other (Open)"
+msgstr "Autre (Ouvert)"
+
+#: ckan/model/license.py:180
+msgid "Other (Public Domain)"
+msgstr "Autre (Domaine Public)"
+
+#: ckan/model/license.py:194
+msgid "Other (Attribution)"
+msgstr "Autre (Attribution)"
+
+#: ckan/model/license.py:234
+msgid "Other (Non-Commercial)"
+msgstr "Autre (Non-commercial)"
+
+#: ckan/model/license.py:248
+msgid "Other (Not Open)"
+msgstr "Autre (Non-ouvert)"
+
+#: ckan/model/package_relationship.py:48
+#, python-format
+msgid "depends on %s"
+msgstr "dépendant de %s"
+
+#: ckan/model/package_relationship.py:48
+#, python-format
+msgid "is a dependency of %s"
+msgstr "est une dépendance de %s"
+
+#: ckan/model/package_relationship.py:49
+#, python-format
+msgid "derives from %s"
+msgstr "dérive de %s"
+
+#: ckan/model/package_relationship.py:49
+#, python-format
+msgid "has derivation %s"
+msgstr "a des dérivation de %s"
+
+#: ckan/model/package_relationship.py:50
+#, python-format
+msgid "links to %s"
+msgstr "lié à %s"
+
+#: ckan/model/package_relationship.py:50
+#, python-format
+msgid "is linked from %s"
+msgstr "est référencé par %s"
+
+#: ckan/model/package_relationship.py:51
+#, python-format
+msgid "is a child of %s"
+msgstr "est une enfant de %s"
+
+#: ckan/model/package_relationship.py:51
+#, python-format
+msgid "is a parent of %s"
+msgstr "est un parent de %s"
+
+#: ckan/model/package_relationship.py:55
+#, python-format
+msgid "has sibling %s"
+msgstr "a des liens de fraternité avec %s"
+
+#: ckan/templates/_util.html:139
+msgid "View this related item"
+msgstr "Consulte cet élément lié"
+
+#: ckan/templates/error_document_template.html:5
+msgid "Error"
+msgstr "Erreur"
+
+#: ckan/templates/facets.html:162
+msgid "(facet_item['count'])"
+msgstr "(facet_item['count'])"
+
+#: ckan/templates/js_strings.html:16
+msgid "Checking..."
+msgstr "Vérification..."
+
+#: ckan/templates/js_strings.html:17
+msgid "Type at least two characters..."
+msgstr "Saisissez au moins deux caractères..."
+
+#: ckan/templates/js_strings.html:18
+msgid "This is the current URL."
+msgstr "Ceci est l'URL actuelle."
+
+#: ckan/templates/js_strings.html:19
+msgid "This URL is available!"
+msgstr "Cette URL est disponible !"
+
+#: ckan/templates/js_strings.html:20
+msgid "This URL is already used, please use a different one."
+msgstr "Cette URL est déjà utilisée, merci d'en choisir une autre."
+
+#: ckan/templates/js_strings.html:21
+msgid "Failed to save, possibly due to invalid data "
+msgstr ""
+"Impossible d'enregistrer, probablement en raison de données non-valides"
+
+#: ckan/templates/js_strings.html:22 ckan/templates/group/layout.html:16
+msgid "Add Dataset"
+msgstr "Ajouter un jeu de données"
+
+#: ckan/templates/js_strings.html:23
+msgid "Add Group"
+msgstr "Ajouter un groupe"
+
+#: ckan/templates/js_strings.html:24
+msgid ""
+"You have unsaved changes. Make sure to click 'Save Changes' below before "
+"leaving this page."
+msgstr ""
+"Vous avez des modifications en cours non sauvegardées. Vérifiez que vous "
+"avez bien cliqué sur \"enregistrer les modifications\" avant de quitter "
+"cette page."
+
+#: ckan/templates/js_strings.html:25
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: ckan/templates/js_strings.html:26
+msgid "(no name)"
+msgstr "(pas de nom)"
+
+#: ckan/templates/js_strings.html:27
+msgid "Delete the resource '%name%'?"
+msgstr "Supprimer la ressource '%name%' ?"
+
+#: ckan/templates/js_strings.html:28
+msgid "Preview not available for data type: "
+msgstr "La pré-visualisation n'est pas disponible pour le type de donnée: "
+
+#: ckan/templates/js_strings.html:29
+msgid "Failed to get credentials for storage upload. Upload cannot proceed"
+msgstr ""
+"Echec dans la récupération des habilitations pour télécharger dans l'espace "
+"de stockage. Le téléchargement ne peut pas aboutir."
+
+#: ckan/templates/js_strings.html:30
+msgid "Checking upload permissions ..."
+msgstr "Vérification des permissions de téléchargement..."
+
+#: ckan/templates/js_strings.html:31
+msgid "Uploading file ..."
+msgstr "Téléchargement du fichier..."
+
+#: ckan/templates/js_strings.html:32
+msgid "Data File"
+msgstr "Fichier de données"
+
+#: ckan/templates/js_strings.html:34
+msgid "Visualization"
+msgstr "Visualisation"
+
+#: ckan/templates/js_strings.html:35
+msgid "Image"
+msgstr "Image"
+
+#: ckan/templates/js_strings.html:36
+msgid "Metadata"
+msgstr "Métadonnées"
+
+#: ckan/templates/js_strings.html:37
+msgid "Documentation"
+msgstr "Documentation"
+
+#: ckan/templates/js_strings.html:38
+msgid "Code"
+msgstr "Code"
+
+#: ckan/templates/js_strings.html:39
+msgid "Example"
+msgstr "Exemple"
+
+#: ckan/templates/js_strings.html:44 ckan/templates/storage/index.html:6
+#: ckan/templates/storage/index.html:15 ckan/templates/storage/success.html:6
+msgid "Upload"
+msgstr "Chargement"
+
+#: ckan/templates/js_strings.html:50
+msgid "Resource Type"
+msgstr "Type de ressource"
+
+#: ckan/templates/js_strings.html:51
+msgid "DataStore enabled"
+msgstr "Entrepôt de données disponible"
+
+#: ckan/templates/js_strings.html:52
+msgid "Size (Bytes)"
+msgstr "Taille (octets)"
+
+#: ckan/templates/js_strings.html:53
+msgid "Mimetype"
+msgstr "Type mime"
+
+#: ckan/templates/js_strings.html:54
+msgid "Created"
+msgstr "Créé"
+
+#: ckan/templates/js_strings.html:55
+msgid "Last Modified"
+msgstr "date de dernière modification"
+
+#: ckan/templates/js_strings.html:56
+msgid "Mimetype (Inner)"
+msgstr "type mime (interne)"
+
+#: ckan/templates/js_strings.html:57
+msgid "Hash"
+msgstr "Somme de contrôle"
+
+#: ckan/templates/js_strings.html:58
+msgid "ID"
+msgstr "ID"
+
+#: ckan/templates/js_strings.html:59
+msgid "Done"
+msgstr "Fait"
+
+#: ckan/templates/js_strings.html:60
+msgid "This resource has unsaved changes."
+msgstr "Cette ressource comporte des modifications non sauvegardées"
+
+#: ckan/templates/js_strings.html:63
+msgid "e.g. csv, html, xls, rdf, ..."
+msgstr "par exemple csv, html, xls, rdf, ..."
+
+#: ckan/templates/js_strings.html:65
+msgid "Extra Fields"
+msgstr "Champs additionnels"
+
+#: ckan/templates/js_strings.html:66
+msgid "Add Extra Field"
+msgstr "Ajout de champs additionnels"
+
+#: ckan/templates/js_strings.html:67
+msgid "Delete Resource"
+msgstr "Suppression de ressource"
+
+#: ckan/templates/js_strings.html:68
+msgid "You can use %aMarkdown formatting%b here."
+msgstr "Vous pouvez utiliser la %asyntaxe wiki%b ici."
+
+#: ckan/templates/js_strings.html:69
+msgid "Should a %aDataStore table and Data API%b be enabled for this resource?"
+msgstr ""
+"Est ce que la %atable de l'entrepôt de données et l'API de données%b doit "
+"être actionné pour cette ressource?"
+
+#: ckan/templates/js_strings.html:70
+#, python-format
+msgid ""
+"Dates are in %aISO Format%b — eg. %c2012-12-25%d or %c2010-05-31T14:30%d."
+msgstr ""
+"Les dates sont au %aformat ISO 8601%b - par exemple %c2012-12-25%d ou %c2010-"
+"05-31T14:30%d."
+
+#: ckan/templates/js_strings.html:71
+msgid "Data File (Uploaded)"
+msgstr "Ficher de données (téléchargé)"
+
+#: ckan/templates/layout_base.html:142
+msgid "Twitter @ckanproject"
+msgstr "Twitter @ckanproject"
+
+#: ckan/templates/layout_base.html:147
+msgid "Contact Us"
+msgstr "Nous contacter"
+
+#: ckan/templates/layout_base.html:150
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+#: ckan/templates/layout_base.html:156
+msgid "Sections"
+msgstr "Sections"
+
+#: ckan/templates/layout_base.html:180
+#: ckan/templates/authorization_group/index.html:6
+#: ckan/templates/authorization_group/index.html:7
+#: ckan/templates/authorization_group/layout.html:27
+msgid "Authorization Groups"
+msgstr "Groupes d'autorisation"
+
+#: ckan/templates/layout_base.html:185
+msgid "Site Admin"
+msgstr "Site d'administrateur"
+
+#: ckan/templates/activity_streams/added_tag.html:8
+msgid "{actor} added the tag {object} to the dataset {target}"
+msgstr "{actor} a ajouté le tag {object} au jeu de données {target}"
+
+#: ckan/templates/activity_streams/changed_group.html:8
+msgid "{actor} updated the group {object}"
+msgstr "{actor} a mis à jour le groupe {object}"
+
+#: ckan/templates/activity_streams/changed_package.html:8
+msgid "{actor} updated the dataset {object}"
+msgstr "{actor} a mis à jour le jeu de donneés {object}"
+
+#: ckan/templates/activity_streams/changed_package_extra.html:8
+msgid "{actor} changed the extra {object} of the dataset {target}"
+msgstr "{actor} a changé le {object} additionnel du jeu de données {target}"
+
+#: ckan/templates/activity_streams/changed_resource.html:8
+msgid "{actor} updated the resource {object} in the dataset {target}"
+msgstr "{actor} a mis à jour la ressource {object} du jeu de données {target}"
+
+#: ckan/templates/activity_streams/changed_user.html:8
+msgid "{actor} updated their profile"
+msgstr "{actor} a mis à jour son profil"
+
+#: ckan/templates/activity_streams/deleted_group.html:8
+msgid "{actor} deleted the group {object}"
+msgstr "{actor} a supprimé le groupe {object}"
+
+#: ckan/templates/activity_streams/deleted_package.html:8
+msgid "{actor} deleted the dataset {object}"
+msgstr "{actor} a supprimé le jeu de données {object}"
+
+#: ckan/templates/activity_streams/deleted_package_extra.html:8
+msgid "{actor} deleted the extra {object} from the dataset {target}"
+msgstr "{actor} a supprimé le {object} additionnel du jeu de données {target}"
+
+#: ckan/templates/activity_streams/deleted_resource.html:8
+msgid "{actor} deleted the resource {object} from the dataset {target}"
+msgstr "{actor} a supprimé la ressource {object} du jeu de données {target}"
+
+#: ckan/templates/activity_streams/new_group.html:8
+msgid "{actor} created the group {object}"
+msgstr "{actor} a créé le groupe {object}"
+
+#: ckan/templates/activity_streams/new_package.html:8
+msgid "{actor} created the dataset {object}"
+msgstr "{actor} a crée le jeu de données {object}"
+
+#: ckan/templates/activity_streams/new_package_extra.html:8
+msgid "{actor} added the extra {object} to the dataset {target}"
+msgstr "{actor} a ajouté le {object} additionnel au jeu de données {target}"
+
+#: ckan/templates/activity_streams/new_resource.html:8
+msgid "{actor} added the resource {object} to the dataset {target}"
+msgstr "{actor} a ajouté la ressource {object} au jeu de données {target}"
+
+#: ckan/templates/activity_streams/new_user.html:8
+msgid "{actor} signed up"
+msgstr "{actor} s'est authentifié"
+
+#: ckan/templates/activity_streams/removed_tag.html:8
+msgid "{actor} removed the tag {object} from the dataset {target}"
+msgstr "{actor} a supprimé le tag {object} du jeu de données {target}"
+
+#: ckan/templates/admin/authz.html:6 ckan/templates/admin/authz.html:7
+msgid "Administration - Authorization"
+msgstr "Administration - Autorisation"
+
+#: ckan/templates/admin/authz.html:10
+#: ckan/templates/authorization_group/authz.html:9
+#: ckan/templates/group/authz.html:9 ckan/templates/package/authz.html:9
+msgid "Update Existing Roles"
+msgstr "Modifier les rôles existants"
+
+#: ckan/templates/admin/authz.html:20
+#: ckan/templates/authorization_group/authz.html:18
+#: ckan/templates/group/authz.html:19 ckan/templates/package/authz.html:19
+msgid "Add Roles for Any User"
+msgstr "Ajouter un rôle pour n'importe quel utilisateur"
+
+#: ckan/templates/admin/authz.html:23 ckan/templates/admin/authz.html:41
+#: ckan/templates/group/authz.html:22 ckan/templates/group/authz.html:40
+#: ckan/templates/package/authz.html:22 ckan/templates/package/authz.html:40
+msgid "Add Role"
+msgstr "Ajouter un rôle"
+
+#: ckan/templates/admin/authz.html:29
+#: ckan/templates/authorization_group/authz.html:27
+msgid "Existing Roles for Authorization Groups"
+msgstr "Rôles existants pour les groupes d'autorisation"
+
+#: ckan/templates/admin/authz.html:37
+#: ckan/templates/authorization_group/authz.html:36
+#: ckan/templates/group/authz.html:36 ckan/templates/package/authz.html:36
+msgid "Add Roles for Any Authorization Group"
+msgstr "Ajouter des rôles pour les groupes d'autorisation"
+
+#: ckan/templates/admin/index.html:6 ckan/templates/admin/index.html:7
+msgid "Administration Dashboard"
+msgstr "Tableau de bord d'administration"
+
+#: ckan/templates/admin/index.html:10
+msgid "Current Sysadmins"
+msgstr "administrateur système actuel"
+
+#: ckan/templates/admin/index.html:11
+msgid "You can change sysadmins on the"
+msgstr "Vous pouvez modifier les administrateurs systèmes dans"
+
+#: ckan/templates/admin/index.html:13
+msgid "authorization page"
+msgstr "la page d'autorisation"
+
+#: ckan/templates/admin/layout.html:16
+msgid "Trash"
+msgstr "Poubelle"
+
+#: ckan/templates/admin/trash.html:6 ckan/templates/admin/trash.html:7
+msgid "Administration - Trash"
+msgstr "Administration - poubelle"
+
+#: ckan/templates/admin/trash.html:10
+msgid "Deleted Revisions"
+msgstr "Révisions supprimées"
+
+#: ckan/templates/admin/trash.html:21 ckan/templates/admin/trash.html:39
+msgid "Purge them all (forever and irreversibly)"
+msgstr "Purgez les toutes (pour toujours et de manière irréversible)"
+
+#: ckan/templates/admin/trash.html:27
+msgid "Deleted Datasets"
+msgstr "Supprimez des jeux de données"
+
+#: ckan/templates/authorization_group/authz.html:5
+msgid "- Authorization - AuthorizationGroups"
+msgstr "- Autorisation - GroupesAutorisation"
+
+#: ckan/templates/authorization_group/authz.html:6
+#: ckan/templates/group/authz.html:5 ckan/templates/group/authz.html:6
+#: ckan/templates/package/authz.html:5 ckan/templates/package/authz.html:6
+msgid "Authorization:"
+msgstr "Autorisation:"
+
+#: ckan/templates/authorization_group/authz.html:22
+#: ckan/templates/authorization_group/authz.html:40
+msgid "Add"
+msgstr "Ajouter"
+
+#: ckan/templates/authorization_group/edit.html:5
+msgid "- Edit - Authorization Groups"
+msgstr "- Modifier - groupes d'autorisation"
+
+#: ckan/templates/authorization_group/edit_form.html:23
+msgid "There are no users currently in this group."
+msgstr "Il n'y a actuellement aucun utilisateur dans ce groupe"
+
+#: ckan/templates/authorization_group/index.html:10
+#, python-format
+msgid "There are [1:%(item_count)s] authorization groups."
+msgstr "Il y a [1:%(item_count)s] groupes d'autorisation."
+
+#: ckan/templates/authorization_group/layout.html:11
+#: ckan/templates/revision/layout.html:9
+msgid "List"
+msgstr "Liste"
+
+#: ckan/templates/authorization_group/layout.html:28
+msgid ""
+"Instead of specifying the privileges of specific users on a dataset or "
+"group,\n"
+"          you can also specify a set of users that will share the same "
+"rights. To do that, an    \n"
+"          [1:authorization group] can be set-up and users can be added to it."
+msgstr ""
+"Au lieu de définir les droits d'utilisateurs particuliers sur un jeu de "
+"données ou un groupe,\n"
+"          Vous pouvez également définir un ensemble d'utilisateurs qui "
+"partageront les mêmes droits. Pour achever cela, un    \n"
+"          [1:groupe d'autorisation] peut être créé et des utilisateurs "
+"peuvent lui être ajoutés."
+
+#: ckan/templates/authorization_group/layout.html:32
+msgid "To create a new authorization group, please first [1:login]."
+msgstr ""
+"Pour créer un nouveau groupe d'autorisation, merci de [1:login] d'abord."
+
+#: ckan/templates/authorization_group/layout.html:36
+msgid "Create a new authorization group"
+msgstr "Créer un nouveau groupe d'autorisation"
+
+#: ckan/templates/authorization_group/new.html:5
+msgid "New - Authorization Groups"
+msgstr "Nouveau - groupes d'autorisation"
+
+#: ckan/templates/authorization_group/new.html:6
+msgid "New Authorization Group"
+msgstr "Nouveau groupe d'autorisation"
+
+#: ckan/templates/authorization_group/read.html:6
+msgid "- Authorization Groups"
+msgstr "- Groupes d'autorisation"
+
+#: ckan/templates/authorization_group/read.html:10
+msgid "Members"
+msgstr "Membres"
+
+#: ckan/templates/authorization_group/read.html:11
+#, python-format
+msgid "There are %(item_count)s users in this authorization group."
+msgstr "Il y a %(item_count)s utilisateurs dans ce groupe d'autorisation."
+
+#: ckan/templates/group/authz.html:28 ckan/templates/package/authz.html:28
+msgid "Update Existing Roles for Authorization Groups"
+msgstr "Modifier Les rôles existants pour ces groupes d'autorisation"
+
+#: ckan/templates/group/edit_form.html:17
+#: ckan/templates/group/new_group_form.html:114
+msgid "There are no datasets currently in this group."
+msgstr "Il n'y a actuellement aucun jeu de données dans ce groupe"
+
+#: ckan/templates/group/history.html:54
+msgid "Group History"
+msgstr "Historique du groupe"
+
+#: ckan/templates/group/index.html:6 ckan/templates/group/index.html:7
+msgid "Groups of Datasets"
+msgstr "Groupe de jeu de données"
+
+#: ckan/templates/group/index.html:11
+msgid "What Are Groups?"
+msgstr "Qu'est ce qu'un groupe ?"
+
+#: ckan/templates/group/index.html:12
+msgid ""
+"Whilst tags are great at collecting datasets together, there are occasions "
+"when you want to restrict users from editing a collection. A [1:group] can "
+"be set-up to specify which users have permission to add or remove datasets "
+"from it."
+msgstr ""
+"Alors que les tags sont utiles pour rassembler des jeux de données en "
+"collection, il peut y avoir des cas où vous pouvez souhaiter empêcher les "
+"utilisateurs de modifier une collection. Un [1:groupe] peut être créé pour "
+"définir quels sont les utilisateurs qui ont le droit d'ajouter ou de "
+"supprimer des jeux de données d'une collection."
+
+#: ckan/templates/group/layout.html:18
+msgid "New Dataset..."
+msgstr "Nouveau jeu de données..."
+
+#: ckan/templates/group/layout.html:19
+msgid "Existing Dataset..."
+msgstr "Jeux de données existant..."
+
+#: ckan/templates/group/layout.html:32
+msgid "List Groups"
+msgstr "Liste des groupes"
+
+#: ckan/templates/group/layout.html:35
+msgid "Add a Group"
+msgstr "Ajouter un groupe"
+
+#: ckan/templates/group/layout.html:38
+msgid "Login to Add a Group"
+msgstr "Identification nécessaire pour ajouter un groupe"
+
+#: ckan/templates/group/new.html:5 ckan/templates/group/new.html:6
+msgid "Add A Group"
+msgstr "Ajouter un groupe"
+
+#: ckan/templates/group/new_group_form.html:47
+msgid "Image URL:"
+msgstr "URL de l'image:"
+
+#: ckan/templates/group/new_group_form.html:50
+msgid "The URL for the image that is associated with this group."
+msgstr "L'URL de l'image qui est associée avec ce groupe."
+
+#: ckan/templates/home/about.html:14
+msgid ""
+"What was the [1:average price] of a house in the UK in 1935? When will "
+"India's projected population [2:overtake] that of China? Where can you see "
+"[3:publicly-funded art] in Seattle? Data to answer many, many questions like "
+"these is out there on the Internet somewhere - but it is not always easy to "
+"find."
+msgstr ""
+"Quel était le [1:prix moyen ] d'une maison en France en 1935? Quand est ce "
+"que la population estimée de l'Inde [2:dépassera] celle de la Chine? Où "
+"pouvez-vous voir de [3:l'art subventionné] à Amsterdam? Les données pour "
+"répondre à beaucoup, beaucoup de questions comme celles-ci est disponible "
+"quelque part sur Internet - mais ce n'est pas toujours facile de trouver les "
+"réponses."
+
+#: ckan/templates/home/about.html:16
+#, python-format
+msgid ""
+"%(site_title)s is a community-run catalogue of useful sets of data on the "
+"Internet. You can collect links here to data from around the web for "
+"yourself and others to use, or search for data that others have collected. "
+"Depending on the type of data (and its conditions of use), %(site_title)s "
+"may also be able to store a copy of the data or host it in a database, and "
+"provide some basic visualisation tools."
+msgstr ""
+"%(site_title)s est un catalogue communautaire de jeux de données utiles "
+"disponibles sur Internet. Vous pouvez collecter ici des liens vers des "
+"données provenant du monde entier pour votre utilisation ou celle d'autrui, "
+"ou rechercher des jeux de données que d'autres ont collectés. Suivant le "
+"type de données (et de ses conditions d'utilisation), %(site_title)s est "
+"aussi capable de stocker une copie des données ou de les héberger dans une "
+"base de données, et de fournir des outils simples de visualisation."
+
+#: ckan/templates/home/about.html:23
+msgid "How it works"
+msgstr "Comme cela fonctionne"
+
+#: ckan/templates/home/about.html:25
+msgid ""
+"This site is running a powerful piece of open-source data cataloguing "
+"software called [1:CKAN], written and maintained by the [2:Open Knowledge "
+"Foundation]. Each 'dataset' record on CKAN contains a description of the "
+"data and other useful information, such as what formats it is available in, "
+"who owns it and whether it is freely available, and what subject areas the "
+"data is about. Other users can improve or add to this information (CKAN "
+"keeps a fully versioned history)."
+msgstr ""
+"Ce site utilise une brique puissante d'une application de catalogage de "
+"données open-source appelé  [1:CKAN], écrit et maintenu par la [2:Fondation "
+"Open Knowledge]. Chaque enregistrement de 'jeu de données' dans CKAN "
+"contient une description des données et d'autres informations utiles, telles "
+"que les formats disponibles, le producteur, et si elles sont librement "
+"disponibles, et quels sont les sujets dont elles traitent. D'autres "
+"utilisateurs peuvent améliorer ou ajouter à ces informations (CKAN conserve "
+"un historique complet des modifications)."
+
+#: ckan/templates/home/about.html:27
+msgid ""
+"CKAN powers a number of data catalogues on the Internet. [1:The Data Hub] is "
+"an openly editable open data catalogue, in the style of Wikipedia. The UK "
+"Government uses CKAN to run [2:data.gov.uk], which currently lists 8,000 "
+"government datasets. Official public data from most European countries is "
+"listed in a CKAN catalogue at [3:publicdata.eu]. There is a comprehensive "
+"list of catalogues like these around the world at [4:datacatalogs.org], "
+"which is itself powered by CKAN."
+msgstr ""
+"CKAN est à la base d'un certain nombre de catalogues de données sur "
+"Internet. [1:The Data Hub] est une catalogue ouvert de données ouvertes, "
+"dans le style de Wikipedia. Le gouvernement britannique uutilise CKAN pour "
+"[2:data.gov.uk], qui liste actuellement 8,000 jeux de données "
+"gouvernementaux. Les données publiques officielles de la plupart des pays "
+"européens sont listées dans le ctalogue CKAN disponible sur [3:publicdata."
+"eu]. Il existe également une liste de catalogue de ce type disponibles dans "
+"le monde disponible sur [4:datacatalogs.org], qui est lui-même propulsé par "
+"CKAN."
+
+#: ckan/templates/home/about.html:30
+msgid "Open data and the Open Knowledge Foundation"
+msgstr "Données ouvertes et Fondation pour la Connaissance ouverte"
+
+#: ckan/templates/home/about.html:32
+#, python-format
+msgid ""
+"Most of the data indexed at %(site_title)s is openly licensed, meaning "
+"anyone is free to use or re-use it however they like. Perhaps someone will "
+"take that nice dataset of a city's public art that you found, and add it to "
+"a tourist map - or even make a neat app for your phone that'll help you find "
+"artworks when you visit the city. Open data means more enterprise, "
+"collaborative science and transparent government. You can read more about "
+"open data in the [1:Open Data Manual]."
+msgstr ""
+"La plupart des données indexées sur %(site_title)s est fourni avec une "
+"licence ouverteis, ce qui signifie que n'importe qui est libre de l'utiliser "
+"et de la ré-utiliser comme bon lui semble. Peut être que quelqu'un va "
+"prendre ce beau jeu de données d'art public d'une ville que vous avez "
+"trouvé, et l'ajouter à une carte touristique - ou même réaliser une belle "
+"application pour votre téléphone qui vous aidera à trouver des oeuvres d'art "
+"lorsque vous visiterez la ville. Les données ouvertes signifient plus "
+"d'entreprises, de sciences collaboratives et de gouvernements transparents. "
+"Vous pouvez en apprendre plus sur les données ouvertes en consultant le  [1:"
+"guide des données ouvertes]."
+
+#: ckan/templates/home/about.html:34
+msgid ""
+"The [1:Open Knowledge Foundation] is a non-profit organisation [2:promoting] "
+"open knowledge: writing and improving CKAN is one of the ways we do that. If "
+"you want to get involved with its design or code, join the discussion or "
+"development [3:mailing lists], or take a look at the [4:OKFN] site to find "
+"out about our other projects."
+msgstr ""
+"La [1:Fondation pour la Connaissance Ouverte] est une organisation à but non "
+"lucratif [2:faisant la promotion] la connaissance ouverte: écrire et "
+"améliorer CKAN est un des moyens de parvenir à ce but. Si vous souhaitez "
+"vous impliquer dans son apparence ou son code source, rejoignez les [3:"
+"listes de diffusion] consacrées à la discussion ou au développement, ou "
+"jetez une oeil sur le site d' [4:OKFN] pour en savoir plus sur nos autres "
+"projets."
+
+#: ckan/templates/home/index.html:9
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: ckan/templates/home/index.html:19
+msgid "Find data"
+msgstr "Trouver des données"
+
+#: ckan/templates/home/index.html:24
+msgid "contains"
+msgstr "contient"
+
+#: ckan/templates/home/index.html:24
+msgid ""
+"that you can \n"
+"            browse, learn about and download."
+msgstr ""
+"Que vous pouvez \n"
+"            parcourir, apprendre de et télécharger."
+
+#: ckan/templates/home/index.html:32
+msgid "Share data"
+msgstr "Partager des données"
+
+#: ckan/templates/home/index.html:32
+msgid ""
+"Add your own datasets to share them with others and\n"
+"        to find other people interested in your data."
+msgstr ""
+"Ajouter vos propres jeux de données pour les partager avec d'autres et \n"
+"        pour trouver d'autres personnes intéressés par vos données."
+
+#: ckan/templates/home/index.html:38
+msgid "Create a dataset »"
+msgstr "Créer un jeu de données »"
+
+#: ckan/templates/home/index.html:40
+msgid "Sign up »"
+msgstr "Inscription »"
+
+#: ckan/templates/home/index.html:49
+msgid "Collaborate"
+msgstr "Collaborer"
+
+#: ckan/templates/home/index.html:49
+msgid ""
+"Find out more about working with open data by exploring \n"
+"        these resources:"
+msgstr ""
+"Découvrez comment exploiter les données ouvertes en explorant \n"
+"        ces ressources:"
+
+#: ckan/templates/home/index.html:54
+msgid "GetTheData.org"
+msgstr "GetTheData.org"
+
+#: ckan/templates/home/index.html:55
+msgid "DataPatterns.org"
+msgstr "DataPatterns.org"
+
+#: ckan/templates/home/index.html:56
+msgid "Open Data Manual"
+msgstr "Manuel Données ouvertes"
+
+#: ckan/templates/home/index.html:64
+msgid "Who else is here?"
+msgstr "Qui est connecté ? "
+
+#: ckan/templates/package/comments.html:5
+#: ckan/templates/package/history.html:6
+msgid "- Datasets - History"
+msgstr " - Jeux de données - Historique"
+
+#: ckan/templates/package/edit_form.html:13
+msgid "Edit summary (briefly describe the changes you have made)"
+msgstr "Modifier le résumé (décrivez brièvement les changement effectués)"
+
+#: ckan/templates/package/edit_form.html:17
+#: ckan/templates/package/edit_form.html:20
+#: ckan/templates/package/new_package_form.html:294
+#: ckan/templates/package/new_package_form.html:297
+#: ckan/templates/revision/read.html:36
+msgid "Author:"
+msgstr "Auteur :"
+
+#: ckan/templates/package/edit_form.html:21
+msgid "Since you have not signed in this will just be your IP address."
+msgstr ""
+"Comme vous ne vous êtes pas identifiés seule votre adresse IP apparaîtra"
+
+#: ckan/templates/package/edit_form.html:23
+msgid "Click here to sign in"
+msgstr "Cliquez ici pour vous identifier"
+
+#: ckan/templates/package/edit_form.html:23
+msgid "before saving (opens in new window)."
+msgstr "avant d'enregistrer (ouvre une nouvelle fenêtre)"
+
+#: ckan/templates/package/edit_form.html:31
+msgid ""
+"[1:Important:] By submitting content, you agree to release your "
+"contributions under the [2:Open Database License]. Please [3:refrain] from "
+"editing this page if you are [4:not] happy to do this."
+msgstr ""
+"[1:Important:] En soumettant du contenu, vous acceptez de publier vos "
+"contributions sous [2:Licence Base de données Ouvertes]. Merci de vous  [3:"
+"restreindre] de modifier cette page si vous n'êtes [4:pas] d'accord."
+
+#: ckan/templates/package/editresources.html:6
+msgid "- Edit Resources - Datasets"
+msgstr "- Mettre à jour les ressources- jeux de données"
+
+#: ckan/templates/package/editresources.html:7
+msgid "Edit Resources:"
+msgstr "Mettre à jour les ressources:"
+
+#: ckan/templates/package/form_extra_fields.html:12
+msgid "New key"
+msgstr "Nouvelle clé"
+
+#: ckan/templates/package/form_extra_fields.html:26
+msgid "with value"
+msgstr "avec valeur"
+
+#: ckan/templates/package/history.html:37
+#, python-format
+msgid "Read dataset as of %s"
+msgstr "Lecture du jeu de données en tant que %s"
+
+#: ckan/templates/package/new.html:6
+msgid "Add - Datasets"
+msgstr "Ajouter - Jeux de données"
+
+#: ckan/templates/package/new.html:7
+msgid "Add a Dataset"
+msgstr "Ajouter un jeu de données"
+
+#: ckan/templates/package/new_package_form.html:96
+msgid "Member of:"
+msgstr "Membre de:"
+
+#: ckan/templates/package/new_package_form.html:109
+msgid "Add to:"
+msgstr "Ajouter à:"
+
+#: ckan/templates/package/new_package_form.html:134
+msgid "Add Resources"
+msgstr "Ajouter des ressources"
+
+#: ckan/templates/package/new_package_form.html:234
+msgid ""
+"Adding custom fields to the dataset such as \"location:uk\" can help users "
+"find it in the search engine. This data will also appear under"
+msgstr ""
+"Ajouter des champs spécifiques au jeu de données comme \"localisation:France"
+"\" peut aider les utilisateurs à le trouver via le moteur de recherche. "
+"Cette donnée apparaitra également sous"
+
+#: ckan/templates/package/new_package_form.html:234
+msgid "when viewing the dataset."
+msgstr "en consultant le jeu de données"
+
+#: ckan/templates/package/new_package_form.html:272
+msgid "This dataset is"
+msgstr "Ce jeu de données est"
+
+#: ckan/templates/package/new_package_form.html:285
+msgid "Summary"
+msgstr "résumé"
+
+#: ckan/templates/package/new_package_form.html:287
+msgid "Briefly describe the changes you have made..."
+msgstr "Décrivez brièvement les changements que vous avez fait..."
+
+#: ckan/templates/package/read.html:99
+#: ckan/templates/package/related_list.html:45
+msgid "RDF/Turtle"
+msgstr "RDF/Turtle"
+
+#: ckan/templates/package/read_core.html:94
+#, python-format
+msgid ""
+"[1:Dataset page] on \n"
+"            [2:%(harvest_catalogue_name)s]"
+msgstr ""
+"[1:page du jeux de données] sur\n"
+"[2:%(harvest_catalogue_name)s]"
+
+#: ckan/templates/package/related_list.html:17
+#: ckan/templates/package/related_list.html:21
+msgid "- Related"
+msgstr "- Relié"
+
+#: ckan/templates/package/related_list.html:26
+msgid "Related items"
+msgstr "objets reliés"
+
+#: ckan/templates/package/related_list.html:26
+msgid "Add related item"
+msgstr "ajouter un objet relié"
+
+#: ckan/templates/package/related_list.html:28
+msgid "There are no related items here yet"
+msgstr "Il n'y a pas d'éléments reliés actuellement"
+
+#: ckan/templates/package/related_list.html:29
+msgid ", why not"
+msgstr ", pourquoi ne pas"
+
+#: ckan/templates/package/related_list.html:29
+msgid "add one"
+msgstr "en ajouter un"
+
+#: ckan/templates/package/resources.html:2
+msgid "Someresources"
+msgstr "Quelques ressources"
+
+#: ckan/templates/package/search_form.html:9
+msgid "Search..."
+msgstr "Recherche..."
+
+#: ckan/templates/revision/diff.html:5
+msgid "Differences - Revisions"
+msgstr "Différences - Révisions"
+
+#: ckan/templates/revision/diff.html:9
+msgid "Revision Differences -"
+msgstr "Différences entre les révisions -"
+
+#: ckan/templates/revision/diff.html:21
+msgid "From:"
+msgstr "Depuis:"
+
+#: ckan/templates/revision/diff.html:25
+msgid "To:"
+msgstr "vers:"
+
+#: ckan/templates/revision/diff.html:32
+msgid "Difference"
+msgstr "Différence"
+
+#: ckan/templates/revision/diff.html:40
+msgid "No differences"
+msgstr "Pas de différences"
+
+#: ckan/templates/revision/list.html:5 ckan/templates/revision/list.html:6
+msgid "Revision History"
+msgstr "Historique des révisions"
+
+#: ckan/templates/revision/list.html:10
+msgid ""
+"Track the most recent changes to the system, with most recent\n"
+"    changes first."
+msgstr ""
+"Enregistre les changements les plus récents du système, avec les changement "
+"les plus récents\n"
+"    en premier."
+
+#: ckan/templates/revision/read.html:6
+msgid "Revision:"
+msgstr "Révision :"
+
+#: ckan/templates/revision/read.html:10
+msgid "Revision Actions"
+msgstr "Actions de révision"
+
+#: ckan/templates/revision/read.html:23
+#: ckan/templates/snippets/revision_list.html:39
+msgid "Undelete"
+msgstr "Restaurer"
+
+#: ckan/templates/revision/read.html:39
+msgid "Timestamp:"
+msgstr "Timestamp :"
+
+#: ckan/templates/revision/read.html:41
+msgid "Log Message:"
+msgstr "Message de log :"
+
+#: ckan/templates/revision/read.html:44
+msgid "Changes"
+msgstr "Modifications"
+
+#: ckan/templates/revision/read.html:54
+msgid "Datasets' Tags"
+msgstr "Tags des jeux de données"
+
+#: ckan/templates/revision/read.html:57
+msgid "Dataset -"
+msgstr "Jeu de données - "
+
+#: ckan/templates/revision/read.html:58
+msgid ""
+",\n"
+"      Tag -"
+msgstr ""
+",\n"
+"      Tag -"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:13
+msgid "Embed Data Viewer"
+msgstr "Incorporez le visualiseur de données"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:19
+msgid "Embed this view"
+msgstr "Incorporez cette vue"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:19
+msgid "by copying this into your webpage:"
+msgstr "en copiant ceci dans votre page web:"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:21
+msgid "Choose width and height in pixels:"
+msgstr "Choisissez la largeur et la hauteur en pixels"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:22
+msgid "Width:"
+msgstr "largeur:"
+
+#: ckan/templates/snippets/data-viewer-embed-dialog.html:24
+msgid "Height:"
+msgstr "hauteur:"
+
+#: ckan/templates/snippets/revision_list.html:11
+msgid "Entity"
+msgstr "Entité"
+
+#: ckan/templates/storage/index.html:17
+msgid ""
+"This upload form is valid for a limited time (usually 1h or so). If the\n"
+"    form expires please reload the page."
+msgstr ""
+"Ce formulaire de transfert est valable pour une durée limitée "
+"(habituellement 1 heure). Si le\n"
+"formulaire expire veuillez recharger la page."
+
+#: ckan/templates/storage/index.html:33
+msgid "File:"
+msgstr "Fichier:"
+
+#: ckan/templates/storage/success.html:12
+msgid "Upload - Successful"
+msgstr "Transfert - réussi"
+
+#: ckan/templates/storage/success.html:14
+msgid "Filed uploaded to:"
+msgstr "Fichier transféré à :"
+
+#: ckan/templates/storage/success.html:17
+msgid "Upload another »"
+msgstr "transférér un autre >>"
+
+#: ckan/templates/tag/index.html:20 ckan/templates/tag/index.html:23
+msgid "There are"
+msgstr "Il y a"
+
+#: ckan/templates/tag/index.html:21
+msgid "results for ‘"
+msgstr "résultats pour \""
+
+#: ckan/templates/tag/index.html:24
+msgid "results for tags."
+msgstr "résultats pour les tags."
+
+#: ckan/templates/tag/index.html:34
+msgid "Clear search"
+msgstr "supprimer la recherche"
+
+#: ckan/templates/tag/index.html:34
+msgid "and see all tags."
+msgstr "et voir tous les tags."
+
+#: ckan/templates/tag/read.html:6
+msgid "- Tags"
+msgstr "- Tags"
+
+#: ckan/templates/tag/read.html:7
+msgid "Tag:"
+msgstr "Tag :"
+
+#: ckan/templates/tag/read.html:10
+#, python-format
+msgid "There are %(count)s datasets tagged with [1:%(tagname)s]:"
+msgstr "Il y a %(count)s jeux de données taggés avec [1:%(tagname)s]:"
+
+#: ckan/templates/user/edit.html:6
+msgid "- Edit - User"
+msgstr "- Modifier - Utilisateur"
+
+#: ckan/templates/user/edit.html:7
+msgid "Edit User:"
+msgstr "Modifier l'utilisateur :"
+
+#: ckan/templates/user/edit_user_form.html:21
+msgid "Full name"
+msgstr "Nom complet"
+
+#: ckan/templates/user/edit_user_form.html:27
+msgid "E-mail"
+msgstr "email"
+
+#: ckan/templates/user/edit_user_form.html:33
+msgid "OpenId"
+msgstr "OpenId"
+
+#: ckan/templates/user/edit_user_form.html:41
+msgid "A little about you..."
+msgstr "Quelques mot à propos de vous..."
+
+#: ckan/templates/user/edit_user_form.html:46
+msgid "Change your password"
+msgstr "Modifier votre mot de passe"
+
+#: ckan/templates/user/edit_user_form.html:48
+#: ckan/templates/user/new_user_form.html:40
+msgid "Password"
+msgstr "mot de passe"
+
+#: ckan/templates/user/edit_user_form.html:54
+#: ckan/templates/user/new_user_form.html:47
+msgid "Password (repeat)"
+msgstr "mot de passe (répétez)"
+
+#: ckan/templates/user/edit_user_form.html:61
+msgid "Change your username"
+msgstr "Modifier le nom d'utilisateur"
+
+#: ckan/templates/user/edit_user_form.html:63
+msgid "Username"
+msgstr "nom d'utilisateur"
+
+#: ckan/templates/user/layout.html:11
+msgid "My Profile"
+msgstr "Mon profil"
+
+#: ckan/templates/user/layout.html:12
+msgid "Edit Profile"
+msgstr "Modifier le profil"
+
+#: ckan/templates/user/layout.html:13
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: ckan/templates/user/layout.html:17
+msgid "View Profile"
+msgstr "Voir le profile"
+
+#: ckan/templates/user/layout.html:21
+msgid "Register Account"
+msgstr "Enregistrer un compte"
+
+#: ckan/templates/user/list.html:15
+#, python-format
+msgid "[1:%(item_count)s] users found."
+msgstr "[1:%(item_count)s] utilisateur(s) trouvé(s)."
+
+#: ckan/templates/user/list.html:24
+msgid "Sort by name"
+msgstr "Trier par nom"
+
+#: ckan/templates/user/list.html:27
+msgid "Sort by edits"
+msgstr "Trier par modifications"
+
+#: ckan/templates/user/list.html:40
+msgid "Member for"
+msgstr "Membre pour"
+
+#: ckan/templates/user/login.html:47
+msgid "Login using Open ID"
+msgstr "Se connecter en utilisant Open ID"
+
+#: ckan/templates/user/login.html:48
+msgid ""
+"NB: To set-up your OpenID for this site, you first need to [1:Register] and "
+"then edit your Profile to provide your OpenID."
+msgstr ""
+"NB: Pour paramétrer votre compte OpenID pour ce site, vous devez d'abord [1: "
+"vous enregistrer] et ensuite metter à jour votre profil pour fournir votre "
+"OpenID."
+
+#: ckan/templates/user/login.html:50
+msgid "Please click your account provider:"
+msgstr "Merci de sélectionner votre fournisseur de compte :"
+
+#: ckan/templates/user/login.html:54
+msgid "OpenID Identifier:"
+msgstr "Identifiant OpenID"
+
+#: ckan/templates/user/login.html:58
+msgid "Don't have an OpenID?"
+msgstr "Vous n'avez pas d'OpenID ?"
+
+#: ckan/templates/user/login.html:59
+msgid ""
+"OpenID is service that allows you to log-on to many different websites\n"
+"          using a single identity. Find out [1:more\n"
+"          about OpenID] and [2:how to get an\n"
+"          OpenID enabled account]. Probably the simplest way is sign up with "
+"a\n"
+"          free OpenID provider such as [3:https://www.myopenid.com/]."
+msgstr ""
+"OpenID est un service qui permet de s'identifier avec une identité unique "
+"dans des sites web différents. Apprenez en [1:plus sur l'OpenID] et [2:"
+"comment obtenir un compte openID fonctionnel]. Le moyen le plus simple est "
+"probablement de vous inscrire avec un fournisseur d'OpenID gratuit comme [3:"
+"https://www.myopenid.com/]."
+
+#: ckan/templates/user/login.html:69
+msgid "Sign in with OpenID"
+msgstr "identifiez-vous avec OpenId"
+
+#: ckan/templates/user/logout.html:5
+msgid "Logout - User"
+msgstr "Se déconnecter - Utilisateur"
+
+#: ckan/templates/user/logout.html:8
+msgid "Logout from"
+msgstr "Formulaire de déconnexion"
+
+#: ckan/templates/user/logout.html:11
+msgid "You have logged out successfully."
+msgstr "Déconnexion réussie."
+
+#: ckan/templates/user/logout_first.html:6
+msgid "Logged in - User"
+msgstr "identifié en tant que - utilisateur"
+
+#: ckan/templates/user/logout_first.html:7
+msgid "Logged into"
+msgstr "identifié dans"
+
+#: ckan/templates/user/logout_first.html:12
+msgid "is currently logged in"
+msgstr "est actuellement identifié dans"
+
+#: ckan/templates/user/logout_first.html:15
+msgid "To register or log in as another user, you need to"
+msgstr ""
+"Pour vous enregistrer ou vous inscrire avec une utilisateur différent, vous "
+"devez"
+
+#: ckan/templates/user/logout_first.html:17
+msgid "logout"
+msgstr "vous déconnecter"
+
+#: ckan/templates/user/logout_first.html:17
+msgid "first."
+msgstr "d'abord."
+
+#: ckan/templates/user/new.html:5
+msgid "Register - User"
+msgstr "Enregistrement - Utilisateur"
+
+#: ckan/templates/user/new.html:6
+msgid "Register for a new Account"
+msgstr "Enregistrer un nouveau compte"
+
+#: ckan/templates/user/new_user_form.html:22
+msgid "3+ chars, using only 'a-z0-9' and '-_'"
+msgstr "au mins 3 caractères, en utilisant uniquement 'a-z0-9' et '-_'"
+
+#: ckan/templates/user/new_user_form.html:27
+msgid "Full name (optional)"
+msgstr "Nom complet (optionnel)"
+
+#: ckan/templates/user/new_user_form.html:34
+msgid "E-Mail"
+msgstr "courriel"
+
+#: ckan/templates/user/new_user_form.html:65
+msgid "Register now"
+msgstr "Enregistrez vous maintenant"
+
+#: ckan/templates/user/perform_reset.html:18
+msgid "Password (repeat):"
+msgstr "Mot de passe (re-saisir):"
+
+#: ckan/templates/user/read.html:5
+msgid "- User"
+msgstr "- Utilisateur"
+
+#: ckan/templates/user/read.html:25
+msgid "Member since"
+msgstr "Membre depuis"
+
+#: ckan/templates/user/read.html:32
+msgid "Email"
+msgstr "email"
+
+#: ckan/templates/user/read.html:37
+msgid "No email"
+msgstr "Pas d'email"
+
+#: ckan/templates/user/read.html:42
+msgid "API Key"
+msgstr "clé d'API"
+
+#: ckan/templates/user/read.html:46
+msgid "– Note: your API key is visible only to you!"
+msgstr "- Note: votre clé d'API est visible uniquement par vous!"
+
+#: ckan/templates/user/read.html:59
+msgid "Edits"
+msgstr "Modifications"
+
+#: ckan/templates/user/read.html:77
+msgid "Public Activity"
+msgstr "Activité publique"
+
+#: ckan/templates/user/request_reset.html:6
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+#: ckan/templates/user/request_reset.html:7
+msgid "Request a password reset"
+msgstr "Demander une réinitialisation de votre mot de passe"
+
+#: ckan/templates/user/request_reset.html:13
+msgid "User name:"
+msgstr "Nom d'utilisateur:"
+
+#: ckanext/datalocale/converters.py:119
+#, fuzzy
+msgid "Invalid email"
+msgstr "Courriel du responsable"
+
+#: ckanext/datalocale/forms_dataset.py:442
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:125
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:48
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:89
+msgid "Diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/forms_dataset.py:503
+#, fuzzy
+msgid "Themes"
+msgstr "Membres"
+
+#: ckanext/datalocale/forms_organization.py:250
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_new.html:5
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_new.html:6
+msgid "Ajouter un diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/forms_organization.py:284
+msgid "Producteurs"
+msgstr ""
+
+#: ckanext/datalocale/forms_service.py:217
+msgid "Ajouter un producteur pour ce diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/forms_service.py:218
+msgid "Se connecter pour ajouter un producteur pour ce diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/organization_controllers.py:283
+#: ckanext/datalocale/service_controllers.py:116
+msgid ""
+"There was a problem with your submission,                              "
+"please correct it and try again"
+msgstr ""
+"Il a eu un problème avec votre soumission,                              "
+"merci de corriger et d'essayer à nouveau."
+
+#: ckanext/datalocale/organization_controllers.py:295
+#: ckanext/datalocale/organization_controllers.py:316
+#: ckanext/datalocale/service_controllers.py:128
+#: ckanext/datalocale/service_controllers.py:149
+msgid "There is a problem with the system configuration"
+msgstr ""
+
+#: ckanext/datalocale/organization_controllers.py:321
+#: ckanext/datalocale/service_controllers.py:154
+msgid "Your application has been submitted"
+msgstr "Votre application a été soumise."
+
+#: ckanext/datalocale/organization_controllers.py:350
+#: ckanext/datalocale/service_controllers.py:183
+msgid ""
+"There was a problem with your submission, please correct it and try again"
+msgstr ""
+"Il a eu un problème avec votre soumission, merci de corriger et d'essayer à "
+"nouveau."
+
+#: ckanext/datalocale/theme/templates/_util.html:82
+#: ckanext/datalocale/theme/templates/_util.html:104
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:164
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:177
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:226
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:237
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:173
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:194
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:204
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:245
+#, fuzzy
+msgid "Nom"
+msgstr "pas"
+
+#: ckanext/datalocale/theme/templates/_util.html:82
+msgid "Jeux de[1:]données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/_util.html:82
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:146
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:49
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:94
+msgid "Producteur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/_util.html:82
+msgid "Ajouter un"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/_util.html:104
+msgid "Jeux de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:74
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:55
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:55
+#, fuzzy
+msgid "Illustration"
+msgstr "Autorisation"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:78
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:59
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:59
+msgid ""
+"Entrez une url distante ou choisissez une image qui sera automatiquement "
+"téléchargée."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:138
+msgid "Entité qui diffuse le jeu de données (dct:publisher)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:159
+msgid ""
+"Entité ou personne à l'origine de la production du jeu de données (dct:"
+"creator)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:164
+msgid "Visibilité"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:167
+msgid "Publique"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:171
+msgid "Privé"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:174
+msgid ""
+"Visibilité du jeu de donnée. Si le jeu de donnée est privé, il ne sera pas "
+"visible par les visiteurs du site."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:182
+msgid "Thème (Catégorie)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:194
+msgid "Thème du jeu de donnée"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:199
+msgid "Thème (Concepts)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:205
+msgid "Qualité"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:217
+msgid ""
+"Permet de qualifier le niveau de confiance et de qualité de la donnée mise à "
+"disposition. Cette donnée est enrichie par le module \"Quality Assurance\" "
+"automatiquement."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:222
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:137
+#, fuzzy
+msgid "Date de création"
+msgstr "a des dérivation de %s"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:225
+msgid "Date de création du jeux de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:230
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:129
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:148
+msgid "Fréquence de mise à jour"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:242
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:274
+msgid "Autre :"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:246
+msgid "Fréquence prévisionnelle de mise à jour du jeu de données."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:251
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:156
+msgid "Couverture temporelle"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:255
+msgid "Exemple : Du 23/01/2012 au 23/12/2012)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:256
+msgid "Plage temporelle couverte par le jeu de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:262
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:161
+msgid "Couverture géographique"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:278
+msgid "Territoire géographique couvert par le jeu de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:283
+msgid "Spatial : Type"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:287
+#, fuzzy
+msgid "Départements"
+msgstr "jeux de données"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:288
+#, fuzzy
+msgid "Cantons"
+msgstr "Sections"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:289
+msgid "Communes"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:290
+msgid "EPCI"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:292
+msgid "Sélectionnez un type d'élément"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:296
+msgid "Choisissez une valeur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:310
+msgid ""
+"Sélectionnez un élément pour calculer automatiquement la zone géographique"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:314
+msgid "Spatial :"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:317
+msgid "Recalculer l'extent"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:321
+msgid "Spatial (Nom et URI) :"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:325
+msgid ""
+"Coordonnées géographiques automatiquement générées qui permettent de geo-"
+"indexé les jeux de données. Une carte est automatiquement ajoutée à la fiche "
+"du jeu de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:329
+msgid "Granularité"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:332
+msgid ""
+"Décrit le niveau de granularité des données. Peut être exprimé en temps, "
+"lieu, et place, etc."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:337
+msgid "Référence liée (ou documentation)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:340
+msgid ""
+"Permet d'indiquer la localisation d'une ressource disponible sur le réseau "
+"Internet et de spécifier un titre qui s'affichera comme une ressource "
+"actionnable. (dcterms:references)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:347
+msgid ""
+"Permet de renseigner d'où vient la donnée (quelle application ou quelle "
+"table dans quelle base de données). (dc:source)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:371
+msgid "Objet des mise à jours"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:373
+msgid "Historique des raisons des mises à jour"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:380
+#, fuzzy
+msgid "Ajouter des ressources"
+msgstr "Ressources mis à jour"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:440
+msgid "Auteur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:466
+msgid "Gestionnaire"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:469
+msgid "Entité ou personne qui gère le jeu de données (dct:contributor)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:489
+msgid "Créateur du jeu de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:498
+msgid ""
+"Ajout des champs personnalisés au package tel que \"location:fr\" qui "
+"peuvent aider les utilisateurs à le retrouver dans le moteur de recherche. "
+"Ces données apparaissent également dans la section"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:498
+msgid "Information additionnelle"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:498
+#, fuzzy
+msgid "dans le package."
+msgstr "Ajouter un jeu de données"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:507
+msgid "Supprimer"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:515
+msgid "Ajouter..."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:518
+msgid "Clé ="
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:522
+#, fuzzy
+msgid "Valeur ="
+msgstr "valeur = "
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:536
+#, fuzzy
+msgid "Ce package est"
+msgstr "Ajouter un jeu de données"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:549
+msgid "Résumé"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:551
+msgid "Décrire sommairement les modifications que vous avez apportées"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:558
+#: ckanext/datalocale/theme/templates/forms/dataset/dataset_form.html:561
+#, fuzzy
+msgid "Auteur:"
+msgstr "Etat:"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/edit.html:22
+msgid "Keywords"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/edit.html:23
+#, fuzzy
+msgid "Contact Information"
+msgstr "Informations sommaires"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:79
+msgid ""
+"The information on this page (the dataset metadata) is also\n"
+"                available in these formats:"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:85
+#: ckanext/datalocale/theme/templates/home/index.html:79
+msgid "JSON"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:85
+msgid "(via the"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:85
+msgid "CKAN API"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read.html:88
+msgid "RDF-XML"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:67
+msgid "Score"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:72
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:63
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:63
+msgid "Page d'accueil"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:124
+msgid "Qualité des données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:142
+msgid "Date de modification"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:157
+#, fuzzy
+msgid "Du"
+msgstr "dump"
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:157
+msgid "au"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:169
+msgid "Informations géographiques"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:174
+msgid "Granularité des données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:179
+msgid "Référence liée"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/dataset/read_core.html:185
+#, fuzzy, python-format
+msgid ""
+"[1:Dataset page] on\n"
+"            [2:%(harvest_catalogue_name)s]"
+msgstr ""
+"[1:page du jeux de données] sur\n"
+"[2:%(harvest_catalogue_name)s]"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply.html:5
+msgid "Apply"
+msgstr "Appliquer"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply.html:6
+msgid "Apply for membership"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply_form.html:21
+msgid "Organization"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply_form.html:33
+msgid "Reason"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply_form.html:37
+msgid ""
+"Please explain to the owner your reasons for wishing to become an editor of "
+"this organization"
+msgstr ""
+"Merci d'expliquer au propriétaire les raisons pour lesquelles vous souhaitez "
+"de venir éditeur au sein de ce groupe"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_apply_form.html:44
+msgid "Send request"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:6
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:6
+msgid "Utilisateurs"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:7
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:57
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:7
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:57
+#: ckanext/datalocale/theme/templates/package/edit.html:22
+msgid "Informations de contact"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:30
+msgid "Nom du diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:44
+msgid "/diffuseur/"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:80
+msgid "Diffuseur parent"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:93
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:101
+#, fuzzy
+msgid "Cannot add any organizations."
+msgstr "Impossible d'ajouter un groupe."
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:159
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:160
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:168
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:169
+msgid "Gérer les utilisateurs"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:162
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:171
+msgid "Utilisateurs existants"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:164
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:39
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:173
+#, fuzzy
+msgid "Type"
+msgstr "Type mime"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:171
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:35
+msgid "There are no users currently in this organization."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:180
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:207
+msgid "Nom du contact (Obligatoire)"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:184
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:61
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:211
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:61
+msgid "Adresse mail"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:187
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:214
+msgid "Adresse mail du contact"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:191
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:218
+msgid "Numéro de téléphone"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:194
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:221
+msgid "Numéro de téléphone du contact"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:198
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:201
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:225
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:228
+msgid "Url du site web"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:205
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:232
+msgid "Adresse postale"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:210
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:237
+msgid "Adresse postale de contact"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:222
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:190
+msgid "Add a new dataset"
+msgstr "Ajouter un nouveau jeu de données"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:226
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:194
+#, fuzzy
+msgid "Actif"
+msgstr "actif"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:231
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:242
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:199
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:250
+#, fuzzy
+msgid "There are no datasets currently in this service."
+msgstr "Il n'y a actuellement aucun jeu de données dans ce groupe"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_form.html:235
+msgid "Producteurs fils"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_history.html:54
+msgid "Organization History"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_index.html:6
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_index.html:7
+#, fuzzy
+msgid "Diffuseurs"
+msgstr "Ajouter des utilisateurs"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_index.html:11
+msgid "What Are Organizations?"
+msgstr "Qu'est-ce qu'un diffuseur?"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_index.html:12
+msgid ""
+"Whilst tags are great at collecting datasets together, there are occasions "
+"when you want to restrict users from editing a collection. An [1:"
+"organization] can be set-up to specify which users have permission to add or "
+"remove datasets from it."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_layout.html:15
+msgid "Ajouter un producteur à ce diffuseur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_layout.html:27
+#: ckanext/datalocale/theme/templates/forms/services/service_layout.html:19
+msgid "Join"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:59
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:59
+msgid "Nom du contact"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:65
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:65
+msgid "Téléphone"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_read.html:67
+#: ckanext/datalocale/theme/templates/forms/services/service_read.html:67
+msgid "Adresse"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users.html:5
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users.html:6
+msgid "Users:"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:27
+msgid "Admin"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:28
+msgid "Editor"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:40
+#, fuzzy
+msgid "Administrateur"
+msgstr "Administrateurs"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/organization_users_form.html:40
+#, fuzzy
+msgid "Editeur"
+msgstr "S'inscrire"
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:1
+msgid ""
+"Cher administrateur,\n"
+"\n"
+"Une demande a été effectuée pour rejoindre l'organisation"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:3
+msgid "par"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:3
+#, python-format
+msgid "{% if requester.fullname %}("
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:3
+#, python-format
+msgid ""
+"){% end %}\n"
+"\n"
+"La raison donnée est :\n"
+"\n"
+"\""
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:7
+msgid ""
+"\"\n"
+"\n"
+"Merci de contacter l'utilisateur pour vérifier sa demande puis si vous "
+"souhaitez ajouter cet utilisateur rendez-vous sur la page"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/organizations/email/join_publisher_request.txt:9
+msgid ""
+"Si vous ne souhaitez pas ajouter cet utilisateur, vous pouvez ignorer cet e-"
+"mail."
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:30
+msgid "Nom du producteur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:44
+msgid "/producteur/"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:88
+msgid "Entité parente"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:179
+#, fuzzy
+msgid "There are no users currently in this service."
+msgstr "Il n'y a actuellement aucun utilisateur dans ce groupe"
+
+#: ckanext/datalocale/theme/templates/forms/services/service_form.html:243
+msgid "Groupes fils"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_history.html:54
+#, fuzzy
+msgid "Service History"
+msgstr "Historique des révisions"
+
+#: ckanext/datalocale/theme/templates/forms/services/service_index.html:6
+#: ckanext/datalocale/theme/templates/forms/services/service_index.html:7
+msgid "Producteurs associés au diffuseur:"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_index.html:11
+msgid "What Are Services?"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/forms/services/service_index.html:12
+#, fuzzy
+msgid ""
+"Whilst tags are great at collecting datasets together, there are occasions "
+"when you want to restrict users from editing a collection. A [1:service] can "
+"be set-up to specify which users have permission to add or remove datasets "
+"from it."
+msgstr ""
+"Alors que les tags sont utiles pour rassembler des jeux de données en "
+"collection, il peut y avoir des cas où vous pouvez souhaiter empêcher les "
+"utilisateurs de modifier une collection. Un [1:groupe] peut être créé pour "
+"définir quels sont les utilisateurs qui ont le droit d'ajouter ou de "
+"supprimer des jeux de données d'une collection."
+
+#: ckanext/datalocale/theme/templates/forms/services/service_new.html:5
+#: ckanext/datalocale/theme/templates/forms/services/service_new.html:6
+msgid "Ajouter un producteur au diffuseur:"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:23
+msgid "Doc"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:26
+msgid "Créer un compte"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:28
+msgid "Créer un producteur"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:29
+msgid "Déposer un jeu de données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:58
+#, fuzzy
+msgid "Ressources"
+msgstr "Ressources"
+
+#: ckanext/datalocale/theme/templates/home/index.html:60
+msgid "utilisateurs"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:60
+msgid "disponibles"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:61
+msgid "producteurs rattachés"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:61
+msgid "à"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:61
+#, fuzzy
+msgid "diffuseurs"
+msgstr "Ajouter des utilisateurs"
+
+#: ckanext/datalocale/theme/templates/home/index.html:74
+#: ckanext/datalocale/theme/templates/home/index.html:75
+msgid "Naviguer"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:74
+msgid "Par thèmes"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:75
+#, fuzzy
+msgid "Par tags"
+msgstr "Tag le plus utilisé"
+
+#: ckanext/datalocale/theme/templates/home/index.html:76
+msgid "Il y  a actuellement"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:77
+msgid "Télécharger le catalogue :"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:78
+msgid "RDF"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:80
+msgid "CSV"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:83
+msgid "Données"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/home/index.html:130
+msgid "Submit"
+msgstr "Soumettre"
+
+#: ckanext/datalocale/theme/templates/home/index.html:134
+msgid "Popular"
+msgstr ""
+
+#: ckanext/datalocale/theme/templates/user/login.html:41
+msgid "Remember me:"
+msgstr "Se souvernir de moi"
