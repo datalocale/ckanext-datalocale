@@ -8,15 +8,15 @@
 if [ -e "../bin/python" ] 
 then
     var=`readlink -f ../bin/python`
-    alias python='$var'
-    python_bin='$var'
+    alias python="$var"
+    python_bin=$var
 fi
 
 if [ -e "../../bin/python" ] 
 then
     var=`readlink -f ../../bin/python`
-    alias python='$var'
-    python_bin='$var'
+    alias python="$var"
+    python_bin=$var
 fi
 
 i18ck="ckan/i18n"
