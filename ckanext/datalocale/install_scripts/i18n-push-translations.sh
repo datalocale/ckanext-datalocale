@@ -9,12 +9,14 @@ if [ -e "../bin/python" ]
 then
     var=`readlink -f ../bin/python`
     alias python='$var'
+    python_bin='$var'
 fi
 
 if [ -e "../../bin/python" ] 
 then
     var=`readlink -f ../../bin/python`
     alias python='$var'
+    python_bin='$var'
 fi
 
 i18ck="ckan/i18n"
@@ -37,8 +39,8 @@ echo "[Done]"
 
 echo -n "Message compilation ... "
 
-python setup.py compile_catalog --use-fuzzy -l fr
-python setup.py compile_catalog --use-fuzzy -l es
-python setup.py compile_catalog --use-fuzzy -l en
+$python_bin setup.py compile_catalog --use-fuzzy -l fr
+$python_bin setup.py compile_catalog --use-fuzzy -l es
+$python_bin setup.py compile_catalog --use-fuzzy -l en
 
 echo "[Done]"
