@@ -4,7 +4,7 @@ from ckan.logic import NotFound, NotAuthorized, ValidationError
 import ckan.logic.schema as default_schema
 from ckan.logic import get_action, NotFound, NotAuthorized, check_access
 from ckan.lib.base import render, c, model, abort, request
-from ckan.lib.base import redirect, _, config, h
+from ckan.lib.base import redirect, config, h
 from ckan.lib.navl.dictization_functions import Invalid, validate, missing
 from ckan.plugins import IGroupForm, IConfigurer, IGenshiStreamFilter, IRoutes
 from ckan.plugins import implements, SingletonPlugin
@@ -30,7 +30,7 @@ class DatalocaleServiceForm(SingletonPlugin):
     publisher group. ``IConfigurer`` is used to add the local template
     path and the IGroupForm supplies the custom form.
     """
-    implements(IGroupForm, inherit=True)
+    ##implements(IGroupForm, inherit=True)
     implements(IConfigurer, inherit=True)
     implements(IGenshiStreamFilter, inherit=True)
     implements(IRoutes)
@@ -55,7 +55,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         suitable for the database.
         """
         schema = default_schema.group_form_schema()
-        schema.update({ 
+        '''schema.update({ 
         'foaf:name': [ignore_missing, convert_to_extras_groupform],
         'url': [ignore_missing, convert_to_extras_groupform],
         'mail': [ignore_missing, convert_to_extras_groupform],
@@ -64,7 +64,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         'locality': [ignore_missing, convert_to_extras_groupform],
         'postal-code': [ignore_missing, convert_to_extras_groupform],
         'country-name': [ignore_missing, convert_to_extras_groupform],
-        })
+        })'''
         return schema
 
     def db_to_form_schema(self):
@@ -73,7 +73,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         format suitable for the form (optional)
         """
         schema = default_schema.group_form_schema()
-        schema.update({
+        '''schema.update({
         'foaf:name': [convert_from_extras_groupform, ignore_missing],
         'url': [convert_from_extras_groupform, ignore_missing],
         'mail': [convert_from_extras_groupform, ignore_missing],
@@ -83,7 +83,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         'postal-code': [convert_from_extras_groupform, ignore_missing],
         'country-name': [convert_from_extras_groupform, ignore_missing],
         'revision_id': [ignore_missing, unicode],
-        })
+        })'''
         return schema
     
     def before_map(self, map):
@@ -214,8 +214,8 @@ class DatalocaleServiceForm(SingletonPlugin):
      
         #Add button to the navbar
         if routes.get('controller') == controller and routes.get('action') == 'index':
-            route = h.subnav_named_route(c, h.icon('group_add') + _(u'Ajouter un producteur pour ce diffuseur'), "service_new", action='new')
-            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _(u'Se connecter pour ajouter un producteur pour ce diffuseur'), "service_new", action='new')
+            route = h.subnav_named_route(c, h.icon('group_add') + _('Ajouter un producteur pour ce diffuseur'), "service_new", action='new')
+            route_loggedout = h.subnav_named_route(c, h.icon('group_add') + _('Se connecter pour ajouter un producteur pour ce diffuseur'), "service_new", action='new')
             html = '<li style="display:none;" class="ckan-logged-in" > %s </li><li class="ckan-logged-out">%s</li>' % (route, route_loggedout)
             html = ''
             stream = stream | Transformer(

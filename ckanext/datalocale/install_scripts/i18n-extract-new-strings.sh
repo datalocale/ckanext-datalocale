@@ -6,6 +6,18 @@
 #
 
 
+if [ -e "../bin/python" ] 
+then
+    var=`readlink -f ../bin/python`
+    alias python='$var'
+fi
+
+if [ -e "../../bin/python" ] 
+then
+    var=`readlink -f ../../bin/python`
+    alias python='$var'
+fi
+
 i18ck="ckan/i18n"
 i18dl="ckanext/datalocale/i18n"
 

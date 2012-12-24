@@ -12,7 +12,7 @@
         ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
       </li>
 	<li  py:if="c.group and h.check_access('group_edit_permissions',{'id':c.group.name})">
-        <a href="${h.url_for('/producteur/new/from-diffuseur/')}${c.group.name}">${h.icon('group_edit') + _('Ajouter un producteur à ce diffuseur')}</a>
+        <a href="${h.url_for('/producteur/new/from-diffuseur/')}${c.group.name}">${h.icon('group_edit') + _('Ajouter un producteur pour ce diffuseur')}</a>
       </li>
       <li  py:attrs="{'class':'active'} if c.action=='read' else {}">${h.subnav_named_route(c, h.icon('group') + _('View'), 'organization_read',controller='group', action='read', id=c.group.name)}</li>
       <li  py:attrs="{'class':'active'} if c.action=='history' else {}">${h.subnav_named_route(c, h.icon('page_white_stack') + _('History'), 'organization_action', controller='group', action='history', id=c.group.name)}</li>

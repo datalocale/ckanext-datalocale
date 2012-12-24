@@ -184,9 +184,10 @@ def convert_to_extras_groupform(key, data, errors, context):
             data[('extras', extra_number, 'value')] = data[key]
 
 def convert_from_extras_groupform(key, data, errors, context):
-    for k in data.keys():
-        if (k[0] == 'extras' and
-            k[-1] == 'key' and
-            data[k] == key[-1]):
+   for k in data.keys():
+        if ((k[0] == 'extras' or k[0] == '__extras') and
+            k[-1] == 'key' and data[k] == key[-1]):
             # add to top level
-            data[key] = data[('extras', k[1], 'value')]
+            data[key] = data[(u'extras', k[1], u'value')]
+ 
+            

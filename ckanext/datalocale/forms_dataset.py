@@ -98,15 +98,17 @@ class DatalocaleDatasetForm(SingletonPlugin):
             controller = 'ckanext.datalocale.datalocale_storage:DatalocaleStorageController'
             controller_dataset = 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController'
             controller_storage = 'ckanext.datalocale.storage_controllers:DatalocaleStorageController'
+            controller_package = 'package'
             
             map.connect('/storage/datalocale_upload_handle', action='upload_handle', controller=controller_storage)
-            map.connect('/dataset', action='search', controller=controller_dataset)
+            
+            map.connect('/dataset/search', controller=controller_package, action='search')
+            
             map.connect('/dataset/{action}', controller=controller_dataset,
             requirements=dict(action='|'.join([
                   'list',
                   'new',
                   'autocomplete',
-                  'search'
                   ]))
               )
     
@@ -132,6 +134,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
             map.connect('/dataset/{id}', action='read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}', action='resource_read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer', controller=controller_dataset)
+            
             return map
 
     def after_map(self, map):

@@ -58,13 +58,14 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     action='apply')
         map.connect('/diffuseur/apply', controller=controller,
                     action='apply')
-        map.connect('/diffuseur/edit/{id}', controller='group',
+        map.connect('/diffuseur/edit/{id}', controller=controller,
                     action='edit')
         map.connect('/diffuseur/new', controller=controller, action='new')
         map.connect('/diffuseur/{id}', controller=controller, action='read')
         map.connect('/diffuseur',  controller=controller, action='index')
         map.redirect('/diffuseur/publisher_read', '/diffuseur/organization_read')
         map.redirect('/organization', '/diffuseur')
+        ##map.redirect('/organization/edit/{id}', '/diffuseur/edit/{id}')
         return map
 
     def after_map(self, map):
@@ -136,8 +137,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         suitable for the database.
         """
         schema = default_schema.group_form_schema()
+                
         schema.update({ 
-		'foaf:name': [ignore_missing, convert_to_extras_groupform],
+        'foaf:name': [ignore_missing, convert_to_extras_groupform],
         'url': [ignore_missing, convert_to_extras_groupform],
         'mail': [ignore_missing, convert_to_extras_groupform],
         'phone': [ignore_missing, convert_to_extras_groupform],
@@ -145,7 +147,8 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         'locality': [ignore_missing, convert_to_extras_groupform],
         'postal-code': [ignore_missing, convert_to_extras_groupform],
         'country-name': [ignore_missing, convert_to_extras_groupform],
-    	})
+        })
+
         return schema
 
     def db_to_form_schema(self):
@@ -154,8 +157,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         format suitable for the form (optional)
         """
         schema = default_schema.group_form_schema()
+        
         schema.update({
-		'foaf:name': [convert_from_extras_groupform, ignore_missing],
+        'foaf:name': [convert_from_extras_groupform, ignore_missing],
         'url': [convert_from_extras_groupform, ignore_missing],
         'mail': [convert_from_extras_groupform, ignore_missing],
         'phone': [convert_from_extras_groupform, ignore_missing],
@@ -164,7 +168,8 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         'postal-code': [convert_from_extras_groupform, ignore_missing],
         'country-name': [convert_from_extras_groupform, ignore_missing],
         'revision_id': [ignore_missing, unicode],
-    	})
+        })
+
         return schema
 
     def check_data_dict(self, data_dict):
@@ -263,9 +268,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                 'facet.field':g.facets,
             }
 
-            query = get_action('user_list')(context,data_dict)
-            userNum = str(len(query))
-            stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
+            ##query = get_action('user_list')(context,data_dict)
+            ##userNum = str(len(query))
+            ##stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
             
             
         if routes.get('controller') == 'group' \

@@ -408,7 +408,8 @@ class DatalocaleOrganizationController(GroupController):
         self._setup_template_variables(context,data)
         c.form = render(self._group_form(group_type=group_type), extra_vars=vars)
         return render(self._new_template(group_type))
-
+    
+   
     def users(self, id, data=None, errors=None, error_summary=None):
         c.group = model.Group.get(id)
 
