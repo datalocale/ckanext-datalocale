@@ -851,7 +851,6 @@ def package_search(context, data_dict):
     user = context['user']
 
     check_access('package_search', context, data_dict)
-
     # check if some extension needs to modify the search params
     for item in plugins.PluginImplementations(plugins.IPackageController):
         data_dict = item.before_search(data_dict)

@@ -456,6 +456,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
                 'facet.field':g.facets,
             }
 
+	    context['ignore_capacity_check'] = True
             query = get_action('package_search')(context,data_dict)
             c.facets = query['facets']
             c.search_facets = query['search_facets']

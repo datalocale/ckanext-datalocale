@@ -80,7 +80,7 @@ class DatalocaleOrganizationController(GroupController):
 
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author, 'for_view': True,
-                   'with_private': False}
+                   'with_private': True, 'ignore_capacity_check': True}
 
         data_dict = {'all_fields': True, 'type': 'organization'}
 
@@ -103,6 +103,7 @@ class DatalocaleOrganizationController(GroupController):
                             'facet.field':"['groups', 'tags', 'res_format', 'license']",
                             'extras':''
                             }
+		    context['ignore_capacity_check'] = True
                     query = get_action('package_search')(context,data_dict)
                     res["dataset_num"] = query["count"]
                     new_results.append(res)
@@ -209,7 +210,7 @@ class DatalocaleOrganizationController(GroupController):
                 'start':(page-1)*limit,
                 'extras':search_extras
             }
-
+	    context['ignore_capacity_check'] = True
             query = get_action('package_search')(context,data_dict)
 
             c.page = h.Page(

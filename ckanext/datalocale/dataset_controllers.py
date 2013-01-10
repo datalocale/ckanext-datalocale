@@ -212,9 +212,8 @@ class DatalocaleDatasetController(BaseController):
         try:
             c.fields = []
             search_extras = {}
-            fq = ''
             import sys    
-           
+
             for (param, value) in request.params.items():
                 
                 if param not in ['q', 'page', 'sort'] \
@@ -231,23 +230,21 @@ class DatalocaleDatasetController(BaseController):
                     else:
                         search_extras[param] = value
 
-            fq += ' capacity:"public"'
             context = {'model': model, 'session': model.Session,
-                       'user': c.user or c.author, 'for_view': True}
+                       'user': c.user or c.author, 'for_view': True, 'ignore_capacity_check': True}
 
+	    fq = ''
             data_dict = {
                 'q':q,
-                'fq':fq,
+                'fq': fq,
                 'facet.field':g.facets,
                 'rows':limit,
                 'start':(page-1)*limit,
                 'sort': sort_by,
                 'extras':search_extras
             }
-
             query = get_action('package_search')(context,data_dict)
-
-            c.page = h.Page(
+	    c.page = h.Page(
                 collection=query['results'],
                 page=page,
                 url=pager_url,

@@ -343,6 +343,7 @@ class DatalocaleServiceController(GroupController):
                 'extras':search_extras
             }
 
+	    context['ignore_capacity_check'] = True
             query = get_action('package_search')(context,data_dict)
 
             c.page = h.Page(
