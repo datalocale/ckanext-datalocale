@@ -6,6 +6,20 @@
 #
 
 
+if [ -e "../bin/python" ] 
+then
+    var=`readlink -f ../bin/python`
+    alias python="$var"
+    python_bin=$var
+fi
+
+if [ -e "../../bin/python" ] 
+then
+    var=`readlink -f ../../bin/python`
+    alias python="$var"
+    python_bin=$var
+fi
+
 i18ck="ckan/i18n"
 i18dl="ckanext/datalocale/i18n"
 
@@ -17,12 +31,12 @@ en="en/LC_MESSAGES"
 cd ckanext-datalocale/
 
 # Extraction of new strings 
-python setup.py extract_messages -o ckanext/datalocale/i18n/ckanext-datalocale.po
+$python_bin setup.py extract_messages -o ckanext/datalocale/i18n/ckanext-datalocale.po
 
 # Update of the language files
-python setup.py update_catalog -l fr -i $i18dl/ckanext-datalocale.po 
-python setup.py update_catalog -l es -i $i18dl/ckanext-datalocale.po
-python setup.py update_catalog -l en -i $i18dl/ckanext-datalocale.po
+$python_bin setup.py update_catalog -l fr -i $i18dl/ckanext-datalocale.po 
+$python_bin setup.py update_catalog -l es -i $i18dl/ckanext-datalocale.po
+$python_bin setup.py update_catalog -l en -i $i18dl/ckanext-datalocale.po
 
 cd -
 

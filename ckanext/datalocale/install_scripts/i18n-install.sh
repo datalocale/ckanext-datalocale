@@ -6,6 +6,20 @@
 # This script allows to extract new strings from datalocale extension. 
 #
 
+
+if [ -e "../bin/python" ] 
+then
+    var=`readlink -f ../bin/python`
+    alias python='$var'
+fi
+
+if [ -e "../../bin/python" ] 
+then
+    var=`readlink -f ../../bin/python`
+    alias python='$var'
+fi
+
+
 directory=$(dirname $0)
 
 echo "Script directory :"$directory
