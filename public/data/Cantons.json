@@ -1,0 +1,2951 @@
+{ "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.547286535443151, 44.2195673013817], [0.618840476152316, 44.2195673013817], [0.618840476152316, 44.1570911613355], [0.547286535443151, 44.1570911613355], [0.547286535443151, 44.2195673013817] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4737",
+        "type": "canton",
+        "code-canton": "4737",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.412862204869317, 43.320371789617], [-0.37870886121324, 43.320371789617], [-0.37870886121324, 43.2929989108266], [-0.412862204869317, 43.2929989108266], [-0.412862204869317, 43.320371789617] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6451",
+        "type": "canton",
+        "code-canton": "6451",
+        "code-chf": "129",
+        "nom-chf": "BILLERE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.5738778170842, 44.8227722340645], [-0.523091370466957, 44.8227722340645], [-0.523091370466957, 44.7833778718507], [-0.5738778170842, 44.7833778718507], [-0.5738778170842, 44.8227722340645] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3352",
+        "type": "canton",
+        "code-canton": "3352",
+        "code-chf": "039",
+        "nom-chf": "BEGLES",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.674842103491001, 44.8248745934756], [0.900461729420641, 44.8248745934756], [0.900461729420641, 44.6759915001018], [0.674842103491001, 44.6759915001018], [0.674842103491001, 44.8248745934756] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2401",
+        "type": "canton",
+        "code-canton": "2401",
+        "code-chf": "028",
+        "nom-chf": "BEAUMONT-DU-PERIGORD",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.637705135346469, 44.2794384279552], [0.726226758565627, 44.2794384279552], [0.726226758565627, 44.2133183378178], [0.637705135346469, 44.2133183378178], [0.637705135346469, 44.2794384279552] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4702",
+        "type": "canton",
+        "code-canton": "4702",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.488230192246427, 43.7706937515742], [-0.19414330237234, 43.7706937515742], [-0.19414330237234, 43.5746018096442], [-0.488230192246427, 43.5746018096442], [-0.488230192246427, 43.7706937515742] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4001",
+        "type": "canton",
+        "code-canton": "4001",
+        "code-chf": "001",
+        "nom-chf": "AIRE-SUR-L'ADOUR",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.740468971713794, 43.0969585092371], [-0.472862694591988, 43.0969585092371], [-0.472862694591988, 42.7791245851151], [-0.740468971713794, 42.7791245851151], [-0.740468971713794, 43.0969585092371] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6401",
+        "type": "canton",
+        "code-canton": "6401",
+        "code-chf": "006",
+        "nom-chf": "ACCOUS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.602218708807486, 44.2210174317412], [0.655610679717918, 44.2210174317412], [0.655610679717918, 44.1785163568165], [0.602218708807486, 44.1785163568165], [0.602218708807486, 44.2210174317412] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4799",
+        "type": "canton",
+        "code-canton": "4799",
+        "code-chf": "001",
+        "nom-chf": "AGEN",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.20434582830634, 44.6634623733665], [-1.14191575711631, 44.6634623733665], [-1.14191575711631, 44.6387022065362], [-1.20434582830634, 44.6387022065362], [-1.20434582830634, 44.6634623733665] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3301",
+        "type": "canton",
+        "code-canton": "3301",
+        "code-chf": "009",
+        "nom-chf": "ARCACHON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.88492489189932, 43.6781792740667], [-0.589441336458877, 43.6781792740667], [-0.589441336458877, 43.5413057715449], [-0.88492489189932, 43.5413057715449], [-0.88492489189932, 43.6781792740667] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4002",
+        "type": "canton",
+        "code-canton": "4002",
+        "code-chf": "002",
+        "nom-chf": "AMOU",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.829139144738784, 43.1888872152622], [-0.627341327171996, 43.1888872152622], [-0.627341327171996, 42.9488717448034], [-0.829139144738784, 42.9488717448034], [-0.829139144738784, 43.1888872152622] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6402",
+        "type": "canton",
+        "code-canton": "6402",
+        "code-chf": "029",
+        "nom-chf": "ARAMITS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.933096334599576, 44.8441119900873], [1.11560465606363, 44.8441119900873], [1.11560465606363, 44.6822428634936], [0.933096334599576, 44.6822428634936], [0.933096334599576, 44.8441119900873] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2402",
+        "type": "canton",
+        "code-canton": "2402",
+        "code-chf": "035",
+        "nom-chf": "BELVES",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.59931487048521, 44.1618403255201], [0.798587847598694, 44.1618403255201], [0.798587847598694, 44.0245916697468], [0.59931487048521, 44.0245916697468], [0.59931487048521, 44.1618403255201] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4703",
+        "type": "canton",
+        "code-canton": "4703",
+        "code-chf": "015",
+        "nom-chf": "ASTAFFORT",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.26156091294416, 44.8497441854443], [-0.771440488809056, 44.8497441854443], [-0.771440488809056, 44.5103756884769], [-1.26156091294416, 44.5103756884769], [-1.26156091294416, 44.8497441854443] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3302",
+        "type": "canton",
+        "code-canton": "3302",
+        "code-chf": "019",
+        "nom-chf": "AUDENGE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.38367305191301, 44.1288410046967], [-1.01965274060052, 44.1288410046967], [-1.01965274060052, 43.7949495188786], [-1.38367305191301, 43.7949495188786], [-1.38367305191301, 44.1288410046967] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4003",
+        "type": "canton",
+        "code-canton": "4003",
+        "code-chf": "075",
+        "nom-chf": "CASTETS",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.237540517052457, 44.5819806853276], [0.00621502394654168, 44.5819806853276], [0.00621502394654168, 44.4234658660344], [-0.237540517052457, 44.4234658660344], [-0.237540517052457, 44.5819806853276] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3303",
+        "type": "canton",
+        "code-canton": "3303",
+        "code-chf": "021",
+        "nom-chf": "AUROS",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.700948745854993, 43.558215555934], [-0.459716438042764, 43.558215555934], [-0.459716438042764, 43.3621125645339], [-0.700948745854993, 43.3621125645339], [-0.700948745854993, 43.558215555934] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6403",
+        "type": "canton",
+        "code-canton": "6403",
+        "code-chf": "057",
+        "nom-chf": "ARTHEZ-DE-BEARN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.22060905177608, 43.8387994997414], [-0.933937694657355, 43.8387994997414], [-0.933937694657355, 43.6505635362237], [-1.22060905177608, 43.6505635362237], [-1.22060905177608, 43.8387994997414] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4004",
+        "type": "canton",
+        "code-canton": "4004",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.789442387042941, 44.3118133701589], [0.950788108387804, 44.3118133701589], [0.950788108387804, 44.1900551164929], [0.789442387042941, 44.1900551164929], [0.789442387042941, 44.3118133701589] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4704",
+        "type": "canton",
+        "code-canton": "4704",
+        "code-chf": "025",
+        "nom-chf": "BEAUVILLE",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.523726300940918, 43.1805157411408], [-0.26050540516439, 43.1805157411408], [-0.26050540516439, 43.0231093449444], [-0.523726300940918, 43.0231093449444], [-0.523726300940918, 43.1805157411408] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6404",
+        "type": "canton",
+        "code-canton": "6404",
+        "code-chf": "062",
+        "nom-chf": "ARUDY",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.529003225255793, 45.3974010593794], [0.837624531305217, 45.3974010593794], [0.837624531305217, 45.2413421362282], [0.529003225255793, 45.2413421362282], [0.529003225255793, 45.3974010593794] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2404",
+        "type": "canton",
+        "code-canton": "2404",
+        "code-chf": "064",
+        "nom-chf": "BRANTOME",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.309580088724855, 44.4926341616471], [-0.0999162814928166, 44.4926341616471], [-0.0999162814928166, 44.3247507092538], [-0.309580088724855, 44.3247507092538], [-0.309580088724855, 44.4926341616471] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3304",
+        "type": "canton",
+        "code-canton": "3304",
+        "code-chf": "036",
+        "nom-chf": "BAZAS",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.572981832462141, 43.3007445283191], [-0.420986244408649, 43.3007445283191], [-0.420986244408649, 43.1623186501952], [-0.572981832462141, 43.1623186501952], [-0.572981832462141, 43.3007445283191] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6417",
+        "type": "canton",
+        "code-canton": "6417",
+        "code-chf": "324",
+        "nom-chf": "LASSEUBE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.188786291000678, 44.1559890636119], [0.13673121582336, 44.1559890636119], [0.13673121582336, 43.8983808649356], [-0.188786291000678, 43.8983808649356], [-0.188786291000678, 44.1559890636119] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4005",
+        "type": "canton",
+        "code-canton": "4005",
+        "code-chf": "102",
+        "nom-chf": "GABARRET",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0288207258342732, 44.4394650794182], [0.190143620137382, 44.4394650794182], [0.190143620137382, 44.3254200601542], [-0.0288207258342732, 44.3254200601542], [-0.0288207258342732, 44.4394650794182] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4705",
+        "type": "canton",
+        "code-canton": "4705",
+        "code-chf": "034",
+        "nom-chf": "BOUGLON",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.5869934199585, 43.5962665101576], [-0.344441633101801, 43.5962665101576], [-0.344441633101801, 43.4194330071299], [-0.5869934199585, 43.4194330071299], [-0.5869934199585, 43.5962665101576] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6405",
+        "type": "canton",
+        "code-canton": "6405",
+        "code-chf": "063",
+        "nom-chf": "ARZACQ-ARRAZIGUET",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.833088271928948, 45.0420105783692], [1.0562978945322, 45.0420105783692], [1.0562978945322, 44.8738587356775], [0.833088271928948, 44.8738587356775], [0.833088271928948, 45.0420105783692] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2405",
+        "type": "canton",
+        "code-canton": "2405",
+        "code-chf": "067",
+        "nom-chf": "LE BUGUE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.02915850798566, 44.6930344673849], [-0.601676214501756, 44.6930344673849], [-0.601676214501756, 44.4186324295099], [-1.02915850798566, 44.4186324295099], [-1.02915850798566, 44.6930344673849] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3305",
+        "type": "canton",
+        "code-canton": "3305",
+        "code-chf": "042",
+        "nom-chf": "BELIN-BELIET",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.500403299732159, 45.7145699897727], [0.775643324029137, 45.7145699897727], [0.775643324029137, 45.5781689007161], [0.500403299732159, 45.5781689007161], [0.500403299732159, 45.7145699897727] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2406",
+        "type": "canton",
+        "code-canton": "2406",
+        "code-chf": "071",
+        "nom-chf": "BUSSIERE-BADIL",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.725642599473237, 45.041074707911], [-0.540540237228692, 45.041074707911], [-0.540540237228692, 44.8580882238044], [-0.725642599473237, 44.8580882238044], [-0.725642599473237, 45.041074707911] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3306",
+        "type": "canton",
+        "code-canton": "3306",
+        "code-chf": "056",
+        "nom-chf": "BLANQUEFORT",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.540910428530857, 43.6724401666111], [-0.287162129888766, 43.6724401666111], [-0.287162129888766, 43.5498700128549], [-0.540910428530857, 43.5498700128549], [-0.540910428530857, 43.6724401666111] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4006",
+        "type": "canton",
+        "code-canton": "4006",
+        "code-chf": "110",
+        "nom-chf": "GEAUNE",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.469310656518241, 44.5994249177501], [0.720841249411898, 44.5994249177501], [0.720841249411898, 44.42106288931], [0.469310656518241, 44.42106288931], [0.469310656518241, 44.5994249177501] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4706",
+        "type": "canton",
+        "code-canton": "4706",
+        "code-chf": "048",
+        "nom-chf": "CANCON",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.737970038639064, 45.2363688054886], [-0.536383549796321, 45.2363688054886], [-0.536383549796321, 45.0710368071476], [-0.737970038639064, 45.0710368071476], [-0.737970038639064, 45.2363688054886] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3307",
+        "type": "canton",
+        "code-canton": "3307",
+        "code-chf": "058",
+        "nom-chf": "BLAYE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.746076707926077, 44.8855137435048], [0.97264532776696, 44.8855137435048], [0.97264532776696, 44.7436499844921], [0.746076707926077, 44.7436499844921], [0.746076707926077, 44.8855137435048] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2407",
+        "type": "canton",
+        "code-canton": "2407",
+        "code-chf": "068",
+        "nom-chf": "LE BUISSON-DE-CADOUIN",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.50141426826853, 43.5391779279677], [-1.4635147130514, 43.5391779279677], [-1.4635147130514, 43.5118085711031], [-1.50141426826853, 43.5118085711031], [-1.50141426826853, 43.5391779279677] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6407",
+        "type": "canton",
+        "code-canton": "6407",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.489412757444722, 43.8599861447983], [-0.207783878640507, 43.8599861447983], [-0.207783878640507, 43.7255811491712], [-0.489412757444722, 43.7255811491712], [-0.489412757444722, 43.8599861447983] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4007",
+        "type": "canton",
+        "code-canton": "4007",
+        "code-chf": "117",
+        "nom-chf": "GRENADE-SUR-L'ADOUR",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0857520796501294, 44.3608435720575], [0.246949639523507, 44.3608435720575], [0.246949639523507, 44.2475060510681], [-0.0857520796501294, 44.2475060510681], [-0.0857520796501294, 44.3608435720575] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4707",
+        "type": "canton",
+        "code-canton": "4707",
+        "code-chf": "052",
+        "nom-chf": "CASTELJALOUX",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.715362935813756, 43.7128467501032], [-0.465249283972367, 43.7128467501032], [-0.465249283972367, 43.5377182465865], [-0.715362935813756, 43.5377182465865], [-0.715362935813756, 43.7128467501032] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4008",
+        "type": "canton",
+        "code-canton": "4008",
+        "code-chf": "119",
+        "nom-chf": "HAGETMAU",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.335327353313402, 44.5134811880298], [0.518741637901632, 44.5134811880298], [0.518741637901632, 44.3760923201192], [0.335327353313402, 44.3760923201192], [0.335327353313402, 44.5134811880298] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4708",
+        "type": "canton",
+        "code-canton": "4708",
+        "code-chf": "054",
+        "nom-chf": "CASTELMORON-SUR-LOT",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [1.24493906558701, 44.932200121054], [1.44217777651494, 44.932200121054], [1.44217777651494, 44.8056053641105], [1.24493906558701, 44.8056053641105], [1.24493906558701, 44.932200121054] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2408",
+        "type": "canton",
+        "code-canton": "2408",
+        "code-chf": "081",
+        "nom-chf": "CARLUX",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.27365326684606, 43.5460950492047], [-1.03056689944239, 43.5460950492047], [-1.03056689944239, 43.405798886353], [-1.27365326684606, 43.405798886353], [-1.27365326684606, 43.5460950492047] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6409",
+        "type": "canton",
+        "code-canton": "6409",
+        "code-chf": "123",
+        "nom-chf": "BIDACHE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.549365346225291, 45.4681764746548], [0.815352702279994, 45.4681764746548], [0.815352702279994, 45.337694546993], [0.549365346225291, 45.337694546993], [0.549365346225291, 45.4681764746548] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2409",
+        "type": "canton",
+        "code-canton": "2409",
+        "code-chf": "096",
+        "nom-chf": "CHAMPAGNAC-DE-BELAIR",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.706616860725448, 44.184387416843], [-0.402720380396105, 44.184387416843], [-0.402720380396105, 43.9669964700802], [-0.706616860725448, 43.9669964700802], [-0.706616860725448, 44.184387416843] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4009",
+        "type": "canton",
+        "code-canton": "4009",
+        "code-chf": "135",
+        "nom-chf": "LABRIT",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.495626003013269, 44.7065699614759], [0.668192951391356, 44.7065699614759], [0.668192951391356, 44.5670337720623], [0.495626003013269, 44.5670337720623], [0.495626003013269, 44.7065699614759] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4709",
+        "type": "canton",
+        "code-canton": "4709",
+        "code-chf": "057",
+        "nom-chf": "CASTILLONNES",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.63530122862684, 43.3929220386238], [-1.32189476248283, 43.3929220386238], [-1.32189476248283, 43.2525982492662], [-1.63530122862684, 43.2525982492662], [-1.63530122862684, 43.3929220386238] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6410",
+        "type": "canton",
+        "code-canton": "6410",
+        "code-chf": "213",
+        "nom-chf": "ESPELETTE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.31638148216012, 44.3128468636072], [-1.0317137884329, 44.3128468636072], [-1.0317137884329, 44.0178101981565], [-1.31638148216012, 44.0178101981565], [-1.31638148216012, 44.3128468636072] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4010",
+        "type": "canton",
+        "code-canton": "4010",
+        "code-chf": "184",
+        "nom-chf": "MIMIZAN",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [1.08089657215442, 44.8417962904139], [1.32550678611571, 44.8417962904139], [1.32550678611571, 44.6718321474461], [1.08089657215442, 44.6718321474461], [1.08089657215442, 44.8417962904139] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2410",
+        "type": "canton",
+        "code-canton": "2410",
+        "code-chf": "152",
+        "nom-chf": "DOMME",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.105951588800262, 44.3645200964647], [0.3372153943031, 44.3645200964647], [0.3372153943031, 44.1874059029315], [0.105951588800262, 44.1874059029315], [0.105951588800262, 44.3645200964647] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4710",
+        "type": "canton",
+        "code-canton": "4710",
+        "code-chf": "078",
+        "nom-chf": "DAMAZAN",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.100344927676439, 44.7641935250675], [0.359541280551391, 44.7641935250675], [0.359541280551391, 44.6248068738859], [0.100344927676439, 44.6248068738859], [0.100344927676439, 44.7641935250675] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4711",
+        "type": "canton",
+        "code-canton": "4711",
+        "code-chf": "086",
+        "nom-chf": "DURAS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.715556932924972, 44.0188358376752], [-0.34506779237352, 44.0188358376752], [-0.34506779237352, 43.8913965833159], [-0.715556932924972, 43.8913965833159], [-0.715556932924972, 44.0188358376752] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4011",
+        "type": "canton",
+        "code-canton": "4011",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.39068347857309, 43.4462934734118], [-1.12873635863777, 43.4462934734118], [-1.12873635863777, 43.2903753573166], [-1.39068347857309, 43.2903753573166], [-1.39068347857309, 43.4462934734118] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6412",
+        "type": "canton",
+        "code-canton": "6412",
+        "code-chf": "256",
+        "nom-chf": "HASPARREN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.90092753216654, 45.3836102192102], [1.28192335298136, 45.3836102192102], [1.28192335298136, 45.2716810381917], [0.90092753216654, 45.2716810381917], [0.90092753216654, 45.3836102192102] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2411",
+        "type": "canton",
+        "code-canton": "2411",
+        "code-chf": "164",
+        "nom-chf": "EXCIDEUIL",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.35134549617351, 43.5968319192209], [-0.0919682333151433, 43.5968319192209], [-0.0919682333151433, 43.4825842890952], [-0.35134549617351, 43.4825842890952], [-0.35134549617351, 43.5968319192209] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6411",
+        "type": "canton",
+        "code-canton": "6411",
+        "code-chf": "233",
+        "nom-chf": "GARLIN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.341479094086511, 44.7681504363207], [0.534676412926391, 44.7681504363207], [0.534676412926391, 44.6452096523948], [0.341479094086511, 44.6452096523948], [0.341479094086511, 44.7681504363207] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2412",
+        "type": "canton",
+        "code-canton": "2412",
+        "code-chf": "167",
+        "nom-chf": "EYMET",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.972584494385017, 43.8059532080692], [-0.774498800756821, 43.8059532080692], [-0.774498800756821, 43.6229428489128], [-0.972584494385017, 43.6229428489128], [-0.972584494385017, 43.8059532080692] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4012",
+        "type": "canton",
+        "code-canton": "4012",
+        "code-chf": "194",
+        "nom-chf": "MONTFORT-EN-CHALOSSE",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.312853138909434, 44.1182588609745], [0.585114713357484, 44.1182588609745], [0.585114713357484, 44.0078014390142], [0.312853138909434, 44.0078014390142], [0.312853138909434, 44.1182588609745] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4712",
+        "type": "canton",
+        "code-canton": "4712",
+        "code-chf": "102",
+        "nom-chf": "FRANCESCAS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.28881880308904, 43.3380975985777], [-1.00235037163198, 43.3380975985777], [-1.00235037163198, 43.1151830976189], [-1.28881880308904, 43.1151830976189], [-1.28881880308904, 43.3380975985777] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6413",
+        "type": "canton",
+        "code-canton": "6413",
+        "code-chf": "271",
+        "nom-chf": "IHOLDY",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.17172325474662, 44.1352038451366], [-0.676197082005726, 44.1352038451366], [-0.676197082005726, 43.9111803571833], [-1.17172325474662, 43.9111803571833], [-1.17172325474662, 44.1352038451366] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4013",
+        "type": "canton",
+        "code-canton": "4013",
+        "code-chf": "197",
+        "nom-chf": "MORCENX",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.996354855294905, 45.3128715608186], [1.27768742645727, 45.3128715608186], [1.27768742645727, 45.1833581741195], [0.996354855294905, 45.1833581741195], [0.996354855294905, 45.3128715608186] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2413",
+        "type": "canton",
+        "code-canton": "2413",
+        "code-chf": "210",
+        "nom-chf": "HAUTEFORT",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.882880838890375, 44.6429915921175], [1.07795122623525, 44.6429915921175], [1.07795122623525, 44.4654117839208], [0.882880838890375, 44.4654117839208], [0.882880838890375, 44.6429915921175] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4713",
+        "type": "canton",
+        "code-canton": "4713",
+        "code-chf": "106",
+        "nom-chf": "FUMEL",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.495402233958109, 44.8212408613421], [0.720972055122523, 44.8212408613421], [0.720972055122523, 44.6651486760554], [0.495402233958109, 44.6651486760554], [0.495402233958109, 44.8212408613421] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2414",
+        "type": "canton",
+        "code-canton": "2414",
+        "code-chf": "212",
+        "nom-chf": "ISSIGEAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.817200013478453, 43.7737989972159], [-0.605322081504367, 43.7737989972159], [-0.605322081504367, 43.6551773918823], [-0.817200013478453, 43.6551773918823], [-0.817200013478453, 43.7737989972159] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4014",
+        "type": "canton",
+        "code-canton": "4014",
+        "code-chf": "201",
+        "nom-chf": "MUGRON",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.37730835275115, 43.5131721835311], [-1.17029258015014, 43.5131721835311], [-1.17029258015014, 43.3322437976912], [-1.37730835275115, 43.3322437976912], [-1.37730835275115, 43.5131721835311] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6414",
+        "type": "canton",
+        "code-canton": "6414",
+        "code-chf": "289",
+        "nom-chf": "LA BASTIDE-CLAIRENCE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.140688977601514, 44.302895796072], [0.215736445997811, 44.302895796072], [0.215736445997811, 44.1227092979353], [-0.140688977601514, 44.1227092979353], [-0.140688977601514, 44.302895796072] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4714",
+        "type": "canton",
+        "code-canton": "4714",
+        "code-chf": "119",
+        "nom-chf": "HOUEILLES",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.666603196564826, 45.1175729572224], [-0.470908151432395, 45.1175729572224], [-0.470908151432395, 45.0029832365549], [-0.666603196564826, 45.0029832365549], [-0.666603196564826, 45.1175729572224] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3315",
+        "type": "canton",
+        "code-canton": "3315",
+        "code-chf": "067",
+        "nom-chf": "BOURG",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.47296675828802, 44.2371388563468], [0.639532399937203, 44.2371388563468], [0.639532399937203, 44.0766927049003], [0.47296675828802, 44.0766927049003], [0.47296675828802, 44.2371388563468] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4715",
+        "type": "canton",
+        "code-canton": "4715",
+        "code-chf": "137",
+        "nom-chf": "LAPLUME",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.859410667669041, 45.6127083825617], [1.16536370206585, 45.6127083825617], [1.16536370206585, 45.4478085687724], [0.859410667669041, 45.4478085687724], [0.859410667669041, 45.6127083825617] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2415",
+        "type": "canton",
+        "code-canton": "2415",
+        "code-chf": "218",
+        "nom-chf": "JUMILHAC-LE-GRAND",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.28708949040462, 44.5321945716776], [-0.899660267313616, 44.5321945716776], [-0.899660267313616, 44.2328520621786], [-1.28708949040462, 44.2328520621786], [-1.28708949040462, 44.5321945716776] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4015",
+        "type": "canton",
+        "code-canton": "4015",
+        "code-chf": "217",
+        "nom-chf": "PARENTIS-EN-BORN",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.835994817040547, 43.4748571669873], [-0.558769283074515, 43.4748571669873], [-0.558769283074515, 43.3298202121097], [-0.835994817040547, 43.3298202121097], [-0.835994817040547, 43.4748571669873] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6415",
+        "type": "canton",
+        "code-canton": "6415",
+        "code-chf": "301",
+        "nom-chf": "LAGOR",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.216477196970866, 45.0197728874847], [0.487565132999378, 45.0197728874847], [0.487565132999378, 44.8369103773274], [0.216477196970866, 44.8369103773274], [0.216477196970866, 45.0197728874847] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2416",
+        "type": "canton",
+        "code-canton": "2416",
+        "code-chf": "222",
+        "nom-chf": "LA FORCE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.641711630200203, 44.3342817332375], [0.818809613289363, 44.3342817332375], [0.818809613289363, 44.2122909917504], [0.641711630200203, 44.2122909917504], [0.641711630200203, 44.3342817332375] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4716",
+        "type": "canton",
+        "code-canton": "4716",
+        "code-chf": "138",
+        "nom-chf": "LAROQUE-TIMBAUT",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.23425181920497, 43.6590319792232], [-0.989142586349083, 43.6590319792232], [-0.989142586349083, 43.4885916619551], [-1.23425181920497, 43.4885916619551], [-1.23425181920497, 43.6590319792232] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4016",
+        "type": "canton",
+        "code-canton": "4016",
+        "code-chf": "224",
+        "nom-chf": "PEYREHORADE",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.52839450595129, 43.0863505371554], [-0.256920326639474, 43.0863505371554], [-0.256920326639474, 42.7968757503446], [-0.52839450595129, 42.7968757503446], [-0.52839450595129, 43.0863505371554] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6416",
+        "type": "canton",
+        "code-canton": "6416",
+        "code-chf": "320",
+        "nom-chf": "LARUNS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.362646848080538, 44.892965241755], [-0.133468223656867, 44.892965241755], [-0.133468223656867, 44.7657197060872], [-0.362646848080538, 44.7657197060872], [-0.362646848080538, 44.892965241755] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3316",
+        "type": "canton",
+        "code-canton": "3316",
+        "code-chf": "071",
+        "nom-chf": "BRANNE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.608400571194599, 44.9549582750956], [0.804670860805925, 44.9549582750956], [0.804670860805925, 44.7958803749024], [0.608400571194599, 44.7958803749024], [0.608400571194599, 44.9549582750956] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2417",
+        "type": "canton",
+        "code-canton": "2417",
+        "code-chf": "223",
+        "nom-chf": "LALINDE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.263493969029274, 44.6698079026785], [0.567153526221028, 44.6698079026785], [0.567153526221028, 44.5239415593906], [0.263493969029274, 44.5239415593906], [0.263493969029274, 44.6698079026785] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4717",
+        "type": "canton",
+        "code-canton": "4717",
+        "code-chf": "142",
+        "nom-chf": "LAUZUN",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.948772648805, 44.4563783839084], [-0.625806256819382, 44.4563783839084], [-0.625806256819382, 44.2503464601486], [-0.948772648805, 44.2503464601486], [-0.948772648805, 44.4563783839084] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4017",
+        "type": "canton",
+        "code-canton": "4017",
+        "code-chf": "227",
+        "nom-chf": "PISSOS",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.40511554354848, 44.7442724815726], [-0.228203762902601, 44.7442724815726], [-0.228203762902601, 44.5840411314288], [-0.40511554354848, 44.5840411314288], [-0.40511554354848, 44.7442724815726] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3317",
+        "type": "canton",
+        "code-canton": "3317",
+        "code-chf": "081",
+        "nom-chf": "CADILLAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.10159715983947, 43.6758332231397], [-0.794166697807848, 43.6758332231397], [-0.794166697807848, 43.532250926409], [-1.10159715983947, 43.532250926409], [-1.10159715983947, 43.6758332231397] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4018",
+        "type": "canton",
+        "code-canton": "4018",
+        "code-chf": "233",
+        "nom-chf": "POUILLON",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.951654609723779, 45.4879044404295], [1.32323052659572, 45.4879044404295], [1.32323052659572, 45.3421316967602], [0.951654609723779, 45.3421316967602], [0.951654609723779, 45.4879044404295] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2418",
+        "type": "canton",
+        "code-canton": "2418",
+        "code-chf": "227",
+        "nom-chf": "LANOUAILLE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.372914397718997, 44.3529163647832], [-0.0336082831080094, 44.3529163647832], [-0.0336082831080094, 44.1940166710363], [-0.372914397718997, 44.1940166710363], [-0.372914397718997, 44.3529163647832] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3318",
+        "type": "canton",
+        "code-canton": "3318",
+        "code-chf": "095",
+        "nom-chf": "CAPTIEUX",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.54981987819209, 43.5297013466901], [-1.49180153528131, 43.5297013466901], [-1.49180153528131, 43.4510552398977], [-1.54981987819209, 43.4510552398977], [-1.54981987819209, 43.5297013466901] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6490",
+        "type": "canton",
+        "code-canton": "6490",
+        "code-chf": "024",
+        "nom-chf": "ANGLET",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.256727069137167, 43.5637057152494], [-0.0189059405023939, 43.5637057152494], [-0.0189059405023939, 43.370741337806], [-0.256727069137167, 43.370741337806], [-0.256727069137167, 43.5637057152494] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6418",
+        "type": "canton",
+        "code-canton": "6418",
+        "code-chf": "331",
+        "nom-chf": "LEMBEYE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.167050609356958, 44.2733228664199], [0.492183026620865, 44.2733228664199], [0.492183026620865, 44.1306449582147], [0.167050609356958, 44.1306449582147], [0.167050609356958, 44.2733228664199] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4718",
+        "type": "canton",
+        "code-canton": "4718",
+        "code-chf": "143",
+        "nom-chf": "LAVARDAC",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.334363372899985, 45.539623254776], [0.652029467962847, 45.539623254776], [0.652029467962847, 45.3558526373995], [0.334363372899985, 45.3558526373995], [0.334363372899985, 45.539623254776] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2419",
+        "type": "canton",
+        "code-canton": "2419",
+        "code-chf": "253",
+        "nom-chf": "MAREUIL",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.536136088884488, 45.0044648976257], [-0.350315927131613, 45.0044648976257], [-0.350315927131613, 44.8812175484099], [-0.536136088884488, 44.8812175484099], [-0.536136088884488, 45.0044648976257] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3319",
+        "type": "canton",
+        "code-canton": "3319",
+        "code-chf": "096",
+        "nom-chf": "CARBON-BLANC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.476392069647157, 44.2703936894156], [-0.0955101290526543, 44.2703936894156], [-0.0955101290526543, 43.9117343982805], [-0.476392069647157, 43.9117343982805], [-0.476392069647157, 44.2703936894156] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4019",
+        "type": "canton",
+        "code-canton": "4019",
+        "code-chf": "245",
+        "nom-chf": "ROQUEFORT",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.169800646499902, 44.5378827534053], [0.374173660835109, 44.5378827534053], [0.374173660835109, 44.4300851668934], [0.169800646499902, 44.4300851668934], [0.169800646499902, 44.5378827534053] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4719",
+        "type": "canton",
+        "code-canton": "4719",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.531882956194113, 43.4696991478274], [-0.354363363757863, 43.4696991478274], [-0.354363363757863, 43.2882896606998], [-0.531882956194113, 43.2882896606998], [-0.531882956194113, 43.4696991478274] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6419",
+        "type": "canton",
+        "code-canton": "6419",
+        "code-chf": "335",
+        "nom-chf": "LESCAR",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.817003925509161, 44.7597745995307], [0.993532366770362, 44.7597745995307], [0.993532366770362, 44.5973162701579], [0.817003925509161, 44.5973162701579], [0.817003925509161, 44.7597745995307] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2420",
+        "type": "canton",
+        "code-canton": "2420",
+        "code-chf": "280",
+        "nom-chf": "MONPAZIER",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.57802417578388, 43.4943300814885], [-1.53544221725187, 43.4943300814885], [-1.53544221725187, 43.4471677030781], [-1.57802417578388, 43.4471677030781], [-1.57802417578388, 43.4943300814885] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6491",
+        "type": "canton",
+        "code-canton": "6491",
+        "code-chf": "122",
+        "nom-chf": "BIARRITZ",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.12654697798339, 44.2943171494333], [-0.616947927387146, 44.2943171494333], [-0.616947927387146, 44.0432426577106], [-1.12654697798339, 44.0432426577106], [-1.12654697798339, 44.2943171494333] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4020",
+        "type": "canton",
+        "code-canton": "4020",
+        "code-chf": "246",
+        "nom-chf": "SABRES",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.0746771874930023, 44.4772536361337], [0.303238690078885, 44.4772536361337], [0.303238690078885, 44.3520144587137], [0.0746771874930023, 44.3520144587137], [0.0746771874930023, 44.4772536361337] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4720",
+        "type": "canton",
+        "code-canton": "4720",
+        "code-chf": "159",
+        "nom-chf": "LE MAS-D'AGENAIS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.04462191646146, 43.3120903580686], [-0.745578036929956, 43.3120903580686], [-0.745578036929956, 43.0920776668801], [-1.04462191646146, 43.0920776668801], [-1.04462191646146, 43.3120903580686] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6420",
+        "type": "canton",
+        "code-canton": "6420",
+        "code-chf": "371",
+        "nom-chf": "MAULEON-LICHARRE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.23298639271824, 45.1450611144429], [-0.621422623252207, 45.1450611144429], [-0.621422623252207, 44.8089377430668], [-1.23298639271824, 44.8089377430668], [-1.23298639271824, 45.1450611144429] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3320",
+        "type": "canton",
+        "code-canton": "3320",
+        "code-chf": "104",
+        "nom-chf": "CASTELNAU-DE-MEDOC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.5248665484221, 43.588800428923], [-1.2492986260556, 43.588800428923], [-1.2492986260556, 43.495023650666], [-1.5248665484221, 43.495023650666], [-1.5248665484221, 43.588800428923] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4021",
+        "type": "canton",
+        "code-canton": "4021",
+        "code-chf": "273",
+        "nom-chf": "SAINT-MARTIN-DE-SEIGNANX",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0160434997598076, 44.5541508519609], [0.139337122775569, 44.5541508519609], [0.139337122775569, 44.4177234770473], [-0.0160434997598076, 44.4177234770473], [-0.0160434997598076, 44.5541508519609] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4721",
+        "type": "canton",
+        "code-canton": "4721",
+        "code-chf": "165",
+        "nom-chf": "MEILHAN-SUR-GARONNE",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.697035989228432, 43.3884984895151], [-0.492800712257654, 43.3884984895151], [-0.492800712257654, 43.2250983607382], [-0.697035989228432, 43.2250983607382], [-0.697035989228432, 43.3884984895151] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6421",
+        "type": "canton",
+        "code-canton": "6421",
+        "code-chf": "393",
+        "nom-chf": "MONEIN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.378672607319788, 45.3746853074442], [0.573437866530214, 45.3746853074442], [0.573437866530214, 45.1925344717197], [0.378672607319788, 45.1925344717197], [0.378672607319788, 45.3746853074442] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2421",
+        "type": "canton",
+        "code-canton": "2421",
+        "code-chf": "286",
+        "nom-chf": "MONTAGRIER",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.166117574216398, 44.9281804697228], [0.0339071456222261, 44.9281804697228], [0.0339071456222261, 44.8137448325626], [-0.166117574216398, 44.8137448325626], [-0.166117574216398, 44.9281804697228] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3321",
+        "type": "canton",
+        "code-canton": "3321",
+        "code-chf": "108",
+        "nom-chf": "CASTILLON-LA-BATAILLE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.685769549282706, 43.8290795671801], [-0.423491423022651, 43.8290795671801], [-0.423491423022651, 43.671561248397], [-0.685769549282706, 43.671561248397], [-0.685769549282706, 43.8290795671801] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4022",
+        "type": "canton",
+        "code-canton": "4022",
+        "code-chf": "282",
+        "nom-chf": "SAINT-SEVER",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.167098861138372, 43.4450845972814], [0.0286653361704561, 43.4450845972814], [0.0286653361704561, 43.2772090323678], [-0.167098861138372, 43.2772090323678], [-0.167098861138372, 43.4450845972814] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6422",
+        "type": "canton",
+        "code-canton": "6422",
+        "code-chf": "398",
+        "nom-chf": "MONTANER",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.916072472834838, 45.136584939912], [1.29070017945542, 45.136584939912], [1.29070017945542, 44.9604212320494], [0.916072472834838, 44.9604212320494], [0.916072472834838, 45.136584939912] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2422",
+        "type": "canton",
+        "code-canton": "2422",
+        "code-chf": "291",
+        "nom-chf": "MONTIGNAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.0602226563532694, 44.1405204784178], [0.322990880462503, 44.1405204784178], [0.322990880462503, 43.9732082639777], [0.0602226563532694, 43.9732082639777], [0.0602226563532694, 44.1405204784178] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4722",
+        "type": "canton",
+        "code-canton": "4722",
+        "code-chf": "167",
+        "nom-chf": "MEZIN",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.172455584140916, 45.1215816483215], [0.0732962468860917, 45.1215816483215], [0.0732962468860917, 44.9904263962472], [-0.172455584140916, 44.9904263962472], [-0.172455584140916, 45.1215816483215] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3322",
+        "type": "canton",
+        "code-canton": "3322",
+        "code-chf": "138",
+        "nom-chf": "COUTRAS",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.48250208973261, 43.6909388347309], [-1.19316712857523, 43.6909388347309], [-1.19316712857523, 43.5168448981074], [-1.48250208973261, 43.5168448981074], [-1.48250208973261, 43.6909388347309] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4023",
+        "type": "canton",
+        "code-canton": "4023",
+        "code-chf": "284",
+        "nom-chf": "SAINT-VINCENT-DE-TYROSSE",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.526564708366762, 44.8725565435379], [-0.241882475372896, 44.8725565435379], [-0.241882475372896, 44.7026661159245], [-0.526564708366762, 44.7026661159245], [-0.526564708366762, 44.8725565435379] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3323",
+        "type": "canton",
+        "code-canton": "3323",
+        "code-chf": "140",
+        "nom-chf": "CREON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.0406909507959663, 45.1731932715019], [0.27540370388041, 45.1731932715019], [0.27540370388041, 44.9583678632393], [0.0406909507959663, 44.9583678632393], [0.0406909507959663, 45.1731932715019] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2423",
+        "type": "canton",
+        "code-canton": "2423",
+        "code-chf": "294",
+        "nom-chf": "MONTPON-MENESTEROL",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.391810135174447, 44.5639563759318], [0.633647429229788, 44.5639563759318], [0.633647429229788, 44.3814661713317], [0.391810135174447, 44.3814661713317], [0.391810135174447, 44.5639563759318] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4723",
+        "type": "canton",
+        "code-canton": "4723",
+        "code-chf": "173",
+        "nom-chf": "MONCLAR",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.396826516110692, 43.4336424019708], [-0.0758321415123971, 43.4336424019708], [-0.0758321415123971, 43.2809471919177], [-0.396826516110692, 43.2809471919177], [-0.396826516110692, 43.4336424019708] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6423",
+        "type": "canton",
+        "code-canton": "6423",
+        "code-chf": "405",
+        "nom-chf": "MORLAAS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.546659437812188, 44.8655002819006], [-0.447462494453325, 44.8655002819006], [-0.447462494453325, 44.802656377635], [-0.546659437812188, 44.802656377635], [-0.546659437812188, 44.8655002819006] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3358",
+        "type": "canton",
+        "code-canton": "3358",
+        "code-chf": "167",
+        "nom-chf": "FLOIRAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.686746984465487, 44.4002304109102], [-0.383387827143286, 44.4002304109102], [-0.383387827143286, 44.1720659756802], [-0.686746984465487, 44.1720659756802], [-0.686746984465487, 44.4002304109102] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4024",
+        "type": "canton",
+        "code-canton": "4024",
+        "code-chf": "307",
+        "nom-chf": "SORE",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.911759565246854, 43.3981224834112], [-0.671769846958537, 43.3981224834112], [-0.671769846958537, 43.2387557775184], [-0.911759565246854, 43.2387557775184], [-0.911759565246854, 43.3981224834112] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6424",
+        "type": "canton",
+        "code-canton": "6424",
+        "code-chf": "416",
+        "nom-chf": "NAVARRENX",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.19723079864855, 45.1325563787049], [0.465214443540739, 45.1325563787049], [0.465214443540739, 44.9597687906851], [0.19723079864855, 44.9597687906851], [0.19723079864855, 45.1325563787049] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2424",
+        "type": "canton",
+        "code-canton": "2424",
+        "code-chf": "299",
+        "nom-chf": "MUSSIDAN",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.686093841470142, 44.6250224516042], [0.931865565999561, 44.6250224516042], [0.931865565999561, 44.4495254197931], [0.686093841470142, 44.4495254197931], [0.686093841470142, 44.6250224516042] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4724",
+        "type": "canton",
+        "code-canton": "4724",
+        "code-chf": "175",
+        "nom-chf": "MONFLANQUIN",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.601328933141303, 45.0401824485988], [-0.494230261859454, 45.0401824485988], [-0.494230261859454, 44.8612671747234], [-0.601328933141303, 44.8612671747234], [-0.601328933141303, 45.0401824485988] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3360",
+        "type": "canton",
+        "code-canton": "3360",
+        "code-chf": "249",
+        "nom-chf": "LORMONT",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.454946073154667, 45.0498360892937], [-0.243092732204056, 45.0498360892937], [-0.243092732204056, 44.8892278773995], [-0.454946073154667, 44.8892278773995], [-0.454946073154667, 45.0498360892937] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3324",
+        "type": "canton",
+        "code-canton": "3324",
+        "code-chf": "174",
+        "nom-chf": "FRONSAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.44559128351982, 43.8975118383379], [-1.10713697699439, 43.8975118383379], [-1.10713697699439, 43.6456233920886], [-1.44559128351982, 43.6456233920886], [-1.44559128351982, 43.8975118383379] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4025",
+        "type": "canton",
+        "code-canton": "4025",
+        "code-chf": "310",
+        "nom-chf": "SOUSTONS",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.27540370388041, 45.2150276065096], [0.526815189669841, 45.2150276065096], [0.526815189669841, 45.0350315358464], [0.27540370388041, 45.0350315358464], [0.27540370388041, 45.2150276065096] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2425",
+        "type": "canton",
+        "code-canton": "2425",
+        "code-chf": "309",
+        "nom-chf": "NEUVIC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.213296887703163, 44.4652997839093], [0.0212795349298685, 44.4652997839093], [0.0212795349298685, 44.2986871859878], [-0.213296887703163, 44.2986871859878], [-0.213296887703163, 44.4652997839093] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3325",
+        "type": "canton",
+        "code-canton": "3325",
+        "code-chf": "195",
+        "nom-chf": "GRIGNOLS",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.298123156030475, 43.262163543799], [-0.125305681847388, 43.262163543799], [-0.125305681847388, 43.1044344646659], [-0.298123156030475, 43.1044344646659], [-0.298123156030475, 43.262163543799] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6425",
+        "type": "canton",
+        "code-canton": "6425",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.261707054840974, 44.1940941186936], [0.527728645391237, 44.1940941186936], [0.527728645391237, 44.0660039256779], [0.261707054840974, 44.0660039256779], [0.261707054840974, 44.1940941186936] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4725",
+        "type": "canton",
+        "code-canton": "4725",
+        "code-chf": "195",
+        "nom-chf": "NERAC",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.861396841753594, 43.9113205299136], [-0.625629533038951, 43.9113205299136], [-0.625629533038951, 43.7562758253323], [-0.861396841753594, 43.7562758253323], [-0.861396841753594, 43.9113205299136] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4026",
+        "type": "canton",
+        "code-canton": "4026",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.472934424617823, 45.6421254728056], [0.811500332264729, 45.6421254728056], [0.811500332264729, 45.4452077881339], [0.472934424617823, 45.4452077881339], [0.472934424617823, 45.6421254728056] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2426",
+        "type": "canton",
+        "code-canton": "2426",
+        "code-chf": "311",
+        "nom-chf": "NONTRON",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.743450482851795, 44.4685886157996], [0.915313122683142, 44.4685886157996], [0.915313122683142, 44.2872252656833], [0.743450482851795, 44.2872252656833], [0.743450482851795, 44.4685886157996] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4726",
+        "type": "canton",
+        "code-canton": "4726",
+        "code-chf": "203",
+        "nom-chf": "PENNE-D'AGENAIS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.354624369840751, 43.2419899658888], [-0.181564230159231, 43.2419899658888], [-0.181564230159231, 43.0336875396439], [-0.354624369840751, 43.0336875396439], [-0.354624369840751, 43.2419899658888] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6426",
+        "type": "canton",
+        "code-canton": "6426",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.334585571789397, 45.1495888365539], [-0.109181495659882, 45.1495888365539], [-0.109181495659882, 44.962794818319], [-0.334585571789397, 44.962794818319], [-0.334585571789397, 45.1495888365539] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3326",
+        "type": "canton",
+        "code-canton": "3326",
+        "code-chf": "198",
+        "nom-chf": "GUITRES",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.04645589604609, 43.9927511967231], [-0.68575208690343, 43.9927511967231], [-0.68575208690343, 43.7567498041417], [-1.04645589604609, 43.7567498041417], [-1.04645589604609, 43.9927511967231] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4027",
+        "type": "canton",
+        "code-canton": "4027",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.50197570756659, 43.5179649601571], [-1.41765839605086, 43.5179649601571], [-1.41765839605086, 43.4510552398977], [-1.50197570756659, 43.4510552398977], [-1.50197570756659, 43.5179649601571] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6496",
+        "type": "canton",
+        "code-canton": "6496",
+        "code-chf": "102",
+        "nom-chf": "BAYONNE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.308974586208963, 44.3570325706472], [0.495171127760525, 44.3570325706472], [0.495171127760525, 44.2340984369598], [0.308974586208963, 44.2340984369598], [0.308974586208963, 44.3570325706472] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4727",
+        "type": "canton",
+        "code-canton": "4727",
+        "code-chf": "210",
+        "nom-chf": "PORT-SAINTE-MARIE",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.729966737111434, 44.769099996906], [-0.433879572640817, 44.769099996906], [-0.433879572640817, 44.546055345035], [-0.729966737111434, 44.546055345035], [-0.729966737111434, 44.769099996906] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3327",
+        "type": "canton",
+        "code-canton": "3327",
+        "code-chf": "213",
+        "nom-chf": "LA BREDE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.702428520044664, 43.284311263497], [-0.451441101659718, 43.284311263497], [-0.451441101659718, 43.0930784936764], [-0.702428520044664, 43.0930784936764], [-0.702428520044664, 43.284311263497] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6427",
+        "type": "canton",
+        "code-canton": "6427",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.445553218272688, 44.3795503712119], [0.645040420449171, 44.3795503712119], [0.645040420449171, 44.2465588633796], [0.445553218272688, 44.2465588633796], [0.445553218272688, 44.3795503712119] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4728",
+        "type": "canton",
+        "code-canton": "4728",
+        "code-chf": "213",
+        "nom-chf": "PRAYSSAS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.384015189962244, 43.9826655400514], [-0.185723333172029, 43.9826655400514], [-0.185723333172029, 43.783464936583], [-0.384015189962244, 43.783464936583], [-0.384015189962244, 43.9826655400514] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4028",
+        "type": "canton",
+        "code-canton": "4028",
+        "code-chf": "331",
+        "nom-chf": "VILLENEUVE-DE-MARSAN",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.774902559653937, 43.2685384310787], [-0.588631023415014, 43.2685384310787], [-0.588631023415014, 43.0701507593297], [-0.774902559653937, 43.0701507593297], [-0.774902559653937, 43.2685384310787] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6428",
+        "type": "canton",
+        "code-canton": "6428",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.6712655009685, 43.4638078719024], [-1.54304333347501, 43.4638078719024], [-1.54304333347501, 43.3088157560445], [-1.6712655009685, 43.3088157560445], [-1.6712655009685, 43.4638078719024] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6434",
+        "type": "canton",
+        "code-canton": "6434",
+        "code-chf": "483",
+        "nom-chf": "SAINT-JEAN-DE-LUZ",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.204415712554447, 45.315955009605], [0.441855479115289, 45.315955009605], [0.441855479115289, 45.1567474535152], [0.204415712554447, 45.1567474535152], [0.204415712554447, 45.315955009605] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2428",
+        "type": "canton",
+        "code-canton": "2428",
+        "code-chf": "352",
+        "nom-chf": "RIBERAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.426621593528693, 44.5840411314288], [-0.117224279607146, 44.5840411314288], [-0.117224279607146, 44.4722462645984], [-0.426621593528693, 44.4722462645984], [-0.426621593528693, 44.5840411314288] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3328",
+        "type": "canton",
+        "code-canton": "3328",
+        "code-chf": "227",
+        "nom-chf": "LANGON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.676983436469539, 44.9815179571843], [0.922463171345237, 44.9815179571843], [0.922463171345237, 44.8515491197127], [0.676983436469539, 44.8515491197127], [0.676983436469539, 44.9815179571843] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2429",
+        "type": "canton",
+        "code-canton": "2429",
+        "code-chf": "362",
+        "nom-chf": "SAINTE-ALVERE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.14546848749788, 43.7316186124112], [-0.953340368313265, 43.7316186124112], [-0.953340368313265, 43.6216235179302], [-1.14546848749788, 43.6216235179302], [-1.14546848749788, 43.7316186124112] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4029",
+        "type": "canton",
+        "code-canton": "4029",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.671321177021422, 44.2350967672426], [0.893402213041761, 44.2350967672426], [0.893402213041761, 44.1265159547878], [0.671321177021422, 44.1265159547878], [0.671321177021422, 44.2350967672426] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4729",
+        "type": "canton",
+        "code-canton": "4729",
+        "code-chf": "217",
+        "nom-chf": "PUYMIROL",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.936344649411068, 43.5791680527326], [-0.631280294394299, 43.5791680527326], [-0.631280294394299, 43.4474449092533], [-0.936344649411068, 43.4474449092533], [-0.936344649411068, 43.5791680527326] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6429",
+        "type": "canton",
+        "code-canton": "6429",
+        "code-chf": "430",
+        "nom-chf": "ORTHEZ",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.475303990906013, 44.4415551030364], [0.649708735946704, 44.4415551030364], [0.649708735946704, 44.3317119785091], [0.475303990906013, 44.3317119785091], [0.475303990906013, 44.4415551030364] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4730",
+        "type": "canton",
+        "code-canton": "4730",
+        "code-chf": "252",
+        "nom-chf": "SAINTE-LIVRADE-SUR-LOT",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.16950655507955, 45.4080988658663], [-0.782551963045141, 45.4080988658663], [-0.782551963045141, 45.2047226923979], [-1.16950655507955, 45.2047226923979], [-1.16950655507955, 45.4080988658663] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3329",
+        "type": "canton",
+        "code-canton": "3329",
+        "code-chf": "240",
+        "nom-chf": "LESPARRE-MEDOC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.685424351261926, 43.9318838450895], [-0.363163079814191, 43.9318838450895], [-0.363163079814191, 43.7845836135134], [-0.685424351261926, 43.7845836135134], [-0.685424351261926, 43.9318838450895] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4030",
+        "type": "canton",
+        "code-canton": "4030",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.46015798285972, 45.258830501062], [0.68413428243306, 45.258830501062], [0.68413428243306, 45.0423108015131], [0.46015798285972, 45.0423108015131], [0.46015798285972, 45.258830501062] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2430",
+        "type": "canton",
+        "code-canton": "2430",
+        "code-chf": "372",
+        "nom-chf": "SAINT-ASTIER",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.393953550835522, 44.9753855449476], [-0.131569985467932, 44.9753855449476], [-0.131569985467932, 44.8326072816571], [-0.393953550835522, 44.8326072816571], [-0.393953550835522, 44.9753855449476] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3330",
+        "type": "canton",
+        "code-canton": "3330",
+        "code-chf": "243",
+        "nom-chf": "LIBOURNE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.0902474205998288, 44.6613622763675], [0.400719403818076, 44.6613622763675], [0.400719403818076, 44.4816328206209], [0.0902474205998288, 44.4816328206209], [0.0902474205998288, 44.6613622763675] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4731",
+        "type": "canton",
+        "code-canton": "4731",
+        "code-chf": "301",
+        "nom-chf": "SEYCHES",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0415138998487493, 45.2636042060858], [0.310510501006047, 45.2636042060858], [0.310510501006047, 45.0747001203364], [-0.0415138998487493, 45.0747001203364], [-0.0415138998487493, 45.2636042060858] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2431",
+        "type": "canton",
+        "code-canton": "2431",
+        "code-chf": "376",
+        "nom-chf": "SAINT-AULAYE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.330393413270224, 43.3206450678587], [-0.19686357956798, 43.3206450678587], [-0.19686357956798, 43.2405640172586], [-0.330393413270224, 43.2405640172586], [-0.330393413270224, 43.3206450678587] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6431",
+        "type": "canton",
+        "code-canton": "6431",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.207608020910688, 45.0243113983605], [0.0401063551288373, 45.0243113983605], [0.0401063551288373, 44.8816654161975], [-0.207608020910688, 44.8816654161975], [-0.207608020910688, 45.0243113983605] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3331",
+        "type": "canton",
+        "code-canton": "3331",
+        "code-chf": "261",
+        "nom-chf": "LUSSAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.259240019077102, 44.4572795633545], [0.462864631801649, 44.4572795633545], [0.462864631801649, 44.3314092473781], [0.259240019077102, 44.3314092473781], [0.259240019077102, 44.4572795633545] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4732",
+        "type": "canton",
+        "code-canton": "4732",
+        "code-chf": "310",
+        "nom-chf": "TONNEINS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.47224036820515, 43.3035811942825], [-1.22466537764274, 43.3035811942825], [-1.22466537764274, 43.0289521589966], [-1.47224036820515, 43.0289521589966], [-1.47224036820515, 43.3035811942825] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6433",
+        "type": "canton",
+        "code-canton": "6433",
+        "code-chf": "477",
+        "nom-chf": "SAINT-ETIENNE-DE-BAIGORRY",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0321468316497962, 44.7009793962765], [0.182751503345272, 44.7009793962765], [0.182751503345272, 44.5938950849401], [-0.0321468316497962, 44.5938950849401], [-0.0321468316497962, 44.7009793962765] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3332",
+        "type": "canton",
+        "code-canton": "3332",
+        "code-chf": "289",
+        "nom-chf": "MONSEGUR",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.217607674445294, 43.3050343386858], [-0.018516158879183, 43.3050343386858], [-0.018516158879183, 43.1670513003348], [-0.217607674445294, 43.1670513003348], [-0.217607674445294, 43.3050343386858] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6432",
+        "type": "canton",
+        "code-canton": "6432",
+        "code-chf": "453",
+        "nom-chf": "PONTACQ",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.888353451775241, 45.0039214670203], [1.1362856399268, 45.0039214670203], [1.1362856399268, 44.8123046504939], [0.888353451775241, 44.8123046504939], [0.888353451775241, 45.0039214670203] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2432",
+        "type": "canton",
+        "code-canton": "2432",
+        "code-chf": "396",
+        "nom-chf": "SAINT-CYPRIEN",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.685766046452249, 45.6235266855398], [0.99238175022331, 45.6235266855398], [0.99238175022331, 45.442157894988], [0.685766046452249, 45.442157894988], [0.685766046452249, 45.6235266855398] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2433",
+        "type": "canton",
+        "code-canton": "2433",
+        "code-chf": "479",
+        "nom-chf": "SAINT-PARDOUX-LA-RIVIERE",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.899068530301168, 44.4977250119335], [1.06408383186491, 44.4977250119335], [1.06408383186491, 44.3443989675395], [0.899068530301168, 44.3443989675395], [0.899068530301168, 44.4977250119335] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4733",
+        "type": "canton",
+        "code-canton": "4733",
+        "code-chf": "312",
+        "nom-chf": "TOURNON-D'AGENAIS",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.891980103571563, 45.3096485473236], [-0.693257319865993, 45.3096485473236], [-0.693257319865993, 45.1363797836674], [-0.891980103571563, 45.1363797836674], [-0.891980103571563, 45.3096485473236] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3333",
+        "type": "canton",
+        "code-canton": "3333",
+        "code-chf": "314",
+        "nom-chf": "PAUILLAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.883948947775666, 44.966663101223], [-0.642108260497336, 44.966663101223], [-0.642108260497336, 44.846928339044], [-0.883948947775666, 44.846928339044], [-0.883948947775666, 44.966663101223] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3363",
+        "type": "canton",
+        "code-canton": "3363",
+        "code-chf": "449",
+        "nom-chf": "SAINT-MEDARD-EN-JALLES",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.675679594758123, 45.2051994116299], [0.969625918603976, 45.2051994116299], [0.969625918603976, 45.0357595904426], [0.675679594758123, 45.0357595904426], [0.675679594758123, 45.2051994116299] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2434",
+        "type": "canton",
+        "code-canton": "2434",
+        "code-chf": "484",
+        "nom-chf": "SAINT-PIERRE-DE-CHIGNAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.0337453384406148, 44.7914957024821], [0.180433660268554, 44.7914957024821], [0.180433660268554, 44.6675922929535], [-0.0337453384406148, 44.6675922929535], [-0.0337453384406148, 44.7914957024821] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3334",
+        "type": "canton",
+        "code-canton": "3334",
+        "code-chf": "316",
+        "nom-chf": "PELLEGRUE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.642179244503453, 44.4783691048763], [0.690986091231468, 44.4783691048763], [0.690986091231468, 44.4181283513676], [0.642179244503453, 44.4181283513676], [0.642179244503453, 44.4783691048763] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4734",
+        "type": "canton",
+        "code-canton": "4734",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.30847433242974, 43.232717787524], [-1.03043843216136, 43.232717787524], [-1.03043843216136, 43.0084742839636], [-1.30847433242974, 43.0084742839636], [-1.30847433242974, 43.232717787524] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6435",
+        "type": "canton",
+        "code-canton": "6435",
+        "code-chf": "485",
+        "nom-chf": "SAINT-JEAN-PIED-DE-PORT",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.647930544203859, 44.7007839845787], [0.85244444069609, 44.7007839845787], [0.85244444069609, 44.5387345665201], [0.647930544203859, 44.5387345665201], [0.647930544203859, 44.7007839845787] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4735",
+        "type": "canton",
+        "code-canton": "4735",
+        "code-chf": "324",
+        "nom-chf": "VILLEREAL",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [1.20329261776233, 45.0654616256858], [1.44826154393221, 45.0654616256858], [1.44826154393221, 44.9087878524827], [1.20329261776233, 44.9087878524827], [1.20329261776233, 45.0654616256858] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2435",
+        "type": "canton",
+        "code-canton": "2435",
+        "code-chf": "516",
+        "nom-chf": "SALIGNAC-EYVIGUES",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.487136013305068, 44.2979393554248], [0.686250737972828, 44.2979393554248], [0.686250737972828, 44.2132478417493], [0.487136013305068, 44.2132478417493], [0.487136013305068, 44.2979393554248] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4736",
+        "type": "canton",
+        "code-canton": "4736",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.21406677673414, 43.4518505246694], [-0.861395685282179, 43.4518505246694], [-0.861395685282179, 43.1998556071786], [-1.21406677673414, 43.1998556071786], [-1.21406677673414, 43.4518505246694] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6436",
+        "type": "canton",
+        "code-canton": "6436",
+        "code-chf": "493",
+        "nom-chf": "SAINT-PALAIS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.566461976479953, 44.7073941305948], [-0.283439066248323, 44.7073941305948], [-0.283439066248323, 44.516087264865], [-0.566461976479953, 44.516087264865], [-0.566461976479953, 44.7073941305948] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3336",
+        "type": "canton",
+        "code-canton": "3336",
+        "code-chf": "327",
+        "nom-chf": "PODENSAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [1.08094261368059, 45.0002745203763], [1.31345519981099, 45.0002745203763], [1.31345519981099, 44.8058879680748], [1.08094261368059, 44.8058879680748], [1.08094261368059, 45.0002745203763] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2436",
+        "type": "canton",
+        "code-canton": "2436",
+        "code-chf": "520",
+        "nom-chf": "SARLAT-LA-CANEDA",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.749101219083666, 45.3574149409865], [1.02994538382507, 45.3574149409865], [1.02994538382507, 45.1836852422802], [0.749101219083666, 45.1836852422802], [0.749101219083666, 45.3574149409865] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2437",
+        "type": "canton",
+        "code-canton": "2437",
+        "code-chf": "527",
+        "nom-chf": "SAVIGNAC-LES-EGLISES",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.758552727838635, 44.8224743045092], [-0.60304723869607, 44.8224743045092], [-0.60304723869607, 44.7505562863927], [-0.758552727838635, 44.7505562863927], [-0.758552727838635, 44.8224743045092] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3397",
+        "type": "canton",
+        "code-canton": "3397",
+        "code-chf": "318",
+        "nom-chf": "PESSAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.06899708841283, 43.5401994852822], [-0.838777333011124, 43.5401994852822], [-0.838777333011124, 43.4194313734623], [-1.06899708841283, 43.4194313734623], [-1.06899708841283, 43.5401994852822] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6437",
+        "type": "canton",
+        "code-canton": "6437",
+        "code-chf": "499",
+        "nom-chf": "SALIES-DE-BEARN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.156977974047489, 44.8521144172412], [0.114027197647407, 44.8521144172412], [0.114027197647407, 44.7623676961281], [-0.156977974047489, 44.7623676961281], [-0.156977974047489, 44.8521144172412] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3337",
+        "type": "canton",
+        "code-canton": "3337",
+        "code-chf": "344",
+        "nom-chf": "PUJOLS",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.263719304874935, 44.8545528885238], [0.516922915097764, 44.8545528885238], [0.516922915097764, 44.7227389497973], [0.263719304874935, 44.7227389497973], [0.263719304874935, 44.8545528885238] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2438",
+        "type": "canton",
+        "code-canton": "2438",
+        "code-chf": "534",
+        "nom-chf": "SIGOULES",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.0686869652798798, 44.5900807467311], [0.203149079175625, 44.5900807467311], [0.203149079175625, 44.5005664430997], [0.0686869652798798, 44.5005664430997], [0.0686869652798798, 44.5900807467311] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4738",
+        "type": "canton",
+        "code-canton": "4738",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.01759925871498, 43.4658167567015], [-0.750116268647329, 43.4658167567015], [-0.750116268647329, 43.3440397070424], [-1.01759925871498, 43.3440397070424], [-1.01759925871498, 43.4658167567015] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6438",
+        "type": "canton",
+        "code-canton": "6438",
+        "code-chf": "513",
+        "nom-chf": "SAUVETERRE-DE-BEARN",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.137531354953836, 44.6502564683432], [0.116630106611877, 44.6502564683432], [0.116630106611877, 44.5028058381907], [-0.137531354953836, 44.5028058381907], [-0.137531354953836, 44.6502564683432] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3338",
+        "type": "canton",
+        "code-canton": "3338",
+        "code-chf": "352",
+        "nom-chf": "LA REOLE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.19434128745065, 45.2500717099125], [-0.760195955900777, 45.2500717099125], [-0.760195955900777, 45.0229349648291], [-1.19434128745065, 45.0229349648291], [-1.19434128745065, 45.2500717099125] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3342",
+        "type": "canton",
+        "code-canton": "3342",
+        "code-chf": "424",
+        "nom-chf": "SAINT-LAURENT-MEDOC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.490897167001295, 45.0634992412365], [-0.350592034730956, 45.0634992412365], [-0.350592034730956, 44.9534240640769], [-0.490897167001295, 44.9534240640769], [-0.490897167001295, 45.0634992412365] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3339",
+        "type": "canton",
+        "code-canton": "3339",
+        "code-chf": "366",
+        "nom-chf": "SAINT-ANDRE-DE-CUBZAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.08448990575412, 43.1780092226858], [-0.756103681618142, 43.1780092226858], [-0.756103681618142, 42.9509739905194], [-1.08448990575412, 42.9509739905194], [-1.08448990575412, 43.1780092226858] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6439",
+        "type": "canton",
+        "code-canton": "6439",
+        "code-chf": "533",
+        "nom-chf": "TARDETS-SORHOLUS",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.619192217126075, 44.4289048281031], [0.750412402397036, 44.4289048281031], [0.750412402397036, 44.3005829264996], [0.619192217126075, 44.3005829264996], [0.619192217126075, 44.4289048281031] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4739",
+        "type": "canton",
+        "code-canton": "4739",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.714610727455562, 45.3429481374477], [-0.433462996812691, 45.3429481374477], [-0.433462996812691, 45.1823771696394], [-0.714610727455562, 45.1823771696394], [-0.714610727455562, 45.3429481374477] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3340",
+        "type": "canton",
+        "code-canton": "3340",
+        "code-chf": "389",
+        "nom-chf": "SAINT-CIERS-SUR-GIRONDE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [1.10007686863495, 45.2159194686511], [1.41352482854265, 45.2159194686511], [1.41352482854265, 45.0316333641618], [1.10007686863495, 45.0316333641618], [1.10007686863495, 45.2159194686511] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2439",
+        "type": "canton",
+        "code-canton": "2439",
+        "code-chf": "547",
+        "nom-chf": "TERRASSON-LAVILLEDIEU",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.613407070933689, 44.2373165885255], [0.74450843496809, 44.2373165885255], [0.74450843496809, 44.1456156058095], [0.613407070933689, 44.1456156058095], [0.613407070933689, 44.2373165885255] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4740",
+        "type": "canton",
+        "code-canton": "4740",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.929665118629535, 45.2595726873396], [1.13899059516831, 45.2595726873396], [1.13899059516831, 45.072927344275], [0.929665118629535, 45.072927344275], [0.929665118629535, 45.2595726873396] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2440",
+        "type": "canton",
+        "code-canton": "2440",
+        "code-chf": "550",
+        "nom-chf": "THENON",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.439838473118077, 43.5396219377708], [-0.227855680721195, 43.5396219377708], [-0.227855680721195, 43.3856428183467], [-0.439838473118077, 43.3856428183467], [-0.439838473118077, 43.5396219377708] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6440",
+        "type": "canton",
+        "code-canton": "6440",
+        "code-chf": "536",
+        "nom-chf": "THEZE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.61893958651968, 43.4608085171499], [-1.37851595581883, 43.4608085171499], [-1.37851595581883, 43.2932762638351], [-1.61893958651968, 43.2932762638351], [-1.61893958651968, 43.4608085171499] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6441",
+        "type": "canton",
+        "code-canton": "6441",
+        "code-chf": "547",
+        "nom-chf": "USTARITZ",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.774882143862089, 45.4872515446184], [0.992726093908234, 45.4872515446184], [0.992726093908234, 45.3341798544729], [0.774882143862089, 45.3341798544729], [0.774882143862089, 45.4872515446184] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2441",
+        "type": "canton",
+        "code-canton": "2441",
+        "code-chf": "551",
+        "nom-chf": "THIVIERS",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.107207747879412, 44.8719789073434], [0.315055728326286, 44.8719789073434], [0.315055728326286, 44.7224305280937], [0.107207747879412, 44.7224305280937], [0.107207747879412, 44.8719789073434] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3341",
+        "type": "canton",
+        "code-canton": "3341",
+        "code-chf": "402",
+        "nom-chf": "SAINTE-FOY-LA-GRANDE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.034209783207473, 44.926458723671], [0.243751074653518, 44.926458723671], [0.243751074653518, 44.8191439757047], [-0.034209783207473, 44.8191439757047], [-0.034209783207473, 44.926458723671] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2442",
+        "type": "canton",
+        "code-canton": "2442",
+        "code-chf": "568",
+        "nom-chf": "VELINES",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.673608828500981, 45.2135910830687], [0.743681013556167, 45.2135910830687], [0.743681013556167, 45.1737192100551], [0.673608828500981, 45.1737192100551], [0.673608828500981, 45.2135910830687] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2497",
+        "type": "canton",
+        "code-canton": "2497",
+        "code-chf": "322",
+        "nom-chf": "PERIGUEUX",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.577973119821792, 45.1142777799772], [0.883594831383892, 45.1142777799772], [0.883594831383892, 44.952872588662], [0.577973119821792, 44.952872588662], [0.577973119821792, 45.1142777799772] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2443",
+        "type": "canton",
+        "code-canton": "2443",
+        "code-chf": "571",
+        "nom-chf": "VERGT",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.283439066248323, 44.6550845844351], [-0.104227101860379, 44.6550845844351], [-0.104227101860379, 44.5571194013808], [-0.283439066248323, 44.5571194013808], [-0.283439066248323, 44.6550845844351] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3343",
+        "type": "canton",
+        "code-canton": "3343",
+        "code-chf": "435",
+        "nom-chf": "SAINT-MACAIRE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.575136637549512, 45.2805687371591], [-0.297414349124309, 45.2805687371591], [-0.297414349124309, 45.0433488860128], [-0.575136637549512, 45.0433488860128], [-0.575136637549512, 45.2805687371591] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3344",
+        "type": "canton",
+        "code-canton": "3344",
+        "code-chf": "473",
+        "nom-chf": "SAINT-SAVIN",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.249430792428227, 45.4598188018361], [0.502806987803348, 45.4598188018361], [0.502806987803348, 45.286141394107], [0.249430792428227, 45.286141394107], [0.249430792428227, 45.4598188018361] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2444",
+        "type": "canton",
+        "code-canton": "2444",
+        "code-chf": "573",
+        "nom-chf": "VERTEILLAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.403837912787701, 45.054556899731], [0.66491539495898, 45.054556899731], [0.66491539495898, 44.8990240249456], [0.403837912787701, 44.8990240249456], [0.403837912787701, 45.054556899731] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2445",
+        "type": "canton",
+        "code-canton": "2445",
+        "code-chf": "581",
+        "nom-chf": "VILLAMBLARD",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.7860065674673, 43.3963787302857], [-1.63560865954411, 43.3963787302857], [-1.63560865954411, 43.2990177436724], [-1.7860065674673, 43.2990177436724], [-1.7860065674673, 43.3963787302857] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6445",
+        "type": "canton",
+        "code-canton": "6445",
+        "code-chf": "260",
+        "nom-chf": "HENDAYE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.736861436075769, 44.5528598523656], [-0.39750981775241, 44.5528598523656], [-0.39750981775241, 44.3646540432629], [-0.736861436075769, 44.3646540432629], [-0.736861436075769, 44.5528598523656] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3345",
+        "type": "canton",
+        "code-canton": "3345",
+        "code-chf": "484",
+        "nom-chf": "SAINT-SYMPHORIEN",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.005126500875383, 45.0243113983605], [0.291265188427166, 45.0243113983605], [0.291265188427166, 44.8789956347472], [0.005126500875383, 44.8789956347472], [0.005126500875383, 45.0243113983605] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2446",
+        "type": "canton",
+        "code-canton": "2446",
+        "code-chf": "584",
+        "nom-chf": "VILLEFRANCHE-DE-LONCHAT",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.465223673564344, 43.3152388044858], [-0.318997248530689, 43.3152388044858], [-0.318997248530689, 43.1598716377996], [-0.465223673564344, 43.1598716377996], [-0.465223673564344, 43.3152388044858] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6446",
+        "type": "canton",
+        "code-canton": "6446",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.16049389838257, 45.5731138630698], [-0.903698962773409, 45.5731138630698], [-0.903698962773409, 45.3711421028744], [-1.16049389838257, 45.3711421028744], [-1.16049389838257, 45.5731138630698] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3346",
+        "type": "canton",
+        "code-canton": "3346",
+        "code-chf": "490",
+        "nom-chf": "SAINT-VIVIEN-DE-MEDOC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.244295988550121, 44.8052557501441], [0.000349193381693949, 44.8052557501441], [0.000349193381693949, 44.6248102151271], [-0.244295988550121, 44.6248102151271], [-0.244295988550121, 44.8052557501441] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3347",
+        "type": "canton",
+        "code-canton": "3347",
+        "code-chf": "506",
+        "nom-chf": "SAUVETERRE-DE-GUYENNE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.362583092279684, 43.3083544252672], [-0.263743143111188, 43.3083544252672], [-0.263743143111188, 43.2328836397307], [-0.362583092279684, 43.2328836397307], [-0.362583092279684, 43.3083544252672] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6447",
+        "type": "canton",
+        "code-canton": "6447",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.939195008568576, 44.7341778259099], [1.22470652280428, 44.7341778259099], [1.22470652280428, 44.5707739252791], [0.939195008568576, 44.5707739252791], [0.939195008568576, 44.7341778259099] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2447",
+        "type": "canton",
+        "code-canton": "2447",
+        "code-chf": "585",
+        "nom-chf": "VILLEFRANCHE-DU-PERIGORD",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.416669867835239, 44.9329459513011], [0.643534680839824, 44.9329459513011], [0.643534680839824, 44.7864230054466], [0.416669867835239, 44.7864230054466], [0.416669867835239, 44.9329459513011] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2448",
+        "type": "canton",
+        "code-canton": "2448",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.316468078961751, 44.7852121607102], [-0.104741592736024, 44.7852121607102], [-0.104741592736024, 44.6535854804709], [-0.316468078961751, 44.6535854804709], [-0.316468078961751, 44.7852121607102] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3348",
+        "type": "canton",
+        "code-canton": "3348",
+        "code-chf": "523",
+        "nom-chf": "TARGON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.382200111168036, 43.2920836462166], [-0.307695233602088, 43.2920836462166], [-0.307695233602088, 43.2239494583228], [-0.382200111168036, 43.2239494583228], [-0.382200111168036, 43.2920836462166] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6448",
+        "type": "canton",
+        "code-canton": "6448",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.637025733385034, 45.3003242421825], [0.818516197926715, 45.3003242421825], [0.818516197926715, 45.1822581312712], [0.637025733385034, 45.1822581312712], [0.637025733385034, 45.3003242421825] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2449",
+        "type": "canton",
+        "code-canton": "2449",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.25982170796427, 44.651878167681], [-0.965552391933526, 44.651878167681], [-0.965552391933526, 44.4676042123461], [-1.25982170796427, 44.4676042123461], [-1.25982170796427, 44.651878167681] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3349",
+        "type": "canton",
+        "code-canton": "3349",
+        "code-chf": "529",
+        "nom-chf": "LA TESTE-DE-BUCH",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.618565950555932, 45.2351247753812], [0.720555170802446, 45.2351247753812], [0.720555170802446, 45.1421017765006], [0.618565950555932, 45.1421017765006], [0.618565950555932, 45.2351247753812] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2450",
+        "type": "canton",
+        "code-canton": "2450",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.528103107297291, 44.5087575416867], [-0.271075752134221, 44.5087575416867], [-0.271075752134221, 44.207053405831], [-0.528103107297291, 44.207053405831], [-0.528103107297291, 44.5087575416867] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3350",
+        "type": "canton",
+        "code-canton": "3350",
+        "code-chf": "547",
+        "nom-chf": "VILLANDRAUT",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.48458292312086, 43.5031492825882], [-1.31716613371882, 43.5031492825882], [-1.31716613371882, 43.4194430249546], [-1.48458292312086, 43.4194430249546], [-1.48458292312086, 43.5031492825882] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6452",
+        "type": "canton",
+        "code-canton": "6452",
+        "code-chf": "496",
+        "nom-chf": "SAINT-PIERRE-D'IRUBE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.631051278917787, 44.9094022274342], [-0.576088741405753, 44.9094022274342], [-0.576088741405753, 44.8542152658717], [-0.631051278917787, 44.8542152658717], [-0.631051278917787, 44.9094022274342] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3354",
+        "type": "canton",
+        "code-canton": "3354",
+        "code-chf": "069",
+        "nom-chf": "LE BOUSCAT",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.542231031136801, 44.9022942942352], [-0.331501595693628, 44.9022942942352], [-0.331501595693628, 44.8414500952559], [-0.542231031136801, 44.8414500952559], [-0.542231031136801, 44.9022942942352] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3355",
+        "type": "canton",
+        "code-canton": "3355",
+        "code-chf": "119",
+        "nom-chf": "CENON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.610066227233377, 44.8239101938734], [-0.572625356167486, 44.8239101938734], [-0.572625356167486, 44.786963463322], [-0.610066227233377, 44.786963463322], [-0.610066227233377, 44.8239101938734] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3356",
+        "type": "canton",
+        "code-canton": "3356",
+        "code-chf": "522",
+        "nom-chf": "TALENCE",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.591826113292595, 44.8058343221794], [-0.510893830266989, 44.8058343221794], [-0.510893830266989, 44.7419285437219], [-0.591826113292595, 44.7419285437219], [-0.591826113292595, 44.8058343221794] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3357",
+        "type": "canton",
+        "code-canton": "3357",
+        "code-chf": "550",
+        "nom-chf": "VILLENAVE-D'ORNON",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.837084148531976, 44.7930345337737], [-0.586890878640934, 44.7930345337737], [-0.586890878640934, 44.6725754941389], [-0.837084148531976, 44.6725754941389], [-0.837084148531976, 44.7930345337737] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3359",
+        "type": "canton",
+        "code-canton": "3359",
+        "code-chf": "192",
+        "nom-chf": "GRADIGNAN",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.904150013191055, 44.865672509266], [-0.726229348795729, 44.865672509266], [-0.726229348795729, 44.7367729653234], [-0.904150013191055, 44.7367729653234], [-0.904150013191055, 44.865672509266] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3361",
+        "type": "canton",
+        "code-canton": "3361",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.645906310849891, 43.442009208848], [-0.573557745392603, 43.442009208848], [-0.573557745392603, 43.4003166996942], [-0.645906310849891, 43.4003166996942], [-0.645906310849891, 43.442009208848] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6495",
+        "type": "canton",
+        "code-canton": "6495",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.431076977000264, 44.8999009054227], [0.54548662647938, 44.8999009054227], [0.54548662647938, 44.8041051251395], [0.431076977000264, 44.8041051251395], [0.431076977000264, 44.8999009054227] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/2496",
+        "type": "canton",
+        "code-canton": "2496",
+        "code-chf": "037",
+        "nom-chf": "BERGERAC",
+        "code-dept": "24",
+        "nom-dept": "DORDOGNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-1.10191962762329, 43.729053466776], [-1.02574386628585, 43.729053466776], [-1.02574386628585, 43.6768599907947], [-1.10191962762329, 43.6768599907947], [-1.10191962762329, 43.729053466776] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4097",
+        "type": "canton",
+        "code-canton": "4097",
+        "code-chf": "088",
+        "nom-chf": "DAX",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.674782981206183, 44.4747301458785], [0.822551689159092, 44.4747301458785], [0.822551689159092, 44.3624469254971], [0.674782981206183, 44.3624469254971], [0.674782981206183, 44.4747301458785] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4797",
+        "type": "canton",
+        "code-canton": "4797",
+        "code-chf": "323",
+        "nom-chf": "VILLENEUVE-SUR-LOT",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.282424606587076, 43.1903042205682], [-0.243196647157246, 43.1903042205682], [-0.243196647157246, 43.164437591453], [-0.282424606587076, 43.164437591453], [-0.282424606587076, 43.1903042205682] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6497",
+        "type": "canton",
+        "code-canton": "6497",
+        "code-chf": "417",
+        "nom-chf": "NAY",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.756335346017992, 44.8626058836076], [-0.61064859861704, 44.8626058836076], [-0.61064859861704, 44.8012243084032], [-0.756335346017992, 44.8012243084032], [-0.756335346017992, 44.8626058836076] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3398",
+        "type": "canton",
+        "code-canton": "3398",
+        "code-chf": "281",
+        "nom-chf": "MERIGNAC",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.55582616964196, 43.9315689734419], [-0.448561498791786, 43.9315689734419], [-0.448561498791786, 43.8550923376555], [-0.55582616964196, 43.8550923376555], [-0.55582616964196, 43.9315689734419] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4098",
+        "type": "canton",
+        "code-canton": "4098",
+        "code-chf": "192",
+        "nom-chf": "MONT-DE-MARSAN",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [0.108630989361602, 44.5426959517882], [0.225841218318481, 44.5426959517882], [0.225841218318481, 44.4611416787268], [0.108630989361602, 44.4611416787268], [0.108630989361602, 44.5426959517882] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4798",
+        "type": "canton",
+        "code-canton": "4798",
+        "code-chf": "157",
+        "nom-chf": "MARMANDE",
+        "code-dept": "47",
+        "nom-dept": "LOT-ET-GARONNE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.688993003048214, 43.2495529558194], [-0.501427346185141, 43.2495529558194], [-0.501427346185141, 43.0863505371554], [-0.688993003048214, 43.0863505371554], [-0.688993003048214, 43.2495529558194] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6498",
+        "type": "canton",
+        "code-canton": "6498",
+        "code-chf": "422",
+        "nom-chf": "OLORON-SAINTE-MARIE",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.829834432580992, 43.8434630619325], [-0.724221110072256, 43.8434630619325], [-0.724221110072256, 43.7882256193569], [-0.829834432580992, 43.7882256193569], [-0.829834432580992, 43.8434630619325] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/4099",
+        "type": "canton",
+        "code-canton": "4099",
+        "code-chf": "313",
+        "nom-chf": "TARTAS",
+        "code-dept": "40",
+        "nom-dept": "LANDES" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.638336425567462, 44.9166669651253], [-0.535532551075714, 44.9166669651253], [-0.535532551075714, 44.810795852605], [-0.638336425567462, 44.810795852605], [-0.638336425567462, 44.9166669651253] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/3399",
+        "type": "canton",
+        "code-canton": "3399",
+        "code-chf": "063",
+        "nom-chf": "BORDEAUX",
+        "code-dept": "33",
+        "nom-dept": "GIRONDE" }
+    },
+    { "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": "[ [ [-0.389074440490843, 43.3579493365241], [-0.294391312920212, 43.3579493365241], [-0.294391312920212, 43.2857558794306], [-0.389074440490843, 43.2857558794306], [-0.389074440490843, 43.3579493365241] ] ]" },
+      "properties": {
+        "uri": "http://data.ign.fr/id/geofla/canton/6499",
+        "type": "canton",
+        "code-canton": "6499",
+        "code-chf": "445",
+        "nom-chf": "PAU",
+        "code-dept": "64",
+        "nom-dept": "PYRENEES-ATLANTIQUES" }
+    }
+  ]
+}

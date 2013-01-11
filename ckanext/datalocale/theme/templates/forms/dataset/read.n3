@@ -1,0 +1,64 @@
+@prefix : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}>
+a dcat:Dataset;
+     dct:description "${c.pkg_dict['notes']}";
+     dct:identifier "${c.pkg_dict['name']}";
+     rdfs:label "${c.pkg_dict['title']}";
+     skos:prefLabel "${c.pkg_dict['title']}";
+     dct:created "${c.pkg_dict['metadata_created']}";
+     dct:modified "${c.pkg_dict['metadata_modified']}";
+     dct:publisher <${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}> ;
+     dct:creator <${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}> ;   
+     dcat:theme ${c.pkg_dict.get('theme_available','')};
+     version ${c.pkg_dict.get('version','')};
+     maj ${c.pkg_dict.get('maj','')};
+     dct:rights ${c.pkg_dict.get('license_url','')};
+     foaf:thumbnail <${c.pkg_dict.get('image_url', '')}>;
+     
+     dcterms:temporal "Du ${c.pkg_dict.get('temporal_coverage-from', '')} au ${c.pkg_dict.get('temporal_coverage-to', '')}";
+     dcat:dataQuality "${c.pkg_dict.get('dataQuality','')}, score :  ${c.pkg_dict.get('openness_score','')}";
+     
+     dct:spatial "${c.pkg_dict.get('spatial-text', '')}";
+     dcterms:references <${c.pkg_dict.get('dcterms:references','')}>;
+     dct:source "${c.pkg_dict.get('dc:source','')}";
+
+     dct:relation [
+         rdf:value "";
+         :label "change_note" ],
+             [
+         rdf:value "";
+         :label "definition_note" ],
+             [
+         rdf:value "";
+         :label "editorial_note" ],
+             [
+         rdf:value "";
+         :label "example_note" ],
+             [
+         rdf:value "";
+         :label "history_note" ],
+             [
+         rdf:value "";
+         :label "scope_note" ],
+             [
+         rdf:value "";
+         :label "skos_note" ],
+             [
+         rdf:value "";
+         :label "temporal_granularity" ],
+             [
+         rdf:value "";
+         :label "type_of_dataset" ],
+             [
+         rdf:value "";
+         :label "update_frequency" ];
+     dct:title "${c.pkg_dict['title']}";
+     :label "${c.pkg_dict['name']}";
+     = <urn:uuid:${c.pkg_dict['id']}>;
+     foaf:homepage <http://127.0.0.1:5000/dataset/testt> .

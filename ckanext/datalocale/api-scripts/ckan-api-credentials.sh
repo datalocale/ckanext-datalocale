@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# DATALIFT SERVER CKAN PARAMS 
+CKAN_URL="http://datalift.si.fr.atosorigin.com"
+CKAN_AUTHOR_ID="e17b2efb-9f67-4d35-9ae9-3c176d93c14f"
+CONTRIBUTOR_NAME="Contributeur"
+CKAN_API_KEY="175e2d54-b062-4c49-b86f-bdda705d1c36"
+#!DATALIFT SERVER CKAN PARAMS 
+
+# ATOS DEVELOPMENT CKAN PARAMS
+CKAN_URL="http://localhost:5000/"
+CKAN_AUTHOR_ID="6b82a606-16d9-4707-82bd-91f648739648"
+CONTRIBUTOR_NAME="Contributeur"
+CKAN_API_KEY="2053b78f-7d13-4fee-8163-db18758c460c"
+# ! ATOS DEVELOPMENT CKAN PARAMS
+
+
+API_URL="api/3/"
+
+ACTION_PACKAGE_SHOW="action/package_show"
+ACTION_PACKAGE_CREATE="action/package_create"
+ACTION_PACKAGE_UPDATE="action/package_update"
+
+ACTION_RESOURCE_UPLOAD_CREDENTIALS="storage/auth/form/"
+ACTION_RESOURCE_UPLOAD="storage/upload_handle" # Call without API prefix
+ACTION_RESOURCE_READ="storage/metadata/"

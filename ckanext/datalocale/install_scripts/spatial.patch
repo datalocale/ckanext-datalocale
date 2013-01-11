@@ -1,0 +1,11 @@
+--- a/../extensions/ckanext-spatial/ckanext/spatial/plugin.py
++++ b/ckanext-datalocale/ckanext/datalocale/install_scripts/plugin.py
+@@ -172,7 +172,7 @@
+         return search_params
+ 
+     def after_search(self, search_results, search_params):
+-        if search_params.get('extras', {}).get('ext_spatial'):
++        if search_params and search_params.get('extras', {}) and search_params.get('extras', {}).get('ext_spatial'):
+             # Apply the spatial sort
+             querier = PackageSearchQuery()
+             pkgs = []

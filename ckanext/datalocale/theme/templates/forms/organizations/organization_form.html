@@ -1,0 +1,255 @@
+<div class="tabbable tabs-left organization-edit-tabs" xmlns:i18n="http://genshi.edgewall.org/i18n"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+  <ul class="nav nav-tabs" py:if="c.action !='new'">
+    <li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>
+    <li><a data-toggle="tab" href="#further-information">Utilisateurs</a></li>
+    <li><a data-toggle="tab" href="#foaf">Informations de contact</a></li>
+    <li><a data-toggle="tab" href="#extras">Extras</a></li>
+  </ul>
+<script language="javascript" src="/scripts/jquery-latest.min.js"></script>
+<form id="organization-edit" action="" method="post"
+    class="form-horizontal tab-content ${'has-errors' if errors else ''}"
+    xmlns:i18n="http://genshi.edgewall.org/i18n"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="../../_util.html" />
+<div class="alert alert-error error-explanation" py:if="error_summary">
+<h2>Errors in form</h2>
+<p>The form contains invalid entries:</p>
+<ul>
+  <li py:for="key, error in error_summary.items()">${"%s: %s" % (key, error)}</li>
+</ul>
+</div>
+
+<input type="hidden" id="type" name="type" value="organization" />
+<input type="hidden" id="approval_status" name="approval_status" value="pending" />
+
+<fieldset class="tab-pane fade active in" id="basic-information">
+ <div class="control-group title-field">
+    <label class="control-label" for="title">Nom du diffuseur</label>
+    <div class="controls">
+      <input id="title"
+        class="js-title"
+        name="title" type="text"
+        value="${data.get('title', '')}"
+        placeholder="${_('A short descriptive title for the dataset')}"
+      />
+    </div>
+  </div>
+  <div class="control-group name-field">
+    <label class="control-label" for="name">Url</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">/diffuseur/</span>
+        <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
+      </div>
+      <p class="js-url-is-valid">&nbsp;</p>
+      <p class="url-is-long">Warning: URL is very long. Consider changing it to something shorter.</p>
+      <p>2+ characters, lowercase, using only 'a-z0-9' and '-_'</p>
+      <p class="field_error" py:if="errors.get('name', '')">${errors.get('name', '')}</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="image_url">Illustration</label>
+    <div class="controls">
+      <input id="file_upload" type="file" name="file" data-form-data='{"key": "${c.key_upload}"}'/><br/>
+      <input type="text" id="image_url" value="${data.get('image_url', '')}" name="image_url"/>
+      <p>Entrez une url distante ou choisissez une image qui sera automatiquement téléchargée.</p>
+    </div>
+  </div>
+  
+	<script src="/scripts/vendor/jqueryui/1.8.14/jquery-ui.min.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.ui.widget.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.iframe-transport.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload-ui.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload-fp.js"></script>
+	<script src="/scripts/datalocale-fileupload.js"></script>
+	
+
+  <div class="control-group description-field">
+    <label class="control-label" for="notes">Description</label>
+    <div class="controls">
+      ${markdown_editor('description', data.get('description'), 'notes', _('Start with a summary sentence ...'))}
+    </div>
+  </div>
+  <py:if test="c.is_superuser_or_groupadmin">
+  <div class="control-group groups-field">
+    <label class="control-label" for="groups">Diffuseur parent</label>
+    <div class="controls">
+        <select id="parent" name="parent" class="chzn-select" placeholder="Choisir l'organisation parente">
+          <option value="">(None)</option>
+          <py:for each="pp in c.possible_parents">
+            <option py:if="pp.type=='organization'" value="${pp.id}" py:attrs="{'selected': 'selected' if c.parent and pp.id == c.parent.id else None}">${pp.title}</option>
+          </py:for>
+          <py:if test="c.parent">
+          <py:if test="not filter(lambda obj: obj.name == c.parent.name, c.possible_parents)">
+	     	<option selected="selected" value="${c.parent.id}">${c.parent.title}</option>
+	   	  </py:if>
+	   	  </py:if>
+        </select>
+      <em py:if="not c.possible_parents">Cannot add any organizations.</em>
+    </div>
+  </div>
+  </py:if>
+  <py:if test="c.is_superuser_or_groupadmin">
+  <div class="control-group groups-field">
+    <label class="control-label" for="state">State</label>
+    <div class="controls">
+    <select id="state" name="state" >
+      <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
+      <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
+    </select>
+    </div>
+  </div>
+  </py:if>
+</fieldset>
+<fieldset id="extras"  class="tab-pane"  py:if="c.action !='new'">
+  <h3>Extras</h3>
+  <dl>
+    <py:with vars="extras = c.additional_extras">
+    <py:for each="num, extra in enumerate(c.additional_extras)">
+    <div class="control-group">
+      <label class="control-label" for="extras__${num}__value">${extra.get('key')}</label>
+      <div class="controls">
+        <input id="extras__${num}__key" name="extras__${num}__key" type="hidden" value="${extra.get('key')}" />
+        <input id="extras__${num}__value" name="extras__${num}__value" type="text" value="${extra.get('value')}" />
+        <label class="checkbox" style="display: inline-block;">
+          <input type="checkbox" name="extras__${num}__deleted" checked="${extra.get('deleted')}" />Delete
+        </label>
+      </div>
+    </div>
+    </py:for>
+    <hr py:if="len(extras)" class="extras-divider" />
+    <py:for each="num in range(len(extras), len(extras) + 4)">
+      <div class="control-group">
+        <label class="control-label" for="extras__${num}__key">Add...</label>
+        <div class="controls">
+          <label>
+            <span class="extras-label">Key =</span>
+            <input class="medium-width" id="extras__${num}__key" name="extras__${num}__key" type="text" />
+          </label>
+          <label>
+            <span class="extras-label">Value =</span>
+            <input class="medium-width" id="extras__${num}__value" name="extras__${num}__value" type="text" />
+          </label>
+        </div>
+      </div>
+    </py:for>
+    </py:with>
+  </dl>
+</fieldset>
+
+
+<?python
+    import ckan.model as model
+    users = []
+    if c.group:
+        users.extend( { "name": user.name,
+                            "capacity": "admin" }
+                            for user in c.group.members_of_type( model.User, "admin"  ).all() )
+        users.extend( { "name": user.name,
+                            "capacity": "editor" }
+                            for user in c.group.members_of_type( model.User, 'editor' ).all() )
+?>
+<fieldset class="tab-pane" id='further-information' py:if="c.action !='new'">
+<div class="control-group" py:if="c.is_superuser_or_groupadmin">
+<h3>Gérer les utilisateurs</h3>
+<a py:if="c.group" href="${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='users', id=c.group.name)}">Gérer les utilisateurs</a>
+</div>
+<h3>Utilisateurs existants</h3>
+  <table class="table table-bordered table-striped table-condensed" py:if="data.get('users')">  
+    <tr><td>Nom</td><td>Type</td></tr>
+    <py:for each="num, user in enumerate(data.get('users'))">
+	<tr><td><label for="users__${num}__name">${user['name']} </label></td><td>${user['capacity']}
+		<input type="hidden" name="users__${num}__name" value="${user['name']}"/>
+		<input type="hidden" name="users__${num}__capacity" value="${user['capacity']}"/></td></tr>
+    </py:for>
+  </table>
+  <p py:if="not data.get('users')">There are no users currently in this organization.</p>
+</fieldset>
+
+
+<fieldset class="tab-pane" id='foaf' py:if="c.action !='new'">
+  <div class="control-group">
+    <label class="control-label" for="foaf:name">Nom</label>
+    <div class="controls">
+      <input id="foaf:name" name="foaf:name" type="text" value="${data.get('foaf:name', '')}" />
+      <p>Nom du contact (Obligatoire)</p>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="mail">Adresse mail</label>
+    <div class="controls">
+      <input id="mail" name="mail" type="text" value="${data.get('mail', '')}" />
+      <p>Adresse mail du contact</p>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="mail">Numéro de téléphone</label>
+    <div class="controls">
+      <input id="phone" name="phone" type="text" value="${data.get('phone', '')}" />
+      <p>Numéro de téléphone du contact</p>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="url">Url du site web</label>
+    <div class="controls">
+      <input id="url" name="url" type="text" value="${data.get('url', '')}" />
+      <p>Url du site web</p>
+    </div>
+  </div>
+  <div class="control-group">
+  <label class="control-label" for="address">Adresse postale</label>
+    <div class="controls">
+      <input id="street-address" name="street-address" type="text" value="${data.get('street-address', '')}" placeholder="Adresse" /><br/>
+      <input id="postal-code" name="postal-code" type="text" value="${data.get('postal-code', '')}"  placeholder="Code Postal" /><input id="locality" name="locality" type="text" value="${data.get('locality', '')}" placeholder="Ville" />
+      <input id="country-name" name="country-name" type="text" value="${data.get('country-name', '')}" placeholder="Pays" /><br/>
+      <p>Adresse postale de contact</p>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset class="tab-pane" id="datasets" py:if="c.action !='new'">
+<h3>Add datasets</h3>
+  <div class="control-group" py:if="c.is_superuser_or_groupadmin">
+  <label class="field_opt" for="packages__${len(data.get('packages', []))}__name">Dataset</label>
+  <input class="autocomplete-dataset" id="datasets__${len(data.get('packages', []))}__name" name="packages__${len(data.get('packages', []))}__name" type="text" />
+  </div>
+  <div class="control-group" py:if="c.group">
+    <a href="${h.url_for(controller='package', action='new')}?groups__0__id=${c.group.id}" class="btn btn-primary">Add a new dataset</a>
+  </div>
+  <h3>Datasets</h3>
+  <table class="table table-bordered table-striped table-condensed" py:if="data.get('packages')">  
+    <tr><td>Actif</td><td>Nom</td></tr>
+    <py:for each="num, package in enumerate(data.get('packages'))">
+	<tr><td><input checked="checked" id="datasets__${num}__name" name="packages__${num}__name" type="checkbox" value="${package['name']}"/></td><td><label for="packages__${num}__name">${package['name']}</label></td></tr>
+    </py:for>
+  </table>
+  <p py:if="not data.get('packages')">There are no datasets currently in this service.</p>
+</fieldset>
+
+<fieldset class="tab-pane" id="groups" py:if="c.action !='new'">
+  <h3>Producteurs fils</h3>
+  <table class="table table-bordered table-striped table-condensed" py:if="data.get('groups')">  
+    <tr><td>Nom</td></tr>
+    <py:for each="num, group in enumerate(data.get('groups'))">
+	<tr><td><input id="groups__${num}__name" name="groups__${num}__name" type="hidden" value="${group['name']}"/><label for="groups__${num}__name">${group['name']}</label></td></tr>
+    </py:for>
+  </table>
+  <p py:if="not data.get('packages')">There are no datasets currently in this service.</p>
+</fieldset>
+
+<div class="form-actions">
+  <input py:if="c.action =='new'" id="saves" class="btn btn-primary" name="save" type="submit" value="Ajouter un nouveau diffuseur" />
+ <input py:if="c.action !='new'" id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
+ 
+  <py:if test="c.group">
+    <input id="cancel" class="btn href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='group', action='read', id=c.group.name)}" />
+  </py:if>
+</div>
+</form>
+</div>
+

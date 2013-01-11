@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:py="http://genshi.edgewall.org/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcterms="http://purl.org/dc/terms"
+  xmlns:locn="http://www.w3.org/ns/locn#"
+  xmlns:ogc="http://www.opengis.net/rdf#"
+>
+<?python
+extras = dict(c.pkg_extras)         
+?>
+  <dcat:Dataset rdf:about="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}">
+    <owl:sameAs rdf:resource="urn:uuid:${c.pkg_dict['id']}"/>
+    <dct:description>${c.pkg_dict['notes']}</dct:description>
+    <py:for each="tag_dict in c.pkg_dict.get('tags','')">
+        <dcat:keyword>${ tag_dict["name"] }</dcat:keyword>
+    </py:for>
+    <foaf:homepage rdf:resource="${ h.url_for(controller='package',action='read',id=c.pkg_dict['name'], qualified=True)}"/>
+    <rdfs:label>${c.pkg_dict['name']}</rdfs:label>
+    <dct:identifier>${c.pkg_dict['name']}</dct:identifier>
+    <dct:title>${c.pkg_dict['title']}</dct:title>
+    <version>${c.pkg_dict.get('version','')}</version>
+    <maj py:if="c.pkg_dict.get('maj','')">${c.pkg_dict.get('maj','')}</maj>
+    
+
+        <py:choose test="">
+           <dct:rights py:when="c.pkg.license" rdf:resource="${c.pkg.license.url}">
+           	${c.pkg.license.title}
+           </dct:rights>
+        </py:choose>
+
+    <dct:contributor py:if="c.pkg_dict.get('contributor_name','')!=''" about="${c.site_url}/user/${c.pkg_dict.get('contributor_name','')}">
+      <rdf:Description>
+        <foaf:name>${c.pkg_dict.get('contributor_title','')}</foaf:name>
+        <foaf:mbox rdf:resource="mailto:${c.pkg_dict.get('contributor_mail','')}"/>
+      </rdf:Description>
+    </dct:contributor>
+    
+    <dct:publisher py:if="c.pkg_dict.get('dct:publisher','')">${c.site_url}/organization/${c.pkg_dict.get('dct:publisher','')}  </dct:publisher>
+    <dct:creator py:if="c.pkg_dict.get('dct:creator','')">${c.site_url}/organization/${c.pkg_dict.get('dct:creator','')}</dct:creator>
+    
+    <foaf:thumbnail py:if="c.pkg_dict.get('image_url', '')" rdf:resource="${c.pkg_dict.get('image_url', '')}"/>
+    <dct:created>${c.pkg_dict.get('metadata_created','')}</dct:created>
+    <dct:modified>${c.pkg_dict.get('metadata_modified','')}</dct:modified>
+    <dcat:themeTaxonomy py:if="c.pkg_dict.get('theme_available','')">${c.pkg_dict.get('themeTaxonomy','')}</dcat:themeTaxonomy>
+    <dcat:theme py:if="c.pkg_dict.get('theme_available','')">${c.pkg_dict.get('theme_available','')}</dcat:theme>
+    <dcat:dataQuality py:if="c.pkg_dict.get('dataQuality','') or c.pkg_dict.get('openness_score','')">${c.pkg_dict.get('dataQuality','')}, score :  ${c.pkg_dict.get('openness_score','')}</dcat:dataQuality>
+<?python
+if c.pkg_dict.get('dct:accrualPeriodicity', '') == u'autre - merci de préciser':
+	accrualPeriodicity = extras.get('dct:accrualPeriodicity', '')
+else : 
+	accrualPeriodicity = c.pkg_dict.get('dct:accrualPeriodicity', '')
+if c.pkg_dict.get('geographic_granularity', '') == u'autre - merci de préciser':
+	geographic_granularity = extras.get('geographic_granularity', '')
+else : 
+	geographic_granularity = c.pkg_dict.get('geographic_granularity', '')
+?>
+    <dct:accrualPeriodicity py:if="c.pkg_dict.get('dct:accrualPeriodicity', '') and extras.get('dct:accrualPeriodicity', '')">${accrualPeriodicity}</dct:accrualPeriodicity>
+    <dcterms:temporal py:if="c.pkg_dict.get('temporal_coverage-from', '')">Du ${c.pkg_dict.get('temporal_coverage-from', '')} au ${c.pkg_dict.get('temporal_coverage-to', '')}</dcterms:temporal>    
+    <dcterms:location  py:if="c.pkg_dict.get('spatial','') != ''" about="${c.pkg_dict.get('spatial-uri', '')}">
+    	<locn:geographicIdentifier>
+    		${c.pkg_dict.get('spatial-uri', '')}
+    	</locn:geographicIdentifier>
+    	<locn:geographicName py:if="c.pkg_dict.get('spatial-text', '')">
+    		${c.pkg_dict.get('spatial-text', '')}
+    	</locn:geographicName>
+    	<locn:Geometry>
+    		<ogc:Polygon>
+    			<ogc:asWKT rdf:datatype="ocg:WKTLiteral">
+    				&lt;http://www.opengis.net/def/crs/OGC/1.3/CRS84&gt; Polygon(<py:for each="poly in c.spatialTmp">
+    				(
+    					<py:for each="coord in poly">
+    					${coord[0]} ${coord[1]}<py:if test="coord != poly[len(poly) - 1]">,</py:if>  					
+    					</py:for>
+    				)<py:if test="poly != c.spatialTmp[len(c.spatialTmp) - 1]">,</py:if>  	
+    				</py:for>)
+    			</ogc:asWKT>
+    		</ogc:Polygon>
+    	</locn:Geometry>
+    </dcterms:location>
+    <dct:granularity py:if="geographic_granularity or c.pkg_dict.get('dcat:granularity', '')">${geographic_granularity} ${c.pkg_dict.get('dcat:granularity', '')}</dct:granularity>
+	<dcterms:references py:if="c.pkg_dict.get('dcterms:references','')">${c.pkg_dict.get('dcterms:references','')}</dcterms:references>
+	<dct:source py:if="c.pkg_dict.get('dc:source','')">${c.pkg_dict.get('dc:source','')}</dct:source>
+	<py:for each="rsc_dict in c.pkg_dict.get('resources', [])">
+        <dcat:distribution>
+            <dcat:Distribution>
+                <dcat:accessURL rdf:resource="${ rsc_dict['url'] }"/>
+                    <dct:format py:if="rsc_dict.get('format')">
+                        <dct:IMT>
+                            <rdf:value>${rsc_dict.get('format')}</rdf:value>
+                            <rdfs:label>${rsc_dict.get('format')}</rdfs:label>
+                        </dct:IMT>
+                    </dct:format>
+               <dct:title py:if="rsc_dict.get('name')">${rsc_dict.get('name')}</dct:title>
+            </dcat:Distribution>
+        </dcat:distribution>
+    </py:for>
+    <py:for each="extra_dict in c.pkg_dict.get('additional_extras','')">
+        <dct:relation>
+          <rdf:Description>
+            <rdfs:label>${extra_dict.get('key','')}</rdfs:label>
+            <rdf:value>${extra_dict.get('value','')}</rdf:value>
+          </rdf:Description>
+        </dct:relation>
+    </py:for>
+  </dcat:Dataset>
+</rdf:RDF>

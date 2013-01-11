@@ -1,0 +1,12 @@
+Cher administrateur,
+
+Une demande a été effectuée pour rejoindre l'organisation $group.title par $requester.name {% if requester.fullname %}( $requester.fullname ){% end %}
+
+La raison donnée est :
+
+"$reason"
+
+Merci de contacter l'utilisateur pour vérifier sa demande puis si vous souhaitez ajouter cet utilisateur rendez-vous sur la page ${h.url_for(controller='ckanext.datalocale.organization_controllers:DatalocaleOrganizationController', action='users', id=group.name, qualified=True) }
+Si vous ne souhaitez pas ajouter cet utilisateur, vous pouvez ignorer cet e-mail.
+
+

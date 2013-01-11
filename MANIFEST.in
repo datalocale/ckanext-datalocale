@@ -1,0 +1,3 @@
+recursive-include data *
+recursive-include ckanext/datalocale/theme/templates *
+include licenses.json

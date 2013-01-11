@@ -1,0 +1,578 @@
+<form
+  py:with="tab_mode=(c.action=='edit')"
+  class="${'tab-content' if tab_mode else ''} ${'has-errors' if errors else ''} form-horizontal"
+  id="dataset-edit"
+  method="post"
+  xmlns:i18n="http://genshi.edgewall.org/i18n"
+  xmlns:py="http://genshi.edgewall.org/"
+  xmlns:xi="http://www.w3.org/2001/XInclude" >
+
+<xi:include href="../../_util.html" />
+
+<script language="javascript" src="/scripts/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  var selected_spatial_uri = "${data.get('spatial-uri', [])}";
+  var selected_spatial_text = "${data.get('spatial-text', [])}";
+  var selected_theme = "${data.get('theme_available', [])}";
+  var api_url = "${c.api_url}";
+  var temporal_coverage_from = "${data.get('temporal_coverage-from', [])}";
+  var temporal_coverage_to = "${data.get('temporal_coverage-to', [])}";
+</script>
+<script language="javascript" src="/scripts/datalocale.js"></script>	
+<script language="javascript" src="/scripts/jquery.ui.datepicker.js"></script>	
+<div class="alert alert-error error-explanation" py:if="error_summary">
+<h2>Errors in form</h2>
+<p>The form contains invalid entries:</p>
+<ul>
+  <li py:for="key, error in error_summary.items()">${"%s: %s" % (key if not key=='Name' else 'URL', error)}
+    <py:if test="key=='Resources'">
+      <ul>
+        <py:for each="idx, errordict in enumerate(errors.get('resources', []))">
+          <li py:if="errordict">
+            Resource ${idx}:
+            <ul>
+              <li py:for="thiskey, thiserror in errordict.items()">${thiskey}: <py:for each="errorinfo in thiserror">${errorinfo}; </py:for></li>
+            </ul>
+          </li>
+        </py:for>
+      </ul>
+    </py:if>
+  </li>
+  <script>var global_form_errors = ${h.dump_json(errors)};</script>
+</ul>
+</div>
+
+<fieldset class="tab-pane fade in active" id="basic-information">
+  <div class="control-group title-field">
+    <label class="control-label" for="title">Title</label>
+    <div class="controls">
+      <input id="title"
+        class="js-title"
+        name="title" type="text"
+        value="${data.get('title', '')}"
+        placeholder="${_('A short descriptive title for the dataset')}"
+      />
+      <p class="field_error" py:if="errors.get('title', '')">${errors.get('title', '')}</p>
+    </div>
+  </div>
+
+  <div class="control-group name-field">
+    <label class="control-label" for="name">Url</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">${h.url(controller='package', action='search')+'/'}</span>
+        <input maxlength="100" name="name" type="text" class="js-url-input" value="${data.get('name', '')}" />
+      </div>
+      <p class="js-url-is-valid">&nbsp;</p>
+      <p class="url-is-long">Warning: URL is very long. Consider changing it to something shorter.</p>
+      <p>2+ characters, lowercase, using only 'a-z0-9' and '-_'</p>
+      <p class="field_error" py:if="errors.get('name', '')">${errors.get('name', '')}</p>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label" for="image_url">Illustration</label>
+    <div class="controls">
+      <input id="file_upload" type="file" name="file" data-form-data='{"key": "${c.key_upload}"}'/><br/>
+      <input type="text" id="image_url" value="${data.get('image_url', '')}" name="image_url"/>
+      <p>Entrez une url distante ou choisissez une image qui sera automatiquement téléchargée.</p>
+    </div>
+  </div>
+  
+	<script src="/scripts/vendor/jqueryui/1.8.14/jquery-ui.min.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.ui.widget.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.iframe-transport.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload-ui.js"></script>
+	<script src="/scripts/jquery.fileupload/jquery.fileupload-fp.js"></script>
+	<script src="/scripts/datalocale-fileupload.js"></script>
+
+  <div class="control-group homepage-field">
+    <label class="control-label" for="url">Home Page</label>
+    <div class="controls">
+      <input id="url" name="url" type="text" value="${data.get('url', '')}"/>
+      <p>The URL for the web page describing the data (not the data itself).</p>
+      <p>e.g. http://www.example.com/growth-figures.html</p>
+      <p class="field_error" py:if="errors.get('url', '')">${errors.get('url', '')}</p>
+    </div>
+  </div>
+
+  <div class="control-group license-field">
+    <label class="control-label" for="license_id">License</label>
+    <div class="controls">
+      <select id="license_id" name="license_id">
+        <py:for each="licence_desc, licence_id in c.licences">
+          <option value="${licence_id}" py:attrs="{'selected': 'selected' if data.get('license_id', '') == licence_id else None}" >${licence_desc}</option>
+        </py:for>
+      </select>
+      <p id="license-instructions">(Don't worry if you don't know which license the data has been released under).</p>
+    </div>
+  </div>
+
+  <div class="control-group description-field">
+    <label class="control-label" for="notes">Description</label>
+    <div class="controls">
+      ${markdown_editor('notes', data.get('notes'), 'notes', _('Start with a summary sentence ...'))}
+    </div>
+  </div>
+
+
+
+<?python
+publisher = data.get('dct:publisher', {})
+?>
+  <div class="control-group">
+    <label class="control-label" for="dct:publisher">Diffuseur</label>
+    <div class="controls">
+      <select id="dct:publisher" class="chzn-select" name="dct:publisher">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.publishers_available">
+          <option py:attrs="{'selected':'selected'} if publisher == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+        </py:for>
+	<py:if test="c.current_publisher">
+	   <py:if test="not filter(lambda obj: obj.name == c.current_publisher.get('name',''), c.publishers_available)">
+	     <option selected="selected" value="${c.current_publisher.get('id','')}">${c.current_publisher.get('title')}</option>
+	   </py:if>
+	</py:if>
+      </select>
+      <p>Entité qui diffuse le jeu de données (dct:publisher)</p>
+    </div>
+  </div>
+
+<?python
+creator = data.get('dct:creator', {})
+?>
+  <div class="control-group">
+    <label class="control-label" for="dct:creator">Producteur</label>
+    <div class="controls">
+      <select id="dct:creator" class="chzn-select" name="dct:creator">
+        <option selected="selected" value="">(None)</option>
+        <py:for each="tag in c.creators_available">
+          <option py:attrs="{'selected':'selected'} if creator == tag['id'] else {}" value="${tag['id']}">${tag['title']}</option>
+        </py:for>
+	<py:if test="c.current_creator">
+	   <py:if test="not filter(lambda obj: obj.name == c.current_creator.get('name',''), c.creators_available)">
+	     <option selected="selected" value="${c.current_creator.get('id','')}">${c.current_creator.get('title')}</option>
+	   </py:if>
+	</py:if>
+      </select>
+      <p>Entité ou personne à l'origine de la production du jeu de données (dct:creator)</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="capacity">Visibilité</label>
+    <div class="controls">
+       <div>
+         <label for='capacity_public'><input id='capacity_public' type='radio' name='capacity' value='public' py:attrs="{'checked':'checked'} if data.get('capacity') == 'public' else {}"/>
+         Publique</label>
+       </div>
+       <div>
+         <label for='capacity_private'><input id='capacity_private' type='radio' name='capacity' value='private' py:attrs="{'checked':'checked'} if data.get('capacity', 'private') == 'private' else {}"/>
+         Privé</label>
+       </div>
+       <p>Visibilité du jeu de donnée. Si le jeu de donnée est privé, il ne sera pas visible par les visiteurs du site.</p>
+    </div>
+</div>
+
+</fieldset>
+
+<fieldset class="tab-pane" id="further-information">
+  <div class="control-group tags-field">
+    <label class="control-label" for="themeTaxonomy">Thème (Catégorie)</label>
+    <div class="controls">
+      <select id="themeTaxonomy" name="themeTaxonomy">
+        <option value="">(None)</option>
+        <py:for each="tag, translation in c.themeTaxonomy_available">
+          <py:choose test="">
+            <option py:when="tag in data.get('themeTaxonomy', [])"
+		    selected="selected" value="${tag}">${translation}</option>
+	    <option py:otherwise="" value="${tag}">${translation}</option>
+          </py:choose>
+        </py:for>
+      </select>
+      <p>Thème du jeu de donnée</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="theme_available">Thème (Concepts)</label>
+    <div class="controls" id="theme">
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="dataQuality">Qualité</label>
+    <div class="controls">
+      <select id="dataQuality" class="chzn-select" name="dataQuality">
+        <option value="">(None)</option>
+        <py:for each="tag in c.dataQuality_available">
+          <py:choose test="">
+	    <option py:when="tag in data.get('dataQuality', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+          </py:choose>
+        </py:for>
+      </select>
+      <p>Permet de qualifier le niveau de confiance et de qualité de la donnée mise à disposition. Cette donnée est enrichie par le module "Quality Assurance" automatiquement.</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="metadata_created">Date de création</label>
+    <div class="controls">
+      <input id="metadata_created" name="metadata_created" type="text" value="${data.get('metadata_created', '')}" />
+      <p>Date de création du jeux de données</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="frequency">Fréquence de mise à jour</label>
+    <div class="controls">
+      <select id="dct:accrualPeriodicity" class="chzn-select" name="dct:accrualPeriodicity">
+        <option value="">(None)</option>
+        <py:for each="tag in c.frequency_available">
+          <py:choose test="">
+	    <option py:when="tag in data.get('dct:accrualPeriodicity', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+          </py:choose>
+        </py:for>
+      </select>
+      <label class="inline" for="dct:accrualPeriodicity-other">Autre : 
+        <input class="medium-width" id="dct:accrualPeriodicity-other" 
+        name="dct:accrualPeriodicity-other" type="text" value="${data.get('dct:accrualPeriodicity-other', '')}"/>
+      </label>
+      <p>Fréquence prévisionnelle de mise à jour du jeu de données.</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="temporal_coverage">Couverture temporelle </label>
+    <div class="controls">
+      <input id="temporal_coverage-from" name="temporal_coverage-from" type="text" value="${data.get('temporal_coverage-from', '')}" class="medium-width"  />
+      <input id="temporal_coverage-to" name="temporal_coverage-to" type="text" value="${data.get('temporal_coverage-from-to', '')}" class="medium-width" />
+      <p>Exemple : Du 23/01/2012 au 23/12/2012)</p>
+      <p>Plage temporelle couverte par le jeu de données</p>
+    </div>
+
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="geographic_granularity">Couverture géographique</label>
+    <div class="controls">
+      <select id="geographic_granularity" class="chzn-select" name="geographic_granularity">
+        <option value="">(None)</option>
+        <py:for each="tag in c.geographic_granularity_available">
+          <py:choose test="">
+            <option py:when="tag in data.get('geographic_granularity', [])"
+		    selected="selected" value="${tag}">${tag}</option>
+	    <option py:otherwise="" value="${tag}">${tag}</option>
+          </py:choose>
+        </py:for>
+      </select>
+      <label class="inline" for="geographic_granularity-other">Autre : 
+        <input class="medium-width" id="geographic_granularity-other" 
+        name="geographic_granularity-other" type="text" value="${data.get('geographic_granularity-other', '')}"/>
+      </label>
+      <p>Territoire géographique couvert par le jeu de données</p>
+    </div>
+  </div>
+
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial_type">Spatial : Type</label>
+    <div class="controls">
+      <select id="spatial_type" name="spatial_type">
+        <option value="">(None)</option>
+        <option value="Departements">Départements</option>
+        <option value="Cantons">Cantons</option>
+        <option value="Communes">Communes</option>
+        <option value="Epci">EPCI</option>
+      </select>
+      <p>Sélectionnez un type d'élément</p>
+    </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial_label">Choisissez une valeur</label>
+    <div class="controls" id="spatial_label">
+      <select id="spatial_Departements" name="spatial_Departements" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Cantons" name="spatial_Cantons" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Communes" name="spatial_Communes" style="display:none">
+        <option value="">(None)</option>
+      </select>
+      <select id="spatial_Epci" name="spatial_Epci" style="display:none">
+        <option value="">(None)</option>
+      </select>
+    <p>Sélectionnez un élément pour calculer automatiquement la zone géographique</p>
+    </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial">Spatial :</label>
+    <div class="controls" id="extent">
+      <input id="spatial" name="spatial" type="text" value="${data.get('spatial', '')}" />
+      <a id="generate-extent" class="btn" href="">Recalculer l'extent</a>
+      </div>
+  </div>
+  <div class="control-group spatial-field">
+    <label class="control-label" for="spatial">Spatial (Nom et URI) :</label>
+      <div class="controls" id="extent">
+      <input id="spatial-text" name="spatial-text" type="text" value="${data.get('spatial-text', '')}" />
+      <input id="spatial-uri" name="spatial-uri" type="text" value="${data.get('spatial-uri', '')}" />
+      <p>Coordonnées géographiques automatiquement générées qui permettent de geo-indexé les jeux de données. Une carte est automatiquement ajoutée à la fiche du jeu de données</p>
+    </div>
+  </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dcat:granularity">Granularité</label>
+    <div class="controls">
+      <input id="dcat:granularity" name="dcat:granularity" type="text" value="${data.get('dcat:granularity', '')}" />
+      <p>Décrit le niveau de granularité des données. Peut être exprimé en temps, lieu, et place, etc. </p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="dcterms:references">Référence liée (ou documentation)</label>
+    <div class="controls">
+      <input id="dcterms:references" name="dcterms:references" type="text" value="${data.get('dcterms:references', '')}" />
+      <p>Permet d'indiquer la localisation d'une ressource disponible sur le réseau Internet et de spécifier un titre qui s'affichera comme une ressource actionnable. (dcterms:references)</p>
+    </div>
+  </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="dc:source">Source</label>
+    <div class="controls">
+      <input id="dc:source" name="dc:source" type="text" value="${data.get('dc:source', '')}" />
+      <p>Permet de renseigner d'où vient la donnée (quelle application ou quelle table dans quelle base de données). (dc:source)</p>
+    </div>
+  </div>
+  <div class="control-group tags-field">
+    <label class="control-label" for="tag_string">Tags</label>
+    <div class="controls">
+      <input class="long autocomplete-tag" id="tag_string" name="tag_string" size="60" type="text"
+               value="${data.get('tag_string') or ', '.join([tag['name'] for tag in data.get('tags', []) if not tag.get('vocabulary_id')])}" />
+      <p i18n:msg="">Comma-separated terms that may link this dataset to similar ones. For more information on conventions, see <a href="http://wiki.ckan.org/Managing_Datasets#Tag_Conventions">this wiki page</a>.</p>
+      <p>e.g. pollution, rivers, water quality</p>
+      <p class="field_error" py:if="errors.get('tag_string', '')">${errors.get('tag_string', '')}</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="version">Version</label>
+    <div class="controls">
+      <input id="version" maxlength="100" name="version" type="text" value="${data.get('version', '')}" />
+      <p>A number representing the version (if applicable)</p>
+      <p>e.g. 1.2.0</p>
+    </div>
+  </div>
+
+  <div class="control-group tags-field">
+    <label class="control-label" for="maj">Objet des mise à jours</label>
+    <div class="controls">
+      ${markdown_editor('maj', data.get('maj'), 'notes', _('Historique des raisons des mises à jour'))}
+    </div>
+  </div>
+
+</fieldset>
+
+<fieldset class="tab-pane" id="resources">
+  <legend>Ajouter des ressources</legend>
+  <div class="instructions">
+    <p>Upload or link data files, APIs and other materials related to your dataset.</p>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <ul class="resource-list resource-list-edit drag-drop-list">
+      </ul>
+      <ul class="resource-list resource-list-add">
+        <li><a href="#" class="js-resource-add">${h.icon('page_white_add')}New resource...</a></li>
+      </ul>
+    </div>
+    <div class="span7">
+      <div style="display: none;" class="resource-panel">
+        <button class="btn btn-danger resource-panel-close">x</button>
+        <div class="resource-details resource-add">
+          <ul class="nav nav-tabs">
+            <li><a data-toggle="tab" href="#link-file">Link to a file</a></li>
+            <li><a data-toggle="tab" href="#link-api">Link to an API</a></li>
+            <li><a data-toggle="tab" href="#upload-file">Upload a file</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane" id="link-file">
+              <div class="form-inline js-add-url-form">
+                <label class="field_opt" for="url">File URL</label>
+                <input name="add-resource-url" type="text" class="input-small" placeholder="http://mydataset.com/file.csv"/>
+                <input name="add-resource-save" type="submit" class="btn btn-primary" value="Add" />
+              </div>
+            </div>
+            <div class="tab-pane" id="link-api">
+              <div class="form-inline js-add-api-form">
+                <label class="field_opt" for="url">API URL</label>
+                <input name="add-resource-url" type="text" class="input-small" placeholder="http://mydataset.com/api/"/>
+                <input name="add-resource-save" type="submit" class="btn btn-primary" value="Add" />
+              </div>
+            </div>
+            <div class="tab-pane" id="upload-file">
+              <div class="js-add-upload-form">
+              </div>
+              <div class="alert alert-block" style="display: none;"></div>
+            </div>
+          </div>      
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-resource-edit-barebones">
+    <!-- The resource editor deletes these fields and replaces them with a dynamic editor.
+         They are required for the form to render correctly when not in resource-edit mode. -->
+    <py:for each="num,res in enumerate(data.get('resources', []))">
+      <py:for each="field in res.keys()">
+      <input type="hidden" name="resources__${res.get('position')}__${field}" value="${res.get(field)}" />
+      </py:for>
+    </py:for>
+  </div>
+</fieldset>
+
+<fieldset class="tab-pane fade" id='contact-information'>
+  <div class="control-group">
+    <label class="control-label field_opt" for="author">Auteur</label>
+    <div class="controls">
+      <input id="author" name="author" type="text" value="${data.get('author', '')}" />
+      <p>The name of the main contact, for enquiries about this particular dataset, using the e-mail address in the following field.</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="author_email">Author email</label>
+    <div class="controls">
+      <input id="author_email" name="author_email" type="text" value="${data.get('author_email', '')}" />
+    </div>
+  </div>
+<?python
+contributor = data.get('dct:contributor', "")
+contributor_id = data.get('ckan_author', "")
+if not contributor_id or contributor_id == "":
+  if c.contributor:
+    contributor_id = c.contributor.id
+if not contributor or contributor == "":
+  if c.contributor:
+    contributor = c.contributor.fullname
+		
+
+?>
+  <div class="control-group">
+    <label class="control-label field_opt" for="dct:contributor">Gestionnaire</label>
+    <div class="controls">
+      <input id="dct:contributor" name="dct:contributor" type="text" value="${contributor}" />
+      <p>Entité ou personne qui gère le jeu de données (dct:contributor)</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="maintainer">Maintainer</label>
+    <div class="controls">
+      <input id="maintainer" name="maintainer" type="text" value="${data.get('maintainer', '')}" />
+      <p>If there is another important contact person (in addition to the person in the Author field) then provide details here.</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label field_opt" for="maintainer_email">Maintainer email</label>
+    <div class="controls">
+      <input id="maintainer_email" name="maintainer_email" type="text" value="${data.get('maintainer_email', '')}" />
+    </div>
+  </div>
+
+  <div class="control-group" style="display:none">
+    <label class="control-label field_opt" for="ckan_author">Créateur du jeu de données</label>
+    <div class="controls">
+      <input id="ckan_author" name="ckan_author" type="text" value="${contributor_id}" class="uneditable-input" />
+    </div>
+  </div>
+
+</fieldset>
+
+<fieldset class="tab-pane fade" id='extras'>
+  <p>Ajout des champs personnalisés au package tel que "location:fr" qui peuvent aider les utilisateurs à le retrouver dans le moteur de recherche. Ces données apparaissent également dans la section <strong>Information additionnelle</strong> dans le package.</p>
+  <py:with vars="extras= c.additional_extras">
+    <py:for each="num, extra in enumerate(extras)">
+      <div class="control-group">
+        <label class="control-label" for="extras__${num}__value">${extra.get('key')}</label>
+        <div class="controls">
+          <input id="extras__${num}__key" name="extras__${num}__key" type="hidden" value="${extra.get('key')}" />
+          <input id="extras__${num}__value" name="extras__${num}__value" type="text" value="${extra.get('value')}" />
+          <label class="checkbox" style="display: inline-block;">
+            <input type="checkbox" name="extras__${num}__deleted" checked="${extra.get('deleted')}" />Supprimer
+          </label>
+        </div>
+      </div>
+    </py:for>
+    <hr py:if="len(extras)" class="extras-divider" />
+    <py:for each="num in range(len(extras), len(extras) + 4)">
+      <div class="control-group">
+        <label class="control-label" for="extras__${num}__key">Ajouter...</label>
+        <div class="controls">
+          <label>
+            <span class="extras-label">Clé =</span>
+            <input class="medium-width" id="extras__${num}__key" name="extras__${num}__key" type="text" />
+          </label>
+          <label>
+            <span class="extras-label">Valeur =</span>
+            <input class="medium-width" id="extras__${num}__value" name="extras__${num}__value" type="text" />
+          </label>
+        </div>
+      </div>
+    </py:for>
+  </py:with>
+</fieldset>
+
+<fieldset id='delete' class="tab-pane fade" py:if="c.is_sysadmin or c.auth_for_change_state">
+  <dl>
+    <dt>Delete</dt>
+    <dd>
+      <p>Do you really want to change the state of this dataset? &nbsp;&nbsp;<button class="dataset-delete btn">Yes!</button></p>
+      <span>
+      Ce package est &nbsp;&nbsp;
+      <select id="state" class="dataset-delete" name="state" style="display:inline;">
+        <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
+        <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
+      </select>
+      </span>
+    </dd>
+  </dl>
+</fieldset>
+
+<fieldset id='summary'>
+  <div class="control-group">
+    <label class="control-label" for="log_message">Résumé</label>
+    <div class="controls">
+      <p>Décrire sommairement les modifications que vous avez apportées</p>
+      <textarea id="log_message" name="log_message">${data.get('log_message', h.auto_log_message())}</textarea>
+    </div>
+  </div>
+</fieldset>
+
+<div class="author-box ckan-logged-in" style="display: none;">
+  <p>Auteur: ${c.author}</p>
+</div>
+<div class="author-box ckan-logged-out">
+  <label>Auteur: ${c.author}</label>
+  <p i18n:msg="" class="hints">
+    Since you have not signed in this will just be your IP address.
+    <a href="${h.url_for(controller='user', action='login', id=None)}" target="_blank">Click here to sign in</a> before saving (opens in new window).
+  </p>
+</div>
+
+<div class="form-actions">
+  <input id="save" class="btn btn-primary" name="save" type="submit" value="${_('Save Changes')}" />
+  <py:if test="c.pkg">
+    <input id="cancel" class="btn href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='package', action='read', id=c.pkg.name)}" />
+  </py:if>
+  <p class="hints"><strong>Important:</strong> By submitting content, you agree to release your contributions under the <a href="http://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>. Please <strong>refrain</strong> from editing this page if you are <strong>not</strong> happy to do this.</p>
+</div>
+
+
+</form>
+
