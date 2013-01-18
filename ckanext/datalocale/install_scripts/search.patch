@@ -1,0 +1,22 @@
+diff --git a/ckan/lib/search/query.py b/ckan/lib/search/query.py
+index a3b7adf..4bb0f13 100644
+--- a/ckan/lib/search/query.py
++++ b/ckan/lib/search/query.py
+@@ -262,7 +262,7 @@ class PackageSearchQuery(SearchQuery):
+ 
+         May raise SearchQueryError or SearchError.
+         '''
+-        from solr import SolrException
++	from solr import SolrException
+         assert isinstance(query, (dict, MultiDict))
+         # check that query keys are valid
+         if not set(query.keys()) <= VALID_SOLR_PARAMETERS:
+@@ -312,7 +312,7 @@ class PackageSearchQuery(SearchQuery):
+ 
+         # If the query has a colon in it then consider it a fielded search and do use dismax.
+         if ':' not in query['q']:
+-            query['defType'] = 'dismax'
++            #query['defType'] = 'dismax'
+             query['tie'] = '0.1'
+             query['mm'] = '1'
+             query['qf'] = query.get('qf', QUERY_FIELDS)
