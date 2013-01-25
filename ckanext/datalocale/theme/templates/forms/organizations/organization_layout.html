@@ -9,7 +9,7 @@
   <py:match path="minornavigation">
     <ul py:if="not c.action=='index' and c.group" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
+        ${h.subnav_named_route(c, h.icon('group') + _("Liste des diffuseurs"), "organization_index", action="index" )}
       </li>
 	<li  py:if="c.group and h.check_access('group_edit_permissions',{'id':c.group.name})">
         <a href="${h.url_for('/producteur/new/from-diffuseur/')}${c.group.name}">${h.icon('group_edit') + _('Ajouter un producteur pour ce diffuseur')}</a>
@@ -35,10 +35,10 @@
 
     <ul py:if="c.action=='index' or c.action=='new'" class="nav nav-pills">
       <li py:attrs="{'class':'active'} if c.action=='index' else {}">
-        ${h.subnav_named_route(c, h.icon('group') + "Liste des diffuseurs", "organization_index", action="index" )}
+       <a href="${h.url_for('/diffuseur/')}" class="">${h.icon('group')}  ${_('Liste des diffuseurs')}</a>
       </li>
       <li class="add_diffuseur${'active' if c.action=='new' else ''}" >
-         </li>
+      </li>
     </ul>
   </py:match>
 

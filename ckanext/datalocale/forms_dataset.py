@@ -101,9 +101,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
             controller_package = 'package'
             
             map.connect('/storage/datalocale_upload_handle', action='upload_handle', controller=controller_storage)
-            
             map.connect('/dataset/search', controller=controller_package, action='search')
-            
             map.connect('/dataset/{action}', controller=controller_dataset,
             requirements=dict(action='|'.join([
                   'list',
@@ -184,8 +182,6 @@ class DatalocaleDatasetForm(SingletonPlugin):
         ckan_lang_fallback = pylons.config.get('ckan.locale_default', 'fr')
         c.groups_available = c.userobj and c.userobj.get_groups('organization') or []
         c.licences = [('', '')] + ckan.model.Package.get_license_options()
-        #registredlicenses = ckan.model.license.LicenseRegister()
-        #c.licenses = [('', '', '')] + [(l.title, l.id, l.url) for l in registredlicenses.values()]
         c.is_sysadmin = authz.Authorizer().is_sysadmin(c.user)
         c.resource_columns = model.Resource.get_columns()
         c.publishers_available = c.groups_available
@@ -444,7 +440,7 @@ class DatalocaleDatasetForm(SingletonPlugin):
             groups = user.get_groups()
             html = "<dt>" + _('Diffuseur') + "</dt><dd>"
             for group in groups :
-                html += "<a href='/diffuseur/"+group.name+"' class='label' style='color:white'>"+group.title+"</a> "
+                html += "<a href='" + h.url_for('/diffuseur/') +  group.name + "' class='label' style='color:white'>"+group.title+"</a> "
             html += "</dd>"
             stream = stream | Transformer("//div[@id='content']//dl[@class='vcard']").append(HTML(html))
             

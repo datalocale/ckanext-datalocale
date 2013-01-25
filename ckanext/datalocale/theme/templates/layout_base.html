@@ -81,7 +81,7 @@
             <ul class="unstyled">
               <li class="ckan-logged-in" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
               <li class="navbutton blue">${h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index')}</li>
-              <li class="navbutton orange">${h.nav_named_link("Diffuseurs", name='%s_index' % h.default_group_type() )}</li>
+              <li class="navbutton orange"><a href="${h.url_for('/diffuseur')}">${_('Diffuseurs')}</a></li>
               <li class="navbutton grey">${h.nav_link(_('About'), controller='home', action='about')}</li>
             </ul>
           </nav>
@@ -150,39 +150,6 @@
   <li>${h.link_to(_('API Docs'), 'http://docs.ckan.org/en/latest/api.html')}</li>
           </ul>
       </nav>
-<!--       <nav class="footer-links span3">
-          <h3 class="widget-title">Sections</h3>
-          <div class="textwidget">
-            <ul class="unstyled">
-              <li>
-                <a href="${h.url(controller='user', action='index')}">
-                  Users
-                </a>
-              </li>
-              <li>
-                <a href="${h.url(controller='tag', action='index')}">
-                  Tags
-                </a>
-              </li>
-              <li py:if="'stats' in config.get('ckan.plugins','').split(' ')">
-                <a href="${h.url('stats')}">
-                  Statistics
-                </a>
-              </li>
-              <li>
-                <a href="${h.url(controller='revision', action='index')}">
-                  Revisions
-                </a>
-              </li>
-              <li>
-                <a href="${h.url_for('ckanadmin_index')}">
-                  Site Admin
-                </a>
-              </li>
-            </ul>
-          </div>
-      </nav> 
- -->      
       <nav class="footer-links span2">
       <h3 class="widget-title">Languages</h3>
       	<div class="textwidget">

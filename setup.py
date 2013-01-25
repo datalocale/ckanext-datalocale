@@ -47,7 +47,8 @@ setup(
 	"""
         [ckan.controllers]
 	organization_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
-	service_datalocale=ckanext.datalocale.service_controllers:DatalocaleServiceController
+	diffuseur_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
+        service_datalocale=ckanext.datalocale.service_controllers:DatalocaleServiceController
 	dataset_datalocale=ckanext.datalocale.dataset_controllers:DatalocaleDatasetController
 	storage_datalocale=ckanext.datalocale.storage_controllers:DatalocaleStorageController
 	

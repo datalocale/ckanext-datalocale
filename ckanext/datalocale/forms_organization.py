@@ -64,6 +64,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
         map.connect('/diffuseur/{id}', controller=controller, action='read')
         map.connect('/diffuseur',  controller=controller, action='index')
         map.redirect('/diffuseur/publisher_read', '/diffuseur/organization_read')
+        
         map.redirect('/organization', '/diffuseur')
         ##map.redirect('/organization/edit/{id}', '/diffuseur/edit/{id}')
         return map
@@ -251,7 +252,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     c.is_superuser_or_groupadmin = False
 
                 if c.is_superuser_or_groupadmin:
-                    mhtml = '<li><a href="/diffuseur/new">' + _('Ajouter un diffuseur') + '</a></li>'
+                    mhtml = '<li><a href="' + h.url_for('/diffuseur/new') + '">' + _('Ajouter un diffuseur') + '</a></li>'
                     stream = stream | Transformer(
                             "//li[@class='add_diffuseur']"
                     ).append(HTML(mhtml))

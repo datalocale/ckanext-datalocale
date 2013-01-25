@@ -23,23 +23,13 @@
 			  <h3 class="media-heading">Doc</h3>
 			  <ul class="unstyled circle-padding">
 				<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
-				<li py:if="not c.user"><a href="${c.site_url}/user/new">Créer un compte</a></li>
+				<li py:if="not c.user"><a href="${c.site_url}${h.url_for('/user/new')}">Créer un compte</a></li>
 				<li py:if="c.user" class="add_diffuseur"></li>
-				<li><a  href="${c.site_url}/diffuseur">Créer un producteur</a></li>
-				<li><a  href="${c.site_url}/dataset/new">Déposer un jeu de données</a></li>
+				<li><a  href="${c.site_url}${h.url_for('/diffuseur')}">Créer un producteur</a></li>
+				<li><a  href="${c.site_url}${h.url_for('/dataset/new')}">Déposer un jeu de données</a></li>
 			  </ul>
-			  <!-- <h3 class="media-heading">Welcome to ${g.site_title}</h3>
-			  <p>${g.site_title} contains <a href="${h.url_for(controller='package', action='search')}">${c.package_count} datasets</a> that you can 
-			browse, learn about and download.</p> -->
 			</div>
 		</header>
-		<!--   <p>Find out more about working with open data by exploring 
-		  these resources:</p>
-		  <ul>
-			<li><a href="${c.site_url}/dump/Datalocale.rdf">au format rdf</a></li>
-			<li><a href="${c.site_url}/dump/Datalocale.json">au format json</a></li>
-			<li><a href="${c.site_url}/dump/Datalocale.csv">au format csv</a></li>
-		</ul> -->
 	  </section>
 <?python
 c.diffuseurNum = 0
@@ -57,10 +47,9 @@ for c.gp in c.groups:
 			<div class="media-content">
 			  <h3 class="media-heading">Ressources</h3>
 			  <ul class="unstyled circle-padding">
-				<li ><a href="${c.site_url}/user"><span id="userNumSpan">145</span> utilisateurs</a> disponibles</li>
-				<li><a href="${c.site_url}/diffuseur">${c.producteurNum} producteurs rattachés <br/>à ${c.diffuseurNum} diffuseurs</a></li>
+				<li ><a href="${c.site_url}${h.url_for('/user')}"><span id="userNumSpan">145</span> utilisateurs</a> disponibles</li>
+				<li><a href="${c.site_url}${h.url_for('/diffuseur')}">${c.producteurNum} producteurs rattachés <br/>à ${c.diffuseurNum} diffuseurs</a></li>
 			  </ul>	
-			  <!-- <h3 class="media-heading"><a href="/group">Les diffuseurs</a></h3> -->
 			</div>
 		</header>
 	  </section>
@@ -71,8 +60,8 @@ for c.gp in c.groups:
 		  <div class="module-shallow module-narrow blue-hand">
 			  <!-- <h3 class="heading">Find data</h3> -->
 			  <ul class="unstyled circle-padding">
-			  	<li>Naviguer <a href="${c.site_url}/tag?themes=true">Par thèmes</a></li>
-			  	<li class="blue-hand-line-margin">Naviguer <a href="${c.site_url}/tag">Par tags</a></li>
+			  	<li>Naviguer <a href="${c.site_url}${h.url_for('/tag')}?themes=true">Par thèmes</a></li>
+			  	<li class="blue-hand-line-margin">Naviguer <a href="${c.site_url}${h.url_for('/tag')}">Par tags</a></li>
 			  	<li>Il y  a actuellement <a href="${h.url_for(controller='package', action='search')}">${c.package_count}  datasets</a></li>
 			  	<li class="blue-hand-line-margin">Télécharger le catalogue : 
 			  		<a href="${c.site_url}/dump/Datalocale.rdf"> RDF</a> -
@@ -90,7 +79,7 @@ for c.gp in c.groups:
 	  			<li class="dataset-item module-content" if="facet and facet[1] and facet[1] != ''">
 	  				<div class="dataset-content">
 	  					<h3 class="dataset-heading">
-	  						<a href="/diffuseur/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
+	  						<a href="${h.url_for('/diffuseur')}/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
 	  					</h3>
 	  					<div>${facet[1].get('description')[:200]}...</div>
 	  					${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
@@ -155,30 +144,6 @@ for c.gp in c.groups:
 	</div> <!-- fin de colone--> 
 	</div> <!-- fin de ligne bootstrap-->
 
-  
-  <!-- div "inscrivez-vous" désactivé
-  <section class="hero-secondary module module-info-overlay fade-in span6">
-	<py:choose>
-	 <py:when test="c.user">
-	<div class="ckan-logged-in"><div class="module-content">
-	  <h3 class="module-heading">Add a Dataset</h3>
-	  <p>
-		  You can <a href="/dataset/new">add a dataset</a> to get a sense of publisher workflow. This form
-		  can be customised to require many additional fields. In this demo only
-		  the most basic fields are required.
-	  </p>
-	</div></div>
-	</py:when>
-	<py:otherwise>
-	<div class="ckan-logged-out"><div class="module-content">
-	  <h3 class="module-heading">Inscrivez-vous</h3>
-	  <p>
-		  Vous pouvez vous <a href="/user/register">inscrire</a> ou vous <a href="/user/login">connecter</a> pour collaborer à projet Datalocale. 
-	  </p>
-	</div></div></py:otherwise>
-	</py:choose>
-  </section> -->
-  
   </div>
   </div>
   </div>

@@ -107,7 +107,7 @@ class DatalocaleServiceController(GroupController):
             url=h.pager_url,
             items_per_page=20
         )
-        return render( self._index_template(group_type) )
+        return render(self._index_template(group_type) )
     
     def _send_application( self, group, reason  ):
         from genshi.template.text import NewTextTemplate
@@ -176,9 +176,11 @@ class DatalocaleServiceController(GroupController):
 
         vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
         c.form = render('forms/organizations/organization_apply_form.html', extra_vars=vars)
-        return render('forms/organizations/organization_apply.html')
+        return render(self._apply_template(group_type))
 
     def _add_users( self, group, parameters  ):
+        
+        controller = 'ckanext.datalocale.service_controllers:DatalocaleServiceController'  
         if not group:
             h.flash_error(_("There was a problem with your submission, "
                              "please correct it and try again"))
@@ -244,12 +246,14 @@ class DatalocaleServiceController(GroupController):
         vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
 
         self._setup_template_variables(context,data)
-        c.form = render(self._group_form(group_type=group_type), extra_vars=vars)
-        return render(self._new_template(group_type))
+        c.form = render('forms/services/service_form.html', extra_vars=vars)
+        return render( self._new_template(group_type))
 
     def read(self, id):
         from ckan.lib.search import SearchError
         group_type = self._get_group_type(id.split('@')[0])
+        group_type = "service"
+        
         context = {'model': model, 'session': model.Session,
                    'user': c.user or c.author,
                    'schema': self._form_to_db_schema(group_type=group_type),
@@ -408,8 +412,136 @@ class DatalocaleServiceController(GroupController):
                 ckan.logic.action.get.group_activity_list_html(context,
                     {'id': c.group_dict['id']})
 
-        return render( self._read_template(c.group_dict['type']) )
+        return render( 'forms/services/service_read.html' )
  
+    def authz(self, id):
+        group = model.Group.get(id)
+        if group is None:
+            abort(404, _('Group not found'))
+        c.groupname = group.name
+        c.grouptitle = group.display_name
+
+        try:
+            context = {'model':model,'user':c.user or c.author, 'group':group}
+            check_access('group_edit_permissions',context)
+            c.authz_editable = True
+            c.group = context['group']
+        except NotAuthorized:
+            c.authz_editable = False
+        if not c.authz_editable:
+            abort(401, gettext('User %r not authorized to edit %s authorizations') % (c.user, id))
+
+        roles = self._handle_update_of_authz(group)
+        self._prepare_authz_info_for_render(roles)
+        return render('forms/services/service_authz.html')
+
+    def edit(self, id, data=None, errors=None, error_summary=None):
+        group_type = self._get_group_type(id.split('@')[0])
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'extras_as_string': True,
+                   'save': 'save' in request.params,
+                   'for_edit': True,
+                   'parent': request.params.get('parent', None)
+                   }
+        data_dict = {'id': id}
+
+        if context['save'] and not data:
+            return self._save_edit(id, context)
+
+        try:
+            old_data = get_action('group_show')(context, data_dict)
+            c.grouptitle = old_data.get('title')
+            c.groupname = old_data.get('name')
+            data = data or old_data
+        except NotFound:
+            abort(404, _('Group not found'))
+        except NotAuthorized:
+            abort(401, _('Unauthorized to read group %s') % '')
+
+        group = context.get("group")
+        c.group = group
+
+        try:
+            check_access('group_update',context)
+        except NotAuthorized, e:
+            abort(401, _('User %r not authorized to edit %s') % (c.user, id))
+
+        errors = errors or {}
+        vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
+
+        self._setup_template_variables(context, data, group_type=group_type)
+        c.form = render(self._group_form(group_type), extra_vars=vars)
+        return render(self._group_edit(group_type))
+
+    def history(self, id):
+        if 'diff' in request.params or 'selected1' in request.params:
+            try:
+                params = {'id':request.params.getone('group_name'),
+                          'diff':request.params.getone('selected1'),
+                          'oldid':request.params.getone('selected2'),
+                          }
+            except KeyError, e:
+                if dict(request.params).has_key('group_name'):
+                    id = request.params.getone('group_name')
+                c.error = _('Select two revisions before doing the comparison.')
+            else:
+                params['diff_entity'] = 'group'
+                h.redirect_to(controller='revision', action='diff', **params)
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author,
+                   'schema': self._form_to_db_schema()}
+        data_dict = {'id': id}
+        try:
+            c.group_dict = get_action('group_show')(context, data_dict)
+            c.group_revisions = get_action('group_revision_list')(context, data_dict)
+            #TODO: remove
+            # Still necessary for the authz check in group/layout.html
+            c.group = context['group']
+        except NotFound:
+            abort(404, _('Group not found'))
+        except NotAuthorized:
+            abort(401, _('User %r not authorized to edit %r') % (c.user, id))
+
+        format = request.params.get('format', '')
+        if format == 'atom':
+            # Generate and return Atom 1.0 document.
+            from webhelpers.feedgenerator import Atom1Feed
+            feed = Atom1Feed(
+                title=_(u'CKAN Group Revision History'),
+                link=h.url_for(controller='group', action='read', id=c.group_dict['name']),
+                description=_(u'Recent changes to CKAN Group: ') +
+                    c.group_dict['display_name'],
+                language=unicode(get_lang()),
+            )
+            for revision_dict in c.group_revisions:
+                revision_date = h.date_str_to_datetime(revision_dict['timestamp'])
+                try:
+                    dayHorizon = int(request.params.get('days'))
+                except:
+                    dayHorizon = 30
+                dayAge = (datetime.datetime.now() - revision_date).days
+                if dayAge >= dayHorizon:
+                    break
+                if revision_dict['message']:
+                    item_title = u'%s' % revision_dict['message'].split('\n')[0]
+                else:
+                    item_title = u'%s' % revision_dict['id']
+                item_link = h.url_for(controller='revision', action='read', id=revision_dict['id'])
+                item_description = _('Log message: ')
+                item_description += '%s' % (revision_dict['message'] or '')
+                item_author_name = revision_dict['author']
+                item_pubdate = revision_date
+                feed.add_item(
+                    title=item_title,
+                    link=item_link,
+                    description=item_description,
+                    author_name=item_author_name,
+                    pubdate=item_pubdate,
+                )
+            feed.content_type = 'application/atom+xml'
+            return feed.writeString('utf-8')
+        return render( 'forms/services/service_history.html') 
 
     def users(self, id, data=None, errors=None, error_summary=None):
         c.group = model.Group.get(id)
