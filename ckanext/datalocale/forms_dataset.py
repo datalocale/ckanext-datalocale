@@ -100,8 +100,8 @@ class DatalocaleDatasetForm(SingletonPlugin):
             controller_storage = 'ckanext.datalocale.storage_controllers:DatalocaleStorageController'
             controller_package = 'package'
             
-            map.connect('/storage/datalocale_upload_handle', action='upload_handle', controller=controller_storage)
-            map.connect('/dataset/search', controller=controller_package, action='search')
+            map.connect('/dataset/search', controller=controller_dataset, action='search')
+            map.connect('/dataset', controller=controller_dataset, action='search')
             map.connect('/dataset/{action}', controller=controller_dataset,
             requirements=dict(action='|'.join([
                   'list',
@@ -128,10 +128,12 @@ class DatalocaleDatasetForm(SingletonPlugin):
               'history_ajax',
               ]))
               )
+            
             map.connect('/dataset/{id}.{format}', action='read', controller=controller_dataset)
             map.connect('/dataset/{id}', action='read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}', action='resource_read', controller=controller_dataset)
             map.connect('/dataset/{id}/resource/{resource_id}/embed', action='resource_embedded_dataviewer', controller=controller_dataset)
+            map.connect('/storage/datalocale_upload_handle', action='upload_handle', controller=controller_storage)
             
             return map
 

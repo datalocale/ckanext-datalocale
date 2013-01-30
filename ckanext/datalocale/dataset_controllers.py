@@ -256,7 +256,6 @@ class DatalocaleDatasetController(BaseController):
             c.search_facets = query['search_facets']
             c.page.items = query['results']
             
-            
             # FACETS DIFFUSEURS / PRODUCTEURS
             #
             #
