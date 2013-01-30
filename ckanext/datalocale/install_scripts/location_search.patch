@@ -1,0 +1,13 @@
+diff --git a/ckanext/spatial/plugin.py b/ckanext/spatial/plugin.py
+index 7186828..9958c63 100644
+--- a/ckanext/spatial/plugin.py
++++ b/ckanext/spatial/plugin.py
+@@ -152,7 +152,7 @@ class SpatialQueryWidget(SingletonPlugin):
+     def filter(self, stream):
+         from pylons import request, tmpl_context as c
+         routes = request.environ.get('pylons.routes_dict')
+-        if routes.get('controller') == 'package' and \
++        if (routes.get('controller') == 'ckanext.datalocale.dataset_controllers:DatalocaleDatasetController' or routes.get('controller') == 'package') and \
+             routes.get('action') == 'search':
+ 
+             data = {
