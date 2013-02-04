@@ -25,7 +25,7 @@
 				<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
 				<li py:if="not c.user"><a href="${c.site_url}${h.url_for('/user/new')}">Créer un compte</a></li>
 				<li py:if="c.user" class="add_diffuseur"></li>
-				<li><a  href="${c.site_url}${h.url_for('/diffuseur')}">Créer un producteur</a></li>
+				<!--<li><a  href="${c.site_url}${h.url_for('/diffuseur')}">Créer un producteur</a></lii>--> 
 				<li><a  href="${c.site_url}${h.url_for('/dataset/new')}">Déposer un jeu de données</a></li>
 			  </ul>
 			</div>

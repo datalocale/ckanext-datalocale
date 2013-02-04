@@ -269,9 +269,9 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                 'facet.field':g.facets,
             }
 
-            ##query = get_action('user_list')(context,data_dict)
-            ##userNum = str(len(query))
-            ##stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
+            query = get_action('user_list')(context,data_dict)
+            userNum = str(len(query))
+            stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
             
             
         if routes.get('controller') == 'group' \
