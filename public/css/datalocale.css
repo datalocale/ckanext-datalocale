@@ -662,6 +662,19 @@ header #mcontent {
    height:225px;
    width:350px;
  }
+ 
+ .catalogue {
+ margin-top: 45px;
+ margin-left: -100px;
+ }
+ 
+ .list-dataset{
+ margin-left: -126px;
+ }
+ 
+ .list-tags{
+ margin-left: -108px;
+ }
 
  .circle-padding {
    padding-left: 30px;
@@ -672,7 +685,7 @@ header #mcontent {
  }
 
  #blue-hand-title {
-  margin-top: -145px;
+  margin-top: -175px;
   margin-left: -150px;
 }
 
@@ -690,7 +703,7 @@ header #mcontent {
   text-align: right;
   margin-right: 60px;
 }
- /* liste à puce pour la colonne groupe */
+ /* liste ï¿½ puce pour la colonne groupe */
 /*
  #red-bullet-list li {
   list-style-image: url('../img/red-bullet.png');

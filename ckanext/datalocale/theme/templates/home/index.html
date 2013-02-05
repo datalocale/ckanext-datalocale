@@ -60,14 +60,14 @@ for c.gp in c.groups:
 		  <div class="module-shallow module-narrow blue-hand">
 			  <!-- <h3 class="heading">Find data</h3> -->
 			  <ul class="unstyled circle-padding">
-			  	<li>Naviguer <a href="${c.site_url}${h.url_for('/tag')}?themes=true">Par thèmes</a></li>
-			  	<li class="blue-hand-line-margin">Naviguer <a href="${c.site_url}${h.url_for('/tag')}">Par tags</a></li>
-			  	<li>Il y  a actuellement <a href="${h.url_for(controller='package', action='search')}">${c.package_count}  datasets</a></li>
-			  	<li class="blue-hand-line-margin">Télécharger le catalogue : 
+			  	<li class="catalogue">Actuellement le catalogue contient</li>
+			  	<li class="list-dataset"><a href="${h.url_for(controller='package', action='search')}"><b>${c.package_count}</b> jeux de données</a> à utiliser</li>
+			  	<li class="list-tags">ou découvrir par <a href="${c.site_url}${h.url_for('/tag')}?themes=true"> <b>thèmes</b></a> et <a href="${c.site_url}${h.url_for('/tag')}"> <b>tags</b></a></li>
+			  	<!--<li class="blue-hand-line-margin">Télécharger le catalogue : 
 			  		<a href="${c.site_url}/dump/Datalocale.rdf"> RDF</a> -
 			  		<a href="${c.site_url}/dump/Datalocale.json"> JSON</a> -
 			  		<a href="${c.site_url}/dump/Datalocale.csv"> CSV</a> 
-			  	</li>
+			  	</li> -->
 			  </ul>
 			  <h3 class="media-heading" id="blue-hand-title">Données</h3>	
 			</div>
