@@ -63,7 +63,8 @@
         </div>
         </div>
         <div class="span7" id="mcontent">
-	        <div class="menu account">
+	        <div class="logo-cg33"></div>
+		<div class="menu account">
 	        <ul class="unstyled">
 	          <li class="ckan-logged-in" style="display: none;">
 	            <a href="${h.url_for(controller='user',action='me')}">${h.gravatar((c.userobj.email_hash if c and c.userobj else ''),size=20)}${c.user}</a>
@@ -77,12 +78,18 @@
 	        </div>
         </div>
         <div class="menu span12">
-          <nav id="mainmenu" class="first section navigation">
+          <nav id="mainmenu">
             <ul class="unstyled">
-              <li class="ckan-logged-in" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
+              <li class="ckan-logged-in navbutton blue" py:if="h.check_access('package_create')">${h.nav_link(_('Add a dataset'), controller='package', action='new')}</li>
               <li class="navbutton blue">${h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index')}</li>
-              <li class="navbutton orange"><a href="${h.url_for('/diffuseur')}">${_('Diffuseurs')}</a></li>
-              <li class="navbutton grey">${h.nav_link(_('About'), controller='home', action='about')}</li>
+              <li class="navbutton green"><a href="${h.url_for('/diffuseur')}">${_('Diffuseurs')}</a></li>
+              <li class="navbutton orange">${h.nav_link(_('About'), controller='home', action='about')}</li>
+              <form class="dataset-search" method="get" action="/dataset">
+				<span class="control-group search-giant">
+					<input type="text" class="search" name="q" value="" autocomplete="off" placeholder="${_('Find datasets')}" />
+					<button type="submit" value="Search">Submit</button>
+				</span>
+			</form>
             </ul>
           </nav>
         </div>

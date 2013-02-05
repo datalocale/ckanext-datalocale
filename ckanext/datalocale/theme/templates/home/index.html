@@ -18,11 +18,11 @@
 	
 	  <!-- bloc bienvenue -->
 	  <section class="span4 module-narrow module-shallow">
-		<header class="circle-green">
+		<header class="circle-red">
 			<div class="media-content">
-			  <h3 class="media-heading">Doc</h3>
+			  <h3 class="media-heading">Documentation</h3>
 			  <ul class="unstyled circle-padding">
-				<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>
+				<!--<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>-->
 				<li py:if="not c.user"><a href="${c.site_url}${h.url_for('/user/new')}">Créer un compte</a></li>
 				<li py:if="c.user" class="add_diffuseur"></li>
 				<li><a  href="${c.site_url}${h.url_for('/diffuseur')}">Créer un producteur</a></li>
@@ -43,7 +43,7 @@ for c.gp in c.groups:
   
 	  <!-- bloc groupes -->
 	  <section class="span4 module-narrow module-shallow">
-		<header class="circle-red">
+		<header class="circle-green">
 			<div class="media-content">
 			  <h3 class="media-heading">Ressources</h3>
 			  <ul class="unstyled circle-padding">
@@ -113,12 +113,6 @@ for c.gp in c.groups:
 			</section>
 			</div>
 		<div class="span4">
-			<form class="dataset-search" method="get" action="/dataset">
-				<span class="control-group search-giant">
-					<input type="text" class="search" name="q" value="" autocomplete="off" placeholder="${_('Find datasets')}" />
-					<button type="submit" value="Search">Submit</button>
-				</span>
-			</form>
 		  <div class="tags">
 			<h3 class="tag">Popular</h3>
 				<ul class="tag-list">

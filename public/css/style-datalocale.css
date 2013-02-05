@@ -41,6 +41,7 @@ header #site-name a {
 
 header .menu {
   text-align: center;
+  margin-top: 5px;
 }
 
 header .menu form {
@@ -48,7 +49,9 @@ header .menu form {
 }
 
 header .menu input {
-  width: 140px;
+  width: 240px;
+  margin: 0px 0px 3px 11px
+  height: 28px
   /**margin-top: 2px;
   height: 28px;**/
 }
@@ -61,7 +64,11 @@ header .menu #mainmenu a {
   font-weight: bold;
   margin-left: 0px;
   padding: 3px;
-  width: 100px;
+ /* width: 100px; */
+}
+
+header .menu #mainmenu a .add-dataset {
+  width: 165px;
 }
 
 header .account a {
@@ -88,15 +95,14 @@ header .account {
 }
 
 header .search {
-  margin: 1px;
-  margin-left: 11px;
+  margin: 0px 1px 1px 11px;
   border: 1px solid #ccc;
   font-size: 11px;
   padding: 4.4px;
   font-weight: bold;
-     -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
+     -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+          border-radius: 15x;
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
@@ -804,7 +810,7 @@ body.package.search #menusearch {
 }
 .dataset-search {
   margin-bottom: 35px;
-  padding-right: 100px;
+ /* padding-right: 100px; */
   margin-top: 20px;
 }
 .main input.search {

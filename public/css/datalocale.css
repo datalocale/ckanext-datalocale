@@ -68,12 +68,26 @@
   background-color: #b3b3b3;
 }
 
+#mainmenu .green{
+  background-color: #31b44d;
+}
+
 #mainmenu a{
   color:#ffffff;
 }
 
 header .account  {
-	margin-left:0px;
+	margin-left: 0px;
+	margin-top: 25px;
+}
+
+.logo-cg33{
+	background: url("../img/logocg33.jpg") no-repeat;
+	background-size: 155px 48px;
+	height: 48px;
+	width: 155px;
+	float: left;
+	margin-top: 10px;
 }
 header .span7 {
 	margin-left:0px;
@@ -91,8 +105,8 @@ header .account li{
 	text-align:center;
 }
 header #mcontent {
-  margin-top:20px;
-  margin-bottom: 20px;
+ /* margin-top:20px;
+  margin-bottom: 20px; */
 }
 #menu #account a {
   padding-top: 0px;
@@ -519,7 +533,7 @@ header #mcontent {
     cursor: pointer;
     position: absolute;
     right: 15px;
-    top: 50%;
+    top: 70%;
     display: block;
     border: none;
     padding: 0;
