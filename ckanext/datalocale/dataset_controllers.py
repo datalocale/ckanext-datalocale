@@ -212,9 +212,9 @@ class DatalocaleDatasetController(BaseController):
         try:
             c.fields = []
             search_extras = {}
-            import sys    
-
-            for (param, value) in request.params.items():
+            fq = ''
+            
+	    for (param, value) in request.params.items():
                 
                 if param not in ['q', 'page', 'sort'] \
                         and len(value) and not param.startswith('_'):
@@ -233,8 +233,7 @@ class DatalocaleDatasetController(BaseController):
             context = {'model': model, 'session': model.Session,
                        'user': c.user or c.author, 'for_view': True, 'ignore_capacity_check': True}
 
-	    fq = ''
-            data_dict = {
+	    data_dict = {
                 'q':q,
                 'fq': fq,
                 'facet.field':g.facets,
