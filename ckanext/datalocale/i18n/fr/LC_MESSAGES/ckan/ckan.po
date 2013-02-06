@@ -2337,7 +2337,7 @@ msgstr "Modifier Les rôles existants pour ces groupes d'autorisation"
 #: ckanext/publisher_form/templates/publisher_form.html:132
 #: ckanext/publisher_form/templates/publisher_read.html:50
 msgid "Datasets"
-msgstr "Jeu de données"
+msgstr "Jeux de données"
 
 #: ckan/templates/group/edit_form.html:17
 #: ckan/templates/group/new_group_form.html:114

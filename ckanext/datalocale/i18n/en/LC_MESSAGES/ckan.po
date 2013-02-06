@@ -2037,7 +2037,7 @@ msgstr ""
 
 #: ckanext-datalocale/ckanext/datalocale/theme/templates/home/index.html:83
 msgid "Données"
-msgstr ""
+msgstr "Data"
 
 #: ckanext-datalocale/ckanext/datalocale/theme/templates/home/index.html:96
 #: ckan/templates/home/index.html:75

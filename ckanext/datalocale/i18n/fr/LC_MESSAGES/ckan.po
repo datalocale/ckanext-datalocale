@@ -516,7 +516,7 @@ msgstr "Ajouter un jeu de données"
 #: ckan/templates/group/read.html:46 ckan/templates/revision/read.html:45
 #: ckan/templates/user/read.html:55 ckan/templates/user/read.html:71
 msgid "Datasets"
-msgstr "Jeu de données"
+msgstr "Jeux de données"
 
 #: ckanext-datalocale/ckanext/datalocale/theme/templates/layout_base.html:85
 #: ckanext-datalocale/ckanext/datalocale/theme/templates/layout_base.html:146
