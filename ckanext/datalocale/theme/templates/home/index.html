@@ -73,28 +73,12 @@ for c.gp in c.groups:
 			</div>
 	  </div>
 	  <div class="row">
-	  	<div class="span8">
-	  		<ul class="unstyled dataset-list">
-	  			<py:for each="facet in enumerate(c.groups[:3])">
-	  			<li class="dataset-item module-content" if="facet and facet[1] and facet[1] != ''">
-	  				<div class="dataset-content">
-	  					<h3 class="dataset-heading">
-	  						<a href="${h.url_for('/diffuseur')}/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
-	  					</h3>
-	  					<div>${facet[1].get('description')[:200]}...</div>
-	  					${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
-	  				</div>
-	  			</li>
-	  		</py:for>
-	  	</ul>
-
-	  	<section>
-	  		<header>
-	  			<div class="media-content">
-	  				<h4>Datasets</h4>
-	  			</div>
-	  		</header>
-	  		<ul class="unstyled dataset-list">
+	  	<div class="span4">
+	  		<section>
+	  			<header>
+	  				<h4 class="dataset-list">Datasets</h4>
+	  			</header>
+	  			<ul class="unstyled dataset-list">
 	  			<py:for each="dataset in c.datasets">
 	  			<li class="dataset-item module-content" if="dataset and dataset != ''">
 	  				<div class="dataset-content">
@@ -109,9 +93,29 @@ for c.gp in c.groups:
 	  				</div>
 	  			</li>
 	  			</py:for>
-	  		</ul>
+	  			</ul>
 			</section>
-			</div>
+		</div>
+		<div class="span4">
+	  		<section>
+				<header>
+					<h4 class="group-list">Diffuseurs</h4>	
+				</header>
+				<ul class="unstyled group-list">
+	  			<py:for each="facet in enumerate(c.groups[:3])">
+	  			<li class="dataset-item module-content" if="facet and facet[1] and facet[1] != ''">
+	  				<div class="dataset-content">
+	  					<h3 class="dataset-heading">
+	  						<a href="${h.url_for('/diffuseur')}/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
+	  					</h3>
+	  					<!--<div>${facet[1].get('description')[:200]}...</div>-->
+	  					${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
+	  				</div>
+	  			</li>
+	  			</py:for>
+	  			</ul>
+			</section>
+		</div>
 		<div class="span4">
 		  <div class="tags">
 			<h3 class="tag">Popular</h3>

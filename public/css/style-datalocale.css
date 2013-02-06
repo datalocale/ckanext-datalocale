@@ -653,8 +653,11 @@ form.simple-form input[type=password] {
 .group.read .property-list li ul {
   margin-left: 0;
 }
-.group-dataset-list {
-  margin: 2em 0;
+.group-list {
+  margin: 0px;
+}
+.dataset-list {
+  margin: 0px;
 }
 
 .group-search-box input[type="search"] {
