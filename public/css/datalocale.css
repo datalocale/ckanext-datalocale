@@ -607,6 +607,14 @@ header #mcontent {
    text-align: center;
  }
 
+ .doc {
+   margin-left: -35px;
+ }
+
+ .ressource {
+   margin-left: -70px;
+ }
+
  .media-heading a{
    text-decoration:none;
    color:#000;
@@ -625,6 +633,7 @@ header #mcontent {
  .circle-green {
   background: url('../img/rond-vert.png') no-repeat;
   margin: 25px;
+  margin-left: -45px;
   height: 250px;
   /* padding-top:25px;
    margin:25px;
@@ -639,6 +648,7 @@ header #mcontent {
  .circle-red {
   background: url('../img/rond-orange.png') no-repeat;
   margin: 25px;
+  margin-left: -15px;
   height: 250px;
    /*padding-top:25px;
    margin:25px;
@@ -653,6 +663,7 @@ header #mcontent {
  .blue-hand {
    padding:40px 0 0 20px;
    margin:25px 0;
+   margin-left: -90px;
    background:url("../img/main.png") no-repeat center center;
    background-size:countain;
    -moz-background-size:countain;

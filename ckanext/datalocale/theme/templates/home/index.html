@@ -20,7 +20,7 @@
 	  <section class="span4 module-narrow module-shallow">
 		<header class="circle-red">
 			<div class="media-content">
-			  <h3 class="media-heading">Documentation</h3>
+			  <h3 class="media-heading doc">Documentation</h3>
 			  <ul class="unstyled circle-padding">
 				<!--<li>${h.link_to(_('About'), h.url_for(controller='home', action='about'))}</li>-->
 				<li py:if="not c.user"><a href="${c.site_url}${h.url_for('/user/new')}">Créer un compte</a></li>
@@ -45,7 +45,7 @@ for c.gp in c.groups:
 	  <section class="span4 module-narrow module-shallow">
 		<header class="circle-green">
 			<div class="media-content">
-			  <h3 class="media-heading">Ressources</h3>
+			  <h3 class="media-heading ressource">Ressources</h3>
 			  <ul class="unstyled circle-padding">
 				<li >La ressourcerie est animé par<br></br><a href="${c.site_url}${h.url_for('/user')}"><b><span id="userNumSpan">145</span></b> utilisateurs</a></li>
 				<li>regroupés au sein de<br></br><a href="${c.site_url}${h.url_for('/diffuseur')}"><b>${c.diffuseurNum}</b> diffuseurs</a></li>
