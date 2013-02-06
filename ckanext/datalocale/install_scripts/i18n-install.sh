@@ -38,7 +38,7 @@ mkdir -p $i18ck/$en
 echo "[Done]"
 
 echo -n "Copying some translations files ... "
-# We import our custom ckan core traductions
+# We import ckan core traductions (1.8)
 cp ckanext-datalocale/$i18dl/$fr/ckan/ckan.po $i18ck/$fr/
 cp ckanext-datalocale/$i18dl/$en/ckan/ckan.po $i18ck/$en/
 

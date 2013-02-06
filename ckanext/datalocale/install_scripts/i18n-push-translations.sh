@@ -33,7 +33,7 @@ echo -n "Merging file..."
 
 msgcat --use-first -o $i18ck/$fr/ckan.po $i18ck/$fr/ckan.po.ori  ckanext-datalocale/$i18dl/$fr/ckan.po
 msgcat --use-first -o $i18ck/$es/ckan.po $i18ck/$es/ckan.po.ori  ckanext-datalocale/$i18dl/$es/ckan.po
-msgcat -o $i18ck/$en/ckan.po ckanext-datalocale/$i18dl/$en/ckan.po $i18ck/$en/ckan.po.ori
+msgcat --use-first -o $i18ck/$en/ckan.po ckanext-datalocale/$i18dl/$en/ckan.po $i18ck/$en/ckan.po.ori
 
 echo "[Done]"
 
