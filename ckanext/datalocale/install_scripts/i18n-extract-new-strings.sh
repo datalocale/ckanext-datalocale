@@ -34,9 +34,9 @@ cd ckanext-datalocale/
 $python_bin setup.py extract_messages -o ckanext/datalocale/i18n/ckanext-datalocale.po
 
 # Update of the language files
-$python_bin setup.py update_catalog -l fr -i $i18dl/ckanext-datalocale.po 
-$python_bin setup.py update_catalog -l es -i $i18dl/ckanext-datalocale.po
-$python_bin setup.py update_catalog -l en -i $i18dl/ckanext-datalocale.po
+$python_bin setup.py update_catalog -l fr -i $i18dl/ckanext-datalocale.po -o $i18dl/$fr/ckan.po 
+$python_bin setup.py update_catalog -l es -i $i18dl/ckanext-datalocale.po -o $i18dl/$es/ckan.po
+$python_bin setup.py update_catalog -l en -i $i18dl/ckanext-datalocale.po -o $i18dl/$en/ckan.po
 
 cd -
 
