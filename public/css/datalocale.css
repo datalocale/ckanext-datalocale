@@ -211,6 +211,7 @@ header #mcontent {
 
 .hero .module-content {
   font-size: 12px;
+  margin-left: -25px;
 }
 
 .module-info-overlay {
@@ -581,8 +582,13 @@ header #mcontent {
     font-weight: bold;
     margin:0;
     padding:0;
+    line-height:20px;
+  }
+
+  .description{
     line-height:14px;
   }
+
 
   .home .group-list .media-content h3, .group-list .media-content a{
     padding:0px;

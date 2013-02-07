@@ -86,8 +86,8 @@ for c.gp in c.groups:
 	  						<a href="/dataset/${dataset['name']}">${dataset.get('title','')}</a>
 	  					</h3> 
 	  					<py:if test="dataset.get('notes','')">
-	  					<div>
-	  						${dataset.get('notes','')[:200]}
+	  					<div class="description">
+	  						${dataset.get('notes','')[:150]}
 	  					</div>
 	  				</py:if>
 	  				</div>
@@ -109,7 +109,7 @@ for c.gp in c.groups:
 	  						<a href="${h.url_for('/diffuseur')}/${facet[1].get('name')}">${facet[1].get('display_name')}</a>
 	  					</h3>
 	  					<!--<div>${facet[1].get('description')[:200]}...</div>-->
-	  					${facet[1].get('title')} has ${facet[1].get('packages')} datasets.
+	  					<div class="description">${facet[1].get('title')} has ${facet[1].get('packages')} datasets.</div>
 	  				</div>
 	  			</li>
 	  			</py:for>
