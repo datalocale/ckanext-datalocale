@@ -1,4 +1,5 @@
 import os, logging
+import datetime
 import ckan.logic as logic
 from ckan.logic import NotFound, NotAuthorized, ValidationError
 import ckan.logic.schema as default_schema
@@ -34,6 +35,8 @@ class DatalocaleOrganizationForm(SingletonPlugin):
     implements(IConfigurer, inherit=True)
     implements(IGenshiStreamFilter, inherit=True)
     implements(IRoutes)
+    userNum = 0 
+    lastUpdate = datetime.datetime.now()
 
     def update_config(self, config):
         """
@@ -258,8 +261,7 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                     ).append(HTML(mhtml))
                     
         if routes.get('controller') == "home" and routes.get('action') == 'index':
-            
-            context = {'model': model, 'session': model.Session,            
+	    context = {'model': model, 'session': model.Session,            
             'user': c.user or c.author, 'for_view': True}
             q = {}
             fq = ''
@@ -268,11 +270,13 @@ class DatalocaleOrganizationForm(SingletonPlugin):
                 'fq':fq,
                 'facet.field':g.facets,
             }
-
-            query = get_action('user_list')(context,data_dict)
-            userNum = str(len(query))
-            stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(userNum))
-            
+	    #Using timestamp to regulate the use of the CKAN api to once every 10 minutes 
+	    diffTime = datetime.datetime.now() - self.lastUpdate
+	    if (diffTime.seconds > 600 or self.userNum == 0):
+	    	query = get_action('user_list')(context,data_dict)
+            	DatalocaleOrganizationForm.userNum = str(len(query))
+	    	DatalocaleOrganizationForm.lastUpdate = datetime.datetime.now()
+	    stream = stream | Transformer("//span[@id='userNumSpan']").replace(HTML(DatalocaleOrganizationForm.userNum))
             
         if routes.get('controller') == 'group' \
             and ( routes.get('action') == 'edit' or routes.get('action') == 'authz'):
