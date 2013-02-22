@@ -92,7 +92,9 @@ class DatalocaleServiceForm(SingletonPlugin):
         map.connect('/producteur/from-diffuseur/{id}', controller=controller, action='listFromOrganization')
         map.connect('/producteur/{id}', controller=controller, action='read')
         map.connect('/producteur/new/from-diffuseur/{parent}', controller=controller, action='new')
-        
+    
+        map.connect('service_read', '/producteur/{id}', action='read')
+
         map.redirect('/producteur', '/organization')
         map.redirect('/service', '/producteur')
         map.redirect('/service/{id}', '/producteur/{id}')
