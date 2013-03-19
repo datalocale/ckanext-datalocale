@@ -99,6 +99,7 @@ class DatalocaleServiceForm(SingletonPlugin):
         map.redirect('/service', '/producteur')
         map.redirect('/service/{id}', '/producteur/{id}')
         map.redirect('/service/new', '/producteur/new')
+	map.redirect('/group/{id}', '/producteur/{id}')
         return map
 
     def after_map(self, map):
