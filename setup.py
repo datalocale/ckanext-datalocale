@@ -1,65 +1,98 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup, find_packages  # Always prefer setuptools over distutils
+from codecs import open  # To use a consistent encoding
+from os import path
 
-#!/usr/bin/python
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
+here = path.abspath(path.dirname(__file__))
 
-from ckan import __version__, __description__, __long_description__, __license__
-from setuptools import setup, find_packages
-import sys, os
-
-version = '0.1'
+# Get the long description from the relevant file
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
-	name='ckanext-datalocale',
-	version=version,
-	description="Datalocale extension",
-	long_description="""\
-	""",
-	classifiers=[],
-	keywords='',
-	author='Atos',
-	author_email='dorian.roncin@atos.net',
-	url='',
-	license='',
-	packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-	namespace_packages=['ckanext', 'ckanext.datalocale'],
-	include_package_data=True,
-	package_data = {'ckanext/datalocale': ['*.xml', '*.html', '*.json', 'i18n/*/LC_MESSAGES/*.mo']},
-	zip_safe=False,
-	install_requires=[
-	],
-        message_extractors = {
-        'ckanext/datalocale': [
-            ('**.py', 'python', None),
-            ('templates/importer/**', 'ignore', None),
-            ('theme/templates/**.html', 'genshi', None),
-            ('theme/templates/**.txt', 'genshi', {
-                'template_class': 'genshi.template:TextTemplate'
-            }),
-            ('public/**', 'ignore', None),
-        ],
-        },
-	entry_points=\
-	"""
-        [ckan.controllers]
-	organization_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
-	diffuseur_datalocale=ckanext.datalocale.organization_controllers:DatalocaleOrganizationController
-        service_datalocale=ckanext.datalocale.service_controllers:DatalocaleServiceController
-	dataset_datalocale=ckanext.datalocale.dataset_controllers:DatalocaleDatasetController
-	storage_datalocale=ckanext.datalocale.storage_controllers:DatalocaleStorageController
-	
-        [ckan.plugins]
-      	datalocale_datasetform=ckanext.datalocale.forms_dataset:DatalocaleDatasetForm
-	datalocale_serviceform=ckanext.datalocale.forms_service:DatalocaleServiceForm
-	datalocale_organizationform=ckanext.datalocale.forms_organization:DatalocaleOrganizationForm
-	datalocale_api=ckanext.datalocale.api:DatalocaleAPI
+    name='''ckanext-datalocale''',
 
-	[paste.paster_command]
-	datalocale = ckanext.datalocale.commands:DatalocaleCommand
-	
-	""",
+    # Versions should comply with PEP440.  For a discussion on single-sourcing
+    # the version across setup.py and the project code, see
+    # http://packaging.python.org/en/latest/tutorial.html#version
+    version='0.0.1',
+
+    description='''France Gironde department's customizations for CKAN''',
+    long_description=long_description,
+
+    # The project's main homepage.
+    url='https://github.com/logilab/ckanext-datalocale',
+
+    # Author details
+    author='''Logilab''',
+    author_email='''contact@logilab.fr''',
+
+    # Choose your license
+    license='AGPL',
+
+    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[
+        # How mature is this project? Common values are
+        # 3 - Alpha
+        # 4 - Beta
+        # 5 - Production/Stable
+        'Development Status :: 4 - Beta',
+
+        # Pick your license as you wish (should match "license" above)
+        'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+    ],
+
+
+    # What does your project relate to?
+    keywords='''CKAN''',
+
+    # You can just specify the packages manually here if your project is
+    # simple. Or you can use find_packages().
+    packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
+
+    # List run-time dependencies here.  These will be installed by pip when your
+    # project is installed. For an analysis of "install_requires" vs pip's
+    # requirements files see:
+    # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
+    install_requires=[],
+
+    # If there are data files included in your packages that need to be
+    # installed, specify them here.  If using Python 2.6 or less, then these
+    # have to be included in MANIFEST.in as well.
+    include_package_data=True,
+    package_data={
+    },
+
+    # Although 'package_data' is the preferred approach, in some case you may
+    # need to place data files outside of your packages.
+    # see http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
+    # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
+    data_files=[],
+
+    # To provide executable scripts, use entry points in preference to the
+    # "scripts" keyword. Entry points provide cross-platform support and allow
+    # pip to create the appropriate form of executable for the target platform.
+    entry_points='''
+        [ckan.plugins]
+        datalocale=ckanext.datalocale.plugin:DatalocalePlugin
+	[babel.extractors]
+	ckan = ckan.lib.extract:extract_ckan
+    ''',
+
+    # If you are changing from the default layout of your extension, you may
+    # have to change the message extractors, you can read more about babel
+    # message extraction at
+    # http://babel.pocoo.org/docs/messages/#extraction-method-mapping-and-configuration
+    message_extractors={
+        'ckanext': [
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )

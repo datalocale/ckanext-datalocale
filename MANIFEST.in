@@ -1,3 +1,2 @@
-recursive-include data *
-recursive-include ckanext/datalocale/theme/templates *
-include licenses.json
+include README.rst
+recursive-include ckanext/datalocale *.html *.json *.js *.less *.css
