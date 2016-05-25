@@ -11,16 +11,13 @@ body{
 .account-masthead {
   color: #000000;
   background:#FFFFFF;
-  background:#F2FAFC url('../img/ciel-header.png');
   background-size: 100% 100%;
-  height: 64px;
 }
 
 .masthead {
   color: #000000;
-  background:#F2FAFC url('ciel-header.png');
+  background:#F2FAFC url('../img/ciel-header.png');
   background-size: 100% 100%;
-  height: 64px;
 }
 
 
@@ -88,7 +85,6 @@ header .account a {
   font-weight: bold;
   margin-left: 0px;
   padding: 3px;
-  width: 120px;
 }
 
 header .menu #menusearch {

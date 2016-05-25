@@ -1,5 +1,24 @@
 {% ckan_extends %}
 
+{% block header_account_container_content %}
+  <div class="span5">
+    <a href="{{ h.url('home') }}">
+      <img id="logo" src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" />
+    </a>
+    <div id="site-name">
+      <a href="{{ h.url('home') }}">
+        <span id="site-name-title">{{ g.site_title }}</span>
+        <span id="site-name-subtitle">{{ g.site_description }}</span>
+      </a>
+    </div>
+  </div>
+  <span class="logo-cg33"></span>
+  {{ super() }}
+{% endblock %}
+
+{% block header_logo %}
+{% endblock %}
+
 {% block header_site_navigation %}
 <nav class="section navigation">
   <ul class="nav nav-pills">
