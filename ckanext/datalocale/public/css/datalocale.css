@@ -139,25 +139,23 @@ header #mcontent {
   position: relative;
   padding-bottom: 0;
 }
-.hero-primary,
-.hero-secondary {
-  float: left;
-  margin-left: 20px;
-  width: 460px;
-}
-.hero-primary {
-  margin-left: 0;
-}
-.hero-primary {
-  margin-left: 0;
+.primary {
   margin-bottom: 0;
 }
-.hero-secondary {
+[role="main"] .primary {
+float: left;
+}
+[role="main"] .secondary {
+margin: auto;
+float: right;
 }
 .hero-secondary-inner {
   bottom: 0;
   left: 0;
   right: 0;
+}
+.span9 .page-header {
+  margin-left: 0px;
 }
 .hero .module-popup {
   -webkit-border-radius: 3px 3px 0 0;
