@@ -490,6 +490,9 @@ header #mcontent {
     padding-left: 10px;
     padding-right: 5px;
     margin-right: 10px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
   }
   .tag:before {
     content: "";
@@ -500,6 +503,14 @@ header #mcontent {
     bottom: 0;
     right: -11px;
     width: 11px;
+  }
+
+  a.tag:hover {
+    text-decoration: underline;
+    color: #00B9F1;
+    border: 0;
+    background: url("../img/background-tag.png") no-repeat -13px center;
+    box-shadow: none;
   }
 
   .hero .tags .tag,
