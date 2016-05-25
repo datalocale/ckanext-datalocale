@@ -23,13 +23,11 @@
 <nav class="section navigation">
   <ul class="nav nav-pills">
     {% block header_site_navigation_tabs %}
-      {{ h.build_nav_main(
-	('doc', _('Documentation')),
-	('search', _('Datasets')),
-	('organizations_index', _('Organizations')),
-	('group_index', _('Groups')),
-	('about', _('About'))
-      ) }}
+      {{ h.build_nav('doc', _('Documentation'), class_='orange') }}
+      {{ h.build_nav('search', _('Datasets'), class_='blue') }}
+      {{ h.build_nav('organizations_index', _('Organizations'), class_='green') }}
+      {{ h.build_nav('group_index', _('Groups'), class_='blue') }}
+      {{ h.build_nav('about', _('About'), class_='orange') }}
     {% endblock %}
   </ul>
 </nav>
