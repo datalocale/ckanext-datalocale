@@ -111,10 +111,26 @@ header .search {
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
-.footer.outer {
+.site-footer {
+  color: #000000;
   outline:10px solid #00B9F1 ;
-  margin-top:-10px;
   background-color: #DFF2F8;
+}
+
+.site-footer .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-footer .container .row {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-footer a {
+  color: #00B9F1;
 }
 
 #footer-img {
