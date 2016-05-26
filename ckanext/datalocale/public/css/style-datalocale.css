@@ -604,26 +604,29 @@ body.index.home .front-page .group strong {
 /* ======================== */
 /* Search Page: Filter List */
 /* ======================== */
-.filter-list {
+.filters {
     display: inline-block;
     margin-right: 5px;
     margin-bottom: 10px;
     padding: 2px 2px 4px 3px;
     font-size: 14px;
-    background-color: #FFF7C0;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     line-height: 16px;
 }
-.filter-list img {
+.filters img {
     margin-bottom: -3px;
 }
-.filter-list .name::after {
+.filters .name::after {
     content: ":";
 }
-.filter-list .value {
+.filters .value {
     font-weight: bold;
+}
+
+.nav-item a {
+  color: #00B9F1;
 }
 
 
