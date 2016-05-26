@@ -23,7 +23,7 @@ msgstr ""
 #: ckanext/datalocale/templates/doc.html:16
 #: ckanext/datalocale/templates/header.html:26
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: ckanext/datalocale/templates/footer.html:5
 msgid "CKAN API"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: ckanext/datalocale/templates/header.html:27
 msgid "Datasets"
-msgstr ""
+msgstr "Jeux de données"
 
 #: ckanext/datalocale/templates/header.html:28
 msgid "Organizations"
@@ -67,7 +67,7 @@ msgstr "Thèmes"
 
 #: ckanext/datalocale/templates/header.html:30
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: ckanext/datalocale/templates/home/snippets/doc_text.html:1
 msgid ""
