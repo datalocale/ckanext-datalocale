@@ -653,6 +653,14 @@ float: right;
     margin-left: 25px;
   }
 
+  .media-grid {
+    margin-left: 0;
+  }
+
+  .media-item {
+    padding: 9px;
+  }
+
  .circle-green {
   background: url('../img/rond-vert.png') no-repeat;
   margin: 25px;
