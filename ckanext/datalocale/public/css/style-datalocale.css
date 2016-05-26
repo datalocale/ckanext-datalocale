@@ -864,40 +864,41 @@ body.package.search #menusearch {
 /* = Dataset listing (eg. search results) = */
 /* ======================================== */
 /* TODO strip and use .search-result class in markup everywhere */
-ul.datasets {
+ul.dataset-list {
 	padding-left: 0;
   margin: 0 0 1em 0;
 }
-ul.datasets li {
+ul.dataset-list li {
 	list-style: none;
 	padding: 1em 0 0.2em 0.0em;
 	border-bottom: 1px solid #ececec;
 	overflow: hidden;
 }
-ul.datasets li .header {
+ul.dataset-list li .header {
     padding-top: 0.5em;
     font-weight: bold;
     font-size: 1.1em;
 }
-ul.datasets li .extract {
+ul.dataset-list li .extract {
 	padding-top: 0.3em;
 }
-ul.datasets li a {
+ul.dataset-list li a {
 	text-decoration: none;
+  color: #00B9F1;
 }
-ul.datasets li img {
+ul.dataset-list li img {
 	margin-bottom: -2px;
 }
-ul.datasets .search_meta {
+ul.dataset-list .search_meta {
     float:right;
 }
-ul.datasets ul.dataset_formats {
+ul.dataset-list ul.dataset_formats {
     float: right;
     padding: 0 0 3px 0;
     margin: 0;
     font-family: monospace;
 }
-ul.datasets ul.dataset_formats li {
+ul.dataset-list ul.dataset_formats li {
     display: inline;
     margin: 0;
     padding: 0 5px 0 5px;
@@ -907,15 +908,15 @@ ul.datasets ul.dataset_formats li {
     color: #808080;
     background:#ececec;
 }
-ul.datasets .openness {
+ul.dataset-list .openness {
     clear:right;
     float:right;
     font-size:0.8em;
 }
-ul.datasets .openness img {
+ul.dataset-list .openness img {
     vertical-align:top;
 }
-ul.datasets .openness li {
+ul.dataset-list .openness li {
     margin:0;
     padding:0;
     border:none;
