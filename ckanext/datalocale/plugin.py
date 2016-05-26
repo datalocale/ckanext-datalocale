@@ -1,10 +1,12 @@
+from ckan.lib.plugins import DefaultTranslation
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 
-class DatalocalePlugin(plugins.SingletonPlugin):
+class DatalocalePlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
