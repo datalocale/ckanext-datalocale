@@ -1,0 +1,34 @@
+{% ckan_extends %}
+
+{% block header_account_container_content %}
+  <div class="span5">
+    <a href="{{ h.url('home') }}">
+      <img id="logo" src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" />
+    </a>
+    <div id="site-name">
+      <a href="{{ h.url('home') }}">
+        <span id="site-name-title">{{ g.site_title }}</span>
+        <span id="site-name-subtitle">{{ g.site_description }}</span>
+      </a>
+    </div>
+  </div>
+  <span class="logo-cg33"></span>
+  {{ super() }}
+{% endblock %}
+
+{% block header_logo %}
+{% endblock %}
+
+{% block header_site_navigation %}
+<nav class="section navigation">
+  <ul class="nav nav-pills">
+    {% block header_site_navigation_tabs %}
+      {{ h.build_nav('doc', _('Documentation'), class_='orange') }}
+      {{ h.build_nav('search', _('Datasets'), class_='blue') }}
+      {{ h.build_nav('organizations_index', _('Organizations'), class_='green') }}
+      {{ h.build_nav('group_index', _('Groups'), class_='blue') }}
+      {{ h.build_nav('about', _('About'), class_='orange') }}
+    {% endblock %}
+  </ul>
+</nav>
+{% endblock %}

@@ -1,2 +1,0 @@
-ckan-datalocale
-===============

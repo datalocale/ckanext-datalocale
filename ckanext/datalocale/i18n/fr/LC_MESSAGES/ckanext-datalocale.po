@@ -1,0 +1,419 @@
+# French translations for ckanext-datalocale.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the ckanext-datalocale
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-datalocale 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-05-26 09:02+0000\n"
+"PO-Revision-Date: 2016-05-26 10:11+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: ckanext/datalocale/templates/doc.html:3
+#: ckanext/datalocale/templates/doc.html:6
+#: ckanext/datalocale/templates/doc.html:16
+#: ckanext/datalocale/templates/header.html:26
+msgid "Documentation"
+msgstr "Documentation"
+
+#: ckanext/datalocale/templates/footer.html:5
+msgid "CKAN API"
+msgstr "API CKAN"
+
+#: ckanext/datalocale/templates/footer.html:10
+msgid ""
+" Powered by <a class=\"hide-text ckan-footer-logo\" "
+"href=\"http://ckan.org\">CKAN</a><br/> &copy; 2016 <img "
+"src=\"http://assets.okfn.org/images/logo/okf_logo_white_and_green_tiny.png\""
+" id=\"footer-okf-logo\" /> <a href=\"http://okfn.org/\">Open Knowledge "
+"Foundation</a><br/> Licensed under the <a "
+"href=\"http://opendatacommons.org/licenses/odbl/1.0/\">Open Database "
+"License</a> <a href=\"http://opendefinition.org/\"><img alt=\"This "
+"Content and Data is Open\" "
+"src=\"http://assets.okfn.org/images/ok_buttons/od_80x15_blue.png\" "
+"style=\"border: none;\"/></a> "
+msgstr ""
+" Propulsé par <a class=\"hide-text ckan-footer-logo\" "
+"href=\"http://ckan.org\">CKAN</a><br/> &copy; 2016 <img "
+"src=\"http://assets.okfn.org/images/logo/okf_logo_white_and_green_tiny.png\""
+" id=\"footer-okf-logo\" /> <a href=\"http://okfn.org/\">Open Knowledge "
+"Foundation</a><br/> Couvert par <a "
+"href=\"http://opendatacommons.org/licenses/odbl/1.0/\">Open Database "
+"License</a> <a href=\"http://opendefinition.org/\"><img alt=\"This "
+"Content and Data is Open\" "
+"src=\"http://assets.okfn.org/images/ok_buttons/od_80x15_blue.png\" "
+"style=\"border: none;\"/></a> "
+
+#: ckanext/datalocale/templates/header.html:27
+msgid "Datasets"
+msgstr "Jeux de données"
+
+#: ckanext/datalocale/templates/header.html:28
+msgid "Organizations"
+msgstr "Diffuseurs"
+
+#: ckanext/datalocale/templates/header.html:29
+msgid "Groups"
+msgstr "Thèmes"
+
+#: ckanext/datalocale/templates/header.html:30
+msgid "About"
+msgstr "À propos"
+
+#: ckanext/datalocale/templates/home/snippets/doc_text.html:1
+msgid ""
+" <p>Quelques informations à propos de ce site</p> <p>CKAN: <a "
+"href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a "
+"href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features "
+"overview: <a "
+"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
+msgstr ""
+
+msgid "Organization not found"
+msgstr "Diffuseur non trouvé"
+
+msgid "Organization has been deleted."
+msgstr "Ce diffuseur a été supprimé"
+
+msgid "{actor} updated the organization {organization}"
+msgstr "{actor} a mis à jour le diffuseur {organization}"
+
+msgid "{actor} deleted the organization {organization}"
+msgstr "{actor} a supprimé le diffuseur {organization}"
+
+msgid "{actor} created the organization {organization}"
+msgstr "{actor} a créé le diffuseur {organization}"
+
+msgid "A organization must be supplied"
+msgstr "Un diffuseur doit être fournie"
+
+msgid "Organization does not exist"
+msgstr "Ce diffuseur n'existe pas"
+
+msgid "You cannot add a dataset to this organization"
+msgstr "Vous ne pouvez pas ajouter un jeu de données à ce diffuseur"
+
+msgid "Datasets with no organization can't be private."
+msgstr "Les jeux de données n'appartenant pas à un diffuseur ne peuvent pas être privés."
+
+msgid "Trying to create an organization as a group"
+msgstr "Tentative de création d'un diffuseur en tant que thème"
+
+msgid "Organization was not found."
+msgstr "Diffuseur introuvable"
+
+#, python-format
+msgid "User %s not authorized to add dataset to this organization"
+msgstr "L'utilisateur %s n'est pas autorisé à ajouter un jeu de données à ce diffuseur"
+
+#, python-format
+msgid "User %s not authorized to create organizations"
+msgstr "L'utilisateur %s n'est pas autorisé à créé  des diffuseurs"
+
+#, python-format
+msgid "User %s not authorized to delete organizations"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer les diffuseurs"
+
+#, python-format
+msgid "User %s not authorized to delete organization %s"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer le diffuseur %s"
+
+#, python-format
+msgid "User %s not authorized to edit organization %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier le diffuseur %s"
+
+msgid "organization"
+msgstr "diffuseur"
+
+msgid "organizations"
+msgstr "diffuseurs"
+
+msgid "Organization Form"
+msgstr "Formulaire de diffuseur"
+
+msgid "This organization has no datasets associated to it"
+msgstr "Ce diffuseur n'a pas de jeu de données associé"
+
+msgid "Are you sure you want to delete organization - {name}?"
+msgstr "Etes-vous sûr de vouloir supprimer le diffuseur - {name}?"
+
+msgid "Edit Organization"
+msgstr "Modifier le diffuseur"
+
+msgid "Add Organization"
+msgstr "Ajouteur un diffuseur"
+
+msgid "Search organizations..."
+msgstr "Rechercher les diffuseurs"
+
+msgid "There are currently no organizations for this site"
+msgstr "Il n'y a actuellement aucun diffuseur pour ce site"
+
+msgid "Create an Organization"
+msgstr "Créer un diffuseur"
+
+msgid "Update Organization"
+msgstr "Mise à jour du diffuseur"
+
+msgid "Create Organization"
+msgstr "Créer un diffuseur"
+
+msgid "Datasets in organization: {group}"
+msgstr "Jeux de données du diffuseur : {group}"
+
+msgid "What are Organizations?"
+msgstr "Que sont les diffuseurs (ou organisations) ?"
+
+msgid "My Organization"
+msgstr "Mon diffuseur"
+
+msgid "my-organization"
+msgstr "mon-diffuseur"
+
+msgid "A little information about my organization..."
+msgstr "Un peu d'information au sujet de mon diffuseur"
+
+msgid ""
+"Are you sure you want to delete this Organization? This will delete all "
+"the public and private datasets belonging to this organization."
+msgstr "Êtes  vous sûr de vouloir supprimer ce diffuseur ? Cela supprimera tous les jeux de données publics et privés appartenant à ce diffuseur."
+
+msgid "Save Organization"
+msgstr "Sauvegarder le Diffuseur"
+
+msgid "Organization"
+msgstr "Diffuseur"
+
+msgid "No organization"
+msgstr "Aucun diffuseur"
+
+msgid "There is no description for this organization"
+msgstr "Il n'y a pas de description pour ce diffuseur"
+
+msgid "{number} organization found for \"{query}\""
+msgid_plural "{number} organizations found for \"{query}\""
+msgstr[0] "{number} diffuseur  trouvé pour \"{query}\""
+msgstr[1] "{number} diffuseurs  trouvés pour \"{query}\""
+
+msgid "No organizations found for \"{query}\""
+msgstr "Aucun diffuseur trouvé pour \"{query}\""
+
+msgid "{number} organization found"
+msgid_plural "{number} organizations found"
+msgstr[0] "{number} diffuseur trouvé"
+msgstr[1] "{number} diffuseur trouvés"
+
+msgid "No organizations found"
+msgstr "Aucun diffuseur trouvé"
+
+msgid "My Organizations"
+msgstr "Mes diffuseurs"
+
+msgid "Group not found"
+msgstr "Thème introuvable"
+
+msgid "Incorrect group type"
+msgstr "Type de thème incorrect"
+
+#, python-format
+msgid "Unauthorized to read group %s"
+msgstr "Vous n'êtes pas autorisé à lire le thème %s"
+
+msgid "Unauthorized to create a group"
+msgstr "Vous n'êtes pas autorisé à créer un thème"
+
+#, python-format
+msgid "Unauthorized to delete group %s"
+msgstr "Vous n'êtes pas autorisé à supprimer le thème %s"
+
+msgid "Group has been deleted."
+msgstr "Ce thème a été supprimé."
+
+#, python-format
+msgid "Unauthorized to add member to group %s"
+msgstr "Vous n'êtes pas autorisé à ajouter un membre au thème %s"
+
+#, python-format
+msgid "Unauthorized to delete group %s members"
+msgstr "Vous n'êtes pas autorisé à supprimer un membre du thème %s"
+
+msgid "Group member has been deleted."
+msgstr "Le membre de ce thème a été supprimé"
+
+msgid "Unauthorized to read group {group_id}"
+msgstr "Vous n'êtes pas autorisé à lire le thème {group_id}"
+
+msgid "{actor} updated the group {group}"
+msgstr "{actor} a mis à jour le thème {group}"
+
+msgid "{actor} deleted the group {group}"
+msgstr "{actor} a supprimé le thème {group}"
+
+msgid "{actor} created the group {group}"
+msgstr "{actor} a créé le thème {group}"
+
+msgid "Group"
+msgstr "Thème"
+
+msgid "That group name or ID does not exist."
+msgstr "Ce thème ou cet identifiant n'existe pas"
+
+msgid "Group name already exists in database"
+msgstr "Le nom du thème existe déjà dans la base de données"
+
+msgid "You must be logged in to follow a group."
+msgstr "Vous devez vous identifier pour suivre un thème."
+
+#, python-format
+msgid "User %s not authorized to edit these groups"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier ces thèmes"
+
+#, python-format
+msgid "User %s not authorized to create groups"
+msgstr "L'utilisateur %s n'est pas autorisé à créer ces thèmes"
+
+msgid "Group was not found."
+msgstr "Thème introuvable"
+
+msgid "Valid API key needed to create a group"
+msgstr "Une clé d'API valide est nécessaire pour créer un thème"
+
+#, python-format
+msgid "User %s not authorized to edit group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier le thème %s"
+
+#, python-format
+msgid "User %s not authorized to delete groups"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer des thèmes"
+
+#, python-format
+msgid "User %s not authorized to delete group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à supprimer le thème %s"
+
+#, python-format
+msgid "User %s not authorized to read group %s"
+msgstr "Utilisateur %s non autorisé à lire le thème %s"
+
+#, python-format
+msgid "User %s not authorized to change state of group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier l'état du thème %s"
+
+#, python-format
+msgid "User %s not authorized to edit permissions of group %s"
+msgstr "L'utilisateur %s n'est pas autorisé à modifier les permissions du thème %s"
+
+msgid "Valid API key needed to edit a group"
+msgstr "Une clé d'API valide est nécessaire pour modifier un thème"
+
+msgid "Add a Group"
+msgstr "Ajouter un thème"
+
+msgid "Group Form"
+msgstr "Formulaire de thème"
+
+msgid "Are you sure you want to delete group - {name}?"
+msgstr "Êtes-vous sûr de vouloir supprimer le thème - {name}?"
+
+msgid "Edit Group"
+msgstr "Modifier le thème"
+
+msgid "Add Group"
+msgstr "Ajouter un thème"
+
+msgid "Search groups..."
+msgstr "Rechercher les thèmes..."
+
+msgid "There are currently no groups for this site"
+msgstr "Il n'y a actuellement aucun thème pour ce site"
+
+msgid "Create a Group"
+msgstr "Créer un thème"
+
+msgid "Update Group"
+msgstr "Mise à jour du thème"
+
+msgid "Create Group"
+msgstr "Créer le thème"
+
+msgid "Datasets in group: {group}"
+msgstr "Jeux de données du thème : {group}"
+
+msgid "My Group"
+msgstr "Mon thème"
+
+msgid "my-group"
+msgstr "mon-theme"
+
+msgid "A little information about my group..."
+msgstr "Un peut d'information au sujet de mon thème..."
+
+msgid "Are you sure you want to delete this Group?"
+msgstr "Etes-vous sûr de vouloir supprimer ce thème?"
+
+msgid "Save Group"
+msgstr "Sauvegarder le thème"
+
+msgid "Remove dataset from this group"
+msgstr "Supprimer les jeux de données de ce thème"
+
+msgid "What are Groups?"
+msgstr "Que sont les thèmes (ou groupes) ?"
+
+msgid "group"
+msgstr "thème"
+
+msgid "groups"
+msgstr "thèmes"
+
+msgid "Associate this group with this dataset"
+msgstr "Associer ce thème à un jeu de données"
+
+msgid "Add to group"
+msgstr "Ajouter à un thème"
+
+msgid "There are no groups associated with this dataset"
+msgstr "Il n'y a pas de thème associé à ce jeu de données"
+
+msgid "{number} group found for \"{query}\""
+msgid_plural "{number} groups found for \"{query}\""
+msgstr[0] "{number} thème  trouvé pour \"{query}\""
+msgstr[1] "{number} thèmes  trouvés pour \"{query}\""
+
+msgid "No groups found for \"{query}\""
+msgstr "Aucun thème trouvé pour \"{query}\""
+
+msgid "{number} group found"
+msgid_plural "{number} groups found"
+msgstr[0] "{number} thème  trouvé"
+msgstr[1] "{number} thèmes trouvés"
+
+msgid "No groups found"
+msgstr "Aucun thème trouvé"
+
+msgid "My Groups"
+msgstr "Mes thèmes"
+
+msgid "You are not a member of any groups."
+msgstr "Vous n'êtes membre d'aucun thème."
+
+msgid "Create datasets, groups and other exciting things"
+msgstr "Créer des jeux de données, des thèmes et d'autres choses passionnantes"
+
+msgid "This group has no description"
+msgstr "Il n'y a pas de description pour ce thème"
+
+msgid "Largest Groups"
+msgstr "Thèmes les plus gros"
+
+msgid "No groups"
+msgstr "Pas de thèmes"
+
