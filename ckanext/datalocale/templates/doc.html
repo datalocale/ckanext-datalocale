@@ -10,12 +10,8 @@
   <article class="module">
     <div class="module-content">
       {% block about %}
-        {% if g.site_about %}
-          {{ h.render_markdown(g.site_about) }}
-        {% else %}
-          <h1 class="page-heading">{{ _('Documentation') }}</h1>
-          {% snippet 'home/snippets/doc_text.html' %}
-        {% endif %}
+        <h1 class="page-heading">{{ _('Documentation') }}</h1>
+        {% snippet 'home/snippets/doc_text.html' %}
       {% endblock %}
     </div>
   </article>
