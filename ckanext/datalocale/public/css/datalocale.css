@@ -53,6 +53,23 @@
   -webkit-border-radius: 5px;
 }
 
+.masthead .in .nav > li {
+  padding: 0;
+}
+
+.masthead .in .nav > li > a {
+  color: black;
+  background-color: white;
+  box-shadow: unset;
+  -webkit-transition: color 0s, background-color 0s, box-shadow 0s;
+  transition: color 0s, background-color 0s, box-shadow 0s;
+}
+
+.masthead .nav > li > a {
+  -webkit-transition: color 1s, background-color 1s, box-shadow 1s;
+  transition: color 1s, background-color 1s, box-shadow 1s;
+}
+
 .masthead .blue{
   background-color: #25B8EA;
 }
