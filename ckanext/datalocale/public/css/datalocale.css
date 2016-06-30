@@ -395,7 +395,7 @@ float: right;
     color: #000000;
   }
   .module .pagination {
-    height: 34px;
+    height: auto;
     margin-bottom: 0;
     border-top: 1px solid #d0d0d0;
   }
