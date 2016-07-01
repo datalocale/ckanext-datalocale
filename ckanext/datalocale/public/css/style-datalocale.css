@@ -231,8 +231,8 @@ tbody tr:nth-child(odd) td, tbody tr.odd td {
 /* Common page elements */
 /* ==================== */
 #content {
-  border-right: 1px solid #e0e0e0;
   padding-right: 20px;
+  padding-left: 20px;
 }
 .page_heading {
   margin-top: 0.9em;
@@ -1377,7 +1377,6 @@ fieldset#resources > .instructions {
 }
 .resource-list li {
   white-space: nowrap;
-  overflow: hidden;
   background: #fff;
   border-right:  1px solid transparent;
   border-left:   1px solid transparent;
@@ -1385,7 +1384,6 @@ fieldset#resources > .instructions {
   border-bottom: 1px solid #eee;
   margin-bottom: 0;
   position: relative;
-  z-index: 1;
 }
 .resource-list li:hover {
   background-color: #f7f7f7;
