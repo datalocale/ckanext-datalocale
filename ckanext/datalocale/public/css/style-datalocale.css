@@ -1625,3 +1625,15 @@ body.editresources .error-explanation {
   float: none;
   text-align: center;
 }
+
+/* Change the colors of the "Search Your Data" box. */
+.homepage .module-search .module-content {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+/* Change the background color of the "Popular Tags" box. */
+.homepage .module-search .tags {
+  background-color: #FFFFFF;
+  color: #333333;
+}
