@@ -1,0 +1,14 @@
+{% ckan_extends %}
+
+{% block tags_list %}
+<ul class="unstyled tag-list">
+  {% block tags_list_inner %}
+    {% for tag in c.page.items %}
+      <li>{{ h.link_to(tag.display_name, h.url_for(controller='package', action='search', tags=tag.name), class_='tag') }}</li>
+    {% endfor %}
+  {% endblock %}
+</ul>
+{% endblock %}
+
+
+
