@@ -15,6 +15,13 @@ body{
   background-size: 100% 100%;
 }
 
+/* The user account info text and icons, when the user's pointer is hovering
+   over them. */
+.account-masthead .account ul li a:hover {
+  color: black;
+  background-color: #b3b3b3;
+}
+
 .masthead {
   color: #000000;
   background:#F2FAFC url('../img/ciel-header.png');
