@@ -69,6 +69,7 @@
 .masthead .navigation .nav-pills li a:hover,
 .masthead .navigation .nav-pills li a:focus,
 .masthead .navigation .nav-pills li.active a {
+  color: white;
   background-color: #b3b3b3;
 }
 
