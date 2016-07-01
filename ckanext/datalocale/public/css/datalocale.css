@@ -36,11 +36,6 @@
 }
 
 .masthead li a {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
   background-color: rgba(0, 185, 241, 1);
@@ -56,6 +51,23 @@
   border-radius: 5px;    
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+}
+
+.masthead .in .nav > li {
+  padding: 0;
+}
+
+.masthead .in .nav > li > a {
+  color: black;
+  background-color: white;
+  box-shadow: unset;
+  -webkit-transition: color 0s, background-color 0s, box-shadow 0s;
+  transition: color 0s, background-color 0s, box-shadow 0s;
+}
+
+.masthead .nav > li > a {
+  -webkit-transition: color 1s, background-color 1s, box-shadow 1s;
+  transition: color 1s, background-color 1s, box-shadow 1s;
 }
 
 .masthead .blue{
@@ -383,7 +395,7 @@ float: right;
     color: #000000;
   }
   .module .pagination {
-    height: 34px;
+    height: auto;
     margin-bottom: 0;
     border-top: 1px solid #d0d0d0;
   }
@@ -775,6 +787,18 @@ float: right;
   background-image:url('../img/flags.png');
   margin-right: 5px;
 }
+
+@media (max-width: 767px) {
+  .toolbar .breadcrumb {
+    color: #505050;
+    text-shadow: none;
+  }
+  .toolbar .breadcrumb a {
+    color: #505050;
+    text-shadow: none;
+  }
+}
+
 
 .flag.flag-es {background-position: -16px 0}
 .flag.flag-fr {background-position: 0 -11px}
