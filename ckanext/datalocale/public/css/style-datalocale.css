@@ -6,6 +6,7 @@ body.no-sidebar .content-outer {
 body{
   font-size:13px;
   font-family: 'Lato';
+  background: none;
 }
 
 .account-masthead {
