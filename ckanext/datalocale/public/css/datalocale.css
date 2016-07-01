@@ -53,6 +53,26 @@
   -webkit-border-radius: 5px;
 }
 
+.masthead .btn-navbar {
+  background-color: #00B9F1;
+}
+
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus,
+.masthead .btn-navbar:active,
+.masthead .btn-navbar.active,
+.masthead .btn-navbar.disabled,
+.masthead .btn-navbar[disabled] {
+  background-color: #b3b3b3;
+}
+
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li a:focus,
+.masthead .navigation .nav-pills li.active a {
+  color: white;
+  background-color: #b3b3b3;
+}
+
 .masthead .in .nav > li {
   padding: 0;
 }
