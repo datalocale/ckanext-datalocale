@@ -53,6 +53,10 @@
   -webkit-border-radius: 5px;
 }
 
+.masthead .btn-navbar {
+  background-color: #00B9F1;
+}
+
 .masthead .navigation .nav-pills li a:hover {
   background-color: #b3b3b3;
 }
