@@ -2,19 +2,19 @@
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://themes.googleusercontent.com/static/fonts/lato/v6/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/HkF_qI1x_noxlxhrhMQYED8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://themes.googleusercontent.com/static/fonts/lato/v6/HkF_qI1x_noxlxhrhMQYED8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
 }
 #site-name-title {
 	font-family: 'Lato', sans-serif;
@@ -51,6 +51,26 @@
   border-radius: 5px;    
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+}
+
+.masthead .btn-navbar {
+  background-color: #00B9F1;
+}
+
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus,
+.masthead .btn-navbar:active,
+.masthead .btn-navbar.active,
+.masthead .btn-navbar.disabled,
+.masthead .btn-navbar[disabled] {
+  background-color: #b3b3b3;
+}
+
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li a:focus,
+.masthead .navigation .nav-pills li.active a {
+  color: white;
+  background-color: #b3b3b3;
 }
 
 .masthead .in .nav > li {
