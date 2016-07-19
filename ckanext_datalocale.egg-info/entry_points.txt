@@ -1,6 +1,0 @@
-
-        [ckan.plugins]
-        datalocale=ckanext.datalocale.plugin:DatalocalePlugin
-	[babel.extractors]
-	ckan = ckan.lib.extract:extract_ckan
-    
