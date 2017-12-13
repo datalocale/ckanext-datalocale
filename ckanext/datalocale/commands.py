@@ -16,6 +16,14 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
     summary = __doc__.split('\n')[0]
     usage = __doc__
 
+    def __init__(self, name):
+        super(DatalocaleCommand, self).__init__(name)
+        self.parser.add_option(
+            '-n', '--dry-run', dest='dry_run',
+            action='store_true', default=False,
+            help='do not perform actions, print what would happen',
+        )
+
     def command(self):
         # load pylons config
         self._load_config()
@@ -48,6 +56,8 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
             print("User {} is not authorized to perform this action.".format(user['name']))
             sys.exit(1)
 
+        dry_run = self.options.dry_run
+
         # query datastore to get all resources from the _table_metadata
         resource_id_list = []
         for offset in itertools.count(start=0, step=100):
@@ -60,11 +70,15 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
         # delete the rows of the orphaned datastore tables
         delete_count = 0
         for resource_id in resource_id_list:
-            logic.get_action('datastore_delete')(
-                context,
-                {'resource_id': resource_id, 'force': True}
-            )
-            print("Table '%s' deleted (not dropped)" % resource_id)
+            msg = "Table '%s' deleted (not dropped)" % resource_id
+            if not dry_run:
+                logic.get_action('datastore_delete')(
+                    context,
+                    {'resource_id': resource_id, 'force': True}
+                )
+                print(msg)
+            else:
+                print(msg + ' [DRY RUN]')
             delete_count += 1
 
         print("Deleted content of %s tables" % delete_count)
