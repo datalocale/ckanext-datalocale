@@ -81,7 +81,7 @@ setup(
         [ckan.plugins]
         datalocale=ckanext.datalocale.plugin:DatalocalePlugin
         [paste.paster_command]
-        datalocale=ckanext.datalocale.commands:DatalocaleCommand
+        datastore-cleanup=ckanext.datalocale.commands:DataStoreCleanup
 	[babel.extractors]
 	ckan = ckan.lib.extract:extract_ckan
     ''',

@@ -7,17 +7,13 @@ import ckan.logic as logic
 import ckan.model as model
 
 
-class DatalocaleCommand(ckan.lib.cli.CkanCommand):
-    """datalocale admin commands
-
-    cleanup_datastore   - clean the datastore db from non-existent resources tables
-    """
+class DataStoreCleanup(ckan.lib.cli.CkanCommand):
+    """Clean the datastore db from non-existent resources tables"""
     # Copied from ckanext-switzerland at f00d848f022a9080f4aef36ed305fa73292fdb28
-    summary = __doc__.split('\n')[0]
-    usage = __doc__
+    summary = __doc__
 
     def __init__(self, name):
-        super(DatalocaleCommand, self).__init__(name)
+        super(DataStoreCleanup, self).__init__(name)
         self.parser.add_option(
             '-n', '--dry-run', dest='dry_run',
             action='store_true', default=False,
@@ -25,17 +21,6 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
         )
 
     def command(self):
-        options = {
-            'cleanup_datastore': self.cleanup_datastore,
-        }
-
-        cmd = self.args[0]
-        try:
-            options[cmd](*self.args[1:])
-        except KeyError:
-            self.parser.error("unknown command '%s'" % cmd)
-
-    def cleanup_datastore(self):
         # load pylons config
         self._load_config()
         user = logic.get_action('get_site_user')({'ignore_auth': True}, {})
