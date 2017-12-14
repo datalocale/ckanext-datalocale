@@ -27,18 +27,13 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
     def command(self):
         options = {
             'cleanup_datastore': self.cleanup_datastore,
-            'help': self.help,
         }
 
+        cmd = self.args[0]
         try:
-            cmd = self.args[0]
             options[cmd](*self.args[1:])
         except KeyError:
-            self.help()
-            sys.exit(1)
-
-    def help(self):
-        print(self.__doc__)
+            self.parser.error("unknown command '%s'" % cmd)
 
     def cleanup_datastore(self):
         # load pylons config
