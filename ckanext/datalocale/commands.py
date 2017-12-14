@@ -25,8 +25,6 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
         )
 
     def command(self):
-        # load pylons config
-        self._load_config()
         options = {
             'cleanup_datastore': self.cleanup_datastore,
             'help': self.help,
@@ -43,6 +41,8 @@ class DatalocaleCommand(ckan.lib.cli.CkanCommand):
         print(self.__doc__)
 
     def cleanup_datastore(self):
+        # load pylons config
+        self._load_config()
         user = logic.get_action('get_site_user')({'ignore_auth': True}, {})
         context = {
             'model': model,
