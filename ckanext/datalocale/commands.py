@@ -75,11 +75,10 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
 
         resource_id_list = []
         for record in result['records']:
+            # ignore 'alias' records
+            if record.get('alias_of'):
+                continue
             try:
-                # ignore 'alias' records
-                if record['alias_of']:
-                    continue
-
                 logic.get_action('resource_show')(
                     context,
                     {'id': record['name']}
@@ -88,8 +87,6 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
             except logic.NotFound:
                 resource_id_list.append(record['name'])
                 print("Resource '%s' *not* found" % record['name'])
-            except KeyError:
-                continue
 
         # are there more records?
         has_next_page = (len(result['records']) > 0)
