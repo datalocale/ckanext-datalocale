@@ -37,11 +37,13 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
             sys.exit(1)
 
         dry_run = self.options.dry_run
+        verbose = self.options.verbose
 
         # query datastore to get all resources from the _table_metadata
         resource_id_list = []
         for offset in itertools.count(start=0, step=100):
-            print("Load metadata records from datastore (offset: %s)" % offset)
+            if verbose:
+                print("Load metadata records from datastore (offset: %s)" % offset)
             record_list, has_next_page = self._get_datastore_table_page(context, offset)  # noqa
             resource_id_list.extend(record_list)
             if not has_next_page:
@@ -64,6 +66,7 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
         print("Deleted content of %s tables" % delete_count)
 
     def _get_datastore_table_page(self, context, offset=0):
+        verbose = self.options.verbose
         # query datastore to get all resources from the _table_metadata
         result = logic.get_action('datastore_search')(
             context,
@@ -83,7 +86,8 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
                     context,
                     {'id': record['name']}
                 )
-                print("Resource '%s' found" % record['name'])
+                if verbose:
+                    print("Resource '%s' found" % record['name'])
             except logic.NotFound:
                 resource_id_list.append(record['name'])
                 print("Resource '%s' *not* found" % record['name'])
