@@ -87,6 +87,9 @@ class DataStoreCleanup(ckan.lib.cli.CkanCommand):
             except logic.NotFound:
                 resource_id_list.append(record['name'])
                 print("Resource '%s' *not* found" % record['name'])
+            except Exception as exc:
+                print("ERROR during 'resource_show' call for %s: %s"
+                      % (record['name'], exc))
 
         # are there more records?
         has_next_page = (len(result['records']) > 0)
